@@ -3,7 +3,7 @@
 module filter # (parameter BIT_WIDTH = 16,
                  parameter PWM_FREQ = 500,
                  parameter SYS_FREQ = 48000)(
-	input wire [2:0] filt_sel, 
+	input wire [1:0] filt_sel, 
 	input wire clk, 
 	input wire [BIT_WIDTH-1:0] d, 
 	input wire sclr,   
@@ -19,14 +19,6 @@ module filter # (parameter BIT_WIDTH = 16,
 	 reg [BIT_WIDTH-1:0]reg_5;
 	 reg [BIT_WIDTH-1:0]reg_6;
 	 reg [BIT_WIDTH-1:0]reg_7;
-	 reg [BIT_WIDTH-1:0]reg_8;
-	 reg [BIT_WIDTH-1:0]reg_9; 
-	 reg [BIT_WIDTH-1:0]reg_10; 
-	 reg [BIT_WIDTH-1:0]reg_11;
-	 reg [BIT_WIDTH-1:0]reg_12;
-	 reg [BIT_WIDTH-1:0]reg_13;
-	 reg [BIT_WIDTH-1:0]reg_14;
-	 reg [BIT_WIDTH-1:0]reg_15;
 	 reg [23:0]reg_case; 
 	 reg [BIT_WIDTH-1:0]reg_q;
 			 
@@ -40,56 +32,40 @@ module filter # (parameter BIT_WIDTH = 16,
 			reg_5 <= 0; 
 			reg_6 <= 0; 
 			reg_7 <= 0;
-			reg_8 <= 0; 
-			reg_9 <= 0; 
-			reg_10 <= 0; 
-			reg_11 <= 0;
-			reg_12 <= 0; 
-			reg_13 <= 0; 
-			reg_14 <= 0; 
-			reg_15 <= 0;
 				end
 	else begin
-
-			reg_0 <= d;	
-			reg_1 <= reg_0;
-			reg_2 <= reg_1;
-			reg_3 <= reg_2;
-			reg_4 <= reg_3;
+			reg_7 <= reg_6;
 			reg_5 <= reg_4;
-			reg_6 <= reg_5;
-			reg_8 <= reg_7;
-			reg_10 <= reg_9;
-			reg_12 <= reg_11;
-			reg_14 <= reg_13;
-			reg_15 <= reg_14;
-	
-			end
+			reg_4 <= reg_3;
+			reg_3 <= reg_2;
+			reg_2 <= reg_1;
+			reg_1 <= reg_0;
+			reg_0 <= d;		
+				end
 			
 	 always @ (posedge clk)		
 	begin case(filt_sel)
-		 3'b000:	begin
+		 2'b00:	begin
 						reg_case <= d[15:0];
 						reg_q[15:0] <= reg_case[15:0];
 						end
-		3'b001:	begin
+		 2'b01:	begin
 						reg_case <= (d[15:0] + reg_0[15:0])>>1;
 						reg_q <= reg_case[15:0];
 						end
-		3'b010:	begin
-						reg_case <= (d + reg_0 + reg_1 + reg_2 )>>2;
+		 2'b10:	begin
+						reg_case <= (d + reg_0 + reg_1 + reg_2)>>2;
 						reg_q <= reg_case[15:0];
-						end		
-		3'b011:		begin
+						end
+		2'b11:	begin
 						reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6)>>3;
 						reg_q <= reg_case[15:0];
 						end
-		3'b100:		begin reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14)>>4;
-						reg_q <= reg_case[15:0];
-						end							
-		default:		begin 
-						reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14)>>4;
-						reg_q <= reg_case[15:0];
+						
+		default:	begin
+					
+					reg_q <= d[15:0]* 7/10;
+						
 						end
 		endcase
 			end
