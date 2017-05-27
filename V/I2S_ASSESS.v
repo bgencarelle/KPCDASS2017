@@ -6,7 +6,7 @@ module I2S_ASSESS (
  output SAMPLE_TR_n , 
  output SDATA_OUT ,
  input  SDATA_IN  ,
- input  [16:0]ADC_MIC,
+ input  [15:0]ADC_MIC,
  input  RESET_n,
  output [15:0] DATA16_MIC ,
  input  SW_BYPASS,    //SW[0]

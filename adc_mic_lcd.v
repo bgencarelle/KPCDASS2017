@@ -10,7 +10,7 @@ module adc_mic_lcd(
 	input 		          		MAX10_CLK1_50,
 	input 		          		MAX10_CLK2_50,
 	input 		          		MAX10_CLK3_50,
-
+	
 	//////////// KEY //////////
 	input 		          		FPGA_RESET_n,
 	input 		     [4:0]		KEY,
@@ -63,17 +63,18 @@ module adc_mic_lcd(
 	inout 		          		PS2_DAT2,
 
 	//////////// TMD 2x6 GPIO Header, TMD connect to TMD Default //////////
-	inout 		     [7:0]		GPIO	
+	output 		     [7:0]		GPIO	
 	
 );
 
+  
 
 //----ON-BOARD-MIC TO DAC&LINE out-----
 
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-wire  [11:0]  ADC_RD ;
+wire   [11:0] ADC_RD ;
 wire   [15:0] PWM_OUT;
 wire   [15:0] FILTER_OUT;
 wire          SAMPLE_TR ;  
@@ -81,12 +82,15 @@ wire          ADC_RESPONSE ;
 wire [15:0]   TODAC ; 
 wire          ROM_CK ; 
 wire          MCLK_48M ; // 48MHZ
-wire  [15:0 ] SUM_AUDIO ; 
- wire [9:0]   LED ; 
- wire [6:0]		HEXR;
+wire [15:0]   SUM_AUDIO ; 
+wire [9:0]    LED ; 
+ 
+reg 			  GPIOCLK;
+wire [6:0]	  HEXR;
 wire          MTL_CLK ;  // 33MHZ
 reg           RESET_DELAY_n ; 
 reg   [31:0]  DELAY_CNT;        
+
 
 //=======================================================
 //  Structural coding
@@ -95,6 +99,7 @@ reg   [31:0]  DELAY_CNT;
 //--RESET DELAY ---
 
 always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 ) begin 
+
 if (!FPGA_RESET_n )  begin 
      RESET_DELAY_n<=0;
      DELAY_CNT   <=0;
@@ -104,7 +109,6 @@ else  begin
   else RESET_DELAY_n<=1;
  end
 end
-
 
 //--- MIC  TO  MAX10-ADC  ----
 
@@ -173,7 +177,7 @@ I2S_ASSESS  i2s(
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
 	.ROM_ADDR     ( ROM_ADDR), 
-	.ROM_CK       ( ROM_CK  )  ,
+	.ROM_CK       ( ROM_CK ),
 	.SUM_AUDIO    ( SUM_AUDIO ) 
 	
 	) ; 
@@ -188,10 +192,11 @@ LED_METER   led(
 	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
- 
+
+assign GPIO[0] = AUDIO_WCLK; 
 
 //--METER TO LED --  
-assign LEDR =  LED ; 
+//assign LEDR =  LED ; 
 assign HEX0 = ~HEXR;
 
 //---MTL2 --- 
@@ -227,20 +232,20 @@ SOUND_TO_MTL2  sm(
 
 pulse_width_modulation_gen pwm1 (
     .clk(MAX10_CLK1_50 ), 
+	 .outclk(AUDIO_WCLK),
 	 .reset(RESET_DELAY_N),
     .q_pwm(PWM_OUT[15:0])
 	 
     );
 	 
 filter filt1 (
-		 .filt_sel(SW[1:0]),
-		 .clk(SAMPLE_TR ), 
+		 .filt_sel(SW[2:0]),
+		 .clk(AUDIO_WCLK), 
 		 .d(PWM_OUT[15:0]),
 		 .sclr(RESET_DELAY_N),
 		 .q(FILTER_OUT)
 		 
 		 );
-
 endmodule
 
 
