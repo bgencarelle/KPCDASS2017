@@ -74,6 +74,8 @@ module adc_mic_lcd(
 //  REG/WIRE declarations
 //=======================================================
 wire  [11:0]  ADC_RD ;
+wire   [15:0] PWM_OUT;
+wire   [15:0] FILTER_OUT;
 wire          SAMPLE_TR ;  
 wire          ADC_RESPONSE ;
 wire [15:0]   TODAC ; 
@@ -110,7 +112,7 @@ MAX10_ADC   madc(
 	.SYS_CLK ( AUDIO_MCLK   ),
 	.SYNC_TR ( SAMPLE_TR    ),
 	.RESET_n ( RESET_DELAY_n),
-	.ADC_CH  ( 7),
+	.ADC_CH  ( SW[4:0]),
 	.DATA    (ADC_RD ) ,
 	.DATA_VALID(ADC_RESPONSE),
 	.FITER_EN (1) 
@@ -167,7 +169,7 @@ I2S_ASSESS  i2s(
 	.SDATA_OUT ( AUDIO_DIN_MFP1),
 	.SDATA_IN  ( AUDIO_DOUT_MFP2),
 	.RESET_n   ( RESET_DELAY_n), 
-	.ADC_MIC      ( ADC_RD), 
+	.ADC_MIC      ( FILTER_OUT ), 
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
 	.ROM_ADDR     ( ROM_ADDR), 
@@ -182,7 +184,7 @@ LED_METER   led(
    .RESET_n   ( RESET_DELAY_n), 
 	.CLK   ( AUDIO_MCLK )  , 
 	.SAMPLE_TR ( SAMPLE_TR) , 
-	.VALUE ( { ~SUM_AUDIO[15], SUM_AUDIO[14:4]  }  ) ,
+	.VALUE ( { ADC_RD }  ) ,
 	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
@@ -204,7 +206,7 @@ PLL_VGA PP(
 assign  MTL2_BL_ON_n = ~RESET_DELAY_n  ; 
 
 SOUND_TO_MTL2  sm(
-	.WAVE      ( SUM_AUDIO[15:0]),
+	.WAVE      ( SUM_AUDIO),
 	.AUDIO_MCLK( AUDIO_MCLK),
 	.SAMPLE_TR ( SAMPLE_TR),
 	.RESET_n   ( RESET_DELAY_n), 
@@ -221,6 +223,23 @@ SOUND_TO_MTL2  sm(
 	.START_STOP( 1) 
 );	
 
+
+
+pulse_width_modulation_gen pwm1 (
+    .clk(MAX10_CLK1_50 ), 
+	 .reset(RESET_DELAY_N),
+    .q_pwm(PWM_OUT[15:0])
+	 
+    );
+	 
+filter filt1 (
+		 .filt_sel(SW[1:0]),
+		 .clk(SAMPLE_TR ), 
+		 .d(PWM_OUT[15:0]),
+		 .sclr(RESET_DELAY_N),
+		 .q(FILTER_OUT)
+		 
+		 );
 
 endmodule
 

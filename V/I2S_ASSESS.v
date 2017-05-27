@@ -6,7 +6,7 @@ module I2S_ASSESS (
  output SAMPLE_TR_n , 
  output SDATA_OUT ,
  input  SDATA_IN  ,
- input  [11:0]ADC_MIC,
+ input  [16:0]ADC_MIC,
  input  RESET_n,
  output [15:0] DATA16_MIC ,
  input  SW_BYPASS,    //SW[0]
@@ -115,7 +115,7 @@ assign SD_MIC =  (
 	
 	
 //---from EXTERNAL MIC ADC --- 
-assign    EXT_DATA16      = {~ADC_MIC[11] , ADC_MIC[10:0],4'h0 } ; 
+assign    EXT_DATA16      = {~ADC_MIC[15] , ADC_MIC[14:0]} ; 
 
 //----- AUDIO CODE TIMING --- 
   wire [15:0]  EXT_DATA16 ;
