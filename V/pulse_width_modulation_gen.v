@@ -33,9 +33,9 @@ module pulse_width_modulation_gen # (parameter BIT_WIDTH = 8,
                   pwm_cnt <= pwm_cnt + 1'b1;
 
     wire [15:0]q_tmp;
-    assign q_tmp = (pwm_cnt >= 127) ? 15'b000000000000000 : 15'b111111111111111;
+    assign q_tmp = (pwm_cnt >= 127) ? 16'b0000000000000000 : 16'b1111111111111111;
 
-    // synchronize the final pwm output ...
+   // synchronize the final pwm output ...
     always@(posedge outclk) 
 		if(reset) 
 			  q_pwm <= 0;

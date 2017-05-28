@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2017.05.28.00:32:56"
+ date="2017.05.28.11:32:26"
  outputDirectory="C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/db/ip/sldaf1daf55/">
  <perimeter>
   <parameter

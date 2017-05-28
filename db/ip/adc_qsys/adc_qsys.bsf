@@ -22,7 +22,7 @@ agreement for further details.
 (header "symbol" (version "1.1"))
 (symbol
 	(rect 0 0 560 248)
-	(text "unnamed" (rect 254 -1 290 11)(font "Arial" (font_size 10)))
+	(text "adc_qsys" (rect 252 -1 292 11)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 232 20 244)(font "Arial" ))
 	(port
 		(pt 0 72)
@@ -134,7 +134,7 @@ agreement for further details.
 		(text "endofpacket" (rect 297 171 660 352)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 179 187 388 387)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 213 211 468 432)(font "Arial" (color 0 0 0)))
-		(text " system " (rect 525 232 1098 474)(font "Arial" ))
+		(text " adc_qsys " (rect 515 232 1090 474)(font "Arial" ))
 		(line (pt 208 32)(pt 352 32)(line_width 1))
 		(line (pt 352 32)(pt 352 232)(line_width 1))
 		(line (pt 208 232)(pt 352 232)(line_width 1))

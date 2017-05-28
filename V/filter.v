@@ -27,7 +27,7 @@ module filter # (parameter BIT_WIDTH = 16,
 	 reg [BIT_WIDTH-1:0]reg_13;
 	 reg [BIT_WIDTH-1:0]reg_14;
 	 reg [BIT_WIDTH-1:0]reg_15;
-	 reg [23:0]reg_case; 
+	 reg [31:0]reg_case; 
 	 reg [BIT_WIDTH-1:0]reg_q;
 			 
  always @ (posedge clk)
@@ -73,23 +73,23 @@ module filter # (parameter BIT_WIDTH = 16,
 						reg_q[15:0] <= reg_case[15:0];
 						end
 		3'b001:	begin
-						reg_case <= (d[15:0] + reg_0[15:0])>>1;
-						reg_q <= reg_case[15:0];
+						reg_case <= (d[15:0] + reg_0[15:0]);
+						reg_q <= reg_case[16:1];
 						end
 		3'b010:	begin
-						reg_case <= (d + reg_0 + reg_1 + reg_2 )>>2;
-						reg_q <= reg_case[15:0];
+						reg_case <= d + reg_0 + reg_1 + reg_2 ;
+						reg_q <= reg_case[17:2];
 						end		
 		3'b011:		begin
-						reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6)>>3;
-						reg_q <= reg_case[15:0];
+						reg_case <= d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6;
+						reg_q <= reg_case[18:3];
 						end
-		3'b100:		begin reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14)>>4;
-						reg_q <= reg_case[15:0];
+		3'b100:		begin reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14);
+						reg_q <= reg_case[19:4];
 						end							
 		default:		begin 
-						reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14)>>4;
-						reg_q <= reg_case[15:0];
+						reg_case <= (d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14);
+						reg_q <= reg_case[19:4];
 						end
 		endcase
 			end
