@@ -76,6 +76,8 @@ module adc_mic_lcd(
 //=======================================================
 wire   [11:0] ADC_RD ;
 wire   [15:0] PWM_OUT;
+wire 	 [15:0] FIFO_OUT;
+wire   [15:0] SEED_OUT;
 wire   [15:0] FILTER_OUT;
 wire          SAMPLE_TR ;  
 wire          ADC_RESPONSE ;
@@ -237,17 +239,31 @@ pulse_width_modulation_gen pwm1 (
     .q_pwm(PWM_OUT[15:0])
 	 
     );
-	 
+
+dff_chain_4 dffchain (  
+        .m_clk(MAX10_CLK1_50), 
+		  .a_clk(AUDIO_WCLK),
+		  .dnoise(SEED_OUT[15:0]),
+        .dfilter(FILTER_OUT[15:0]),
+		  .trigger(~KEY[0]),
+        .sclr(RESET_DELAY_N),
+        .q(FIFO_OUT[15:0])    
+        ); 
+		  
+	  
 filter filt1 (
 		 .filt_sel(SW[2:0]),
 		 .clk(AUDIO_WCLK), 
-		 .d(PWM_OUT[15:0]),
+		 .d(FIFO_OUT [15:0]),
 		 .sclr(RESET_DELAY_N),
 		 .q(FILTER_OUT)
-		 
+		 );
+lfsr lfsr1 (
+		 .out(SEED_OUT),
+		 .enable(1),  // Enable  for counter
+		 .clk(AUDIO_WCLK),  // clock input
+		 .reset(RESET_DELAY_N) 
 		 );
 endmodule
-
-
 
 

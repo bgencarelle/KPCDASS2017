@@ -24,23 +24,23 @@ module filter # (parameter BIT_WIDTH = 16)(
 	 reg [BIT_WIDTH-1:0]reg_12;
 	 reg [BIT_WIDTH-1:0]reg_13;
 	 reg [BIT_WIDTH-1:0]reg_14;
-    reg [BIT_WIDTH-1:0]reg_15;
-	 reg [BIT_WIDTH-1:0]reg_16;
-	 reg [BIT_WIDTH-1:0]reg_17; 
-	 reg [BIT_WIDTH-1:0]reg_18; 
-	 reg [BIT_WIDTH-1:0]reg_19;
-	 reg [BIT_WIDTH-1:0]reg_20;
-	 reg [BIT_WIDTH-1:0]reg_21;
-	 reg [BIT_WIDTH-1:0]reg_22;
-	 reg [BIT_WIDTH-1:0]reg_23;
-	 reg [BIT_WIDTH-1:0]reg_24;
-	 reg [BIT_WIDTH-1:0]reg_25; 
-	 reg [BIT_WIDTH-1:0]reg_26; 
-	 reg [BIT_WIDTH-1:0]reg_27;
-	 reg [BIT_WIDTH-1:0]reg_28;
-	 reg [BIT_WIDTH-1:0]reg_29;
-	 reg [BIT_WIDTH-1:0]reg_30;
-    reg [BIT_WIDTH-1:0]reg_31;
+//  reg [BIT_WIDTH-1:0]reg_15;
+//	 reg [BIT_WIDTH-1:0]reg_16;
+//	 reg [BIT_WIDTH-1:0]reg_17; 
+//	 reg [BIT_WIDTH-1:0]reg_18; 
+//	 reg [BIT_WIDTH-1:0]reg_19;
+//	 reg [BIT_WIDTH-1:0]reg_20;
+//	 reg [BIT_WIDTH-1:0]reg_21;
+//	 reg [BIT_WIDTH-1:0]reg_22;
+//	 reg [BIT_WIDTH-1:0]reg_23;
+//	 reg [BIT_WIDTH-1:0]reg_24;
+//	 reg [BIT_WIDTH-1:0]reg_25; 
+//	 reg [BIT_WIDTH-1:0]reg_26; 
+//	 reg [BIT_WIDTH-1:0]reg_27;
+//	 reg [BIT_WIDTH-1:0]reg_28;
+//	 reg [BIT_WIDTH-1:0]reg_29;
+//	 reg [BIT_WIDTH-1:0]reg_30;
+//    reg [BIT_WIDTH-1:0]reg_31;
 	 reg [31:0] reg_case = 0; 
 	 reg [BIT_WIDTH-1:0]reg_q = 0;
 			 
@@ -61,23 +61,23 @@ module filter # (parameter BIT_WIDTH = 16)(
 			reg_12 <= 0; 
 			reg_13 <= 0; 
 			reg_14 <= 0; 
-			reg_15 <= 0;
-			reg_16 <= 0; 
-			reg_17 <= 0; 
-			reg_18 <= 0; 
-			reg_19 <= 0;
-			reg_20 <= 0; 
-			reg_21 <= 0; 
-			reg_22 <= 0; 
-			reg_23 <= 0;
-			reg_24 <= 0; 
-			reg_25 <= 0; 
-			reg_26 <= 0; 
-			reg_27 <= 0;
-			reg_28 <= 0; 
-			reg_29 <= 0; 
-			reg_30 <= 0; 
-			reg_31 <= 0;
+//			reg_15 <= 0;
+//			reg_16 <= 0; 
+//			reg_17 <= 0; 
+//			reg_18 <= 0; 
+//			reg_19 <= 0;
+//			reg_20 <= 0; 
+//			reg_21 <= 0; 
+//			reg_22 <= 0; 
+//			reg_23 <= 0;
+//			reg_24 <= 0; 
+//			reg_25 <= 0; 
+//			reg_26 <= 0; 
+//			reg_27 <= 0;
+//			reg_28 <= 0; 
+//			reg_29 <= 0; 
+//			reg_30 <= 0; 
+//			reg_31 <= 0;
 			end
 	else begin
 			reg_0 <= d;	
@@ -95,7 +95,7 @@ module filter # (parameter BIT_WIDTH = 16)(
 			reg_12 <= reg_11;
 			reg_13 <= reg_12;
 			reg_14 <= reg_13;
-			reg_15 <= reg_14;
+//			reg_15 <= reg_14;
 		
 			end
 			
@@ -126,7 +126,7 @@ module filter # (parameter BIT_WIDTH = 16)(
 				 end
 				 
 		default:begin
-					reg_case  <= reg_30;
+					reg_case  <= reg_14;
 					reg_q <= reg_case[15:0];
 				 end
 						
