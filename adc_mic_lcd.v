@@ -116,7 +116,7 @@ MAX10_ADC   madc(
 	.SYS_CLK ( AUDIO_MCLK   ),
 	.SYNC_TR ( SAMPLE_TR    ),
 	.RESET_n ( RESET_DELAY_n),
-	.ADC_CH  ( SW[4:0]),
+	.ADC_CH  ( 3'b111),
 	.DATA    (ADC_RD ) ,
 	.DATA_VALID(ADC_RESPONSE),
 	.FITER_EN (1) 

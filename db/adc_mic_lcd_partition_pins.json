@@ -200,14 +200,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[4]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[3]",
-					"strict" : false
-				},
-				{
 					"name" : "altera_reserved_tms",
 					"strict" : false
 				},
