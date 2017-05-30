@@ -25,11 +25,11 @@ assign linear_feedback = !(out[31] ^ out[15]);
 
 always @(posedge clk)
 if (reset) begin // active high reset
-  out <= 31'b10100000000010101010000000001010 ;
+  out <= 0;
 end 
 else if (enable) begin
   out <= {out[30:0], linear_feedback};
 end 
-		assign out16 = out[23:8];
+		assign out16 = out[27:12];
 
 endmodule // End Of Module counter

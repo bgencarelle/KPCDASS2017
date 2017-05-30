@@ -121,7 +121,8 @@ module filter # (parameter BIT_WIDTH = 16)(
 						reg_q <= reg_case[18:3];
 				 end
 		
-		3'b101, 3'b110,3'b111, 3'b100:begin reg_case <= d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14;
+		3'b101, 3'b110,3'b111, 3'b100:begin 
+						reg_case <= d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14;
 						reg_q <= reg_case[19:4];
 				 end
 				 

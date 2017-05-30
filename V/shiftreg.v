@@ -10,7 +10,7 @@ module dff_chain_4 (
         output wire [15:0] q    
         );    
 
-        reg [15:0] internal_reg[0:4096];  
+        reg [15:0] internal_reg[0:65536];  
 		  integer j;
 
 //      always @ ( posedge clk ) begin
@@ -28,29 +28,29 @@ module dff_chain_4 (
 
 						
         always@(posedge a_clk) begin
-               if(sclr == 1) 
-                  for (j = 0; j < 512; j = j + 1)
-						begin: clear_reg
-						internal_reg[j] <= 0;
-						end
-						
-					
-              else 
-						for (j = 0; j <= 512; j = j+ 1) 
+//               if(sclr == 1) 
+//                  for (j = 0; j < 5000; j = j + 1)
+//						begin: clear_reg
+//						internal_reg <= 0;
+//						end
+//						
+//					
+//              else 
+						for (j = 0; j <= 40000; j = j+ 1) 
 						begin: load_reg 						 
 						
 						
 						
-						if(trigger==0) 
+						if(trigger) 
 					//	if (j == 0) 
 						internal_reg[j] <= dnoise;
 					//	else if (j != 0)
 				//		internal_reg[j] <= internal_reg[j-1];
 						
-						else if (trigger==1)
+						else 
 						
 					//	if (j == 0)
-						internal_reg[j] = dfilter;
+						internal_reg[j] <= dfilter;
 						
 				////		else if (j != 0)
 					//	internal_reg[j] <= internal_reg[j-1];
@@ -59,5 +59,5 @@ module dff_chain_4 (
 
 
 						end
-          assign q = internal_reg[511];   
+          assign q = internal_reg[39099];   
 endmodule

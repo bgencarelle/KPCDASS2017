@@ -86,7 +86,7 @@ wire          ROM_CK ;
 wire          MCLK_48M ; // 48MHZ
 wire [15:0]   SUM_AUDIO ; 
 wire [9:0]    LED ; 
- 
+wire 			  key_0;
 reg 			  GPIOCLK;
 wire [6:0]	  HEXR;
 wire          MTL_CLK ;  // 33MHZ
@@ -230,7 +230,12 @@ SOUND_TO_MTL2  sm(
 	.START_STOP( 1) 
 );	
 
-
+input_debounce key0db(
+	.clk(MAX10_CLK1_50),
+	//.reset_n(RESET_DELAY_N),
+	.PB(KEY[0]),
+	.PB_state(key_0)
+);
 
 pulse_width_modulation_gen pwm1 (
     .clk(MAX10_CLK1_50 ), 
@@ -244,8 +249,8 @@ dff_chain_4 dffchain (
         .m_clk(MAX10_CLK1_50), 
 		  .a_clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT[15:0]),
-        .dfilter(FIFO_OUT[15:0]),
-		  .trigger(KEY[0]),
+        .dfilter(FILTER_OUT[15:0]),
+		  .trigger(key_0),
         .sclr(RESET_DELAY_N),
         .q(FIFO_OUT[15:0])    
         ); 
