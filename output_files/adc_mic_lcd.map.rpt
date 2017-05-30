@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adc_mic_lcd
-Sun May 28 22:04:47 2017
+Tue May 30 10:49:50 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -64,34 +64,35 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
  56. altpll Parameter Settings by Entity Instance
  57. altsyncram Parameter Settings by Entity Instance
  58. Port Connectivity Checks: "lfsr:lfsr1"
- 59. Port Connectivity Checks: "pulse_width_modulation_gen:pwm1"
- 60. Port Connectivity Checks: "SOUND_TO_MTL2:sm|PIPO:P2"
- 61. Port Connectivity Checks: "SOUND_TO_MTL2:sm|PIPO:P1"
- 62. Port Connectivity Checks: "SOUND_TO_MTL2:sm|VGA_Controller:vc"
- 63. Port Connectivity Checks: "SOUND_TO_MTL2:sm"
- 64. Port Connectivity Checks: "PLL_VGA:PP"
- 65. Port Connectivity Checks: "LED_METER:led|PEAK_DELAY:pk"
- 66. Port Connectivity Checks: "LED_METER:led"
- 67. Port Connectivity Checks: "I2S_ASSESS:i2s|AUDIO_SRCE:audi2"
- 68. Port Connectivity Checks: "I2S_ASSESS:i2s"
- 69. Port Connectivity Checks: "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R"
- 70. Port Connectivity Checks: "AUDIO_SPI_CTL_RD:u1"
- 71. Port Connectivity Checks: "AUDIO_PLL:pll"
- 72. Port Connectivity Checks: "DAC16:dac1"
- 73. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller_001"
- 74. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
- 75. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller"
- 76. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo"
- 77. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal"
- 78. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_altpll_sys:altpll_sys|adc_qsys_altpll_sys_altpll_3p92:sd1"
- 79. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_altpll_sys:altpll_sys"
- 80. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0"
- 81. Port Connectivity Checks: "MAX10_ADC:madc"
- 82. In-System Memory Content Editor Settings
- 83. Post-Synthesis Netlist Statistics for Top Partition
- 84. Elapsed Time Per Partition
- 85. Analysis & Synthesis Messages
- 86. Analysis & Synthesis Suppressed Messages
+ 59. Port Connectivity Checks: "filter:filt1"
+ 60. Port Connectivity Checks: "pulse_width_modulation_gen:pwm1"
+ 61. Port Connectivity Checks: "SOUND_TO_MTL2:sm|PIPO:P2"
+ 62. Port Connectivity Checks: "SOUND_TO_MTL2:sm|PIPO:P1"
+ 63. Port Connectivity Checks: "SOUND_TO_MTL2:sm|VGA_Controller:vc"
+ 64. Port Connectivity Checks: "SOUND_TO_MTL2:sm"
+ 65. Port Connectivity Checks: "PLL_VGA:PP"
+ 66. Port Connectivity Checks: "LED_METER:led|PEAK_DELAY:pk"
+ 67. Port Connectivity Checks: "LED_METER:led"
+ 68. Port Connectivity Checks: "I2S_ASSESS:i2s|AUDIO_SRCE:audi2"
+ 69. Port Connectivity Checks: "I2S_ASSESS:i2s"
+ 70. Port Connectivity Checks: "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R"
+ 71. Port Connectivity Checks: "AUDIO_SPI_CTL_RD:u1"
+ 72. Port Connectivity Checks: "AUDIO_PLL:pll"
+ 73. Port Connectivity Checks: "DAC16:dac1"
+ 74. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller_001"
+ 75. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+ 76. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller"
+ 77. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo"
+ 78. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal"
+ 79. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_altpll_sys:altpll_sys|adc_qsys_altpll_sys_altpll_3p92:sd1"
+ 80. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_altpll_sys:altpll_sys"
+ 81. Port Connectivity Checks: "MAX10_ADC:madc|adc_qsys:u0"
+ 82. Port Connectivity Checks: "MAX10_ADC:madc"
+ 83. In-System Memory Content Editor Settings
+ 84. Post-Synthesis Netlist Statistics for Top Partition
+ 85. Elapsed Time Per Partition
+ 86. Analysis & Synthesis Messages
+ 87. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -118,15 +119,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun May 28 22:04:47 2017       ;
+; Analysis & Synthesis Status        ; Successful - Tue May 30 10:49:50 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 1,879                                       ;
-;     Total combinational functions  ; 1,411                                       ;
-;     Dedicated logic registers      ; 985                                         ;
-; Total registers                    ; 985                                         ;
+; Total logic elements               ; 1,271                                       ;
+;     Total combinational functions  ; 1,007                                       ;
+;     Dedicated logic registers      ; 697                                         ;
+; Total registers                    ; 697                                         ;
 ; Total pins                         ; 102                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 59,648                                      ;
@@ -336,40 +337,40 @@ agreement for further details.
 +------------------------------------------------------------------------+-----------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+-------------+
 
 
-+----------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                    ;
-+---------------------------------------------+------------------+
-; Resource                                    ; Usage            ;
-+---------------------------------------------+------------------+
-; Estimated Total logic elements              ; 1,879            ;
-;                                             ;                  ;
-; Total combinational functions               ; 1411             ;
-; Logic element usage by number of LUT inputs ;                  ;
-;     -- 4 input functions                    ; 354              ;
-;     -- 3 input functions                    ; 576              ;
-;     -- <=2 input functions                  ; 481              ;
-;                                             ;                  ;
-; Logic elements by mode                      ;                  ;
-;     -- normal mode                          ; 761              ;
-;     -- arithmetic mode                      ; 650              ;
-;                                             ;                  ;
-; Total registers                             ; 985              ;
-;     -- Dedicated logic registers            ; 985              ;
-;     -- I/O registers                        ; 0                ;
-;                                             ;                  ;
-; I/O pins                                    ; 102              ;
-; Total memory bits                           ; 59648            ;
-;                                             ;                  ;
-; Embedded Multiplier 9-bit elements          ; 0                ;
-;                                             ;                  ;
-; Total PLLs                                  ; 3                ;
-;     -- PLLs                                 ; 3                ;
-;                                             ;                  ;
-; Maximum fan-out node                        ; AUDIO_WCLK~input ;
-; Maximum fan-out                             ; 327              ;
-; Total fan-out                               ; 7986             ;
-; Average fan-out                             ; 3.00             ;
-+---------------------------------------------+------------------+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++---------------------------------------------+--------------------------+
+; Resource                                    ; Usage                    ;
++---------------------------------------------+--------------------------+
+; Estimated Total logic elements              ; 1,271                    ;
+;                                             ;                          ;
+; Total combinational functions               ; 1007                     ;
+; Logic element usage by number of LUT inputs ;                          ;
+;     -- 4 input functions                    ; 309                      ;
+;     -- 3 input functions                    ; 275                      ;
+;     -- <=2 input functions                  ; 423                      ;
+;                                             ;                          ;
+; Logic elements by mode                      ;                          ;
+;     -- normal mode                          ; 646                      ;
+;     -- arithmetic mode                      ; 361                      ;
+;                                             ;                          ;
+; Total registers                             ; 697                      ;
+;     -- Dedicated logic registers            ; 697                      ;
+;     -- I/O registers                        ; 0                        ;
+;                                             ;                          ;
+; I/O pins                                    ; 102                      ;
+; Total memory bits                           ; 59648                    ;
+;                                             ;                          ;
+; Embedded Multiplier 9-bit elements          ; 0                        ;
+;                                             ;                          ;
+; Total PLLs                                  ; 3                        ;
+;     -- PLLs                                 ; 3                        ;
+;                                             ;                          ;
+; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
+; Maximum fan-out                             ; 173                      ;
+; Total fan-out                               ; 6134                     ;
+; Average fan-out                             ; 3.12                     ;
++---------------------------------------------+--------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -377,7 +378,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                     ; Entity Name                            ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+--------------+
-; |adc_mic_lcd                                                                                                                            ; 1411 (45)           ; 985 (33)                  ; 59648       ; 0          ; 0            ; 0       ; 0         ; 102  ; 0            ; 0          ; |adc_mic_lcd                                                                                                                                                                                                                                                                                                                                            ; adc_mic_lcd                            ; work         ;
+; |adc_mic_lcd                                                                                                                            ; 1007 (45)           ; 697 (33)                  ; 59648       ; 0          ; 0            ; 0       ; 0         ; 102  ; 0            ; 0          ; |adc_mic_lcd                                                                                                                                                                                                                                                                                                                                            ; adc_mic_lcd                            ; work         ;
 ;    |AUDIO_PLL:pll|                                                                                                                      ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|AUDIO_PLL:pll                                                                                                                                                                                                                                                                                                                              ; AUDIO_PLL                              ; work         ;
 ;       |altpll:altpll_component|                                                                                                         ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|AUDIO_PLL:pll|altpll:altpll_component                                                                                                                                                                                                                                                                                                      ; altpll                                 ; work         ;
 ;          |AUDIO_PLL_altpll:auto_generated|                                                                                              ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|AUDIO_PLL:pll|altpll:altpll_component|AUDIO_PLL_altpll:auto_generated                                                                                                                                                                                                                                                                      ; AUDIO_PLL_altpll                       ; work         ;
@@ -422,9 +423,8 @@ agreement for further details.
 ;          |altsyncram:altsyncram_component|                                                                                              ; 0 (0)               ; 0 (0)                     ; 28800       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|SOUND_TO_MTL2:sm|PIPO:P2|altsyncram:altsyncram_component                                                                                                                                                                                                                                                                                   ; altsyncram                             ; work         ;
 ;             |altsyncram_soj1:auto_generated|                                                                                            ; 0 (0)               ; 0 (0)                     ; 28800       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|SOUND_TO_MTL2:sm|PIPO:P2|altsyncram:altsyncram_component|altsyncram_soj1:auto_generated                                                                                                                                                                                                                                                    ; altsyncram_soj1                        ; work         ;
 ;       |VGA_Controller:vc|                                                                                                               ; 53 (53)             ; 26 (26)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|SOUND_TO_MTL2:sm|VGA_Controller:vc                                                                                                                                                                                                                                                                                                         ; VGA_Controller                         ; work         ;
-;    |dff_chain_4:dffchain|                                                                                                               ; 62 (62)             ; 48 (48)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|dff_chain_4:dffchain                                                                                                                                                                                                                                                                                                                       ; dff_chain_4                            ; work         ;
-;    |filter:filt1|                                                                                                                       ; 342 (342)           ; 276 (276)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|filter:filt1                                                                                                                                                                                                                                                                                                                               ; filter                                 ; work         ;
-;    |lfsr:lfsr1|                                                                                                                         ; 1 (1)               ; 12 (12)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|lfsr:lfsr1                                                                                                                                                                                                                                                                                                                                 ; lfsr                                   ; work         ;
+;    |dff_chain_4:dffchain|                                                                                                               ; 0 (0)               ; 16 (16)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|dff_chain_4:dffchain                                                                                                                                                                                                                                                                                                                       ; dff_chain_4                            ; work         ;
+;    |lfsr:lfsr1|                                                                                                                         ; 1 (1)               ; 32 (32)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|lfsr:lfsr1                                                                                                                                                                                                                                                                                                                                 ; lfsr                                   ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 121 (1)             ; 87 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                                ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 120 (0)             ; 87 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input            ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 120 (0)             ; 87 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                            ; alt_sld_fab  ;
@@ -533,10 +533,6 @@ Encoding Type:  One-Hot
 ; MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state|b_non_empty                                ; Lost fanout                                                                                                                                                                          ;
 ; MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state|cntr_337:count_usedw|counter_reg_bit[0..5] ; Lost fanout                                                                                                                                                                          ;
 ; AUDIO_SPI_CTL_RD:u1|W_REG_DATA_R[8]                                                                                                                                                                                                                                                                                                                   ; Stuck at VCC due to stuck port data_in                                                                                                                                               ;
-; lfsr:lfsr1|out[8]                                                                                                                                                                                                                                                                                                                                     ; Merged with lfsr:lfsr1|out[7]                                                                                                                                                        ;
-; lfsr:lfsr1|out[10]                                                                                                                                                                                                                                                                                                                                    ; Merged with lfsr:lfsr1|out[9]                                                                                                                                                        ;
-; lfsr:lfsr1|out[12]                                                                                                                                                                                                                                                                                                                                    ; Merged with lfsr:lfsr1|out[11]                                                                                                                                                       ;
-; lfsr:lfsr1|out[14]                                                                                                                                                                                                                                                                                                                                    ; Merged with lfsr:lfsr1|out[13]                                                                                                                                                       ;
 ; I2S_ASSESS:i2s|AUDIO_SRCE:audi2|ST[4..7]                                                                                                                                                                                                                                                                                                              ; Merged with I2S_ASSESS:i2s|AUDIO_SRCE:audi2|ST[3]                                                                                                                                    ;
 ; AUDIO_SPI_CTL_RD:u1|ST[4]                                                                                                                                                                                                                                                                                                                             ; Merged with AUDIO_SPI_CTL_RD:u1|ST[3]                                                                                                                                                ;
 ; DAC16:dac1|ST[4..7]                                                                                                                                                                                                                                                                                                                                   ; Merged with DAC16:dac1|ST[3]                                                                                                                                                         ;
@@ -555,7 +551,7 @@ Encoding Type:  One-Hot
 ; MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|ctrl_state.PUTRESP                                                                                                                                                                           ; Merged with MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|conv_dly1_s_flp ;
 ; MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|cmd_fetched                                                                                                                                                                                  ; Stuck at GND due to stuck port data_in                                                                                                                                               ;
 ; DAC16:dac1|ST[3]                                                                                                                                                                                                                                                                                                                                      ; Stuck at GND due to stuck port data_in                                                                                                                                               ;
-; Total Number of Removed Registers = 92                                                                                                                                                                                                                                                                                                                ;                                                                                                                                                                                      ;
+; Total Number of Removed Registers = 88                                                                                                                                                                                                                                                                                                                ;                                                                                                                                                                                      ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -600,9 +596,9 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 985   ;
-; Number of registers using Synchronous Clear  ; 161   ;
-; Number of registers using Synchronous Load   ; 80    ;
+; Total registers                              ; 697   ;
+; Number of registers using Synchronous Clear  ; 129   ;
+; Number of registers using Synchronous Load   ; 44    ;
 ; Number of registers using Asynchronous Clear ; 283   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 446   ;
@@ -634,29 +630,26 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |adc_mic_lcd|I2S_ASSESS:i2s|WCLK_CNT[15]                                                                                                                                                               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                     ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[15]                                               ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |adc_mic_lcd|MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|int_timer[5]                     ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|LED_METER:led|PEAK_DELAY:pk|MPEAK[8]                                                                                                                                                      ;
-; 4:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|filter:filt1|reg_q[7]                                                                                                                                                                     ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|SOUND_TO_MTL2:sm|SW_ADDR[0]                                                                                                                                                               ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|LED_METER:led|pcm_abs[5]                                                                                                                                                                  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |adc_mic_lcd|dff_chain_4:dffchain|internal_reg[327][12]                                                                                                                                                ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 48 LEs               ; 32 LEs                 ; Yes        ; |adc_mic_lcd|filter:filt1|reg_case[6]                                                                                                                                                                  ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[4] ;
-; 16:1               ; 8 bits    ; 80 LEs        ; 8 LEs                ; 72 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|CNT[4]                                                                                                                                                                         ;
-; 17:1               ; 4 bits    ; 44 LEs        ; 40 LEs               ; 4 LEs                  ; Yes        ; |adc_mic_lcd|I2S_ASSESS:i2s|AUDIO_SRCE:audi2|ST[0]                                                                                                                                                     ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|COUNTER[4]                                                                                                                                                            ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|WORD_CNT[0]                                                                                                                                                           ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[18]                                                                                                                                                                      ;
-; 17:1               ; 15 bits   ; 165 LEs       ; 15 LEs               ; 150 LEs                ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[7]                                                                                                                                                                       ;
-; 11:1               ; 7 bits    ; 49 LEs        ; 14 LEs               ; 35 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|W_REG_DATA[5]                                                                                                                                                         ;
-; 11:1               ; 7 bits    ; 49 LEs        ; 14 LEs               ; 35 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|W_REG_DATA[12]                                                                                                                                                        ;
-; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|DELAY[6]                                                                                                                                                                       ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 48 LEs               ; 20 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[1]      ;
-; 20:1               ; 2 bits    ; 26 LEs        ; 14 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|ST[0]                                                                                                                                                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |adc_mic_lcd|I2S_ASSESS:i2s|WCLK_CNT[12]                                                                                                                                                               ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[1]                                     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |adc_mic_lcd|MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|int_timer[6]                     ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|LED_METER:led|PEAK_DELAY:pk|MPEAK[2]                                                                                                                                                      ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|SOUND_TO_MTL2:sm|SW_ADDR[1]                                                                                                                                                               ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|LED_METER:led|pcm_abs[10]                                                                                                                                                                 ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[0] ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 8 LEs                ; 72 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|CNT[1]                                                                                                                                                                         ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 40 LEs               ; 4 LEs                  ; Yes        ; |adc_mic_lcd|I2S_ASSESS:i2s|AUDIO_SRCE:audi2|ST[3]                                                                                                                                                     ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|COUNTER[1]                                                                                                                                                            ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|WORD_CNT[7]                                                                                                                                                           ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[23]                                                                                                                                                                      ;
+; 17:1               ; 15 bits   ; 165 LEs       ; 15 LEs               ; 150 LEs                ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[13]                                                                                                                                                                      ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 14 LEs               ; 35 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|W_REG_DATA[1]                                                                                                                                                         ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 14 LEs               ; 35 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|W_REG_DATA[15]                                                                                                                                                        ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 8 LEs                ; 80 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|DELAY[4]                                                                                                                                                                       ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 48 LEs               ; 20 LEs                 ; Yes        ; |adc_mic_lcd|AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]      ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 14 LEs               ; 12 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|ST[2]                                                                                                                                                                          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |adc_mic_lcd|SOUND_TO_MTL2:sm|VGA_Controller:vc|oVGA_G[0]                                                                                                                                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -2142,6 +2135,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "filter:filt1"                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; q    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "pulse_width_modulation_gen:pwm1"                                                                                                               ;
 +--------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -2494,7 +2496,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 129                         ;
-; cycloneiii_ff         ; 898                         ;
+; cycloneiii_ff         ; 610                         ;
 ;     CLR               ; 87                          ;
 ;     CLR SCLR          ; 20                          ;
 ;     CLR SLD           ; 1                           ;
@@ -2504,26 +2506,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SLD       ; 7                           ;
 ;     ENA SCLR          ; 21                          ;
 ;     ENA SLD           ; 26                          ;
-;     SCLR              ; 56                          ;
-;     SLD               ; 36                          ;
-;     plain             ; 312                         ;
+;     SCLR              ; 24                          ;
+;     plain             ; 92                          ;
 ; cycloneiii_io_obuf    ; 11                          ;
-; cycloneiii_lcell_comb ; 1302                        ;
-;     arith             ; 642                         ;
-;         2 data inputs ; 252                         ;
-;         3 data inputs ; 390                         ;
-;     normal            ; 660                         ;
-;         0 data inputs ; 31                          ;
-;         1 data inputs ; 51                          ;
+; cycloneiii_lcell_comb ; 898                         ;
+;     arith             ; 353                         ;
+;         2 data inputs ; 210                         ;
+;         3 data inputs ; 143                         ;
+;     normal            ; 545                         ;
+;         0 data inputs ; 20                          ;
+;         1 data inputs ; 46                          ;
 ;         2 data inputs ; 121                         ;
-;         3 data inputs ; 154                         ;
-;         4 data inputs ; 303                         ;
+;         3 data inputs ; 100                         ;
+;         4 data inputs ; 258                         ;
 ; cycloneiii_pll        ; 3                           ;
 ; cycloneiii_ram_block  ; 34                          ;
 ; fiftyfivenm_adcblock  ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 33.10                       ;
-; Average LUT depth     ; 7.54                        ;
+; Average LUT depth     ; 8.15                        ;
 +-----------------------+-----------------------------+
 
 
@@ -2542,7 +2543,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun May 28 22:04:14 2017
+    Info: Processing started: Tue May 30 10:49:09 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file v/pulse_width_modulation_gen.v
@@ -2608,6 +2609,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file v/simpl
     Info (12023): Found entity 1: simple_dpram_sclk File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/simple_dpram_sclk.v Line: 12
 Info (12021): Found 1 design units, including 1 entities, in source file v/shiftreg.v
     Info (12023): Found entity 1: dff_chain_4 File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/shiftreg.v Line: 2
+Warning (10229): Verilog HDL Expression warning at lfsr.v(28): truncated literal to match 31 bits File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/lfsr.v Line: 28
 Info (12021): Found 1 design units, including 1 entities, in source file v/lfsr.v
     Info (12023): Found entity 1: lfsr File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/lfsr.v Line: 7
 Warning (12125): Using design file adc_mic_lcd.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
@@ -2905,10 +2907,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
 Info (12128): Elaborating entity "altsyncram_soj1" for hierarchy "SOUND_TO_MTL2:sm|PIPO:P1|altsyncram:altsyncram_component|altsyncram_soj1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "pulse_width_modulation_gen" for hierarchy "pulse_width_modulation_gen:pwm1" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 241
 Info (12128): Elaborating entity "dff_chain_4" for hierarchy "dff_chain_4:dffchain" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 251
-Warning (10230): Verilog HDL assignment warning at shiftreg.v(28): truncated value with size 32 to match size of target (16) File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/shiftreg.v Line: 28
 Info (12128): Elaborating entity "filter" for hierarchy "filter:filt1" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 260
 Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:lfsr1" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 266
-Warning (10230): Verilog HDL assignment warning at lfsr.v(22): truncated value with size 17 to match size of target (16) File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/V/lfsr.v Line: 22
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "RESET_DELAY_N" is missing source, defaulting to GND File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 238
 Warning (12011): Net is missing source, defaulting to GND
@@ -2928,7 +2928,7 @@ Warning (12011): Net is missing source, defaulting to GND
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "RESET_DELAY_N" is missing source, defaulting to GND File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 238
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2017.05.28.22:04:34 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2017.05.30.10:49:37 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -3058,12 +3058,15 @@ Info (144001): Generated suppressed messages file C:/intelFPGA_lite/16.1/quartus
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 3 PLL, 0 transceiver and 0 LCELL
 Warning (15899): PLL "AUDIO_PLL:pll|altpll:altpll_component|AUDIO_PLL_altpll:auto_generated|pll1" has parameters clk1_multiply_by and clk1_divide_by specified but port CLK[1] is not connected File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/db/audio_pll_altpll.v Line: 44
-Warning (21074): Design contains 15 input pin(s) that do not drive logic
+Warning (21074): Design contains 18 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "ADC_CLK_10" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 9
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 16
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 16
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 16
     Warning (15610): No output dependent on input pin "KEY[4]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 16
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
     Warning (15610): No output dependent on input pin "SW[3]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
     Warning (15610): No output dependent on input pin "SW[4]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
     Warning (15610): No output dependent on input pin "SW[5]" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 19
@@ -3074,18 +3077,18 @@ Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "AUDIO_DOUT_MFP2" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 31
     Warning (15610): No output dependent on input pin "AUDIO_MISO_MFP4" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 34
     Warning (15610): No output dependent on input pin "MTL2_INT" File: C:/intelFPGA_lite/16.1/quartus_projects/adc_mic_lcd/adc_mic_lcd.v Line: 55
-Info (21057): Implemented 2038 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1430 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 26 input pins
     Info (21059): Implemented 69 output pins
     Info (21060): Implemented 11 bidirectional pins
-    Info (21061): Implemented 1893 logic cells
+    Info (21061): Implemented 1285 logic cells
     Info (21064): Implemented 34 RAM segments
     Info (21065): Implemented 3 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 154 warnings
-    Info: Peak virtual memory: 749 megabytes
-    Info: Processing ended: Sun May 28 22:04:47 2017
-    Info: Elapsed time: 00:00:33
-    Info: Total CPU time (on all processors): 00:01:03
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 156 warnings
+    Info: Peak virtual memory: 759 megabytes
+    Info: Processing ended: Tue May 30 10:49:50 2017
+    Info: Elapsed time: 00:00:41
+    Info: Total CPU time (on all processors): 00:01:14
 
 
 +------------------------------------------+

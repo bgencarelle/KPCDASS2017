@@ -175,7 +175,7 @@ I2S_ASSESS  i2s(
 	.SDATA_OUT ( AUDIO_DIN_MFP1),
 	.SDATA_IN  ( AUDIO_DOUT_MFP2),
 	.RESET_n   ( RESET_DELAY_n), 
-	.ADC_MIC      ( FILTER_OUT ), 
+	.ADC_MIC      ( FIFO_OUT ), 
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
 	.ROM_ADDR     ( ROM_ADDR), 
@@ -244,8 +244,8 @@ dff_chain_4 dffchain (
         .m_clk(MAX10_CLK1_50), 
 		  .a_clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT[15:0]),
-        .dfilter(FILTER_OUT[15:0]),
-		  .trigger(~KEY[0]),
+        .dfilter(FIFO_OUT[15:0]),
+		  .trigger(KEY[0]),
         .sclr(RESET_DELAY_N),
         .q(FIFO_OUT[15:0])    
         ); 
@@ -259,9 +259,9 @@ filter filt1 (
 		 .q(FILTER_OUT)
 		 );
 lfsr lfsr1 (
-		 .out(SEED_OUT),
+		 .out16(SEED_OUT),
 		 .enable(1),  // Enable  for counter
-		 .clk(AUDIO_WCLK),  // clock input
+		 .clk(MAX10_CLK1_50),  // clock input
 		 .reset(RESET_DELAY_N) 
 		 );
 endmodule

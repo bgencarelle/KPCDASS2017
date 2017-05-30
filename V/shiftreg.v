@@ -10,38 +10,54 @@ module dff_chain_4 (
         output wire [15:0] q    
         );    
 
-        reg [15:0] internal_reg[0:655];  
-		  reg [15:0]k = 0;
-		  reg [31:0]j = 0;
-		  always@(posedge a_clk)
-		  				begin
-						if (j >= 327) begin
-						j = 0;
-						end
-						else begin
-						j = j+1;
-						end
-						end
-						
-        always@(posedge m_clk)
-               if(sclr == 1) begin
-                  for (k = 0; k < 655; k = k + 1)
-						begin
-						internal_reg[k] = 16'b0000000000000000;
-						end
-						end
-					
-              else begin
-                	begin
-						if(trigger == 1) begin
-						internal_reg[j] = dnoise;
-						end
-						
-						else begin
-						internal_reg[j] = dfilter;
-						end
+        reg [15:0] internal_reg[0:4096];  
+		  integer j;
 
-          end
-			 end
-          assign q = internal_reg[327];   
+//      always @ ( posedge clk ) begin
+//              if(reset_n == 1'b0)
+//                  for (i = 0; i <= 7; i = i+ 1) begin: clear_fir
+//                      del[i] <= 0;
+//                  end
+//              else
+//                  for (i = 0; i <= 7; i = i+ 1) begin: shift_fir
+//                          if(i == 0)
+//                                  del[i] <= d;
+//                          else
+//                                  del[i] <= del[i-1];
+//                  end
+
+						
+        always@(posedge a_clk) begin
+               if(sclr == 1) 
+                  for (j = 0; j < 512; j = j + 1)
+						begin: clear_reg
+						internal_reg[j] <= 0;
+						end
+						
+					
+              else 
+						for (j = 0; j <= 512; j = j+ 1) 
+						begin: load_reg 						 
+						
+						
+						
+						if(trigger==0) 
+					//	if (j == 0) 
+						internal_reg[j] <= dnoise;
+					//	else if (j != 0)
+				//		internal_reg[j] <= internal_reg[j-1];
+						
+						else if (trigger==1)
+						
+					//	if (j == 0)
+						internal_reg[j] = dfilter;
+						
+				////		else if (j != 0)
+					//	internal_reg[j] <= internal_reg[j-1];
+						end
+						
+
+
+						end
+          assign q = internal_reg[511];   
 endmodule
