@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for adc_mic_lcd
-Thu Jun 01 17:00:45 2017
+Thu Jun 01 18:00:56 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -95,14 +95,14 @@ agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.44        ;
+; Average used               ; 1.25        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  15.0%      ;
-;     Processor 3            ;  14.4%      ;
-;     Processor 4            ;  14.4%      ;
+;     Processor 2            ;   8.9%      ;
+;     Processor 3            ;   8.2%      ;
+;     Processor 4            ;   8.2%      ;
 +----------------------------+-------------+
 
 
@@ -111,27 +111,25 @@ agreement for further details.
 +--------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                ; Status ; Read at                  ;
 +--------------------------------------------------------------+--------+--------------------------+
-; adc_qsys/synthesis/submodules/altera_reset_controller.sdc    ; OK     ; Thu Jun 01 17:00:41 2017 ;
-; adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc ; OK     ; Thu Jun 01 17:00:42 2017 ;
-; adc_mic_lcd.SDC                                              ; OK     ; Thu Jun 01 17:00:42 2017 ;
+; adc_qsys/synthesis/submodules/altera_reset_controller.sdc    ; OK     ; Thu Jun 01 18:00:53 2017 ;
+; adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc ; OK     ; Thu Jun 01 18:00:53 2017 ;
+; adc_mic_lcd.SDC                                              ; OK     ; Thu Jun 01 18:00:53 2017 ;
 +--------------------------------------------------------------+--------+--------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                                                                                                                                                                                                     ;
-+-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
-; Clock Name                                      ; Type      ; Period  ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                          ; Source                                            ; Targets                                             ;
-+-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
-; ADC_CLK_10                                      ; Base      ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                 ;                                                   ; { ADC_CLK_10 }                                      ;
-; altera_reserved_tck                             ; Base      ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                 ;                                                   ; { altera_reserved_tck }                             ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; Generated ; 20.347  ; 49.15 MHz ; 0.000 ; 10.173 ; 50.00      ; 1         ; 1           ;       ;        ;           ;            ; false    ; pll|altpll_component|auto_generated|pll1|clk[0] ; madc|u0|altpll_sys|sd1|pll7|inclk[0]              ; { madc|u0|altpll_sys|sd1|pll7|clk[0] }              ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; Generated ; 101.739 ; 9.83 MHz  ; 0.000 ; 50.869 ; 50.00      ; 5         ; 1           ;       ;        ;           ;            ; false    ; pll|altpll_component|auto_generated|pll1|clk[0] ; madc|u0|altpll_sys|sd1|pll7|inclk[0]              ; { madc|u0|altpll_sys|sd1|pll7|clk[1] }              ;
-; MAX10_CLK1_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                 ;                                                   ; { MAX10_CLK1_50 }                                   ;
-; MAX10_CLK2_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                 ;                                                   ; { MAX10_CLK2_50 }                                   ;
-; MAX10_CLK3_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                 ;                                                   ; { MAX10_CLK3_50 }                                   ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; Generated ; 20.347  ; 49.15 MHz ; 0.000 ; 10.173 ; 50.00      ; 117       ; 115         ;       ;        ;           ;            ; false    ; MAX10_CLK1_50                                   ; pll|altpll_component|auto_generated|pll1|inclk[0] ; { pll|altpll_component|auto_generated|pll1|clk[0] } ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; Generated ; 30.303  ; 33.0 MHz  ; 0.000 ; 15.151 ; 50.00      ; 50        ; 33          ;       ;        ;           ;            ; false    ; MAX10_CLK3_50                                   ; PP|altpll_component|auto_generated|pll1|inclk[0]  ; { PP|altpll_component|auto_generated|pll1|clk[0] }  ;
-+-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-------------------------------------------------+---------------------------------------------------+-----------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                                                                                   ;
++-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+---------------------------------------------------+-----------------------------------------------------+
+; Clock Name                                      ; Type      ; Period  ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master        ; Source                                            ; Targets                                             ;
++-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+---------------------------------------------------+-----------------------------------------------------+
+; ADC_CLK_10                                      ; Base      ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000 ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                   ; { ADC_CLK_10 }                                      ;
+; altera_reserved_tck                             ; Base      ; 100.000 ; 10.0 MHz  ; 0.000 ; 50.000 ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                   ; { altera_reserved_tck }                             ;
+; MAX10_CLK1_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                   ; { MAX10_CLK1_50 }                                   ;
+; MAX10_CLK2_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                   ; { MAX10_CLK2_50 }                                   ;
+; MAX10_CLK3_50                                   ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                   ; { MAX10_CLK3_50 }                                   ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; Generated ; 20.347  ; 49.15 MHz ; 0.000 ; 10.173 ; 50.00      ; 117       ; 115         ;       ;        ;           ;            ; false    ; MAX10_CLK1_50 ; pll|altpll_component|auto_generated|pll1|inclk[0] ; { pll|altpll_component|auto_generated|pll1|clk[0] } ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; Generated ; 30.303  ; 33.0 MHz  ; 0.000 ; 15.151 ; 50.00      ; 50        ; 33          ;       ;        ;           ;            ; false    ; MAX10_CLK3_50 ; PP|altpll_component|auto_generated|pll1|inclk[0]  ; { PP|altpll_component|auto_generated|pll1|clk[0] }  ;
++-------------------------------------------------+-----------+---------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+---------------------------------------------------+-----------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------+
@@ -139,12 +137,11 @@ agreement for further details.
 +------------+-----------------+-------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                      ; Note ;
 +------------+-----------------+-------------------------------------------------+------+
-; 36.11 MHz  ; 36.11 MHz       ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ;      ;
-; 149.03 MHz ; 149.03 MHz      ; altera_reserved_tck                             ;      ;
-; 181.82 MHz ; 181.82 MHz      ; MAX10_CLK2_50                                   ;      ;
-; 198.65 MHz ; 198.65 MHz      ; PP|altpll_component|auto_generated|pll1|clk[0]  ;      ;
-; 200.56 MHz ; 200.56 MHz      ; MAX10_CLK1_50                                   ;      ;
-; 284.9 MHz  ; 284.9 MHz       ; pll|altpll_component|auto_generated|pll1|clk[0] ;      ;
+; 145.94 MHz ; 145.94 MHz      ; altera_reserved_tck                             ;      ;
+; 162.89 MHz ; 162.89 MHz      ; MAX10_CLK2_50                                   ;      ;
+; 201.73 MHz ; 201.73 MHz      ; MAX10_CLK1_50                                   ;      ;
+; 244.02 MHz ; 244.02 MHz      ; PP|altpll_component|auto_generated|pll1|clk[0]  ;      ;
+; 409.5 MHz  ; 409.5 MHz       ; pll|altpll_component|auto_generated|pll1|clk[0] ;      ;
 +------------+-----------------+-------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -154,12 +151,11 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; -7.347 ; -69.147       ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -5.813 ; -189.011      ;
-; MAX10_CLK2_50                                   ; 14.500 ; 0.000         ;
-; MAX10_CLK1_50                                   ; 15.014 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 25.269 ; 0.000         ;
-; altera_reserved_tck                             ; 46.645 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -5.205 ; -88.274       ;
+; MAX10_CLK2_50                                   ; 13.861 ; 0.000         ;
+; MAX10_CLK1_50                                   ; 15.043 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26.205 ; 0.000         ;
+; altera_reserved_tck                             ; 46.574 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -168,11 +164,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; altera_reserved_tck                             ; 0.248 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.311 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.323 ; 0.000         ;
-; MAX10_CLK2_50                                   ; 0.324 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.325 ; 0.000         ;
+; altera_reserved_tck                             ; 0.238 ; 0.000         ;
+; MAX10_CLK2_50                                   ; 0.327 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.327 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.327 ; 0.000         ;
 ; MAX10_CLK1_50                                   ; 0.545 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
@@ -182,10 +177,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; -5.058 ; -123.671      ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -4.847 ; -105.830      ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16.475 ; 0.000         ;
-; altera_reserved_tck                             ; 97.807 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -4.612 ; -97.136       ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; -4.018 ; -101.840      ;
+; altera_reserved_tck                             ; 97.934 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -194,10 +188,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.826 ; 0.000         ;
-; altera_reserved_tck                             ; 1.072 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 3.218 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 3.622 ; 0.000         ;
+; altera_reserved_tck                             ; 1.027 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 2.791 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 2.805 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
 
@@ -206,14 +199,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; MAX10_CLK2_50                                   ; 9.500  ; 0.000         ;
+; MAX10_CLK2_50                                   ; 9.582  ; 0.000         ;
 ; MAX10_CLK1_50                                   ; 9.589  ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 9.898  ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.899  ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.901  ; 0.000         ;
 ; MAX10_CLK3_50                                   ; 9.951  ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 14.843 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; 45.244 ; 0.000         ;
-; altera_reserved_tck                             ; 49.483 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 14.841 ; 0.000         ;
+; altera_reserved_tck                             ; 49.492 ; 0.000         ;
 ; ADC_CLK_10                                      ; 96.000 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
@@ -221,18 +212,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 -----------------------------------------------
 ; Slow 1200mV 85C Model Metastability Summary ;
 -----------------------------------------------
-Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 1
+Shortest Synchronizer Chain: 5 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 344.836 ns
 
-Number of Synchronizer Chains Found: 4
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-Worst Case Available Settling Time: 34.317 ns
-
-Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 
 
 
@@ -241,12 +226,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +------------+-----------------+-------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                      ; Note ;
 +------------+-----------------+-------------------------------------------------+------+
-; 39.76 MHz  ; 39.76 MHz       ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ;      ;
-; 164.1 MHz  ; 164.1 MHz       ; altera_reserved_tck                             ;      ;
-; 203.05 MHz ; 203.05 MHz      ; MAX10_CLK2_50                                   ;      ;
-; 217.58 MHz ; 217.58 MHz      ; PP|altpll_component|auto_generated|pll1|clk[0]  ;      ;
-; 221.58 MHz ; 221.58 MHz      ; MAX10_CLK1_50                                   ;      ;
-; 313.09 MHz ; 313.09 MHz      ; pll|altpll_component|auto_generated|pll1|clk[0] ;      ;
+; 159.64 MHz ; 159.64 MHz      ; altera_reserved_tck                             ;      ;
+; 178.67 MHz ; 178.67 MHz      ; MAX10_CLK2_50                                   ;      ;
+; 223.46 MHz ; 223.46 MHz      ; MAX10_CLK1_50                                   ;      ;
+; 269.61 MHz ; 269.61 MHz      ; PP|altpll_component|auto_generated|pll1|clk[0]  ;      ;
+; 447.03 MHz ; 447.03 MHz      ; pll|altpll_component|auto_generated|pll1|clk[0] ;      ;
 +------------+-----------------+-------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -256,12 +240,11 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; -6.071 ; -55.105       ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -4.925 ; -159.929      ;
-; MAX10_CLK2_50                                   ; 15.075 ; 0.000         ;
-; MAX10_CLK1_50                                   ; 15.487 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 25.707 ; 0.000         ;
-; altera_reserved_tck                             ; 46.953 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -4.285 ; -72.629       ;
+; MAX10_CLK2_50                                   ; 14.403 ; 0.000         ;
+; MAX10_CLK1_50                                   ; 15.525 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26.594 ; 0.000         ;
+; altera_reserved_tck                             ; 46.868 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -270,11 +253,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; altera_reserved_tck                             ; 0.233 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.282 ; 0.000         ;
-; MAX10_CLK2_50                                   ; 0.294 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.294 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.295 ; 0.000         ;
+; altera_reserved_tck                             ; 0.231 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.296 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.296 ; 0.000         ;
+; MAX10_CLK2_50                                   ; 0.297 ; 0.000         ;
 ; MAX10_CLK1_50                                   ; 0.501 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
@@ -284,10 +266,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; -4.136 ; -100.299      ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -4.011 ; -87.582       ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16.809 ; 0.000         ;
-; altera_reserved_tck                             ; 98.017 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -3.715 ; -78.192       ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; -3.115 ; -78.566       ;
+; altera_reserved_tck                             ; 98.118 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -296,10 +277,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.771 ; 0.000         ;
-; altera_reserved_tck                             ; 0.996 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 2.570 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 2.917 ; 0.000         ;
+; altera_reserved_tck                             ; 0.949 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 2.086 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 2.135 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
 
@@ -308,14 +288,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; MAX10_CLK2_50                                   ; 9.575  ; 0.000         ;
 ; MAX10_CLK1_50                                   ; 9.591  ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.885  ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 9.886  ; 0.000         ;
+; MAX10_CLK2_50                                   ; 9.591  ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.888  ; 0.000         ;
 ; MAX10_CLK3_50                                   ; 9.928  ; 0.000         ;
 ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 14.849 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; 45.248 ; 0.000         ;
-; altera_reserved_tck                             ; 49.506 ; 0.000         ;
+; altera_reserved_tck                             ; 49.509 ; 0.000         ;
 ; ADC_CLK_10                                      ; 96.000 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
@@ -323,18 +301,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 ----------------------------------------------
 ; Slow 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 1
+Shortest Synchronizer Chain: 5 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 345.286 ns
 
-Number of Synchronizer Chains Found: 4
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-Worst Case Available Settling Time: 34.875 ns
-
-Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 
 
 
@@ -343,12 +315,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; -3.232 ; -24.281       ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -2.569 ; -83.682       ;
-; MAX10_CLK2_50                                   ; 17.126 ; 0.000         ;
-; MAX10_CLK1_50                                   ; 17.420 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 27.890 ; 0.000         ;
-; altera_reserved_tck                             ; 48.625 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -2.392 ; -40.591       ;
+; MAX10_CLK2_50                                   ; 16.976 ; 0.000         ;
+; MAX10_CLK1_50                                   ; 17.439 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 28.236 ; 0.000         ;
+; altera_reserved_tck                             ; 48.623 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -357,12 +328,11 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; altera_reserved_tck                             ; 0.108 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.141 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.147 ; 0.000         ;
-; MAX10_CLK2_50                                   ; 0.148 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.148 ; 0.000         ;
-; MAX10_CLK1_50                                   ; 0.245 ; 0.000         ;
+; altera_reserved_tck                             ; 0.103 ; 0.000         ;
+; MAX10_CLK2_50                                   ; 0.150 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.150 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 0.150 ; 0.000         ;
+; MAX10_CLK1_50                                   ; 0.246 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
 
@@ -371,10 +341,9 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; pll|altpll_component|auto_generated|pll1|clk[0] ; -2.156 ; -46.988       ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; -1.906 ; -45.928       ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 18.312 ; 0.000         ;
-; altera_reserved_tck                             ; 98.906 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; -2.143 ; -45.278       ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; -1.507 ; -38.030       ;
+; altera_reserved_tck                             ; 98.978 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
 
@@ -383,10 +352,9 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------+-------+---------------+
 ; Clock                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------+-------+---------------+
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 0.374 ; 0.000         ;
-; altera_reserved_tck                             ; 0.490 ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 1.239 ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 1.303 ; 0.000         ;
+; altera_reserved_tck                             ; 0.480 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 1.016 ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 1.170 ; 0.000         ;
 +-------------------------------------------------+-------+---------------+
 
 
@@ -395,14 +363,12 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +-------------------------------------------------+--------+---------------+
 ; Clock                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------+--------+---------------+
-; MAX10_CLK2_50                                   ; 9.206  ; 0.000         ;
 ; MAX10_CLK1_50                                   ; 9.331  ; 0.000         ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.928  ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 9.931  ; 0.000         ;
+; MAX10_CLK2_50                                   ; 9.335  ; 0.000         ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; 9.924  ; 0.000         ;
 ; MAX10_CLK3_50                                   ; 9.975  ; 0.000         ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; 14.879 ; 0.000         ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; 45.772 ; 0.000         ;
-; altera_reserved_tck                             ; 49.386 ; 0.000         ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; 14.876 ; 0.000         ;
+; altera_reserved_tck                             ; 49.393 ; 0.000         ;
 ; ADC_CLK_10                                      ; 96.000 ; 0.000         ;
 +-------------------------------------------------+--------+---------------+
 
@@ -410,47 +376,37 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ----------------------------------------------
 ; Fast 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-
-Number of Synchronizer Chains Found: 4
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-Worst Case Available Settling Time: 37.533 ns
-
-Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-  - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-  - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
+The design MTBF is not calculated because there are no specified synchronizers in the design.
+Number of Synchronizer Chains Found: 1
+Shortest Synchronizer Chain: 5 Registers
+Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+Worst Case Available Settling Time: 347.832 ns
 
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                            ;
-+--------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Clock                                            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+--------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack                                 ; -7.347   ; 0.108 ; -5.058   ; 0.374   ; 9.206               ;
-;  ADC_CLK_10                                      ; N/A      ; N/A   ; N/A      ; N/A     ; 96.000              ;
-;  MAX10_CLK1_50                                   ; 15.014   ; 0.245 ; N/A      ; N/A     ; 9.331               ;
-;  MAX10_CLK2_50                                   ; 14.500   ; 0.148 ; N/A      ; N/A     ; 9.206               ;
-;  MAX10_CLK3_50                                   ; N/A      ; N/A   ; N/A      ; N/A     ; 9.928               ;
-;  PP|altpll_component|auto_generated|pll1|clk[0]  ; 25.269   ; 0.148 ; -5.058   ; 1.303   ; 14.843              ;
-;  altera_reserved_tck                             ; 46.645   ; 0.108 ; 97.807   ; 0.490   ; 49.386              ;
-;  madc|u0|altpll_sys|sd1|pll7|clk[0]              ; -7.347   ; 0.147 ; 16.475   ; 0.374   ; 9.886               ;
-;  madc|u0|altpll_sys|sd1|pll7|clk[1]              ; N/A      ; N/A   ; N/A      ; N/A     ; 45.244              ;
-;  pll|altpll_component|auto_generated|pll1|clk[0] ; -5.813   ; 0.141 ; -4.847   ; 1.239   ; 9.885               ;
-; Design-wide TNS                                  ; -258.158 ; 0.0   ; -229.501 ; 0.0     ; 0.0                 ;
-;  ADC_CLK_10                                      ; N/A      ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  MAX10_CLK1_50                                   ; 0.000    ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  MAX10_CLK2_50                                   ; 0.000    ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  MAX10_CLK3_50                                   ; N/A      ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.000    ; 0.000 ; -123.671 ; 0.000   ; 0.000               ;
-;  altera_reserved_tck                             ; 0.000    ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  madc|u0|altpll_sys|sd1|pll7|clk[0]              ; -69.147  ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
-;  madc|u0|altpll_sys|sd1|pll7|clk[1]              ; N/A      ; N/A   ; N/A      ; N/A     ; 0.000               ;
-;  pll|altpll_component|auto_generated|pll1|clk[0] ; -189.011 ; 0.000 ; -105.830 ; 0.000   ; 0.000               ;
-+--------------------------------------------------+----------+-------+----------+---------+---------------------+
+
++---------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                           ;
++--------------------------------------------------+---------+-------+----------+---------+---------------------+
+; Clock                                            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++--------------------------------------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack                                 ; -5.205  ; 0.103 ; -4.612   ; 0.480   ; 9.331               ;
+;  ADC_CLK_10                                      ; N/A     ; N/A   ; N/A      ; N/A     ; 96.000              ;
+;  MAX10_CLK1_50                                   ; 15.043  ; 0.246 ; N/A      ; N/A     ; 9.331               ;
+;  MAX10_CLK2_50                                   ; 13.861  ; 0.150 ; N/A      ; N/A     ; 9.335               ;
+;  MAX10_CLK3_50                                   ; N/A     ; N/A   ; N/A      ; N/A     ; 9.928               ;
+;  PP|altpll_component|auto_generated|pll1|clk[0]  ; 26.205  ; 0.150 ; -4.018   ; 1.016   ; 14.841              ;
+;  altera_reserved_tck                             ; 46.574  ; 0.103 ; 97.934   ; 0.480   ; 49.393              ;
+;  pll|altpll_component|auto_generated|pll1|clk[0] ; -5.205  ; 0.150 ; -4.612   ; 1.170   ; 9.888               ;
+; Design-wide TNS                                  ; -88.274 ; 0.0   ; -198.976 ; 0.0     ; 0.0                 ;
+;  ADC_CLK_10                                      ; N/A     ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  MAX10_CLK1_50                                   ; 0.000   ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  MAX10_CLK2_50                                   ; 0.000   ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  MAX10_CLK3_50                                   ; N/A     ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  PP|altpll_component|auto_generated|pll1|clk[0]  ; 0.000   ; 0.000 ; -101.840 ; 0.000   ; 0.000               ;
+;  altera_reserved_tck                             ; 0.000   ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
+;  pll|altpll_component|auto_generated|pll1|clk[0] ; -88.274 ; 0.000 ; -97.136  ; 0.000   ; 0.000               ;
++--------------------------------------------------+---------+-------+----------+---------+---------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -547,6 +503,7 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; Pin                 ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
 +---------------------+-----------------------+-----------------+-----------------+
 ; ADC_CLK_10          ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; KEY[0]              ; 1.5 V Schmitt Trigger ; 1200 ps         ; 1200 ps         ;
 ; KEY[1]              ; 1.5 V Schmitt Trigger ; 1200 ps         ; 1200 ps         ;
 ; KEY[2]              ; 1.5 V Schmitt Trigger ; 1200 ps         ; 1200 ps         ;
 ; KEY[3]              ; 1.5 V Schmitt Trigger ; 1200 ps         ; 1200 ps         ;
@@ -561,6 +518,9 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; AUDIO_DOUT_MFP2     ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
 ; AUDIO_MISO_MFP4     ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
 ; MTL2_INT            ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
+; SW[2]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; SW[1]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; SW[0]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; MTL2_I2C_SDA        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; PS2_CLK             ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; PS2_CLK2            ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
@@ -576,10 +536,6 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; FPGA_RESET_n        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MAX10_CLK2_50       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MAX10_CLK3_50       ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; SW[0]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; SW[1]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; SW[2]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; KEY[0]              ; 1.5 V Schmitt Trigger ; 1200 ps         ; 1200 ps         ;
 ; altera_reserved_tms ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
 ; altera_reserved_tck ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
 ; altera_reserved_tdi ; 2.5 V Schmitt Trigger ; 2000 ps         ; 2000 ps         ;
@@ -587,22 +543,6 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 ; ~ALTERA_nCONFIG~    ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
 ; ~ALTERA_nSTATUS~    ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
 ; ~ALTERA_CONF_DONE~  ; 3.3 V Schmitt Trigger ; 2640 ps         ; 2640 ps         ;
-; ~ALTERA_ADC1IN1~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN1~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN2~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN8~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN3~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN3~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN4~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN4~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN5~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN5~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN6~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN6~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN7~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN7~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC1IN8~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
-; ~ALTERA_ADC2IN2~    ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
 +---------------------+-----------------------+-----------------+-----------------+
 
 
@@ -870,71 +810,57 @@ Typical MTBF values are calculated based on the nominal silicon characteristics,
 +---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup Transfers                                                                                                                                   ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
-; From Clock                                      ; To Clock                                        ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
-; altera_reserved_tck                             ; altera_reserved_tck                             ; 1410         ; 0        ; 42       ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; > 2147483647 ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 14           ; 1        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16           ; 0        ; 0        ; 0        ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16           ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; 6            ; 0        ; 0        ; 0        ;
-; MAX10_CLK1_50                                   ; MAX10_CLK1_50                                   ; 409          ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; MAX10_CLK2_50                                   ; 1585         ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; pll|altpll_component|auto_generated|pll1|clk[0] ; 81           ; 0        ; 0        ; 0        ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; pll|altpll_component|auto_generated|pll1|clk[0] ; 264          ; 0        ; 0        ; 0        ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 721          ; 0        ; 0        ; 0        ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                               ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; altera_reserved_tck                             ; altera_reserved_tck                             ; 1411     ; 0        ; 42       ; 0        ;
+; MAX10_CLK1_50                                   ; MAX10_CLK1_50                                   ; 409      ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                   ; MAX10_CLK2_50                                   ; 1585     ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                   ; pll|altpll_component|auto_generated|pll1|clk[0] ; 49       ; 0        ; 0        ; 0        ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; pll|altpll_component|auto_generated|pll1|clk[0] ; 200      ; 0        ; 0        ; 0        ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 721      ; 0        ; 0        ; 0        ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold Transfers                                                                                                                                    ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
-; From Clock                                      ; To Clock                                        ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
-; altera_reserved_tck                             ; altera_reserved_tck                             ; 1410         ; 0        ; 42       ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; > 2147483647 ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 14           ; 1        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16           ; 0        ; 0        ; 0        ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 16           ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; 6            ; 0        ; 0        ; 0        ;
-; MAX10_CLK1_50                                   ; MAX10_CLK1_50                                   ; 409          ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; MAX10_CLK2_50                                   ; 1585         ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                   ; pll|altpll_component|auto_generated|pll1|clk[0] ; 81           ; 0        ; 0        ; 0        ;
-; pll|altpll_component|auto_generated|pll1|clk[0] ; pll|altpll_component|auto_generated|pll1|clk[0] ; 264          ; 0        ; 0        ; 0        ;
-; PP|altpll_component|auto_generated|pll1|clk[0]  ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 721          ; 0        ; 0        ; 0        ;
-+-------------------------------------------------+-------------------------------------------------+--------------+----------+----------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                                ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock                                      ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
+; altera_reserved_tck                             ; altera_reserved_tck                             ; 1411     ; 0        ; 42       ; 0        ;
+; MAX10_CLK1_50                                   ; MAX10_CLK1_50                                   ; 409      ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                   ; MAX10_CLK2_50                                   ; 1585     ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                   ; pll|altpll_component|auto_generated|pll1|clk[0] ; 49       ; 0        ; 0        ; 0        ;
+; pll|altpll_component|auto_generated|pll1|clk[0] ; pll|altpll_component|auto_generated|pll1|clk[0] ; 200      ; 0        ; 0        ; 0        ;
+; PP|altpll_component|auto_generated|pll1|clk[0]  ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 721      ; 0        ; 0        ; 0        ;
++-------------------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Recovery Transfers                                                                                                               ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; From Clock                         ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                ; altera_reserved_tck                             ; 62       ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0] ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 63       ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 3        ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; pll|altpll_component|auto_generated|pll1|clk[0] ; 22       ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26       ; 0        ; 0        ; 0        ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                                                ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck                             ; 62       ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50       ; pll|altpll_component|auto_generated|pll1|clk[0] ; 22       ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50       ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26       ; 0        ; 0        ; 0        ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Removal Transfers                                                                                                                ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; From Clock                         ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
-; altera_reserved_tck                ; altera_reserved_tck                             ; 62       ; 0        ; 0        ; 0        ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0] ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 63       ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; 3        ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; pll|altpll_component|auto_generated|pll1|clk[0] ; 22       ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                      ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26       ; 0        ; 0        ; 0        ;
-+------------------------------------+-------------------------------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------------------------------------------------------+
+; Removal Transfers                                                                                                 ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck                             ; 62       ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50       ; pll|altpll_component|auto_generated|pll1|clk[0] ; 22       ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50       ; PP|altpll_component|auto_generated|pll1|clk[0]  ; 26       ; 0        ; 0        ; 0        ;
++---------------------+-------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -956,11 +882,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 5     ; 5    ;
-; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 296   ; 296  ;
-; Unconstrained Output Ports      ; 44    ; 44   ;
-; Unconstrained Output Port Paths ; 1394  ; 1394 ;
+; Unconstrained Clocks            ; 4     ; 4    ;
+; Unconstrained Input Ports       ; 5     ; 5    ;
+; Unconstrained Input Port Paths  ; 138   ; 138  ;
+; Unconstrained Output Ports      ; 43    ; 43   ;
+; Unconstrained Output Port Paths ; 1377  ; 1377 ;
 +---------------------------------+-------+------+
 
 
@@ -972,7 +898,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; ADC_CLK_10                                      ; ADC_CLK_10                                      ; Base      ; Constrained   ;
 ; AUDIO_SPI_CTL_RD:u1|CLK_1M                      ;                                                 ; Base      ; Unconstrained ;
 ; AUDIO_SPI_CTL_RD:u1|ROM_CK                      ;                                                 ; Base      ; Unconstrained ;
-; AUDIO_WCLK                                      ;                                                 ; Base      ; Unconstrained ;
 ; DAC16:dac1|SYS_CLK                              ;                                                 ; Base      ; Unconstrained ;
 ; MAX10_CLK1_50                                   ; MAX10_CLK1_50                                   ; Base      ; Constrained   ;
 ; MAX10_CLK2_50                                   ; MAX10_CLK2_50                                   ; Base      ; Constrained   ;
@@ -980,8 +905,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; PP|altpll_component|auto_generated|pll1|clk[0]  ; PP|altpll_component|auto_generated|pll1|clk[0]  ; Generated ; Constrained   ;
 ; RESET_DELAY_n                                   ;                                                 ; Base      ; Unconstrained ;
 ; altera_reserved_tck                             ; altera_reserved_tck                             ; Base      ; Constrained   ;
-; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; madc|u0|altpll_sys|sd1|pll7|clk[0]              ; Generated ; Constrained   ;
-; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; madc|u0|altpll_sys|sd1|pll7|clk[1]              ; Generated ; Constrained   ;
 ; pll|altpll_component|auto_generated|pll1|clk[0] ; pll|altpll_component|auto_generated|pll1|clk[0] ; Generated ; Constrained   ;
 +-------------------------------------------------+-------------------------------------------------+-----------+---------------+
 
@@ -994,10 +917,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; AUDIO_BCLK          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_WCLK          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; FPGA_RESET_n        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; KEY[0]              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[0]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[1]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[2]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+--------------------------------------------------------------------------------------+
@@ -1014,7 +933,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; AUDIO_SCLK_MFP3     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_SCL_SS_n      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_SDA_MOSI      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; DAC_DATA            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; DAC_SCLK            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; DAC_SYNC_n          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; GPIO[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1063,10 +981,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; AUDIO_BCLK          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_WCLK          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; FPGA_RESET_n        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; KEY[0]              ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[0]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[1]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; SW[2]               ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tdi ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; altera_reserved_tms ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +---------------------+--------------------------------------------------------------------------------------+
@@ -1083,7 +997,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; AUDIO_SCLK_MFP3     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_SCL_SS_n      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; AUDIO_SDA_MOSI      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; DAC_DATA            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; DAC_SCLK            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; DAC_SYNC_n          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; GPIO[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1130,7 +1043,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Thu Jun 01 17:00:40 2017
+    Info: Processing started: Thu Jun 01 18:00:52 2017
 Info: Command: quartus_sta adc_mic_lcd -c adc_mic_lcd
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1144,19 +1057,168 @@ Info (332164): Evaluating HDL-embedded SDC commands
     Info (332165): Entity sld_hub
         Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 10MHz   
         Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
+Warning (332174): Ignored filter at qsta_default_script.tcl(1297): *altera_std_synchronizer:*|din_s1 could not be matched with a keeper File: C:/intelFPGA_lite/16.1/quartus/common/tcl/internal/qsta_default_script.tcl Line: 1297
+Warning (332049): Ignored set_false_path at qsta_default_script.tcl(1297): Argument <to> is an empty collection File: C:/intelFPGA_lite/16.1/quartus/common/tcl/internal/qsta_default_script.tcl Line: 1297
+    Info (332050): read_sdc File: C:/intelFPGA_lite/16.1/quartus/common/tcl/internal/qsta_default_script.tcl Line: 1297
 Info (332104): Reading SDC File: 'adc_qsys/synthesis/submodules/altera_reset_controller.sdc'
 Info (332104): Reading SDC File: 'adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc'
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(21): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[0] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 21
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(21): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[0] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 21
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(21): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 21
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[0]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[0]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 21
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(21): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 21
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(22): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[1] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 22
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(22): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[1] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 22
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(22): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 22
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[1]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[1]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 22
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(22): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 22
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(23): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[2] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 23
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(23): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[2] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 23
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(23): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 23
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[2]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[2]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 23
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(23): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 23
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(24): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[3] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 24
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(24): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[3] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 24
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(24): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 24
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[3]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[3]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 24
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(24): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 24
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(25): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[4] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 25
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(25): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[4] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 25
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(25): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 25
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[4]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[4]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 25
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(25): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 25
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(26): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[5] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 26
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(26): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[5] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 26
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(26): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 26
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[5]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[5]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 26
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(26): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 26
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(27): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[6] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 27
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(27): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[6] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 27
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(27): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 27
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[6]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[6]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 27
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(27): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 27
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(28): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[7] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 28
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(28): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[7] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 28
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(28): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 28
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[7]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[7]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 28
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(28): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 28
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(29): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[8] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 29
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(29): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[8] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 29
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(29): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 29
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[8]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[8]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 29
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(29): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 29
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(30): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[9] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 30
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(30): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[9] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 30
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(30): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 30
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[9]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[9]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 30
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(30): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 30
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(31): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[10] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 31
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(31): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[10] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 31
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(31): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 31
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[10]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[10]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 31
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(31): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 31
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(32): *fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[11] could not be matched with a keeper File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 32
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(32): *altera_modular_adc_control_fsm:u_control_fsm|dout_flp[11] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 32
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(32): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 32
+    Info (332050): set_false_path -from [get_keepers {*fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|wire_from_adc_dout[11]}] -to [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|dout_flp[11]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 32
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(32): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 32
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(35): *altera_modular_adc_control_fsm:u_control_fsm|chsel[*] could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 35
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(35): *|adc_inst|adcblock_instance|primitive_instance|chsel[*] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 35
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(35): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 35
+    Info (332050): set_false_path -from [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|chsel[*]}] -to [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|chsel[*]}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 35
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(35): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 35
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(38): *altera_modular_adc_control_fsm:u_control_fsm|soc could not be matched with a register File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 38
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(38): *|adc_inst|adcblock_instance|primitive_instance|soc could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 38
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(38): Argument <from> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 38
+    Info (332050): set_false_path -from [get_registers {*altera_modular_adc_control_fsm:u_control_fsm|soc}] -to [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|soc}] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 38
+Warning (332049): Ignored set_false_path at altera_modular_adc_control.sdc(38): Argument <to> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 38
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(46): *|adc_inst|adcblock_instance|primitive_instance|eoc could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 46
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(46): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|eoc}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 46
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|eoc}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 46
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(47): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|eoc}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 47
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|eoc}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 47
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(50): *|adc_inst|adcblock_instance|primitive_instance|clk_dft could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 50
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(50): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|clk_dft}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 50
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|clk_dft}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 50
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(51): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|clk_dft}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 51
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|clk_dft}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 51
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(54): *|adc_inst|adcblock_instance|primitive_instance|dout[0] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 54
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(54): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[0]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 54
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[0]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 54
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(55): *|adc_inst|adcblock_instance|primitive_instance|dout[1] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 55
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(55): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[1]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 55
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[1]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 55
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(56): *|adc_inst|adcblock_instance|primitive_instance|dout[2] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 56
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(56): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[2]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 56
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[2]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 56
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(57): *|adc_inst|adcblock_instance|primitive_instance|dout[3] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 57
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(57): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[3]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 57
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[3]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 57
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(58): *|adc_inst|adcblock_instance|primitive_instance|dout[4] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 58
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(58): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[4]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 58
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[4]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 58
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(59): *|adc_inst|adcblock_instance|primitive_instance|dout[5] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 59
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(59): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[5]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 59
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[5]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 59
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(60): *|adc_inst|adcblock_instance|primitive_instance|dout[6] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 60
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(60): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[6]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 60
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[6]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 60
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(61): *|adc_inst|adcblock_instance|primitive_instance|dout[7] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 61
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(61): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[7]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 61
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[7]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 61
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(62): *|adc_inst|adcblock_instance|primitive_instance|dout[8] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 62
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(62): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[8]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 62
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[8]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 62
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(63): *|adc_inst|adcblock_instance|primitive_instance|dout[9] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 63
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(63): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[9]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 63
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[9]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 63
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(64): *|adc_inst|adcblock_instance|primitive_instance|dout[10] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 64
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(64): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[10]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 64
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[10]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 64
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(65): *|adc_inst|adcblock_instance|primitive_instance|dout[11] could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 65
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(65): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[11]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 65
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[11]}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 65
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(66): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[0]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 66
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[0]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 66
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(67): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[1]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 67
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[1]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 67
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(68): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[2]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 68
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[2]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 68
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(69): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[3]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 69
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[3]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 69
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(70): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[4]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 70
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[4]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 70
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(71): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[5]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 71
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[5]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 71
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(72): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[6]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 72
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[6]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 72
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(73): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[7]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 73
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[7]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 73
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(74): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[8]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 74
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[8]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 74
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(75): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[9]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 75
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[9]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 75
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(76): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[10]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 76
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[10]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 76
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(77): argument -from with value [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[11]}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 77
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|adc_inst|adcblock_instance|primitive_instance|dout[11]}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 77
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(80): *|u_control_fsm|chsel[*]|q could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 80
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(80): argument -from with value [get_pins -compatibility_mode {*|u_control_fsm|chsel[*]|q}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 80
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|u_control_fsm|chsel[*]|q}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 80
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(81): argument -from with value [get_pins -compatibility_mode {*|u_control_fsm|chsel[*]|q}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 81
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|u_control_fsm|chsel[*]|q}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 81
+Warning (332174): Ignored filter at altera_modular_adc_control.sdc(84): *|u_control_fsm|soc|q could not be matched with a pin File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 84
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(84): argument -from with value [get_pins -compatibility_mode {*|u_control_fsm|soc|q}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 84
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|u_control_fsm|soc|q}] -max 5 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 84
+Warning (332049): Ignored set_net_delay at altera_modular_adc_control.sdc(85): argument -from with value [get_pins -compatibility_mode {*|u_control_fsm|soc|q}] contains zero elements File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 85
+    Info (332050): set_net_delay -from [get_pins -compatibility_mode {*|u_control_fsm|soc|q}] -min 0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control.sdc Line: 85
 Info (332104): Reading SDC File: 'adc_mic_lcd.SDC'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {pll|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 117 -multiply_by 115 -duty_cycle 50.00 -name {pll|altpll_component|auto_generated|pll1|clk[0]} {pll|altpll_component|auto_generated|pll1|clk[0]}
     Info (332110): create_generated_clock -source {PP|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 50 -multiply_by 33 -duty_cycle 50.00 -name {PP|altpll_component|auto_generated|pll1|clk[0]} {PP|altpll_component|auto_generated|pll1|clk[0]}
-    Info (332110): create_generated_clock -source {madc|u0|altpll_sys|sd1|pll7|inclk[0]} -duty_cycle 50.00 -name {madc|u0|altpll_sys|sd1|pll7|clk[0]} {madc|u0|altpll_sys|sd1|pll7|clk[0]}
-    Info (332110): create_generated_clock -source {madc|u0|altpll_sys|sd1|pll7|inclk[0]} -divide_by 5 -duty_cycle 50.00 -name {madc|u0|altpll_sys|sd1|pll7|clk[1]} {madc|u0|altpll_sys|sd1|pll7|clk[1]}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
 Warning (332060): Node: RESET_DELAY_n was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch I2S_ASSESS:i2s|rAUDIO_WCLK~1 is being clocked by RESET_DELAY_n
-Warning (332060): Node: AUDIO_WCLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register input_debounce:key0db|PB_state is being clocked by AUDIO_WCLK
 Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|CLK_1M was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|ST[2] is being clocked by AUDIO_SPI_CTL_RD:u1|CLK_1M
 Warning (332060): Node: DAC16:dac1|SYS_CLK was determined to be a clock but was found without an associated clock assignment.
@@ -1165,80 +1227,62 @@ Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|ROM_CK was determined to be a clock 
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|altsyncram_uk92:altsyncram1|ram_block3a0~porta_datain_reg0 is being clocked by AUDIO_SPI_CTL_RD:u1|ROM_CK
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
-    Info (332098): From: madc|u0|modular_adc_0|control_internal|adc_inst|adcblock_instance|primitive_instance|clkin_from_pll_c0  to: MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|eoc
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Warning (332056): PLL cross checking found inconsistent PLL clock settings:
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[0] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[0] does not match the master clock period requirement: 20.000
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[1] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[1] does not match the master clock period requirement: 20.000
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -7.347
+Info (332146): Worst-case setup slack is -5.205
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -7.347             -69.147 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    -5.813            -189.011 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    14.500               0.000 MAX10_CLK2_50 
-    Info (332119):    15.014               0.000 MAX10_CLK1_50 
-    Info (332119):    25.269               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    46.645               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.248
+    Info (332119):    -5.205             -88.274 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    13.861               0.000 MAX10_CLK2_50 
+    Info (332119):    15.043               0.000 MAX10_CLK1_50 
+    Info (332119):    26.205               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    46.574               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.238
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.248               0.000 altera_reserved_tck 
-    Info (332119):     0.311               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.323               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     0.324               0.000 MAX10_CLK2_50 
-    Info (332119):     0.325               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.238               0.000 altera_reserved_tck 
+    Info (332119):     0.327               0.000 MAX10_CLK2_50 
+    Info (332119):     0.327               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.327               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
     Info (332119):     0.545               0.000 MAX10_CLK1_50 
-Info (332146): Worst-case recovery slack is -5.058
+Info (332146): Worst-case recovery slack is -4.612
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.058            -123.671 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    -4.847            -105.830 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    16.475               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    97.807               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.826
+    Info (332119):    -4.612             -97.136 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    -4.018            -101.840 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    97.934               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.027
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.826               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     1.072               0.000 altera_reserved_tck 
-    Info (332119):     3.218               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     3.622               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 9.500
+    Info (332119):     1.027               0.000 altera_reserved_tck 
+    Info (332119):     2.791               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.805               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case minimum pulse width slack is 9.582
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.500               0.000 MAX10_CLK2_50 
+    Info (332119):     9.582               0.000 MAX10_CLK2_50 
     Info (332119):     9.589               0.000 MAX10_CLK1_50 
-    Info (332119):     9.898               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     9.899               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     9.901               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
     Info (332119):     9.951               0.000 MAX10_CLK3_50 
-    Info (332119):    14.843               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    45.244               0.000 madc|u0|altpll_sys|sd1|pll7|clk[1] 
-    Info (332119):    49.483               0.000 altera_reserved_tck 
+    Info (332119):    14.841               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    49.492               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 4 synchronizer chains.
-    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-
-    Info (332114): Number of Synchronizer Chains Found: 4
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-    Info (332114): Worst Case Available Settling Time: 34.317 ns
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 1
+    Info (332114): Shortest Synchronizer Chain: 5 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 344.836 ns
     Info (332114): 
-    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
 Warning (332060): Node: RESET_DELAY_n was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch I2S_ASSESS:i2s|rAUDIO_WCLK~1 is being clocked by RESET_DELAY_n
-Warning (332060): Node: AUDIO_WCLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register input_debounce:key0db|PB_state is being clocked by AUDIO_WCLK
 Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|CLK_1M was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|ST[2] is being clocked by AUDIO_SPI_CTL_RD:u1|CLK_1M
 Warning (332060): Node: DAC16:dac1|SYS_CLK was determined to be a clock but was found without an associated clock assignment.
@@ -1247,74 +1291,56 @@ Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|ROM_CK was determined to be a clock 
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|altsyncram_uk92:altsyncram1|ram_block3a0~porta_datain_reg0 is being clocked by AUDIO_SPI_CTL_RD:u1|ROM_CK
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
-    Info (332098): From: madc|u0|modular_adc_0|control_internal|adc_inst|adcblock_instance|primitive_instance|clkin_from_pll_c0  to: MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|eoc
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Warning (332056): PLL cross checking found inconsistent PLL clock settings:
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[0] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[0] does not match the master clock period requirement: 20.000
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[1] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[1] does not match the master clock period requirement: 20.000
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -6.071
+Info (332146): Worst-case setup slack is -4.285
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.071             -55.105 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    -4.925            -159.929 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    15.075               0.000 MAX10_CLK2_50 
-    Info (332119):    15.487               0.000 MAX10_CLK1_50 
-    Info (332119):    25.707               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    46.953               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.233
+    Info (332119):    -4.285             -72.629 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    14.403               0.000 MAX10_CLK2_50 
+    Info (332119):    15.525               0.000 MAX10_CLK1_50 
+    Info (332119):    26.594               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    46.868               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.231
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.233               0.000 altera_reserved_tck 
-    Info (332119):     0.282               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.294               0.000 MAX10_CLK2_50 
-    Info (332119):     0.294               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     0.295               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.231               0.000 altera_reserved_tck 
+    Info (332119):     0.296               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.296               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.297               0.000 MAX10_CLK2_50 
     Info (332119):     0.501               0.000 MAX10_CLK1_50 
-Info (332146): Worst-case recovery slack is -4.136
+Info (332146): Worst-case recovery slack is -3.715
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.136            -100.299 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    -4.011             -87.582 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    16.809               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    98.017               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.771
+    Info (332119):    -3.715             -78.192 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    -3.115             -78.566 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    98.118               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.949
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.771               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     0.996               0.000 altera_reserved_tck 
-    Info (332119):     2.570               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     2.917               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 9.575
+    Info (332119):     0.949               0.000 altera_reserved_tck 
+    Info (332119):     2.086               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     2.135               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case minimum pulse width slack is 9.591
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.575               0.000 MAX10_CLK2_50 
     Info (332119):     9.591               0.000 MAX10_CLK1_50 
-    Info (332119):     9.885               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     9.886               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
+    Info (332119):     9.591               0.000 MAX10_CLK2_50 
+    Info (332119):     9.888               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
     Info (332119):     9.928               0.000 MAX10_CLK3_50 
     Info (332119):    14.849               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    45.248               0.000 madc|u0|altpll_sys|sd1|pll7|clk[1] 
-    Info (332119):    49.506               0.000 altera_reserved_tck 
+    Info (332119):    49.509               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 4 synchronizer chains.
-    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-
-    Info (332114): Number of Synchronizer Chains Found: 4
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-    Info (332114): Worst Case Available Settling Time: 34.875 ns
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 1
+    Info (332114): Shortest Synchronizer Chain: 5 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 345.286 ns
     Info (332114): 
-    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 Info: Analyzing Fast 1200mV 0C Model
 Warning (332060): Node: RESET_DELAY_n was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Latch I2S_ASSESS:i2s|rAUDIO_WCLK~1 is being clocked by RESET_DELAY_n
-Warning (332060): Node: AUDIO_WCLK was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register input_debounce:key0db|PB_state is being clocked by AUDIO_WCLK
 Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|CLK_1M was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|ST[2] is being clocked by AUDIO_SPI_CTL_RD:u1|CLK_1M
 Warning (332060): Node: DAC16:dac1|SYS_CLK was determined to be a clock but was found without an associated clock assignment.
@@ -1323,75 +1349,59 @@ Warning (332060): Node: AUDIO_SPI_CTL_RD:u1|ROM_CK was determined to be a clock 
     Info (13166): Register AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|altsyncram_uk92:altsyncram1|ram_block3a0~porta_datain_reg0 is being clocked by AUDIO_SPI_CTL_RD:u1|ROM_CK
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: altera_internal_jtag  from: tck  to: tckutap
-    Info (332098): From: madc|u0|modular_adc_0|control_internal|adc_inst|adcblock_instance|primitive_instance|clkin_from_pll_c0  to: MAX10_ADC:madc|adc_qsys:u0|adc_qsys_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance|eoc
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
-Warning (332056): PLL cross checking found inconsistent PLL clock settings:
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[0] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[0] does not match the master clock period requirement: 20.000
-    Warning (332056): Clock: madc|u0|altpll_sys|sd1|pll7|clk[1] with master clock period: 20.347 found on PLL node: madc|u0|altpll_sys|sd1|pll7|clk[1] does not match the master clock period requirement: 20.000
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -3.232
+Info (332146): Worst-case setup slack is -2.392
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.232             -24.281 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    -2.569             -83.682 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    17.126               0.000 MAX10_CLK2_50 
-    Info (332119):    17.420               0.000 MAX10_CLK1_50 
-    Info (332119):    27.890               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    48.625               0.000 altera_reserved_tck 
-Info (332146): Worst-case hold slack is 0.108
+    Info (332119):    -2.392             -40.591 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    16.976               0.000 MAX10_CLK2_50 
+    Info (332119):    17.439               0.000 MAX10_CLK1_50 
+    Info (332119):    28.236               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    48.623               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.103
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.108               0.000 altera_reserved_tck 
-    Info (332119):     0.141               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.147               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     0.148               0.000 MAX10_CLK2_50 
-    Info (332119):     0.148               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.245               0.000 MAX10_CLK1_50 
-Info (332146): Worst-case recovery slack is -2.156
+    Info (332119):     0.103               0.000 altera_reserved_tck 
+    Info (332119):     0.150               0.000 MAX10_CLK2_50 
+    Info (332119):     0.150               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.150               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     0.246               0.000 MAX10_CLK1_50 
+Info (332146): Worst-case recovery slack is -2.143
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.156             -46.988 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    -1.906             -45.928 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    18.312               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):    98.906               0.000 altera_reserved_tck 
-Info (332146): Worst-case removal slack is 0.374
+    Info (332119):    -2.143             -45.278 pll|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    -1.507             -38.030 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    98.978               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.480
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.374               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
-    Info (332119):     0.490               0.000 altera_reserved_tck 
-    Info (332119):     1.239               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     1.303               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-Info (332146): Worst-case minimum pulse width slack is 9.206
+    Info (332119):     0.480               0.000 altera_reserved_tck 
+    Info (332119):     1.016               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     1.170               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case minimum pulse width slack is 9.331
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.206               0.000 MAX10_CLK2_50 
     Info (332119):     9.331               0.000 MAX10_CLK1_50 
-    Info (332119):     9.928               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     9.931               0.000 madc|u0|altpll_sys|sd1|pll7|clk[0] 
+    Info (332119):     9.335               0.000 MAX10_CLK2_50 
+    Info (332119):     9.924               0.000 pll|altpll_component|auto_generated|pll1|clk[0] 
     Info (332119):     9.975               0.000 MAX10_CLK3_50 
-    Info (332119):    14.879               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    45.772               0.000 madc|u0|altpll_sys|sd1|pll7|clk[1] 
-    Info (332119):    49.386               0.000 altera_reserved_tck 
+    Info (332119):    14.876               0.000 PP|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    49.393               0.000 altera_reserved_tck 
     Info (332119):    96.000               0.000 ADC_CLK_10 
-Info (332114): Report Metastability: Found 4 synchronizer chains.
-    Info (332114): Worst-Case MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
-
-    Info (332114): Number of Synchronizer Chains Found: 4
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.500
-    Info (332114): Worst Case Available Settling Time: 37.533 ns
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
+    Info (332114): Number of Synchronizer Chains Found: 1
+    Info (332114): Shortest Synchronizer Chain: 5 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
+    Info (332114): Worst Case Available Settling Time: 347.832 ns
     Info (332114): 
-    Info (332114): Worst-Case MTBF values are calculated based on the worst-case silicon characteristics, with worst-case operating conditions.
-    Info (332114):   - Under worst-case conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 2.4
-    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
-    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 3.7
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 30 warnings
-    Info: Peak virtual memory: 722 megabytes
-    Info: Processing ended: Thu Jun 01 17:00:45 2017
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:06
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 124 warnings
+    Info: Peak virtual memory: 718 megabytes
+    Info: Processing ended: Thu Jun 01 18:00:56 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 

@@ -6,6 +6,6 @@ input  wire sel,
 output wire [15:0] muxout
 );
 
-assign muxout = (sel) ? dnoise : dfilter;
+assign muxout = (sel==1) ? dnoise : dfilter;
 
 endmodule

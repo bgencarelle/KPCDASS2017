@@ -76,7 +76,7 @@ module adc_mic_lcd(
 //=======================================================
 wire   [11:0] ADC_RD ;
 wire   [15:0] PWM_OUT;
-wire 	 [15:0] FIFO_OUT;
+wire 	 [15:0] MEMO_OUT;
 wire   [15:0] SEED_OUT;
 wire   [15:0] FILTER_OUT;
 wire   [15:0] MUX0_OUT;
@@ -176,7 +176,7 @@ I2S_ASSESS  i2s(
 	.SDATA_OUT ( AUDIO_DIN_MFP1),
 	.SDATA_IN  ( AUDIO_DOUT_MFP2),
 	.RESET_n   ( RESET_DELAY_n), 
-	.ADC_MIC      ( MUX0_OUT), 
+	.ADC_MIC      ( MEM0_OUT), 
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
 	.ROM_ADDR     ( ROM_ADDR), 
@@ -246,16 +246,14 @@ pulse_width_modulation_gen pwm1 (
     .q_pwm(PWM_OUT[15:0])
 	 
     );
-//
-//dff_chain_4 dffchain (  
-//        .m_clk(MAX10_CLK1_50), 
-//		  .a_clk(AUDIO_WCLK),
-//		  .dnoise(SEED_OUT[15:0]),
-//        .dfilter(FILTER_OUT[15:0]),
-//		  .trigger(key_0),
-//        .sclr(RESET_DELAY_N),
-//        .q(FIFO_OUT[15:0])    
-//        ); 
+
+dff_chain_4 dffchain0 (  
+
+		  .a_clk(AUDIO_WCLK),
+		  .d(MUX_OUT),
+        .sclr(RESET_DELAY_N),
+        .q(MEM0_OUT)    
+        ); 
 audiomux mux0(
 		.dnoise(SEED_OUT),
 		.dfilter(FILTER_OUT),
@@ -263,10 +261,10 @@ audiomux mux0(
 		.muxout(MUX0_OUT)
 		);
 	  
-filter filt1 (
+filter filt0 (
 		 .filt_sel(SW[2:0]),
 		 .clk(AUDIO_WCLK), 
-		 .d(SEED_OUT ),
+		 .d(MEM0_OUT),
 		 .sclr(RESET_DELAY_N),
 		 .q(FILTER_OUT)
 		 );

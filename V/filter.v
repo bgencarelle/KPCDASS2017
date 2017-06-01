@@ -104,7 +104,7 @@ module filter # (parameter BIT_WIDTH = 16)(
 	begin case(filt_sel)
 		 3'b000:begin
 						reg_case <= reg_1+reg_0;
-						reg_q[15:0] <= reg_case>>1;
+						reg_q <= reg_case>>1;
 					end
 					
 		3'b001:begin
@@ -123,13 +123,14 @@ module filter # (parameter BIT_WIDTH = 16)(
 				 end
 		
 		3'b100, 3'b101,3'b110,3'b111,:begin 
-						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
+						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 
+						+ reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
 						reg_q <= reg_case>>4;
 				 end
 				 
 		default:begin
 					reg_case  <= reg_14;
-					reg_q <= reg_case[15:0];
+					reg_q <= reg_case;
 				 end
 						
 		endcase

@@ -31,6 +31,6 @@ end
 else if (enable) begin
   out <= {out[29:0], linear_feedback,{data[0]}};
 end 
-		assign  out16 = $signed({out[31:22], 6'b111111});
+		assign  out16 = $signed({out[31:16] });
 
 endmodule // End Of Module counter
