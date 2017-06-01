@@ -1,4 +1,4 @@
---lpm_divide DEVICE_FAMILY="MAX 10" LPM_DREPRESENTATION="UNSIGNED" LPM_NREPRESENTATION="UNSIGNED" LPM_WIDTHD=4 LPM_WIDTHN=25 OPTIMIZE_FOR_SPEED=5 denom numer quotient CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 IGNORE_CARRY_BUFFERS="OFF"
+--lpm_divide DEVICE_FAMILY="MAX 10" LPM_DREPRESENTATION="UNSIGNED" LPM_NREPRESENTATION="UNSIGNED" LPM_WIDTHD=2 LPM_WIDTHN=18 OPTIMIZE_FOR_SPEED=5 denom numer quotient CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 IGNORE_CARRY_BUFFERS="OFF"
 --VERSION_BEGIN 16.1 cbx_cycloneii 2016:10:24:15:04:16:SJ cbx_lpm_abs 2016:10:24:15:04:16:SJ cbx_lpm_add_sub 2016:10:24:15:04:16:SJ cbx_lpm_divide 2016:10:24:15:04:16:SJ cbx_mgl 2016:10:24:15:05:03:SJ cbx_nadder 2016:10:24:15:04:16:SJ cbx_stratix 2016:10:24:15:04:16:SJ cbx_stratixii 2016:10:24:15:04:16:SJ cbx_util_mgl 2016:10:24:15:04:16:SJ  VERSION_END
 
 
@@ -18,20 +18,20 @@
 --  agreement for further details.
 
 
-FUNCTION sign_div_unsign_ulh (denominator[3..0], numerator[24..0])
-RETURNS ( quotient[24..0], remainder[3..0]);
+FUNCTION sign_div_unsign_rlh (denominator[1..0], numerator[17..0])
+RETURNS ( quotient[17..0], remainder[1..0]);
 
---synthesis_resources = lut 135 
+--synthesis_resources = lut 64 
 SUBDESIGN lpm_divide_ptl
 ( 
-	denom[3..0]	:	input;
-	numer[24..0]	:	input;
-	quotient[24..0]	:	output;
-	remain[3..0]	:	output;
+	denom[1..0]	:	input;
+	numer[17..0]	:	input;
+	quotient[17..0]	:	output;
+	remain[1..0]	:	output;
 ) 
 VARIABLE 
-	divider : sign_div_unsign_ulh;
-	numer_tmp[24..0]	: WIRE;
+	divider : sign_div_unsign_rlh;
+	numer_tmp[17..0]	: WIRE;
 
 BEGIN 
 	divider.denominator[] = denom[];

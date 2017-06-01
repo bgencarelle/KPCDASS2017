@@ -9,22 +9,22 @@ module filter # (parameter BIT_WIDTH = 16)(
 	 );
 
 			 
-	 reg [BIT_WIDTH-1:0]reg_0;
-	 reg [BIT_WIDTH-1:0]reg_1; 
-	 reg [BIT_WIDTH-1:0]reg_2; 
-	 reg [BIT_WIDTH-1:0]reg_3;
-	 reg [BIT_WIDTH-1:0]reg_4;
-	 reg [BIT_WIDTH-1:0]reg_5;
-	 reg [BIT_WIDTH-1:0]reg_6;
-	 reg [BIT_WIDTH-1:0]reg_7;
-	 reg [BIT_WIDTH-1:0]reg_8;
-	 reg [BIT_WIDTH-1:0]reg_9; 
-	 reg [BIT_WIDTH-1:0]reg_10; 
-	 reg [BIT_WIDTH-1:0]reg_11;
-	 reg [BIT_WIDTH-1:0]reg_12;
-	 reg [BIT_WIDTH-1:0]reg_13;
-	 reg [BIT_WIDTH-1:0]reg_14;
-//  reg [BIT_WIDTH-1:0]reg_15;
+	 reg signed [BIT_WIDTH-1:0]reg_0;
+	 reg signed [BIT_WIDTH-1:0]reg_1; 
+	 reg signed [BIT_WIDTH-1:0]reg_2; 
+	 reg signed [BIT_WIDTH-1:0]reg_3;
+	 reg signed [BIT_WIDTH-1:0]reg_4;
+	 reg signed [BIT_WIDTH-1:0]reg_5;
+	 reg signed [BIT_WIDTH-1:0]reg_6;
+	 reg signed [BIT_WIDTH-1:0]reg_7;
+	 reg signed [BIT_WIDTH-1:0]reg_8;
+	 reg signed [BIT_WIDTH-1:0]reg_9; 
+	 reg signed [BIT_WIDTH-1:0]reg_10; 
+	 reg signed [BIT_WIDTH-1:0]reg_11;
+	 reg signed [BIT_WIDTH-1:0]reg_12;
+	 reg signed [BIT_WIDTH-1:0]reg_13;
+	 reg signed [BIT_WIDTH-1:0]reg_14;
+    reg signed [BIT_WIDTH-1:0]reg_15;
 //	 reg [BIT_WIDTH-1:0]reg_16;
 //	 reg [BIT_WIDTH-1:0]reg_17; 
 //	 reg [BIT_WIDTH-1:0]reg_18; 
@@ -41,8 +41,8 @@ module filter # (parameter BIT_WIDTH = 16)(
 //	 reg [BIT_WIDTH-1:0]reg_29;
 //	 reg [BIT_WIDTH-1:0]reg_30;
 //    reg [BIT_WIDTH-1:0]reg_31;
-	 reg [31:0] reg_case = 0; 
-	 reg [BIT_WIDTH-1:0]reg_q = 0;
+	 reg signed [31:0] reg_case = 0; 
+	 reg signed [BIT_WIDTH-1:0]reg_q = 0;
 			 
  always @ (posedge clk)
 	if(sclr== 1) begin     
@@ -61,7 +61,7 @@ module filter # (parameter BIT_WIDTH = 16)(
 			reg_12 <= 0; 
 			reg_13 <= 0; 
 			reg_14 <= 0; 
-//			reg_15 <= 0;
+    		reg_15 <= 0;
 //			reg_16 <= 0; 
 //			reg_17 <= 0; 
 //			reg_18 <= 0; 
@@ -95,35 +95,36 @@ module filter # (parameter BIT_WIDTH = 16)(
 			reg_12 <= reg_11;
 			reg_13 <= reg_12;
 			reg_14 <= reg_13;
-//			reg_15 <= reg_14;
+    		reg_15 <= reg_14;
 		
 			end
 			
 	always @ (posedge clk)
+			
 	begin case(filt_sel)
 		 3'b000:begin
-						reg_case <= d[15:0];
-						reg_q[15:0] <= reg_case[15:0];
+						reg_case <= reg_1+reg_0;
+						reg_q[15:0] <= reg_case>>1;
 					end
 					
 		3'b001:begin
-						reg_case <= d[15:0] + reg_0[15:0];
-						reg_q <= reg_case[16:1];
+						reg_case <= (reg_2 + reg_0 + reg_1)/3;
+						reg_q <= reg_case[15:0];
 				 end
 		
 		3'b010:begin
-						reg_case <= d + reg_0 + reg_1 + reg_2 ;
-						reg_q <= reg_case[17:2];
+						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 ;
+						reg_q <= reg_case>>2;
 				 end		
 		
 		3'b011:begin
-						reg_case <= d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6;
-						reg_q <= reg_case[18:3];
+						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7;
+						reg_q <= reg_case>>3;
 				 end
 		
-		3'b101, 3'b110,3'b111, 3'b100:begin 
-						reg_case <= d + reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14;
-						reg_q <= reg_case[19:4];
+		3'b100, 3'b101,3'b110,3'b111,:begin 
+						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
+						reg_q <= reg_case>>4;
 				 end
 				 
 		default:begin
@@ -133,6 +134,6 @@ module filter # (parameter BIT_WIDTH = 16)(
 						
 		endcase
 	end
-		assign 	q = reg_q;
+		assign 	q = $signed(reg_q);
 	endmodule	 
 		 

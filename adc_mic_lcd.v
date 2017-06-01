@@ -79,6 +79,7 @@ wire   [15:0] PWM_OUT;
 wire 	 [15:0] FIFO_OUT;
 wire   [15:0] SEED_OUT;
 wire   [15:0] FILTER_OUT;
+wire   [15:0] MUX0_OUT;
 wire          SAMPLE_TR ;  
 wire          ADC_RESPONSE ;
 wire [15:0]   TODAC ; 
@@ -175,7 +176,7 @@ I2S_ASSESS  i2s(
 	.SDATA_OUT ( AUDIO_DIN_MFP1),
 	.SDATA_IN  ( AUDIO_DOUT_MFP2),
 	.RESET_n   ( RESET_DELAY_n), 
-	.ADC_MIC      ( FIFO_OUT ), 
+	.ADC_MIC      ( MUX0_OUT), 
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
 	.ROM_ADDR     ( ROM_ADDR), 
@@ -190,7 +191,7 @@ LED_METER   led(
    .RESET_n   ( RESET_DELAY_n), 
 	.CLK   ( AUDIO_MCLK )  , 
 	.SAMPLE_TR ( SAMPLE_TR) , 
-	.VALUE ( { ADC_RD }  ) ,
+	.VALUE ( FILTER_OUT ) ,
 	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
@@ -231,9 +232,10 @@ SOUND_TO_MTL2  sm(
 );	
 
 input_debounce key0db(
-	.clk(MAX10_CLK1_50),
+	.clk(AUDIO_WCLK),
 	//.reset_n(RESET_DELAY_N),
 	.PB(KEY[0]),
+//	.PB_down(key_0)
 	.PB_state(key_0)
 );
 
@@ -244,31 +246,45 @@ pulse_width_modulation_gen pwm1 (
     .q_pwm(PWM_OUT[15:0])
 	 
     );
-
-dff_chain_4 dffchain (  
-        .m_clk(MAX10_CLK1_50), 
-		  .a_clk(AUDIO_WCLK),
-		  .dnoise(SEED_OUT[15:0]),
-        .dfilter(FILTER_OUT[15:0]),
-		  .trigger(key_0),
-        .sclr(RESET_DELAY_N),
-        .q(FIFO_OUT[15:0])    
-        ); 
-		  
+//
+//dff_chain_4 dffchain (  
+//        .m_clk(MAX10_CLK1_50), 
+//		  .a_clk(AUDIO_WCLK),
+//		  .dnoise(SEED_OUT[15:0]),
+//        .dfilter(FILTER_OUT[15:0]),
+//		  .trigger(key_0),
+//        .sclr(RESET_DELAY_N),
+//        .q(FIFO_OUT[15:0])    
+//        ); 
+audiomux mux0(
+		.dnoise(SEED_OUT),
+		.dfilter(FILTER_OUT),
+		.sel(key_0),
+		.muxout(MUX0_OUT)
+		);
 	  
 filter filt1 (
 		 .filt_sel(SW[2:0]),
 		 .clk(AUDIO_WCLK), 
-		 .d(FIFO_OUT [15:0]),
+		 .d(SEED_OUT ),
 		 .sclr(RESET_DELAY_N),
 		 .q(FILTER_OUT)
 		 );
 lfsr lfsr1 (
 		 .out16(SEED_OUT),
+		 .data(ADC_RD),
 		 .enable(1),  // Enable  for counter
-		 .clk(MAX10_CLK1_50),  // clock input
+		 .clk(AUDIO_WCLK),  // clock input
 		 .reset(RESET_DELAY_N) 
 		 );
+		 
+config_shift_register mem1(
+		.clk(AUDIO_WCLK),
+		.reset_n(RESET_DELAY_M),
+		.d(SEED_OUT),
+		.shift_register_length(250),
+		.q(FIFO_OUT)
+		);
 endmodule
 
 
