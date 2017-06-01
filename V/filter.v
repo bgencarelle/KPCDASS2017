@@ -3,9 +3,9 @@
 module filter # (parameter BIT_WIDTH = 16)(
 	input wire [2:0] filt_sel, 
 	input wire clk, 
-	input wire [BIT_WIDTH-1:0] d, 
+	input  wire signed [BIT_WIDTH-1:0] d, 
 	input wire sclr,   
-	output [BIT_WIDTH-1:0] q   
+	output signed [BIT_WIDTH-1:0] q   
 	 );
 
 			 
@@ -80,7 +80,7 @@ module filter # (parameter BIT_WIDTH = 16)(
 //			reg_31 <= 0;
 			end
 	else begin
-			reg_0 <= d;	
+			reg_0 <= d ;	
 			reg_1 <= reg_0;
 			reg_2 <= reg_1;
 			reg_3 <= reg_2;
@@ -103,34 +103,33 @@ module filter # (parameter BIT_WIDTH = 16)(
 			
 	begin case(filt_sel)
 		 3'b000:begin
-						reg_case <= reg_1+reg_0;
-						reg_q <= reg_case>>1;
+						reg_q <= (reg_1+reg_0)>>1;
+				
 					end
 					
 		3'b001:begin
-						reg_case <= (reg_2 + reg_0 + reg_1)/3;
-						reg_q <= reg_case[15:0];
-				 end
+						reg_q <= (reg_2 + reg_0 + reg_1)/3;
+				end
 		
 		3'b010:begin
-						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 ;
-						reg_q <= reg_case>>2;
+						reg_case <= (reg_0 + reg_1 + reg_2 + reg_3) ;
+						reg_q <= reg_case[17:2];
 				 end		
 		
 		3'b011:begin
 						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7;
-						reg_q <= reg_case>>3;
+						reg_q <= reg_case[18:3];
 				 end
 		
 		3'b100, 3'b101,3'b110,3'b111,:begin 
 						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 
 						+ reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
-						reg_q <= reg_case>>4;
+						reg_q <= reg_case[19:4];
 				 end
 				 
 		default:begin
-					reg_case  <= reg_14;
-					reg_q <= reg_case;
+					reg_case  <= reg_15;
+					reg_q <= reg_case[15:0];
 				 end
 						
 		endcase

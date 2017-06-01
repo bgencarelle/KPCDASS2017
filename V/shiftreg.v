@@ -1,41 +1,42 @@
 // --- dff_chain_4.v  
-module dff_chain_4 # (parameter k = 1236)(  
-        input wire m_clk,
+module dff_chain_4 (  
+		  input wire [2:0] reg_dep, 
         input wire a_clk,
-		  
-        input wire [15:0] d,
-		  input wire trigger,
+		  input wire signed [15:0] d0,
+		  input wire signed [15:0] d1,
         input wire sclr,
-        output wire [15:0] q    
+		  input wire sel,
+        output wire signed [15:0] q    
         );    
-
-        reg [15:0] internal_reg[k];  
+		
+        reg signed [15:0] internal_reg[25:0];  
 		  integer j;
+			reg signed [15:0] mux;
+			reg signed [15:0] dout;
+			
+	 
+        always@(posedge a_clk) 
+		  begin
+		  if (sel == 1) 
+		  begin
+		  mux <= d0;
+		  end
 		  
+		  else 
+		  begin
+		  mux <=d1;
+		  end 
 		  
-
-						
-        always@(posedge a_clk) begin
-               if(sclr == 1) 
-                  for (j = 0; j < k; j = j + 1)
-						begin: clear_reg
-						internal_reg[j] <= 0;
-						end
-						
-					
-              else 
-											
-						
-						
-						for (j = 1; j < k; j = j+ 1) 
-						begin: load_reg 				
-						if (j == 0) 
-						internal_reg[0] <= d;
-						else if (j != 0)
+		  for (j = 0; j < 25; j = j+ 1) begin
+				if (j==0) begin
+						internal_reg[0] <= mux;	
+				end
+				else begin 
 						internal_reg[j] <= internal_reg[j-1];
-						end
-					
+				end
+			end
+			end
+			assign q = $signed(internal_reg[24]);   
+			 
 
-						end
-          assign q = (internal_reg[k-1]);   
 endmodule
