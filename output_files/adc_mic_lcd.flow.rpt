@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Thu Jun 01 21:08:40 2017
+Fri Jun 02 12:19:13 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,24 +41,24 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Jun 01 21:08:34 2017       ;
+; Flow Status                        ; Successful - Fri Jun 02 12:19:08 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 1,922 / 49,760 ( 4 % )                      ;
-;     Total combinational functions  ; 1,669 / 49,760 ( 3 % )                      ;
-;     Dedicated logic registers      ; 959 / 49,760 ( 2 % )                        ;
-; Total registers                    ; 959                                         ;
+; Total logic elements               ; 737 / 49,760 ( 1 % )                        ;
+;     Total combinational functions  ; 673 / 49,760 ( 1 % )                        ;
+;     Dedicated logic registers      ; 417 / 49,760 ( < 1 % )                      ;
+; Total registers                    ; 417                                         ;
 ; Total pins                         ; 102 / 360 ( 28 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 60,032 / 1,677,312 ( 4 % )                  ;
+; Total memory bits                  ; 59,648 / 1,677,312 ( 4 % )                  ;
 ; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                             ;
-; Total PLLs                         ; 3 / 4 ( 75 % )                              ;
+; Total PLLs                         ; 2 / 4 ( 50 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
-; ADC blocks                         ; 1 / 2 ( 50 % )                              ;
+; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/01/2017 21:07:32 ;
+; Start date & time ; 06/02/2017 12:18:02 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149634405203440                            ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 107765168740670.149639868204800                            ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                          ; --            ; --          ; --         ;
 ; MISC_FILE                           ; adc_qsys/synthesis/../adc_qsys.cmp                         ; --            ; --          ; --         ;
@@ -105,11 +105,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:33     ; 1.0                     ; 751 MB              ; 00:01:02                           ;
-; Fitter                    ; 00:00:22     ; 1.2                     ; 1559 MB             ; 00:00:33                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 577 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:05     ; 1.5                     ; 727 MB              ; 00:00:06                           ;
-; Total                     ; 00:01:04     ; --                      ; --                  ; 00:01:45                           ;
+; Analysis & Synthesis      ; 00:00:38     ; 1.0                     ; 738 MB              ; 00:01:09                           ;
+; Fitter                    ; 00:00:18     ; 1.1                     ; 1276 MB             ; 00:00:23                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 572 MB              ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.2                     ; 687 MB              ; 00:00:05                           ;
+; Total                     ; 00:01:05     ; --                      ; --                  ; 00:01:42                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -118,10 +118,10 @@ agreement for further details.
 +---------------------------+------------------+------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis      ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 

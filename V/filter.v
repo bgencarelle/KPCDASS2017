@@ -1,48 +1,47 @@
-	
-	// --- dff_chain_4.v  
-module filter # (parameter BIT_WIDTH = 16)(
+
+module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	input wire [2:0] filt_sel, 
 	input wire clk, 
-	input  wire signed [BIT_WIDTH-1:0] d, 
+	input  wire signed [RANGE:0] d, 
 	input wire sclr,   
-	output signed [BIT_WIDTH-1:0] q   
+	output signed [RANGE:0] q   
 	 );
 
 			 
-	 reg signed [BIT_WIDTH-1:0]reg_0;
-	 reg signed [BIT_WIDTH-1:0]reg_1; 
-	 reg signed [BIT_WIDTH-1:0]reg_2; 
-	 reg signed [BIT_WIDTH-1:0]reg_3;
-	 reg signed [BIT_WIDTH-1:0]reg_4;
-	 reg signed [BIT_WIDTH-1:0]reg_5;
-	 reg signed [BIT_WIDTH-1:0]reg_6;
-	 reg signed [BIT_WIDTH-1:0]reg_7;
-	 reg signed [BIT_WIDTH-1:0]reg_8;
-	 reg signed [BIT_WIDTH-1:0]reg_9; 
-	 reg signed [BIT_WIDTH-1:0]reg_10; 
-	 reg signed [BIT_WIDTH-1:0]reg_11;
-	 reg signed [BIT_WIDTH-1:0]reg_12;
-	 reg signed [BIT_WIDTH-1:0]reg_13;
-	 reg signed [BIT_WIDTH-1:0]reg_14;
-    reg signed [BIT_WIDTH-1:0]reg_15;
-//	 reg [BIT_WIDTH-1:0]reg_16;
-//	 reg [BIT_WIDTH-1:0]reg_17; 
-//	 reg [BIT_WIDTH-1:0]reg_18; 
-//	 reg [BIT_WIDTH-1:0]reg_19;
-//	 reg [BIT_WIDTH-1:0]reg_20;
-//	 reg [BIT_WIDTH-1:0]reg_21;
-//	 reg [BIT_WIDTH-1:0]reg_22;
-//	 reg [BIT_WIDTH-1:0]reg_23;
-//	 reg [BIT_WIDTH-1:0]reg_24;
-//	 reg [BIT_WIDTH-1:0]reg_25; 
-//	 reg [BIT_WIDTH-1:0]reg_26; 
-//	 reg [BIT_WIDTH-1:0]reg_27;
-//	 reg [BIT_WIDTH-1:0]reg_28;
-//	 reg [BIT_WIDTH-1:0]reg_29;
-//	 reg [BIT_WIDTH-1:0]reg_30;
-//    reg [BIT_WIDTH-1:0]reg_31;
-	 reg signed [31:0] reg_case = 0; 
-	 reg signed [BIT_WIDTH-1:0]reg_q = 0;
+	 reg signed [RANGE:0]reg_0;
+	 reg signed [RANGE:0]reg_1; 
+	 reg signed [RANGE:0]reg_2; 
+	 reg signed [RANGE:0]reg_3;
+	 reg signed [RANGE:0]reg_4;
+	 reg signed [RANGE:0]reg_5;
+	 reg signed [RANGE:0]reg_6;
+	 reg signed [RANGE:0]reg_7;
+	 reg signed [RANGE:0]reg_8;
+	 reg signed [RANGE:0]reg_9; 
+	 reg signed [RANGE:0]reg_10; 
+	 reg signed [RANGE:0]reg_11;
+	 reg signed [RANGE:0]reg_12;
+	 reg signed [RANGE:0]reg_13;
+	 reg signed [RANGE:0]reg_14;
+    reg signed [RANGE:0]reg_15;
+//	 reg [RANGE:0]reg_16;
+//	 reg [RANGE:0]reg_17; 
+//	 reg [RANGE:0]reg_18; 
+//	 reg [RANGE:0]reg_19;
+//	 reg [RANGE:0]reg_20;
+//	 reg [RANGE:0]reg_21;
+//	 reg [RANGE:0]reg_22;
+//	 reg [RANGE:0]reg_23;
+//	 reg [RANGE:0]reg_24;
+//	 reg [RANGE:0]reg_25; 
+//	 reg [RANGE:0]reg_26; 
+//	 reg [RANGE:0]reg_27;
+//	 reg [RANGE:0]reg_28;
+//	 reg [RANGE:0]reg_29;
+//	 reg [RANGE:0]reg_30;
+//    reg [RANGE:0]reg_31;
+	 reg signed [BIT_WIDTH*2:0] reg_case = 0; 
+	 reg signed [RANGE:0]reg_q = 0;
 			 
  always @ (posedge clk)
 	if(sclr== 1) begin     
@@ -113,23 +112,23 @@ module filter # (parameter BIT_WIDTH = 16)(
 		
 		3'b010:begin
 						reg_case <= (reg_0 + reg_1 + reg_2 + reg_3) ;
-						reg_q <= reg_case[17:2];
+						reg_q <= reg_case[(RANGE+2):2];
 				 end		
 		
 		3'b011:begin
 						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7;
-						reg_q <= reg_case[18:3];
+						reg_q <= reg_case[(RANGE+3):3];
 				 end
 		
 		3'b100, 3'b101,3'b110,3'b111,:begin 
 						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 
 						+ reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
-						reg_q <= reg_case[19:4];
+						reg_q <= reg_case[(RANGE+4):4];
 				 end
 				 
 		default:begin
 					reg_case  <= reg_15;
-					reg_q <= reg_case[15:0];
+					reg_q <= reg_case[RANGE:0];
 				 end
 						
 		endcase

@@ -1,18 +1,18 @@
 // --- dff_chain_4.v  
-module dff_chain_4 (  
+module dff_chain_4 # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(  
 		  input wire [2:0] reg_dep, 
         input wire a_clk,
-		  input wire signed [15:0] d0,
-		  input wire signed [15:0] d1,
+		  input wire signed [RANGE:0] d0,
+		  input wire signed [RANGE:0] d1,
         input wire sclr,
 		  input wire sel,
-        output wire signed [15:0] q    
+        output wire signed [RANGE:0] q    
         );    
 		
-        reg signed [15:0] internal_reg[25:0];  
+        reg signed [RANGE:0] internal_reg[25:0];  
 		  integer j;
-			reg signed [15:0] mux;
-			reg signed [15:0] dout;
+			reg signed [RANGE:0] mux;
+			reg signed [RANGE:0] dout;
 			
 	 
         always@(posedge a_clk) 

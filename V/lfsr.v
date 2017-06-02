@@ -5,7 +5,8 @@
 // Coder       : Deepak Kumar Tala
 //-----------------------------------------------------
 module lfsr    (
-out16           ,  // Output of the counter
+//out16           ,  // Output of the counter 16bit
+out32				 ,  // 32 bit 
 data			    ,
 enable          ,  // Enable  for counter
 clk             ,  // clock input
@@ -13,9 +14,9 @@ reset              // reset input
 );
 
 //----------Output Ports--------------
-output [15:0] out16;
+output signed wire [15:0] out32;
 //------------Input Ports--------------
-input [11:0] data;
+input signed wire [11:0] data;
 input enable, clk, reset;
 //------------Internal Variables--------
 reg signed [31:0] out;
@@ -31,6 +32,6 @@ end
 else if (enable) begin
   out <= {out[29:0], linear_feedback,{data[0]}};
 end 
-		assign  out16 = $signed({out[31:16] });
+		assign  out32 = $signed({out[31:0]});
 
 endmodule // End Of Module counter

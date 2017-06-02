@@ -1,0 +1,67 @@
+# Reading C:/intelFPGA_lite/16.1/modelsim_ase/tcl/vsim/pref.tcl
+# do adc_mic_lcd_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/16.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/pulse_width_modulation_gen.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:27:24 on Jun 02,2017
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V" C:/Users/ben/Documents/GitHub/KPCDASS2017/V/pulse_width_modulation_gen.v 
+# -- Compiling module pulse_width_modulation_gen
+# 
+# Top level modules:
+# 	pulse_width_modulation_gen
+# End time: 12:27:24 on Jun 02,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/shiftreg.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:27:24 on Jun 02,2017
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V" C:/Users/ben/Documents/GitHub/KPCDASS2017/V/shiftreg.v 
+# -- Compiling module dff_chain_4
+# 
+# Top level modules:
+# 	dff_chain_4
+# End time: 12:27:24 on Jun 02,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/lfsr.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:27:24 on Jun 02,2017
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V" C:/Users/ben/Documents/GitHub/KPCDASS2017/V/lfsr.v 
+# -- Compiling module lfsr
+# 
+# Top level modules:
+# 	lfsr
+# End time: 12:27:24 on Jun 02,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/input_debounce.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:27:24 on Jun 02,2017
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V" C:/Users/ben/Documents/GitHub/KPCDASS2017/V/input_debounce.v 
+# -- Compiling module input_debounce
+# 
+# Top level modules:
+# 	input_debounce
+# End time: 12:27:24 on Jun 02,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:27:24 on Jun 02,2017
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V" C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v 
+# -- Compiling module filter
+# ** Error: (vlog-13069) C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v(123): near ":": syntax error, unexpected ':'.
+# ** Error: (vlog-13069) C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v(129): near ":": syntax error, unexpected ':', expecting IDENTIFIER or disable or clock or "SystemVerilog keyword 'clocking'".
+# ** Error: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v(131): (vlog-13205) Syntax error found in the scope following 'reg_q'. Is there a missing '::'?
+# End time: 12:27:24 on Jun 02,2017, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# ** Error: C:/intelFPGA_lite/16.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./adc_mic_lcd_run_msim_rtl_verilog.do line 12
+# C:/intelFPGA_lite/16.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+C:/Users/ben/Documents/GitHub/KPCDASS2017/V {C:/Users/ben/Documents/GitHub/KPCDASS2017/V/filter.v}"
