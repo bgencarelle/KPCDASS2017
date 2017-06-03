@@ -1,5 +1,5 @@
 
-module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
+module filter # (parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1)(
 	input wire [2:0] filt_sel, 
 	input wire clk, 
 	input  wire signed [RANGE:0] d, 
@@ -24,7 +24,12 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	 reg signed [RANGE:0]reg_13;
 	 reg signed [RANGE:0]reg_14;
     reg signed [RANGE:0]reg_15;
-//	 reg [RANGE:0]reg_16;
+	 reg signed [RANGE+3:0]reg_div2;
+	 reg signed [RANGE+4:0]reg_div3;
+	 reg signed [RANGE+5:0]reg_div4;
+	 reg signed [RANGE+6:0]reg_div8;
+	 reg signed [RANGE+7:0]reg_div16;
+	 //	 reg [RANGE:0]reg_16;
 //	 reg [RANGE:0]reg_17; 
 //	 reg [RANGE:0]reg_18; 
 //	 reg [RANGE:0]reg_19;
@@ -40,11 +45,12 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 //	 reg [RANGE:0]reg_29;
 //	 reg [RANGE:0]reg_30;
 //    reg [RANGE:0]reg_31;
-	 reg signed [BIT_WIDTH*2:0] reg_case = 0; 
-	 reg signed [RANGE:0]reg_q = 0;
+	 reg signed [BIT_WIDTH*2:0] reg_case; 
+	 reg signed [RANGE+1:0]reg_q;
 			 
  always @ (posedge clk)
-	if(sclr== 1) begin     
+	if(sclr== 1) begin    
+	
 			reg_0 <= 0; 
 			reg_1 <= 0; 
 			reg_2 <= 0; 
@@ -60,7 +66,7 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 			reg_12 <= 0; 
 			reg_13 <= 0; 
 			reg_14 <= 0; 
-    		reg_15 <= 0;
+//    		reg_15 <= 0;
 //			reg_16 <= 0; 
 //			reg_17 <= 0; 
 //			reg_18 <= 0; 
@@ -79,14 +85,22 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 //			reg_31 <= 0;
 			end
 	else begin
-			reg_0 <= d ;	
+			reg_0 <= d ;
 			reg_1 <= reg_0;
+			
+			reg_div2	<= (d + reg_0);
 			reg_2 <= reg_1;
 			reg_3 <= reg_2;
+			
+			reg_div4	<= (reg_div2 + reg_1 + reg_2) ;
+			
 			reg_4 <= reg_3;
 			reg_5 <= reg_4;
 			reg_6 <= reg_5;
 			reg_7 <= reg_6;
+			
+			reg_div8	<= (reg_div4+ reg_3 + reg_4 + reg_5 + reg_6);
+			
 			reg_8 <= reg_7;
 			reg_9 <= reg_8;
 			reg_10 <= reg_9;
@@ -94,41 +108,31 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 			reg_12 <= reg_11;
 			reg_13 <= reg_12;
 			reg_14 <= reg_13;
-    		reg_15 <= reg_14;
-		
+			reg_div16 <=(reg_div8 + reg_7 + reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14);
+
 			end
 			
 	always @ (posedge clk)
 			
 	begin case(filt_sel)
 		 3'b000:begin
-						reg_q <= (reg_1+reg_0)>>1;
-				
+					reg_q <= d;
 					end
 					
 		3'b001:begin
-						reg_q <= (reg_2 + reg_0 + reg_1)/3;
+						reg_q 	<= reg_div2[(RANGE+1):1];
 				end
 		
 		3'b010:begin
-						reg_case <= (reg_0 + reg_1 + reg_2 + reg_3) ;
-						reg_q <= reg_case[(RANGE+2):2];
+						reg_q <= reg_div4[(RANGE+2):2];
 				 end		
 		
 		3'b011:begin
-						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7;
-						reg_q <= reg_case[(RANGE+3):3];
+						reg_q <= reg_div8[(RANGE+3):3];
 				 end
 		
-		3'b100, 3'b101,3'b110,3'b111,:begin 
-						reg_case <= reg_0 + reg_1 + reg_2 + reg_3 + reg_4 + reg_5 + reg_6 + reg_7 
-						+ reg_8 + reg_9 + reg_10 + reg_11 + reg_12 + reg_13 + reg_14 + reg_15;
-						reg_q <= reg_case[(RANGE+4):4];
-				 end
-				 
 		default:begin
-					reg_case  <= reg_15;
-					reg_q <= reg_case[RANGE:0];
+					reg_q <= reg_div16[(RANGE+4):4];
 				 end
 						
 		endcase

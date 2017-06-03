@@ -402,7 +402,7 @@ SW[2]                        : N21       : input  : 1.5 V             :         
 SW[0]                        : N22       : input  : 1.5 V             :         : 5         : Y              
 MTL2_G[5]                    : P1        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : P2        : gnd    :                   :         :           :                
-PS2_DAT                      : P3        : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : P3        :        :                   :         : 2         :                
 MTL2_B[0]                    : P4        : output : 3.3-V LVTTL       :         : 2         : Y              
 MTL2_B[1]                    : P5        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : P6        : gnd    :                   :         :           :                
@@ -424,7 +424,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : P21       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : P22       :        :                   :         : 5         :                
 MTL2_G[2]                    : R1        : output : 3.3-V LVTTL       :         : 2         : Y              
 MTL2_G[3]                    : R2        : output : 3.3-V LVTTL       :         : 2         : Y              
-PS2_DAT2                     : R3        : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R3        :        :                   :         : 2         :                
 MTL2_G[4]                    : R4        : output : 3.3-V LVTTL       :         : 2         : Y              
 MTL2_G[6]                    : R5        : output : 3.3-V LVTTL       :         : 2         : Y              
 VCCIO2                       : R6        : power  :                   : 3.3V    : 2         :                
@@ -466,7 +466,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : T19       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : T20       :        :                   :         : 5         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : T21       :        :                   :         : 5         :                
 KEY[0]                       : T22       : input  : 1.5 V Schmitt Trigger :         : 5         : Y              
-PS2_CLK2                     : U1        : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : U1        :        :                   :         : 2         :                
 MTL2_R[4]                    : U2        : output : 3.3-V LVTTL       :         : 2         : Y              
 MTL2_R[2]                    : U3        : output : 3.3-V LVTTL       :         : 2         : Y              
 MTL2_R[1]                    : U4        : output : 3.3-V LVTTL       :         : 2         : Y              
@@ -490,7 +490,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : U21       :        :                   :      
 KEY[1]                       : U22       : input  : 1.5 V Schmitt Trigger :         : 5         : Y              
 MTL2_R[5]                    : V1        : output : 3.3-V LVTTL       :         : 2         : Y              
 GND                          : V2        : gnd    :                   :         :           :                
-PS2_CLK                      : V3        : bidir  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : V3        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V4        :        :                   :         : 3         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V5        :        :                   :         : 3         :                
 GND                          : V6        : gnd    :                   :         :           :                

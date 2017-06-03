@@ -115,7 +115,7 @@ assign SD_MIC =  (
 	
 	
 //---from EXTERNAL MIC ADC --- 
-assign    EXT_DATA16      = {~ADC_MIC[15] , ADC_MIC[14:0]} ; 
+assign    EXT_DATA16      = {ADC_MIC[15] , ADC_MIC[14:0]} ; 
 
 //----- AUDIO CODE TIMING --- 
   wire [15:0]  EXT_DATA16 ;

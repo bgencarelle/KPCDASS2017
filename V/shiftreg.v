@@ -1,6 +1,6 @@
 // --- dff_chain_4.v  
 module dff_chain_4 # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1, 
-							parameter k =25)					
+							parameter k =205)					
 		(  
 		  input wire [2:0] reg_dep, 
         input wire a_clk,
@@ -10,7 +10,7 @@ module dff_chain_4 # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
         output wire signed [RANGE:0] q    
         );    
 		
-			reg signed [RANGE:0] internal_reg[25:0];  
+			reg signed [RANGE:0] internal_reg[k:0];  
 			integer j;
 			reg signed [RANGE:0] mux;
 			reg signed [RANGE:0] dout;
@@ -18,7 +18,7 @@ module dff_chain_4 # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 			
         always@(posedge a_clk) 
 		  begin
-		  if (trig == 1) 
+		  if (1) 
 		  begin
 		  mux <= d0;
 		  end
@@ -27,17 +27,20 @@ module dff_chain_4 # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 		  begin
 		  mux <=d1;
 		  end 
+		  end
+		  
+		  always@(posedge a_clk)
 		  
 		  for (j = 0; j < k; j = j+ 1) begin
 				if (j==0) begin
-						internal_reg[0] <= mux;	
+						internal_reg[0] <= d0;	
 				end
 				else begin 
 						internal_reg[j] <= internal_reg[j-1];
 				end
 			end
 			end
-			assign q = $signed(internal_reg[k-1]);   
+			assign q = $signed(internal_reg[k-2]);   
  input_debounce db0(
 							.clk(a_clk),
 							//.reset_n(RESET_DELAY_N),

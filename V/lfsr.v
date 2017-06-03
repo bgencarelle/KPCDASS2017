@@ -14,7 +14,7 @@ reset              // reset input
 );
 
 //----------Output Ports--------------
-output wire signed [15:0] out32;
+output wire signed [31:0] out32;
 //------------Input Ports--------------
 input  wire signed [11:0] data;
 input enable, clk, reset;
@@ -23,14 +23,14 @@ reg signed [31:0] out;
 wire        linear_feedback;
 
 //-------------Code Starts Here-------
-assign linear_feedback = !(out[31] ^ data[1]);
+assign linear_feedback = !(out[31] ^ out[30] ^{data[0]});
 
 always @(posedge clk)
 if (reset) begin // active high reset
-  out <= 0;
+  out <= 31'b00000000000000000000000000000000;
 end 
 else if (enable) begin
-  out <= {out[29:0], linear_feedback,{data[0]}};
+  out <= {out[30:0], linear_feedback};
 end 
 		assign  out32 = $signed({out[31:0]});
 
