@@ -116,27 +116,21 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
 	 .outclk(AUDIO_WCLK),
 	 .reset(RESET_DELAY_N),
+//	 .freq_in(ADCCTRL);
     .q_pwm(PWM_OUT[RANGE:0])
-// .q_saw()
-	 
+//  .q_saw(SAW_OUT);	 
     );
 	 
 dff_chain_4 dffchain0 (  
 		  .a_clk(AUDIO_WCLK),
 		  .d0(SEED_OUT),
 		  .d1(FILTER_OUT),
-		  .sel(key_0),
-        .sclr(RESET_DELAY_N),
+		  .sel(KEY[0]),
+ //     .sclr(RESET_DELAY_N),
         .q(MEM0_OUT)    
         ); 
 
- input_debounce db0(
-	.clk(AUDIO_WCLK),
-	//.reset_n(RESET_DELAY_N),
-	.PB(KEY[0]),
-	//.PB_up(key_0)
-	.PB_state(key_0)
-);		
+
 		
 filter filt0 (
 		 .filt_sel(SW[2:0]),
@@ -147,7 +141,7 @@ filter filt0 (
 		 );
 lfsr lfsr1 (
 		// .out16(SEED_OUT),
-		 .out32(SEED_OUT[]),
+		 .out32(SEED_OUT),
 		 .data(ADC_RD),
 		 .enable(1),  // Enable  for counter
 		 .clk(AUDIO_WCLK),  // clock input

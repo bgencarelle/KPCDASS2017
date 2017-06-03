@@ -14,9 +14,9 @@ reset              // reset input
 );
 
 //----------Output Ports--------------
-output signed wire [15:0] out32;
+output wire signed [15:0] out32;
 //------------Input Ports--------------
-input signed wire [11:0] data;
+input  wire signed [11:0] data;
 input enable, clk, reset;
 //------------Internal Variables--------
 reg signed [31:0] out;

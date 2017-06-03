@@ -15,7 +15,7 @@
 
 # Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 # File: C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_mic_lcd_assignments.csv
-# Generated on: Thu Jun 01 11:36:35 2017
+# Generated on: Fri Jun 02 14:22:01 2017
 
 Status,From,To,Assignment Name,Value,Enabled,Entity,Comment,Tag
 Ok,,ADC_CLK_10,Location,PIN_M9,Yes,,,

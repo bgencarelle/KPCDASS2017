@@ -1,0 +1,272 @@
+﻿Butts
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .qsys_edit/preferences.xml
+#
+# Changes not staged for commit:
+#	modified:   V/audiomux.v
+#	modified:   V/input_debounce.v
+#	modified:   V/lfsr.v
+#	modified:   V/pulse_width_modulation_gen.v
+#	modified:   V/shiftreg.v
+#	modified:   adc_mic_lcd.qsf
+#	deleted:    adc_mic_lcd.qws
+#	modified:   adc_mic_lcd.v
+#	modified:   adc_mic_lcd_assignments.csv
+#	modified:   db/adc_mic_lcd.(0).cnf.cdb
+#	modified:   db/adc_mic_lcd.(0).cnf.hdb
+#	modified:   db/adc_mic_lcd.(1).cnf.cdb
+#	modified:   db/adc_mic_lcd.(1).cnf.hdb
+#	modified:   db/adc_mic_lcd.(10).cnf.cdb
+#	modified:   db/adc_mic_lcd.(10).cnf.hdb
+#	modified:   db/adc_mic_lcd.(11).cnf.cdb
+#	modified:   db/adc_mic_lcd.(11).cnf.hdb
+#	modified:   db/adc_mic_lcd.(12).cnf.cdb
+#	modified:   db/adc_mic_lcd.(12).cnf.hdb
+#	modified:   db/adc_mic_lcd.(13).cnf.cdb
+#	modified:   db/adc_mic_lcd.(13).cnf.hdb
+#	modified:   db/adc_mic_lcd.(14).cnf.cdb
+#	modified:   db/adc_mic_lcd.(14).cnf.hdb
+#	modified:   db/adc_mic_lcd.(15).cnf.cdb
+#	modified:   db/adc_mic_lcd.(15).cnf.hdb
+#	modified:   db/adc_mic_lcd.(16).cnf.cdb
+#	modified:   db/adc_mic_lcd.(16).cnf.hdb
+#	modified:   db/adc_mic_lcd.(17).cnf.cdb
+#	modified:   db/adc_mic_lcd.(17).cnf.hdb
+#	modified:   db/adc_mic_lcd.(18).cnf.cdb
+#	modified:   db/adc_mic_lcd.(18).cnf.hdb
+#	modified:   db/adc_mic_lcd.(19).cnf.cdb
+#	modified:   db/adc_mic_lcd.(19).cnf.hdb
+#	modified:   db/adc_mic_lcd.(2).cnf.cdb
+#	modified:   db/adc_mic_lcd.(2).cnf.hdb
+#	modified:   db/adc_mic_lcd.(20).cnf.cdb
+#	modified:   db/adc_mic_lcd.(20).cnf.hdb
+#	modified:   db/adc_mic_lcd.(21).cnf.cdb
+#	modified:   db/adc_mic_lcd.(21).cnf.hdb
+#	modified:   db/adc_mic_lcd.(22).cnf.cdb
+#	modified:   db/adc_mic_lcd.(22).cnf.hdb
+#	modified:   db/adc_mic_lcd.(23).cnf.cdb
+#	modified:   db/adc_mic_lcd.(23).cnf.hdb
+#	modified:   db/adc_mic_lcd.(24).cnf.cdb
+#	modified:   db/adc_mic_lcd.(24).cnf.hdb
+#	modified:   db/adc_mic_lcd.(25).cnf.cdb
+#	modified:   db/adc_mic_lcd.(25).cnf.hdb
+#	modified:   db/adc_mic_lcd.(26).cnf.cdb
+#	modified:   db/adc_mic_lcd.(26).cnf.hdb
+#	modified:   db/adc_mic_lcd.(27).cnf.cdb
+#	modified:   db/adc_mic_lcd.(27).cnf.hdb
+#	modified:   db/adc_mic_lcd.(28).cnf.cdb
+#	modified:   db/adc_mic_lcd.(28).cnf.hdb
+#	modified:   db/adc_mic_lcd.(29).cnf.cdb
+#	modified:   db/adc_mic_lcd.(29).cnf.hdb
+#	modified:   db/adc_mic_lcd.(3).cnf.cdb
+#	modified:   db/adc_mic_lcd.(3).cnf.hdb
+#	modified:   db/adc_mic_lcd.(30).cnf.cdb
+#	modified:   db/adc_mic_lcd.(30).cnf.hdb
+#	modified:   db/adc_mic_lcd.(31).cnf.cdb
+#	modified:   db/adc_mic_lcd.(31).cnf.hdb
+#	modified:   db/adc_mic_lcd.(32).cnf.cdb
+#	modified:   db/adc_mic_lcd.(32).cnf.hdb
+#	modified:   db/adc_mic_lcd.(33).cnf.cdb
+#	modified:   db/adc_mic_lcd.(33).cnf.hdb
+#	modified:   db/adc_mic_lcd.(34).cnf.cdb
+#	modified:   db/adc_mic_lcd.(34).cnf.hdb
+#	modified:   db/adc_mic_lcd.(35).cnf.cdb
+#	modified:   db/adc_mic_lcd.(35).cnf.hdb
+#	modified:   db/adc_mic_lcd.(36).cnf.cdb
+#	modified:   db/adc_mic_lcd.(36).cnf.hdb
+#	modified:   db/adc_mic_lcd.(37).cnf.cdb
+#	modified:   db/adc_mic_lcd.(37).cnf.hdb
+#	modified:   db/adc_mic_lcd.(38).cnf.cdb
+#	modified:   db/adc_mic_lcd.(38).cnf.hdb
+#	modified:   db/adc_mic_lcd.(39).cnf.cdb
+#	modified:   db/adc_mic_lcd.(39).cnf.hdb
+#	modified:   db/adc_mic_lcd.(4).cnf.cdb
+#	modified:   db/adc_mic_lcd.(4).cnf.hdb
+#	modified:   db/adc_mic_lcd.(40).cnf.cdb
+#	modified:   db/adc_mic_lcd.(40).cnf.hdb
+#	modified:   db/adc_mic_lcd.(41).cnf.cdb
+#	modified:   db/adc_mic_lcd.(41).cnf.hdb
+#	modified:   db/adc_mic_lcd.(42).cnf.cdb
+#	modified:   db/adc_mic_lcd.(42).cnf.hdb
+#	modified:   db/adc_mic_lcd.(43).cnf.cdb
+#	modified:   db/adc_mic_lcd.(43).cnf.hdb
+#	modified:   db/adc_mic_lcd.(44).cnf.cdb
+#	modified:   db/adc_mic_lcd.(44).cnf.hdb
+#	modified:   db/adc_mic_lcd.(45).cnf.cdb
+#	modified:   db/adc_mic_lcd.(45).cnf.hdb
+#	modified:   db/adc_mic_lcd.(46).cnf.cdb
+#	modified:   db/adc_mic_lcd.(46).cnf.hdb
+#	modified:   db/adc_mic_lcd.(47).cnf.cdb
+#	modified:   db/adc_mic_lcd.(47).cnf.hdb
+#	modified:   db/adc_mic_lcd.(48).cnf.cdb
+#	modified:   db/adc_mic_lcd.(48).cnf.hdb
+#	modified:   db/adc_mic_lcd.(49).cnf.cdb
+#	modified:   db/adc_mic_lcd.(49).cnf.hdb
+#	modified:   db/adc_mic_lcd.(5).cnf.cdb
+#	modified:   db/adc_mic_lcd.(5).cnf.hdb
+#	modified:   db/adc_mic_lcd.(50).cnf.cdb
+#	modified:   db/adc_mic_lcd.(50).cnf.hdb
+#	modified:   db/adc_mic_lcd.(51).cnf.cdb
+#	modified:   db/adc_mic_lcd.(51).cnf.hdb
+#	modified:   db/adc_mic_lcd.(52).cnf.cdb
+#	modified:   db/adc_mic_lcd.(52).cnf.hdb
+#	modified:   db/adc_mic_lcd.(53).cnf.cdb
+#	modified:   db/adc_mic_lcd.(53).cnf.hdb
+#	modified:   db/adc_mic_lcd.(54).cnf.cdb
+#	modified:   db/adc_mic_lcd.(54).cnf.hdb
+#	modified:   db/adc_mic_lcd.(55).cnf.cdb
+#	modified:   db/adc_mic_lcd.(55).cnf.hdb
+#	modified:   db/adc_mic_lcd.(56).cnf.cdb
+#	modified:   db/adc_mic_lcd.(56).cnf.hdb
+#	modified:   db/adc_mic_lcd.(57).cnf.cdb
+#	modified:   db/adc_mic_lcd.(57).cnf.hdb
+#	modified:   db/adc_mic_lcd.(58).cnf.cdb
+#	modified:   db/adc_mic_lcd.(58).cnf.hdb
+#	modified:   db/adc_mic_lcd.(59).cnf.cdb
+#	modified:   db/adc_mic_lcd.(59).cnf.hdb
+#	modified:   db/adc_mic_lcd.(6).cnf.cdb
+#	modified:   db/adc_mic_lcd.(6).cnf.hdb
+#	modified:   db/adc_mic_lcd.(60).cnf.cdb
+#	modified:   db/adc_mic_lcd.(60).cnf.hdb
+#	modified:   db/adc_mic_lcd.(61).cnf.cdb
+#	modified:   db/adc_mic_lcd.(61).cnf.hdb
+#	modified:   db/adc_mic_lcd.(62).cnf.cdb
+#	modified:   db/adc_mic_lcd.(62).cnf.hdb
+#	modified:   db/adc_mic_lcd.(63).cnf.cdb
+#	modified:   db/adc_mic_lcd.(63).cnf.hdb
+#	modified:   db/adc_mic_lcd.(64).cnf.cdb
+#	modified:   db/adc_mic_lcd.(64).cnf.hdb
+#	modified:   db/adc_mic_lcd.(65).cnf.cdb
+#	modified:   db/adc_mic_lcd.(65).cnf.hdb
+#	modified:   db/adc_mic_lcd.(66).cnf.cdb
+#	modified:   db/adc_mic_lcd.(66).cnf.hdb
+#	modified:   db/adc_mic_lcd.(67).cnf.cdb
+#	modified:   db/adc_mic_lcd.(67).cnf.hdb
+#	modified:   db/adc_mic_lcd.(7).cnf.cdb
+#	modified:   db/adc_mic_lcd.(7).cnf.hdb
+#	modified:   db/adc_mic_lcd.(8).cnf.cdb
+#	modified:   db/adc_mic_lcd.(8).cnf.hdb
+#	modified:   db/adc_mic_lcd.(9).cnf.cdb
+#	modified:   db/adc_mic_lcd.(9).cnf.hdb
+#	modified:   db/adc_mic_lcd.asm.qmsg
+#	modified:   db/adc_mic_lcd.asm.rdb
+#	modified:   db/adc_mic_lcd.asm_labs.ddb
+#	modified:   db/adc_mic_lcd.cmp.bpm
+#	modified:   db/adc_mic_lcd.cmp.cdb
+#	modified:   db/adc_mic_lcd.cmp.hdb
+#	modified:   db/adc_mic_lcd.cmp.idb
+#	modified:   db/adc_mic_lcd.cmp.logdb
+#	modified:   db/adc_mic_lcd.cmp.rdb
+#	modified:   db/adc_mic_lcd.db_info
+#	modified:   db/adc_mic_lcd.fit.qmsg
+#	modified:   db/adc_mic_lcd.hier_info
+#	modified:   db/adc_mic_lcd.hif
+#	modified:   db/adc_mic_lcd.lpc.html
+#	modified:   db/adc_mic_lcd.lpc.rdb
+#	modified:   db/adc_mic_lcd.lpc.txt
+#	modified:   db/adc_mic_lcd.map.bpm
+#	modified:   db/adc_mic_lcd.map.cdb
+#	modified:   db/adc_mic_lcd.map.hdb
+#	modified:   db/adc_mic_lcd.map.kpt
+#	modified:   db/adc_mic_lcd.map.qmsg
+#	modified:   db/adc_mic_lcd.map.rdb
+#	modified:   db/adc_mic_lcd.map_bb.cdb
+#	modified:   db/adc_mic_lcd.map_bb.hdb
+#	modified:   db/adc_mic_lcd.pplq.rdb
+#	modified:   db/adc_mic_lcd.pre_map.hdb
+#	modified:   db/adc_mic_lcd.root_partition.map.reg_db.cdb
+#	modified:   db/adc_mic_lcd.routing.rdb
+#	modified:   db/adc_mic_lcd.rtlv.hdb
+#	modified:   db/adc_mic_lcd.rtlv_sg.cdb
+#	modified:   db/adc_mic_lcd.rtlv_sg_swap.cdb
+#	modified:   db/adc_mic_lcd.sta.qmsg
+#	modified:   db/adc_mic_lcd.sta.rdb
+#	deleted:    db/adc_mic_lcd.sta_cmp.6_slow_1200mv_85c.tdb
+#	modified:   db/adc_mic_lcd.tis_db_list.ddb
+#	modified:   db/adc_mic_lcd.tiscmp.fast_1200mv_0c.ddb
+#	modified:   db/adc_mic_lcd.tiscmp.slow_1200mv_0c.ddb
+#	modified:   db/adc_mic_lcd.tiscmp.slow_1200mv_85c.ddb
+#	modified:   db/adc_mic_lcd.vpr.ammdb
+#	modified:   db/adc_mic_lcd_partition_pins.json
+#	modified:   db/ip/sldaf1daf55/alt_sld_fab.sopcinfo
+#	modified:   db/ip/sldaf1daf55/alt_sld_fab__report.html
+#	modified:   db/ip/sldaf1daf55/alt_sld_fab__report.xml
+#	modified:   db/prev_cmp_adc_mic_lcd.qmsg
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.autoh_e40e1.cmp.ammdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.autoh_e40e1.cmp.cdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.autoh_e40e1.cmp.hdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.autoh_e40e1.cmp.rcfdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.cmp.ammdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.cmp.cdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.cmp.hdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.cmp.rcfdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.cdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.dpi
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.hbdb.cdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.hbdb.hb_info
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.hbdb.hdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.hbdb.sig
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.hdb
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.root_partition.map.kpt
+#	modified:   incremental_db/compiled_partitions/adc_mic_lcd.rrp.hdb
+#	modified:   output_files/adc_mic_lcd.asm.rpt
+#	modified:   output_files/adc_mic_lcd.done
+#	modified:   output_files/adc_mic_lcd.fit.rpt
+#	modified:   output_files/adc_mic_lcd.fit.summary
+#	modified:   output_files/adc_mic_lcd.flow.rpt
+#	modified:   output_files/adc_mic_lcd.jdi
+#	modified:   output_files/adc_mic_lcd.map.rpt
+#	modified:   output_files/adc_mic_lcd.map.smsg
+#	modified:   output_files/adc_mic_lcd.map.summary
+#	modified:   output_files/adc_mic_lcd.pin
+#	modified:   output_files/adc_mic_lcd.pof
+#	modified:   output_files/adc_mic_lcd.sof
+#	modified:   output_files/adc_mic_lcd.sta.rpt
+#	modified:   output_files/adc_mic_lcd.sta.summary
+#
+# Untracked files:
+#	db/adc_mic_lcd.(68).cnf.cdb
+#	db/adc_mic_lcd.(68).cnf.hdb
+#	db/adc_mic_lcd.(69).cnf.cdb
+#	db/adc_mic_lcd.(69).cnf.hdb
+#	db/adc_mic_lcd.(70).cnf.cdb
+#	db/adc_mic_lcd.(70).cnf.hdb
+#	db/adc_mic_lcd.(71).cnf.cdb
+#	db/adc_mic_lcd.(71).cnf.hdb
+#	db/adc_mic_lcd.(72).cnf.cdb
+#	db/adc_mic_lcd.(72).cnf.hdb
+#	db/adc_mic_lcd.(73).cnf.cdb
+#	db/adc_mic_lcd.(73).cnf.hdb
+#	db/adc_mic_lcd.(74).cnf.cdb
+#	db/adc_mic_lcd.(74).cnf.hdb
+#	db/adc_mic_lcd.(75).cnf.cdb
+#	db/adc_mic_lcd.(75).cnf.hdb
+#	db/adc_mic_lcd.(76).cnf.cdb
+#	db/adc_mic_lcd.(76).cnf.hdb
+#	db/adc_mic_lcd.(77).cnf.cdb
+#	db/adc_mic_lcd.(77).cnf.hdb
+#	db/adc_mic_lcd.(78).cnf.cdb
+#	db/adc_mic_lcd.(78).cnf.hdb
+#	db/adc_mic_lcd.(79).cnf.cdb
+#	db/adc_mic_lcd.(79).cnf.hdb
+#	db/adc_mic_lcd.cbx.xml
+#	db/adc_mic_lcd.eda.qmsg
+#	db/adc_mic_lcd.quiproj.10080.rdr.flock
+#	db/adc_mic_lcd.sta_cmp.7_slow_1200mv_85c.tdb
+#	db/adc_mic_lcd.tiscmp.fastest_slow_1200mv_0c.ddb
+#	db/adc_mic_lcd.tiscmp.fastest_slow_1200mv_85c.ddb
+#	db/adc_mic_lcd.tmw_info
+#	db/adc_mic_lcd.zippleback_io_sim_cache.ii_0c_slow.hsd
+#	db/adc_mic_lcd.zippleback_io_sim_cache.ii_85c_slow.hsd
+#	greybox_tmp/
+#	output_files/adc_mic_lcd.eda.rpt
+#	simulation/modelsim/adc_mic_lcd.sft
+#	simulation/modelsim/adc_mic_lcd.vo
+#	simulation/modelsim/adc_mic_lcd_modelsim.xrf
+#
+

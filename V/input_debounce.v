@@ -1,8 +1,7 @@
 module input_debounce(
     input clk,
-    input PB,  // "PB" is the glitchy, asynchronous to clk, active low push-button signal
-
-    // from which we make three outputs, all synchronous to the clock
+    input PB, 
+	 input [24:0]load,
     output reg PB_state,  // 1 as long as the push-button is active (down)
     output PB_down,  // 1 for one clock cycle when the push-button goes down (i.e. just pushed)
     output PB_up   // 1 for one clock cycle when the push-button goes up (i.e. just released)
@@ -13,21 +12,45 @@ reg PB_sync_0;  always @(posedge clk) PB_sync_0 <= ~PB;  // invert PB to make PB
 reg PB_sync_1;  always @(posedge clk) PB_sync_1 <= PB_sync_0;
 
 // Next declare a 16-bits counter
-reg [5:0] PB_cnt;
-
+reg [5:0] 	PB_cnt;
+reg [24:0] 	PB_TRIG_CNT;
+reg PB_LOAD;
 // When the push-button is pushed or released, we increment the counter
 // The counter has to be maxed out before we decide that the push-button state has changed
 
 wire PB_idle = (PB_state==PB_sync_1);
 wire PB_cnt_max = &PB_cnt;	// true when all bits of PB_cnt are 1's
 
+
+
 always @(posedge clk)
-if(PB_idle)
+begin
+if(PB_idle==1)
+begin
     PB_cnt <= 0;  // nothing's going on
+	 PB_TRIG_CNT <= 0;
+end
 else
 begin
     PB_cnt <= PB_cnt + 6'd1;  // something's going on, increment the counter
     if(PB_cnt_max) PB_state <= ~PB_state;  // if the counter is maxed out, PB changed!
+end
+end
+
+always @(posedge clk)
+begin
+begin 
+if (~PB_idle & PB_cnt_max &  PB_state)
+	PB_LOAD <= 1;
+end
+begin	
+if (PB_LOAD == 1);
+	PB_TRIG_CNT = PB_TRIG_CNT + 1;
+end
+begin
+	if (PB_TRIG_CNT == load)
+		PB_TRIG_CNT <= 0;
+end
 end
 
 assign PB_down = ~PB_idle & PB_cnt_max & ~PB_state;

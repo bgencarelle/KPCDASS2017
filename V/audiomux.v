@@ -14,7 +14,7 @@ always@ (mclk)
  else 
  muxout <= $signed(d1);
 
- input_debounce (
+ input_debounce amuxdb (
 	.clk(aclk),
 	//.reset_n(RESET_DELAY_N),
 	.PB(sel),
