@@ -125,8 +125,8 @@ config_shift_register mem0 (
 		  .clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT),
 		  .dfilt(FILTER_OUT),
-		  .trig(KEY[0]),
-		  .shift_register_length(1009),
+		  .trig(!KEY[0]),
+		  .shift_register_length(50),
 		  .reset_n(!RESET_DELAY_n),
         .q(MEM0_OUT)    
         ); 

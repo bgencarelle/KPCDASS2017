@@ -15,54 +15,18 @@ module config_shift_register(
 	reg pushflag;
 	wire timeload;
 	wire cnt_reset;
-	reg [9:0] trig_cnt;
-	
-always @(negedge trig)
-	if ((reset_n )==1 )
-		begin
-		pushflag <= 0 ;
-		end
-	else	
-		
-		pushflag <= 1;	
-		end
-		if (&trig_cnt[3:0]==1)
-		begin
-		pushflag <=0;
-		end
-		
-		end
+	reg [10:0] trig_cnt;
 
-always @(posedge clk)
-		if ((reset_n )==1 )
-			begin
-				trig_cnt <= 0 ;
-			end
-			else
-				if (pushflag == 1 )
-						begin
-						
-						if (trig_cnt < 2047)
-							begin
-							stopflag <=0;
-							trig_cnt <= trig_cnt + 1;
-							end
-						else 
-							if (trig_cnt >= 2047)
-								begin
-									stopflag <= 1;
-									trig_cnt <= 0;
-								end
-						end
+ 
 
 
 		always@(posedge clk)
 		begin
-			if(!stopflag )
+			if(trig )
 				begin
 					d <= dnoise;
 				end
-			else if (stopflag)
+			else if (!trig)
 				begin
 					d <= dfilt;
 				end
@@ -73,16 +37,17 @@ always @(posedge clk)
 		if((reset_n ) == 1'b1)
 			rd_ptr <= 0;
 		else
-			rd_ptr <= rd_ptr + 1'b1;
+			rd_ptr <= rd_ptr + 1;
 				
 	reg [9:0] wr_ptr = 0;
 	always@(posedge clk)
 		if(reset_n == 1'b1)
 			wr_ptr <= 0;
-		else
+		else 
 			wr_ptr <= wr_ptr + 1'b1;
-			
-	memory_16bit_1024	memory_16bit_1024_inst (.clock(clk),
+
+		
+	memory_16bit_1024	memory_32bit_2048_inst (.clock(clk),
 															.aclr(reset_n),
 															.data(d),
 															.rdaddress(rd_ptr),
