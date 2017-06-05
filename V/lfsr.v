@@ -42,6 +42,6 @@ if (out == 0)
 	end 
 end
 
-	assign  out32 = $signed(out| 32'b10000000000000001000000000000000 );
+	assign  out32 = (out );
 
 endmodule // End Of Module counter

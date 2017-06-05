@@ -134,10 +134,10 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
 config_shift_register mem0 (  
 		  .clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT),
-		  .dfilt(FILTER_OUT),
-		  .trig(!KEY[0]),
-		  .shift_register_length(ADC_RD[11:0]),
-		  .reset_n(!RESET_DELAY_n),
+		  .dfilter(FILTER_OUT),
+		  .trig(KEY[0]),
+		  .shift_register_length(ADC_RD[11:4]),
+		  .reset_n(RESET_DELAY_n),
         .q(MEM0_OUT)    
         ); 
 
