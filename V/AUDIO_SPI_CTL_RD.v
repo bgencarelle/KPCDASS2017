@@ -51,7 +51,7 @@ if  ( CLK_DELAY  > 62  )   // 25= 1M clock  / 62 =400k
     CLK_DELAY <= 0; 
 	 CLK_1M    <= ~CLK_1M; 
 	end  
-	else CLK_DELAY <= CLK_DELAY + 1;
+	else CLK_DELAY <= CLK_DELAY + 1'b1;
 end
 
 
@@ -66,7 +66,7 @@ reg [31:0]RESET_DELAY ;
 end
 
 wire   ST_RESET  ;
-assign ST_RESET = ( RESET_DELAY == 100000/2)?0:1 ; 
+assign ST_RESET = ( RESET_DELAY == 100000/2)?1'b0:1'b1 ; 
 
 //==== SPI ST === // 
 always@( negedge RESET_n or posedge CLK_1M )begin
@@ -109,14 +109,14 @@ else
        ST       <=5;
 		 SCLK     <=0;
 		 READ_DATA[15:0]  <= {READ_DATA[14:0], DOUT } ; 
-		 COUNTER  <=COUNTER+1 ;
+		 COUNTER  <=COUNTER+1'b1 ;
   end 
 	5:begin 
        if (COUNTER !=16)  ST <=2;
 		 else begin 
 		       if (W_R==0) begin READ_DATA <=0; W_R<=1; W_REG_DATA <= { W_REG_DATA_R[15:8] ,8'hff } ; CS <=1; ST <= 2 ; 	SCLK     <=0;  COUNTER  <=0; end  //read
 				 else  begin 
-				   WORD_CNT <= WORD_CNT+1 ;
+				   WORD_CNT <= WORD_CNT+1'b1 ;
 				   ST <=6; 
 				   CS <=1; //<----CS 1
 				 end

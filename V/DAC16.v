@@ -44,7 +44,7 @@ module  DAC16  (
 		DELAY<=0; 
   end
   1: begin 
-      if ( DELAY != TIM ) DELAY<=DELAY+1 ;  
+      if ( DELAY != TIM ) DELAY<=DELAY+1'b1 ;  
 		else
 		begin 
       SCLK  <=0;
@@ -56,12 +56,12 @@ module  DAC16  (
   end
   2: begin 
       SCLK  <=1;	  
-	   CNT   <=CNT+1; 
+	   CNT   <=CNT+1'b1; 
 	   ST<= 3; 
 		DELAY<=0; 
    end
   3: begin 
-     if ( DELAY != TIM ) DELAY<=DELAY+1 ; 
+     if ( DELAY != TIM ) DELAY<=DELAY+1'b1 ; 
 	  else
 	  begin 
 		SCLK  <=0;	  
@@ -72,7 +72,7 @@ module  DAC16  (
 	  end
   end
   4: begin 
-       if ( DELAY != TIM ) DELAY<=DELAY+1 ; 
+       if ( DELAY != TIM ) DELAY<=DELAY+1'b1 ; 
 	  else
 	  begin 
 

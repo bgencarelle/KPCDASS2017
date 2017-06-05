@@ -66,7 +66,7 @@ begin
 	 end
   else  if  ( !AUDIO_BCLK  && rAUDIO_BCLK ) 
   begin 
-         WCLK_CNT<=WCLK_CNT +1 ; 
+         WCLK_CNT<=WCLK_CNT +1'b1 ; 
 			case (WCLK_CNT) 
 			1: LIND[15] <=  SDATA_IN  ; 
 			2: LIND[14] <=  SDATA_IN  ; 

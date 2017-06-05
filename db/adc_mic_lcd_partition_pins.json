@@ -4,11 +4,19 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "HEX0[0]",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "HEX0[1]",
+					"name" : "LEDR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX0[0]",
 					"strict" : false
 				},
 				{
@@ -197,10 +205,6 @@
 				},
 				{
 					"name" : "SW[2]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[0]",
 					"strict" : false
 				},
 				{

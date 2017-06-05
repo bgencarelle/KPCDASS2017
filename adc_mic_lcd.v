@@ -98,7 +98,7 @@ wire          			ADC_RESPONSE ;
 wire  [RANGE:TRUNC]  TODAC ; 
 wire          			ROM_CK ; 
 wire          			MCLK_48M ; // 48MHZ
-wire  [RANGE:0]   	SUM_AUDIO ; 
+wire  [RANGE:TRUNC]   	SUM_AUDIO ; 
 wire	[9:0]   			LED ; //mistake in standard implementation
 wire          			MTL_CLK ;  // 33MHZ
 reg           			RESET_DELAY_n ; 
@@ -112,6 +112,15 @@ reg   [31:0]  			DELAY_CNT;
 
 assign MASTER_OUT =FILTER_OUT[RANGE:TRUNC];
 
+//dff_chain_4 dffchain0 (  
+//		  .a_clk(AUDIO_WCLK),
+//		  .d0(SEED_OUT),
+//		  .d1(FILTER_OUT),
+//		  .sel(!KEY[0]),
+//			.reset_n(!RESET_DELAY_n),
+//        .q(MEM0_OUT)  
+//		  
+//        ); 
 pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
 	 .outclk(AUDIO_WCLK),
@@ -121,17 +130,17 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
 //  .q_saw(SAW_OUT);	 
     );
 	 
+	 
 config_shift_register mem0 (  
 		  .clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT),
 		  .dfilt(FILTER_OUT),
 		  .trig(!KEY[0]),
-		  .shift_register_length(50),
+		  .shift_register_length(ADC_RD[11:0]),
 		  .reset_n(!RESET_DELAY_n),
         .q(MEM0_OUT)    
         ); 
 
-		
 filter filt0 (
 		 .filt_sel(SW[2:0]),
 		 .clk(AUDIO_WCLK), 
@@ -164,24 +173,32 @@ I2S_ASSESS  i2s(
 	.ADC_MIC      ( MASTER_OUT), 
 	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
 	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
-	.ROM_ADDR     ( ROM_ADDR), 
+//	.ROM_ADDR     ( ROM_ADDR), 
 	.ROM_CK       ( ROM_CK ),
 	.SUM_AUDIO    ( SUM_AUDIO ) 
 	
 	) ; 
 
 
-always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 ) begin 
+always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 )  
+begin
 
-if (!FPGA_RESET_n )  begin 
-     RESET_DELAY_n<=0;
+if (!FPGA_RESET_n )  
+	begin 
+     RESET_DELAY_n <=0;
      DELAY_CNT   <=0;
-end 
-else  begin 
-  if ( DELAY_CNT < 32'hfffff  )  
+	end 
+
+	else  if ( DELAY_CNT < 32'hfffff  )  
+  begin
   DELAY_CNT<=DELAY_CNT+1; 
-  else RESET_DELAY_n <=1;
- end
+  end
+ else 
+	begin
+		RESET_DELAY_n <=1;
+	end
+	
+	
 end
 
 //--- MIC  TO  MAX10-ADC  ----
@@ -190,14 +207,14 @@ MAX10_ADC   madc(
 	.SYS_CLK ( AUDIO_MCLK   ),
 	.SYNC_TR ( SAMPLE_TR    ),
 	.RESET_n ( RESET_DELAY_n),
-	.ADC_CH  ( 3'b111),
+	.ADC_CH  ( 4'b1000),
 	.DATA    (ADC_RD ) ,
 	.DATA_VALID(ADC_RESPONSE),
 	.FITER_EN (1) 
  );
 
 //--------------DAC out --------------------
-assign      TODAC = {~SUM_AUDIO[15] ,  SUM_AUDIO[14:0] }  ; 
+assign      TODAC = {~SUM_AUDIO[RANGE] ,  SUM_AUDIO[RANGE-1:TRUNC] }  ; 
 //
 DAC16 dac1 (
 	.LOAD    ( ROM_CK   ) ,
@@ -243,7 +260,7 @@ LED_METER   led(
    .RESET_n   ( RESET_DELAY_n), 
 	.CLK   ( AUDIO_MCLK )  , 
 	.SAMPLE_TR ( SAMPLE_TR) , 
-	.VALUE ( FILTER_OUT ) ,
+	.VALUE ( ADC_RD[11:0] ) ,
 	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
@@ -251,7 +268,7 @@ LED_METER   led(
 assign GPIO[0] = AUDIO_WCLK; 
 
 //--METER TO LED --  
-//assign LEDR =  LED ; 
+assign LEDR =  LED ; 
 assign HEX0 = ~HEXR;
 
 //---MTL2 --- 

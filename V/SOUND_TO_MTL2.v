@@ -89,9 +89,9 @@ reg [7:0]CNT ;
 
 always @(posedge SAMPLE_TR )  begin 
 rMTL2_VSD <= MTL2_VSD ; 
-if (CNT >= SCAL) CNT<=0 ; else CNT<= CNT+1 ; 
+if (CNT >= SCAL) CNT<=0 ; else CNT<= CNT+1'b1 ; 
 if  ( ( !rMTL2_VSD &&  MTL2_VSD   ) && ( SW_ADDR > 1000))  begin 
-     SW_ADDR <= (START_STOP)? 0     : SW_ADDR;
+     SW_ADDR <= (START_STOP)? 1'b0     : SW_ADDR;
 	  PW_CH   <= (START_STOP)? ~PW_CH: PW_CH ; 
 end   
 else  
@@ -101,7 +101,7 @@ else
 	   SW_ADDR <= SW_ADDR  ; 
 	end
 	else  if (CNT==0)   begin 
-	      SW_ADDR   <=    SW_ADDR+1; 
+	      SW_ADDR   <=    SW_ADDR+1'b1; 
 		
 		 end
 	end 

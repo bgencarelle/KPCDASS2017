@@ -89,7 +89,7 @@ begin
 	begin
 		//	H_Sync Counter
 		if( H_Cont < H_SYNC_TOTAL )
-		H_Cont	<=	H_Cont+1;
+		H_Cont	<=	H_Cont+1'b1;
 		else
 		H_Cont	<=	0;
 		//	H_Sync Generator
@@ -115,7 +115,7 @@ begin
 		begin
 			//	V_Sync Counter
 			if( V_Cont < V_SYNC_TOTAL )
-			V_Cont	<=	V_Cont+1;
+			V_Cont	<=	V_Cont+1'b1;
 			else
 			V_Cont	<=	0;
 			//	V_Sync Generator

@@ -9,7 +9,7 @@ module  AUDIO_SRCE  (
 
  output reg [7:0] ROM_ADDR ,
  output reg       ROM_CK ,
- output reg       L2  , 
+// output reg       L2  , 
  
  //--test
  output reg [7:0]ST  ,
@@ -40,7 +40,7 @@ module  AUDIO_SRCE  (
   3: begin 
 	           ST<=4  ;  
 			     if ( ROM_ADDR > 192 )  ROM_ADDR <=0;
-			     else  ROM_ADDR <=ROM_ADDR+1 ; 		 
+			     else  ROM_ADDR <=ROM_ADDR+1'b1 ; 		 
 	end
   4: begin  
        ROM_CK <=1;		
