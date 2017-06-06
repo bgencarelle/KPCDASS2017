@@ -139,7 +139,8 @@ config_shift_register mem0 (
 		  .trig(!KEY[0]),
 		  .shift_register_length(ADC_RD[11:3]),
 		  .reset_n(RESET_DELAY_n),
-        .q(MEM0_OUT)    
+        .q(MEM0_OUT),
+			.led(LED[0])
         ); 
 
 filter filt0 (
@@ -262,7 +263,7 @@ LED_METER   led(
 	.CLK   ( AUDIO_MCLK )  , 
 	.SAMPLE_TR ( SAMPLE_TR) , 
 	.VALUE ( ADC_RD[11:0] ) ,
-	.LED   (  LED ), 	
+	.LED   (  LED[9:1] ), 	
 	.HEXR (HEXR)
 ) ; 
 

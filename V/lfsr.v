@@ -12,7 +12,7 @@ enable          ,  // Enable  for counter
 clk             ,  // clock input
 reset              // reset input
 );
-reg signed [31:0] randarr [3:0];
+reg signed [31:0] randarr [2:0];
 reg signed [33:0] randavg;
 //----------Output Ports--------------
 output wire signed [31:0] out32;
@@ -43,7 +43,7 @@ if (out == 0)
 	randarr[0] <= out;
 	randarr[1] <= randavg[0];
 	randarr[2] <= randarr[1];
-	randavg <= out + randarr[0] + randarr[1] + randarr[2] + randarr[3];
+	randavg <= out + randarr[0] + randarr[1] + randarr[2];
 	end 
 end
 

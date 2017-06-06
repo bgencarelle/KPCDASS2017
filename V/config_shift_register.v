@@ -7,53 +7,37 @@ module  config_shift_register(
 	input wire signed [31:0] dfilter,
 	input wire trig,
 	input wire [8:0] shift_register_length,
-	output  wire signed [31:0] q
+	output  wire signed [31:0] q,
+	output wire led
 	);
+	
 	reg signed [31:0] d;
-	reg [11:0] i;
+	reg [9:0] i;
 	integer load;
 	integer loadvar = 1;
 	reg cnt_clr;
 	reg cnt_reset;
-	wire trig_reset;
-	wire trig_up;
+	reg trig_reset;
+	reg trig_up;
 	reg trigged;
 	reg [9:0] rd_ptr = 0;
-	wire [11:0] count;
+	wire [8:0] count;
+
+
 
 	always@ (posedge clk)
 	begin
-	
-	if ((reset_n == 1'b0) ||(trig_reset == 1'b1))
-		begin
-			cnt_clr <=1'b1;
-			trigged <=1'b1;
-		end
-	else if (trig_reset == 1'b0)
-		begin
-			cnt_clr <=1'b0;
-			if (count < load)
-					begin
-					trigged <=1'b1;
-					cnt_clr <=1'b0;
-					end
-			else if (count >= load)
-					begin
-					trigged <=1'b0;
-					cnt_clr <=1'b1;
-					end
-		end
-	end
-	
-	always@ (posedge clk)
-	begin
-	if (trigged == 1'b1)
+	if (trig == 1'b1)
 		begin
 		d <= dnoise;
+		trigged <= trig;
+		trig_reset <= trigged;
 		end
-	else if (trigged !=1'b1)
+	else if (trig !=1'b1)
 		begin
 		d <= dfilter;
+		trigged <= trig;
+		trig_reset <= trigged;
 		end
 	end
 	
@@ -74,7 +58,7 @@ module  config_shift_register(
 	
 	always@(posedge clk)
 	begin
-		if((reset_n == 1'b0) || (trig_reset == 1'b1))
+		if((reset_n == 1'b1) || (trig_reset == 1'b1))
 			begin
 				rd_ptr <= 0;
 			end
@@ -95,7 +79,7 @@ module  config_shift_register(
 	reg [9:0] wr_ptr = 0;
 	always@(posedge clk)
 	begin
-		if((reset_n == 1'b0 ) )
+		if((reset_n == 1'b1 ) )
 			begin
 				wr_ptr <= 0;
 			end
@@ -105,7 +89,7 @@ module  config_shift_register(
 					
 					if (trig_reset == 1'b1 )
 						begin
-							wr_ptr <= 1'b0;
+							wr_ptr <= i-1'b0;
 						end
 			end
 			
@@ -114,14 +98,15 @@ module  config_shift_register(
 						wr_ptr <= 1'b0;
 					end
 	end
+assign led = ~trig ;
 
 	input_debounce mem_db(
-						.clk(m_clk),
+						.clk(clk),
 						.PB(trig), 
 //						.PB_state(trig_up),  // 1 as long as the push-button is active (down)
-						.PB_down(trig_reset),// 1 for one clock cycle when the push-button goes down 
+//						.PB_down(trig_reset)// 1 for one clock cycle when the push-button goes down 
 //						.PB_up(trig_up)// 1 for one clock cycle when the push-button goes up (i.e. just released)
-);
+								);
 varcnt mem_cnt(
 						.clock(clk),
 						.sclr(cnt_clr),

@@ -1,6 +1,6 @@
 module input_debounce(
     input clk,
-    input PB, 
+    input PB,
     output reg PB_state,  // 1 as long as the push-button is active (down)
     output PB_down,  // 1 for one clock cycle when the push-button goes down (i.e. just pushed)
     output PB_up   // 1 for one clock cycle when the push-button goes up (i.e. just released)
@@ -11,7 +11,7 @@ reg PB_sync_0;  always @(posedge clk) PB_sync_0 <= ~PB;  // invert PB to make PB
 reg PB_sync_1;  always @(posedge clk) PB_sync_1 <= PB_sync_0;
 
 // Next declare a 16-bits counter
-reg [4:0] 	PB_cnt;
+reg [15:0] 	PB_cnt;
 // When the push-button is pushed or released, we increment the counter
 // The counter has to be maxed out before we decide that the push-button state has changed
 
