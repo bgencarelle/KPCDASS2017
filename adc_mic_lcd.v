@@ -125,7 +125,7 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
 	 .outclk(AUDIO_WCLK),
 	 .reset(!RESET_DELAY_n),
-//	 .freq_in(ADCCTRL);
+//	 .freq_in(ADCCTRL),
     .q_pwm(PWM_OUT[15:0])
 //  .q_saw(SAW_OUT);	 
     );
@@ -134,13 +134,12 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .dnoise(({PWM_OUT[15:0],15'b0})),
+		  .dnoise(SEED_OUT),
 		  .dfilter(FILTER_OUT),
-		  .trig(!KEY[0]),
-		  .shift_register_length(ADC_RD[11:3]),
+		  .trig(KEY[0]),
+		  .shift_register_length(ADC_RD[11:4]),
 		  .reset_n(RESET_DELAY_n),
-        .q(MEM0_OUT),
-			.led(LED[0])
+        .q(MEM0_OUT)    
         ); 
 
 filter filt0 (
@@ -263,7 +262,7 @@ LED_METER   led(
 	.CLK   ( AUDIO_MCLK )  , 
 	.SAMPLE_TR ( SAMPLE_TR) , 
 	.VALUE ( ADC_RD[11:0] ) ,
-	.LED   (  LED[9:1] ), 	
+	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
 
