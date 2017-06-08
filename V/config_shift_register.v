@@ -5,8 +5,9 @@ module  config_shift_register(
 	input wire m_clk,
 	input  wire signed [31:0] dnoise,
 	input wire signed [31:0] dfilter,
+	input wire [1:0] octave,
 	input wire trig,
-	input wire [8:0] shift_register_length,
+	input wire [9:0] shift_register_length,
 	output  wire signed [31:0] q
 	);
 	reg signed [31:0] d;
@@ -61,19 +62,19 @@ module  config_shift_register(
 
 	always@ (posedge clk)
 	begin
-	if (shift_register_length >= 3'b100)
+	if (shift_register_length>>octave >= 3'b100)
 		begin
-		i <= shift_register_length;
+		i <= shift_register_length>>octave ;
 		load <= i <<loadvar;
 		end
-		else if (shift_register_length < 3'b100)
+		else if (shift_register_length>>octave < 3'b100)
 		begin
 		i <= 3'b100;
 		load <= i <<loadvar;
 		end
 	end
 
-	reg [9:0] rd_ptr = 0;
+	reg [10:0] rd_ptr = 0;
 	always@(posedge clk)
 	begin
 		if((reset_n == 1'b0))
@@ -98,7 +99,7 @@ module  config_shift_register(
 			end
 	end
 	
-	reg [9:0] wr_ptr = 0;
+	reg [10:0] wr_ptr = 0;
 	always@(posedge clk)
 	begin
 		if((reset_n == 1'b0 ) || (trig_reset == 1'b1))

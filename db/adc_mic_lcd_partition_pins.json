@@ -240,6 +240,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "SW[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[8]",
+					"strict" : false
+				},
+				{
 					"name" : "KEY[0]",
 					"strict" : false
 				},
