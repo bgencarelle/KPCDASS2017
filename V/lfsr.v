@@ -9,15 +9,17 @@ module lfsr    (
 out32				 ,  // 32 bit 
 data			    ,
 enable          ,  // Enable  for counter
+a_clk					,
 clk             ,  // clock input
 reset              // reset input
 );
 
 //----------Output Ports--------------
-output wire  [31:0] out32;
+output wire signed  [31:0] out32;
+reg signed [31:0] out32hold;
 //------------Input Ports--------------
-input  wire signed [11:0] data;
-input enable, clk, reset;
+input  wire [11:0] data;
+input enable, a_clk, clk, reset;
 //------------Internal Variables--------
 reg signed [31:0] out;
 wire        linear_feedback;
@@ -41,7 +43,11 @@ if (out == 0)
 	out <= {out[30:0], linear_feedback};
 	end 
 end
-
-	assign  out32 = (out );
-
+	always @(posedge a_clk)
+	begin
+	out32hold <= $signed(out );
+	end
+	
+	assign out32 = out32hold;
+	
 endmodule // End Of Module counter

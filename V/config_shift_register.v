@@ -6,7 +6,7 @@ module  config_shift_register(
 	input  wire signed [31:0] dnoise,
 	input wire signed [31:0] dfilter,
 	input wire trig,
-	input wire [7:0] shift_register_length,
+	input wire [8:0] shift_register_length,
 	output  wire signed [31:0] q
 	);
 	reg signed [31:0] d;
@@ -19,12 +19,18 @@ module  config_shift_register(
 	wire trig_up;
 	reg trigged;
 	reg cnt_reset_reset;
-	reg [9:0] rd_ptr = 0;
-	wire [11:0] count;
+
+	wire [15:0] count;
 
 	always@ (posedge clk)
 	begin
-	if ((trig_reset == 1'b1)|| (reset_n == 1'b0) )
+	if ((reset_n == 1'b0) )
+	begin 
+			trigged <=1'b0;
+			cnt_clr <=1'b1;
+	end
+	
+	else if ((trig_reset == 1'b1) )
 	begin
 			trigged <=1'b1;
 			cnt_clr <=1'b1;
@@ -48,7 +54,7 @@ module  config_shift_register(
 		end
 	else if (trigged !=1'b1)
 		begin
-		d <= (dfilter);
+		d <= dfilter;
 		end
 	end
 	
@@ -66,20 +72,25 @@ module  config_shift_register(
 		load <= i <<loadvar;
 		end
 	end
-	
+
+	reg [9:0] rd_ptr = 0;
 	always@(posedge clk)
 	begin
-		if((trigged ==1'b1) ||(reset_n == 1'b0) || (trig_reset == 1'b1))
+		if((reset_n == 1'b0))
+			begin
+				rd_ptr <= 0;
+			end
+		if(trigged ==1'b1 || trig_reset == 1'b1)
 			begin
 				rd_ptr <= 0;
 			end
 		else if (rd_ptr < i)
 			begin
 				rd_ptr <= rd_ptr + 1'b1;
-//				if ((trigged ==1'b1) | (trig_reset == 1'b1))
-//				begin
-//				rd_ptr <= 1'b0;
-//				end
+				if ((trigged ==1'b1) || (trig_reset == 1'b1))
+				begin
+				rd_ptr <= 1'b0;
+				end
 			end
 		else if (rd_ptr >= i)
 			begin
@@ -122,7 +133,7 @@ varcnt mem_cnt(
 						.q(count)
 			);
 			
-	memory_16bit_1024	memory_16bit_1024_inst (.clock(clk),
+	ram_4096_32bit	shift_reg_ram (.clock(clk),
 															.aclr(~reset_n),
 															.data(d),
 															.rdaddress(rd_ptr),

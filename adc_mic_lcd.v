@@ -137,7 +137,7 @@ config_shift_register mem0 (
 		  .dnoise(SEED_OUT),
 		  .dfilter(FILTER_OUT),
 		  .trig(KEY[0]),
-		  .shift_register_length(ADC_RD[11:4]),
+		  .shift_register_length(ADC_RD[11:3]),
 		  .reset_n(RESET_DELAY_n),
         .q(MEM0_OUT)    
         ); 
@@ -154,7 +154,8 @@ lfsr lfsr1 (
 		 .out32(SEED_OUT),
 		 .data(ADC_RD),
 		 .enable(1),  // Enable  for counter
-		 .clk(AUDIO_WCLK),  // clock input
+		 .a_clk(AUDIO_WCLK),  // clock input
+		 .clk(MAX10_CLK1_50),  // clock input
 		 .reset(!RESET_DELAY_n) 
 		 );
 		 
