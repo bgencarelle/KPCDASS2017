@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adc_mic_lcd
-Thu Jun 08 18:50:11 2017
+Fri Jun 09 02:00:44 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -124,7 +124,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 08 18:50:11 2017       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 09 02:00:43 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -2761,7 +2761,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Thu Jun 08 18:49:36 2017
+    Info: Processing started: Fri Jun 09 02:00:10 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Warning (125092): Tcl Script File V/memory_32bit_2048.qip not found
     Info (125063): set_global_assignment -name QIP_FILE V/memory_32bit_2048.qip
@@ -2852,8 +2852,8 @@ Info (12127): Elaborating entity "adc_mic_lcd" for the top level hierarchy
 Warning (10034): Output port "HEX1" at adc_mic_lcd.v(29) has no driver File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 29
 Warning (10034): Output port "GPIO[7..1]" at adc_mic_lcd.v(71) has no driver File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 71
 Warning (10034): Output port "MTL2_I2C_SCL" at adc_mic_lcd.v(56) has no driver File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 56
-Info (12128): Elaborating entity "pulse_width_modulation_gen" for hierarchy "pulse_width_modulation_gen:pwm1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 131
-Info (12128): Elaborating entity "config_shift_register" for hierarchy "config_shift_register:mem0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 144
+Info (12128): Elaborating entity "pulse_width_modulation_gen" for hierarchy "pulse_width_modulation_gen:pwm1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 122
+Info (12128): Elaborating entity "config_shift_register" for hierarchy "config_shift_register:mem0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 135
 Warning (10764): Verilog HDL warning at config_shift_register.v(68): converting signed shift amount to unsigned File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/config_shift_register.v Line: 68
 Warning (10764): Verilog HDL warning at config_shift_register.v(73): converting signed shift amount to unsigned File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/config_shift_register.v Line: 73
 Info (12128): Elaborating entity "input_debounce" for hierarchy "config_shift_register:mem0|input_debounce:mem_db" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/config_shift_register.v Line: 130
@@ -2895,11 +2895,11 @@ Info (12133): Instantiated megafunction "config_shift_register:mem0|ram_4096_32b
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1fr1.tdf
     Info (12023): Found entity 1: altsyncram_1fr1 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_1fr1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_1fr1" for hierarchy "config_shift_register:mem0|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_1fr1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "filter" for hierarchy "filter:filt0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 152
-Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:lfsr1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 161
-Info (12128): Elaborating entity "I2S_ASSESS" for hierarchy "I2S_ASSESS:i2s" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 183
+Info (12128): Elaborating entity "filter" for hierarchy "filter:filt0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 143
+Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:lfsr1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 152
+Info (12128): Elaborating entity "I2S_ASSESS" for hierarchy "I2S_ASSESS:i2s" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 174
 Info (12128): Elaborating entity "AUDIO_SRCE" for hierarchy "I2S_ASSESS:i2s|AUDIO_SRCE:audi2" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/I2S_ASSESS.v Line: 136
-Info (12128): Elaborating entity "MAX10_ADC" for hierarchy "MAX10_ADC:madc" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 217
+Info (12128): Elaborating entity "MAX10_ADC" for hierarchy "MAX10_ADC:madc" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 208
 Warning (10230): Verilog HDL assignment warning at MAX10_ADC.v(67): truncated value with size 32 to match size of target (12) File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/MAX10_ADC.v Line: 67
 Info (12128): Elaborating entity "adc_qsys" for hierarchy "MAX10_ADC:madc|adc_qsys:u0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/MAX10_ADC.v Line: 53
 Info (12128): Elaborating entity "adc_qsys_altpll_sys" for hierarchy "MAX10_ADC:madc|adc_qsys:u0|adc_qsys_altpll_sys:altpll_sys" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/adc_qsys.v Line: 40
@@ -2953,8 +2953,8 @@ Info (12128): Elaborating entity "fiftyfivenm_adcblock_primitive_wrapper" for hi
 Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/adc_qsys.v Line: 122
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_reset_controller.v Line: 208
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "MAX10_ADC:madc|adc_qsys:u0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_reset_controller.v Line: 220
-Info (12128): Elaborating entity "DAC16" for hierarchy "DAC16:dac1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 231
-Info (12128): Elaborating entity "AUDIO_PLL" for hierarchy "AUDIO_PLL:pll" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 239
+Info (12128): Elaborating entity "DAC16" for hierarchy "DAC16:dac1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 222
+Info (12128): Elaborating entity "AUDIO_PLL" for hierarchy "AUDIO_PLL:pll" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 230
 Info (12128): Elaborating entity "altpll" for hierarchy "AUDIO_PLL:pll|altpll:altpll_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_PLL.v Line: 99
 Info (12130): Elaborated megafunction instantiation "AUDIO_PLL:pll|altpll:altpll_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_PLL.v Line: 99
 Info (12133): Instantiated megafunction "AUDIO_PLL:pll|altpll:altpll_component" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_PLL.v Line: 99
@@ -3023,7 +3023,7 @@ Info (12133): Instantiated megafunction "AUDIO_PLL:pll|altpll:altpll_component" 
 Info (12021): Found 1 design units, including 1 entities, in source file db/audio_pll_altpll.v
     Info (12023): Found entity 1: AUDIO_PLL_altpll File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/audio_pll_altpll.v Line: 30
 Info (12128): Elaborating entity "AUDIO_PLL_altpll" for hierarchy "AUDIO_PLL:pll|altpll:altpll_component|AUDIO_PLL_altpll:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "AUDIO_SPI_CTL_RD" for hierarchy "AUDIO_SPI_CTL_RD:u1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 256
+Info (12128): Elaborating entity "AUDIO_SPI_CTL_RD" for hierarchy "AUDIO_SPI_CTL_RD:u1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 247
 Warning (10036): Verilog HDL or VHDL warning at AUDIO_SPI_CTL_RD.v(68): object "ST_RESET" assigned a value but never read File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_SPI_CTL_RD.v Line: 68
 Warning (10034): Output port "oDATA8" at AUDIO_SPI_CTL_RD.v(8) has no driver File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_SPI_CTL_RD.v Line: 8
 Info (12128): Elaborating entity "SPI_RAM" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_SPI_CTL_RD.v Line: 163
@@ -3065,10 +3065,10 @@ Info (12133): Instantiated megafunction "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncra
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 302
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
-Info (12128): Elaborating entity "LED_METER" for hierarchy "LED_METER:led" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 269
+Info (12128): Elaborating entity "LED_METER" for hierarchy "LED_METER:led" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 260
 Info (12128): Elaborating entity "PEAK_DELAY" for hierarchy "LED_METER:led|PEAK_DELAY:pk" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/LED_METER.v Line: 36
 Warning (10036): Verilog HDL or VHDL warning at PEAK_DELAY.v(13): object "SUM" assigned a value but never read File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/PEAK_DELAY.v Line: 13
-Info (12128): Elaborating entity "PLL_VGA" for hierarchy "PLL_VGA:PP" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 283
+Info (12128): Elaborating entity "PLL_VGA" for hierarchy "PLL_VGA:PP" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 274
 Info (12128): Elaborating entity "altpll" for hierarchy "PLL_VGA:PP|altpll:altpll_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/PLL_VGA.v Line: 104
 Info (12130): Elaborated megafunction instantiation "PLL_VGA:PP|altpll:altpll_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/PLL_VGA.v Line: 104
 Info (12133): Instantiated megafunction "PLL_VGA:PP|altpll:altpll_component" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/PLL_VGA.v Line: 104
@@ -3130,7 +3130,7 @@ Info (12133): Instantiated megafunction "PLL_VGA:PP|altpll:altpll_component" wit
 Info (12021): Found 1 design units, including 1 entities, in source file db/pll_vga_altpll.v
     Info (12023): Found entity 1: PLL_VGA_altpll File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/pll_vga_altpll.v Line: 31
 Info (12128): Elaborating entity "PLL_VGA_altpll" for hierarchy "PLL_VGA:PP|altpll:altpll_component|PLL_VGA_altpll:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "SOUND_TO_MTL2" for hierarchy "SOUND_TO_MTL2:sm" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 304
+Info (12128): Elaborating entity "SOUND_TO_MTL2" for hierarchy "SOUND_TO_MTL2:sm" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 295
 Warning (10230): Verilog HDL assignment warning at SOUND_TO_MTL2.v(58): truncated value with size 32 to match size of target (24) File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/SOUND_TO_MTL2.v Line: 58
 Info (12128): Elaborating entity "VGA_Controller" for hierarchy "SOUND_TO_MTL2:sm|VGA_Controller:vc" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/SOUND_TO_MTL2.v Line: 42
 Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(55): truncated value with size 32 to match size of target (10) File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/VGA_Controller.v Line: 55
@@ -3162,7 +3162,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_soj1 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_soj1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_soj1" for hierarchy "SOUND_TO_MTL2:sm|PIPO:P1|altsyncram:altsyncram_component|altsyncram_soj1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2017.06.08.18:49:58 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2017.06.09.02:00:31 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -3302,10 +3302,10 @@ Info (21057): Implemented 2684 device resources after synthesis - the final reso
     Info (21064): Implemented 66 RAM segments
     Info (21065): Implemented 3 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 102 warnings
-    Info: Peak virtual memory: 745 megabytes
-    Info: Processing ended: Thu Jun 08 18:50:11 2017
-    Info: Elapsed time: 00:00:35
-    Info: Total CPU time (on all processors): 00:01:08
+    Info: Peak virtual memory: 748 megabytes
+    Info: Processing ended: Fri Jun 09 02:00:44 2017
+    Info: Elapsed time: 00:00:34
+    Info: Total CPU time (on all processors): 00:01:04
 
 
 +------------------------------------------+
