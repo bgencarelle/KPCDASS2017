@@ -1,5 +1,5 @@
 Fitter report for adc_mic_lcd
-Fri Jun 09 02:01:10 2017
+Fri Jun 09 02:08:28 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -76,7 +76,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Fri Jun 09 02:01:10 2017       ;
+; Fitter Status                      ; Successful - Fri Jun 09 02:08:28 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -162,18 +162,18 @@ agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 1.45        ;
+; Average used               ; 1.43        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.5%      ;
-;     Processor 3            ;   6.4%      ;
-;     Processor 4            ;   6.4%      ;
-;     Processor 5            ;   6.3%      ;
-;     Processor 6            ;   6.3%      ;
-;     Processor 7            ;   6.3%      ;
-;     Processor 8            ;   6.3%      ;
+;     Processor 2            ;   6.2%      ;
+;     Processor 3            ;   6.1%      ;
+;     Processor 4            ;   6.1%      ;
+;     Processor 5            ;   6.1%      ;
+;     Processor 6            ;   6.1%      ;
+;     Processor 7            ;   6.1%      ;
+;     Processor 8            ;   6.0%      ;
 +----------------------------+-------------+
 
 
@@ -3216,7 +3216,7 @@ Info (170195): Router estimated average interconnect usage is 1% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:04
-Info (11888): Total time spent on timing analysis during the Fitter is 1.46 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.49 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -3242,10 +3242,10 @@ Warning (169064): Following 7 pins have no output enable or a GND or VCC output 
 Warning (169202): Inconsistent VCCIO across multiple banks of configuration pins. The configuration pins are contained in 2 banks in 'Internal Configuration' configuration scheme and there are 2 different VCCIOs.
 Info (144001): Generated suppressed messages file C:/Users/ben/Documents/GitHub/KPCDASS2017/output_files/adc_mic_lcd.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 1853 megabytes
-    Info: Processing ended: Fri Jun 09 02:01:11 2017
-    Info: Elapsed time: 00:00:26
-    Info: Total CPU time (on all processors): 00:00:53
+    Info: Peak virtual memory: 1855 megabytes
+    Info: Processing ended: Fri Jun 09 02:08:29 2017
+    Info: Elapsed time: 00:00:27
+    Info: Total CPU time (on all processors): 00:00:52
 
 
 +----------------------------+
