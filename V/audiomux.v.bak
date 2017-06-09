@@ -1,6 +1,0 @@
-module audiomux (
-
-input wire [15:0] dnoise,
-input wire [15:0] dfilter,
-input wire sel,
-output [15:0] muxout
