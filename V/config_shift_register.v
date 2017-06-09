@@ -3,13 +3,15 @@
 module  config_shift_register(
 	input wire clk, input wire reset_n,
 	input wire m_clk,
-	input  wire signed [31:0] dnoise,
-	input wire signed [31:0] dfilter,
+	input wire signed [31:0] dnoise,
+	input wire  [2:0] filtsw,
 	input wire [1:0] octave,
 	input wire trig,
 	input wire [9:0] shift_register_length,
-	output  wire signed [31:0] q
+	output  wire signed [31:0] qout
 	);
+	wire signed [31:0] q;
+	wire signed [31:0] dfilter;
 	reg signed [31:0] d;
 	integer i;
 	integer load;
@@ -134,7 +136,7 @@ varcnt mem_cnt(
 						.q(count)
 			);
 			
-	ram_4096_32bit	shift_reg_ram (.clock(clk),
+	ram_4096_32bit	shift_reg_ram (				.clock(clk),//RAM
 															.aclr(~reset_n),
 															.data(d),
 															.rdaddress(rd_ptr),
@@ -144,4 +146,13 @@ varcnt mem_cnt(
 															.q(q)
 															);
 															
+															filter filt0 (//FILTER
+															 .filt_sel(filtsw),
+															 .clk(clk), 
+															 .d(q),
+															 .sclr(~reset_n),
+															 .q(dfilter),
+															 );
+															 
+	assign qout = dfilter;
 endmodule 

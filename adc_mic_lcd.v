@@ -80,6 +80,9 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1,
 // ### USER DEFINED
 wire signed [15:0]		PWM_OUT;
 wire signed [RANGE:0]		MEM0_OUT;
+wire signed [RANGE:0]		MEM1_OUT;
+
+reg signed [RANGE+1:0]		MIX_OUT;
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -110,7 +113,7 @@ reg   [31:0]  			DELAY_CNT;
 //=======================================================
 // ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
-assign MASTER_OUT =FILTER_OUT[RANGE:TRUNC];
+assign MASTER_OUT = MIX_OUT[RANGE+1:TRUNC+1];
 
 pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
@@ -121,26 +124,33 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
 //  .q_saw(SAW_OUT);	 
     );
 	 
-	 
+always @(AUDIO_WCLK)
+	MIX_OUT <= MEM0_OUT + MEM1_OUT;
+	
+	
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
 		  .dnoise(SEED_OUT),
-		  .dfilter(FILTER_OUT),
-		  .octave(SW[9:8]),
-		  .trig(KEY[0]),
+		  .octave(2'b01),
+		  .filtsw(3'b010),
+		  .trig(KEY[1]),
 		  .shift_register_length(ADC_RD[11:2]),
 		  .reset_n(RESET_DELAY_n),
-        .q(MEM0_OUT)    
+        .qout(MEM0_OUT)    
+        ); 
+config_shift_register mem1 (  
+			.m_clk(MAX10_CLK1_50),
+		  .clk(AUDIO_WCLK),
+		  .dnoise(SEED_OUT),
+		  .octave(SW[9:8]),
+		  .filtsw(SW[2:0]),
+		  .trig(KEY[0]),
+		  .shift_register_length(ADC_RD[11:3]+10),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM1_OUT)    
         ); 
 
-filter filt0 (
-		 .filt_sel(SW[2:0]),
-		 .clk(AUDIO_WCLK), 
-		 .d(MEM0_OUT),
-		 .sclr(~RESET_DELAY_n),
-		 .q(FILTER_OUT)
-		 );
 lfsr lfsr1 (
 		// .out16(SEED_OUT),
 		 .out32(SEED_OUT),
