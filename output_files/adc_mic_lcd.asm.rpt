@@ -1,5 +1,5 @@
 Assembler report for adc_mic_lcd
-Fri Jun 09 02:49:54 2017
+Sun Jun 11 00:21:03 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Jun 09 02:49:54 2017 ;
+; Assembler Status      ; Successful - Sun Jun 11 00:21:03 2017 ;
 ; Revision Name         ; adc_mic_lcd                           ;
 ; Top-level Entity Name ; adc_mic_lcd                           ;
 ; Family                ; MAX 10                                ;
@@ -79,8 +79,8 @@ agreement for further details.
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
 ; Device         ; 10M50DAF484I7G                                                                  ;
-; JTAG usercode  ; 0x003FF30F                                                                      ;
-; Checksum       ; 0x003FF30F                                                                      ;
+; JTAG usercode  ; 0x003FE1EF                                                                      ;
+; Checksum       ; 0x003FE1EF                                                                      ;
 +----------------+---------------------------------------------------------------------------------+
 
 
@@ -90,7 +90,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Fri Jun 09 02:49:49 2017
+    Info: Processing started: Sun Jun 11 00:20:59 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Warning (125092): Tcl Script File memory_32_4096.qip not found
     Info (125063): set_global_assignment -name QIP_FILE memory_32_4096.qip
@@ -98,9 +98,9 @@ Warning (18236): Number of processors has not been specified which may cause ove
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 583 megabytes
-    Info: Processing ended: Fri Jun 09 02:49:54 2017
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 584 megabytes
+    Info: Processing ended: Sun Jun 11 00:21:03 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 

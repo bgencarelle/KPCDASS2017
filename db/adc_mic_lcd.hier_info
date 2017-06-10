@@ -249,7 +249,7 @@ q_pwm[15] <= q_pwm[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem0
-clk => clk.IN3
+clk => clk.IN4
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -261,10 +261,20 @@ reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
-reset_n => always4.IN1
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
 reset_n => trigged.OUTPUTSELECT
 reset_n => cnt_clr.OUTPUTSELECT
-reset_n => ram_4096_32bit:shift_reg_ram.aclr
+reset_n => _.IN1
 reset_n => _.IN1
 m_clk => ~NO_FANOUT~
 dnoise[0] => d.DATAB
@@ -3284,7 +3294,7 @@ q[31] <= reg_q[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem1
-clk => clk.IN3
+clk => clk.IN4
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -3296,10 +3306,20 @@ reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
-reset_n => always4.IN1
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
+reset_n => wr_ptr.OUTPUTSELECT
 reset_n => trigged.OUTPUTSELECT
 reset_n => cnt_clr.OUTPUTSELECT
-reset_n => ram_4096_32bit:shift_reg_ram.aclr
+reset_n => _.IN1
 reset_n => _.IN1
 m_clk => ~NO_FANOUT~
 dnoise[0] => d.DATAB

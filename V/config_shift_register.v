@@ -23,7 +23,7 @@ module  config_shift_register(
 	reg trigged;
 	reg cnt_reset_reset;
 
-	wire [15:0] count;
+	wire [11:0] count;
 
 	always@ (posedge clk)
 	begin
@@ -64,7 +64,7 @@ module  config_shift_register(
 
 	always@ (posedge clk)
 	begin
-	if (shift_register_length>>octave >= 3'b100)
+		if (shift_register_length>>octave >= 3'b100)
 		begin
 		i <= shift_register_length>>octave ;
 		load <= i <<loadvar;
@@ -76,50 +76,34 @@ module  config_shift_register(
 		end
 	end
 
-	reg [10:0] rd_ptr = 0;
+	reg [10:0] rd_ptr;
 	always@(posedge clk)
 	begin
 		if((reset_n == 1'b0))
 			begin
 				rd_ptr <= 0;
 			end
-		if(trigged ==1'b1 || trig_reset == 1'b1)
+		else if(trigged ==1'b1 )
 			begin
 				rd_ptr <= 0;
 			end
-		else if (rd_ptr < i)
+		else if (trigged == 1'b0)
 			begin
-				rd_ptr <= rd_ptr + 1'b1;
-				if ((trigged ==1'b1) || (trig_reset == 1'b1))
-				begin
-				rd_ptr <= 1'b0;
-				end
-			end
-		else if (rd_ptr >= i)
-			begin
-				rd_ptr <= 1'b0;
+			rd_ptr <= count;
 			end
 	end
 	
-	reg [10:0] wr_ptr = 0;
+	reg [10:0] wr_ptr;
 	always@(posedge clk)
 	begin
-		if((reset_n == 1'b0 ) || (trig_reset == 1'b1))
+		if(reset_n == 1'b0 )
 			begin
 				wr_ptr <= 0;
 			end
-		else if (wr_ptr < i)
+		else 
 			begin
-				wr_ptr <= wr_ptr + 1'b1;
-					if ((trig_reset == 1'b1))
-						begin
-							wr_ptr <= 1'b0;
-						end
+			wr_ptr <=count;
 			end
-			else if (wr_ptr >= i)
-				begin
-					wr_ptr <= 1'b0;
-				end
 	end
 
 	input_debounce mem_db(
