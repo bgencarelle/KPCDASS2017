@@ -18,7 +18,7 @@ reset              // reset input
 output wire signed  [31:0] out32;
 reg signed [31:0] out32hold;
 //------------Input Ports--------------
-input  wire [11:0] data;
+input signed [31:0] data;//seed value
 input enable, a_clk, clk, reset;
 //------------Internal Variables--------
 reg signed [31:0] out;
@@ -31,11 +31,11 @@ always @(posedge clk)
 begin
 if (reset) 
 	begin // active high reset
-  out <= 32'h00000000;
+  out <= data;
 	end
-if (out == 0) 
+if (out == 32'hffffffff) 
 	begin // active high reset
-  out <= 32'h0fff_0fff;
+  out <= ~data;
 	end
 	
 	else if (enable) 
@@ -48,6 +48,6 @@ end
 	out32hold <= $signed(out );
 	end
 	
-	assign out32 = out32hold;
+	assign out32 = $signed(out32hold);
 	
 endmodule // End Of Module counter

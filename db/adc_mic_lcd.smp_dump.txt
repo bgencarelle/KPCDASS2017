@@ -22,3 +22,15 @@ ctrl_state.WAIT_PEND_DLY1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 ctrl_state.PUTRESP_PEND 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 ctrl_state.AVRG_CNT 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 ctrl_state.SYNC1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |adc_mic_lcd|config_shift_register:mem1|trig_state
+Name trig_state.000 trig_state.010 trig_state.001 
+trig_state.000 0 0 0 
+trig_state.001 1 0 1 
+trig_state.010 1 1 0 
+
+State Machine - |adc_mic_lcd|config_shift_register:mem0|trig_state
+Name trig_state.000 trig_state.010 trig_state.001 
+trig_state.000 0 0 0 
+trig_state.001 1 0 1 
+trig_state.010 1 1 0 

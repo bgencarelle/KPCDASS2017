@@ -1,142 +1,171 @@
 
 
 module  config_shift_register(
-	input wire clk, input wire reset_n,
-	input wire m_clk,
-	input wire signed [31:0] dnoise,
-	input wire  [2:0] filtsw,
-	input wire [1:0] octave,
-	input wire trig,
-	input wire [9:0] shift_register_length,
-	output  wire signed [31:0] qout
-	);
-	wire signed [31:0] q;
-	wire signed [31:0] dfilter;
-	reg signed [31:0] d;
-	integer i;
-	integer load;
-	integer loadvar =1;
-	reg cnt_clr;
-	reg cnt_reset;
-	wire trig_reset;
-	wire trig_up;
-	reg trigged;
-	reg cnt_reset_reset;
+input wire clk, input wire reset_n,
+input wire m_clk,
+input wire [31:0] seed_val,
+input wire  [2:0] filtsw,
+input wire [1:0] octave,
+input wire trig,
+input wire [9:0] shift_register_length,
+output  wire signed [31:0] qout
+);
+wire signed [31:0] dnoise;
+wire signed [31:0] q;
+wire signed [31:0] dfilter;
+reg [2:0] trig_state = 3'b000;
+reg signed [31:0] d;
+reg rden = 1'b0;
+reg [10:0] load = 10'b0;
+reg cnt_clr = 1'b1;
+wire trig_reset;
 
-	wire [11:0] count;
+wire [10:0] count;
+reg [10:0] wr_ptr=0;
+reg [10:0] rd_ptr=0;
+reg [10:0] reg_compare =0;
 
-	always@ (posedge clk)
+always@ (posedge clk)
+begin
+	reg_compare <= (shift_register_length>>octave);
+	if (reg_compare >= 11'b00000000100)
 	begin
-	if ((reset_n == 1'b0) )
-	begin 
-			trigged <=1'b0;
-			cnt_clr <=1'b1;
+		load <= (reg_compare);
 	end
+	else if (reg_compare < 11'b00000000100)
+	begin
+		load <= 11'b00000000100;
+	end
+end
+//main state machine
+always @ (posedge clk )
+begin 
+	case(trig_state)
 	
-	else if ((trig_reset == 1'b1) )
-	begin
-			trigged <=1'b1;
+	3'b000:	begin //start idle
+		if (trig_reset == 1'b1)
+			begin
 			cnt_clr <=1'b1;
-	end
-	else if (trig_reset == 1'b0)
-	begin
-		cnt_clr <=1'b0;
-				if (count >= load)
-					begin
-					trigged <=1'b0;
-					cnt_clr <=1'b1;
-					end
+			rd_ptr <= 11'b0;
+			wr_ptr <= 11'b0;
+			d <= dnoise;
+			rden <= 1'b0;
+			trig_state <= 3'b001;
+			end
+		else if (trig_reset == 1'b0)
+			begin
+			cnt_clr <=1'b0;
+			rd_ptr <= 11'b0;
+			wr_ptr <= count;
+			d <= 32'b0;
+			rden <= 1'b0;
+			trig_state <= 3'b000;
+			end
 				end
-	end
-	
-	always@ (posedge clk)
-	begin
-	if (trigged == 1'b1)
-		begin
-		d <= dnoise;
-		end
-	else if (trigged !=1'b1)
-		begin
-		d <= dfilter;
-		end
-	end
-	
 
-	always@ (posedge clk)
-	begin
-		if (shift_register_length>>octave >= 3'b100)
-		begin
-		i <= shift_register_length>>octave ;
-		load <= i <<loadvar;
-		end
-		else if (shift_register_length>>octave < 3'b100)
-		begin
-		i <= 3'b100;
-		load <= i <<loadvar;
-		end
-	end
+	3'b001:	begin //trigger event, counter started
 
-	reg [10:0] rd_ptr;
-	always@(posedge clk)
-	begin
-		if((reset_n == 1'b0))
+		if (count < load)
 			begin
-				rd_ptr <= 0;
+			cnt_clr <=1'b0;
+			rd_ptr <= 11'b0;
+			wr_ptr <= count;
+			rden <= 1'b0;
+			d <= dnoise;
+			trig_state <= 3'b001;
 			end
-		else if(trigged ==1'b1 )
+			
+		else if (count >= load)
 			begin
-				rd_ptr <= 0;
+			cnt_clr <=1'b1;
+			rd_ptr <= 11'b0;
+			wr_ptr <= 11'b0;
+			rden <= 1'b0;
+			d <= dnoise;
+			trig_state <= 3'b010;
 			end
-		else if (trigged == 1'b0)
-			begin
-			rd_ptr <= count;
-			end
-	end
-	
-	reg [10:0] wr_ptr;
-	always@(posedge clk)
-	begin
-		if(reset_n == 1'b0 )
-			begin
-				wr_ptr <= 0;
-			end
-		else 
-			begin
-			wr_ptr <=count;
-			end
-	end
+				end
 
-	input_debounce mem_db(
-						
-						.clk(clk),
-						.PB(trig), 
+	3'b010:	begin 
+		if (trig_reset == 1'b0)
+		begin
+			if (count < load)
+				begin
+				rden <= 1'b1;
+				d <= dfilter;
+				cnt_clr <=1'b0;
+				rd_ptr <= count;
+				wr_ptr <= count;
+				trig_state <= 3'b010;
+				end
+			else if (count >= load)
+				begin
+				rden <= 1'b1;
+				d <= dfilter;
+				cnt_clr <=1'b1;
+				rd_ptr <= 11'b0;
+				wr_ptr <= 11'b0;
+				trig_state <= 3'b010;
+				end
+		end
+		else if (trig_reset == 1'b1)
+			begin
+			cnt_clr <=1'b1;
+			rd_ptr <= 11'b0;
+			wr_ptr <= 11'b0;
+			d <= dnoise;
+			rden <= 1'b0;
+			trig_state <= 3'b001;
+			end
+				end
+
+	default:	begin
+				trig_state <= 3'b000;
+				end
+	endcase
+end
+
+input_debounce mem_db(
+				
+				.clk(clk),
+				.PB(trig), 
 //						.PB_state(trig_up),  // 1 as long as the push-button is active (down)
-						.PB_down(trig_reset),// 1 for one clock cycle when the push-button goes down 
+				.PB_down(trig_reset),// 1 for one clock cycle when the push-button goes down 
 //						.PB_up(trig_up)// 1 for one clock cycle when the push-button goes up (i.e. just released)
 );
 varcnt mem_cnt(
-						.clock(clk),
-						.sclr(cnt_clr),
-						.q(count)
+			.clock(clk),
+			.sclr(cnt_clr),
+			.q(count)
 			);
-			
-	ram_4096_32bit	shift_reg_ram (				.clock(clk),//RAM
-															.aclr(~reset_n),
-															.data(d),
-															.rdaddress(rd_ptr),
-															.rden(1'b1),
-															.wraddress(wr_ptr),
-															.wren(1'b1),
-															.q(q)
-															);
-															
-															filter filt0 (//FILTER
-															 .filt_sel(filtsw),
-															 .clk(clk), 
-															 .d(q),
-															 .sclr(~reset_n),
-															 .q(dfilter),
-															 );
-															 
-	assign qout = dfilter;
+
+ram_4096_32bit	shift_reg_ram(		.clock(clk),//RAM
+							.aclr(~reset_n),
+							.data(d),
+							.rdaddress(rd_ptr),
+							.rden(rden),
+							.wraddress(wr_ptr),
+							.wren(1'b1),
+							.q(q)
+							);
+							
+filter filt0(//FILTER
+			.filt_sel(filtsw),
+			.clk(clk), 
+			.d(q),
+			.sclr(~reset_n),
+			.q(dfilter),
+			);
+
+lfsr noise (
+	// .out16(SEED_OUT),
+		.out32(dnoise),
+		.data(seed_val),//seed value
+		.enable(1'b1),  // Enable  for counter
+		.a_clk(clk),  // clock input
+		.clk(m_clk),  // clock input
+		.reset(~reset_n) 
+	);
+ 
+assign qout = dfilter;
 endmodule 

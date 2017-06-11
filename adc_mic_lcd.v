@@ -131,9 +131,9 @@ always @(AUDIO_WCLK)
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .dnoise(SEED_OUT),
-		  .octave(2'b01),
-		  .filtsw(3'b010),
+		  .seed_val(31'h13030303),
+		  .octave(SW[9:8]),
+		  .filtsw(SW[2:0]),
 		  .trig(KEY[1]),
 		  .shift_register_length(ADC_RD[11:2]),
 		  .reset_n(RESET_DELAY_n),
@@ -142,25 +142,16 @@ config_shift_register mem0 (
 config_shift_register mem1 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .dnoise(SEED_OUT),
-		  .octave(SW[9:8]),
+		  .seed_val(31'hf30303ff),
+		  .octave(SW[7:6]),
 		  .filtsw(SW[2:0]),
 		  .trig(KEY[0]),
-		  .shift_register_length(ADC_RD[11:3]+10),
+		  .shift_register_length((ADC_RD[11:2])),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1_OUT)    
         ); 
 
-lfsr lfsr1 (
-		// .out16(SEED_OUT),
-		 .out32(SEED_OUT),
-		 .data(ADC_RD),
-		 .enable(1),  // Enable  for counter
-		 .a_clk(AUDIO_WCLK),  // clock input
-		 .clk(MAX10_CLK1_50),  // clock input
-		 .reset(~RESET_DELAY_n) 
-		 );
-		 
+
 //--RESET DELAY ---
 
 //--I2S PROCESSS  CODEC LINE OUT --
@@ -193,9 +184,9 @@ if (!FPGA_RESET_n )
      DELAY_CNT   <=0;
 	end 
 
-	else  if ( DELAY_CNT < 32'hfffff  )  
+	else  if ( DELAY_CNT < 32'h0ffff  )  
   begin
-  DELAY_CNT<=DELAY_CNT+1; 
+  DELAY_CNT<=DELAY_CNT+1'b1; 
   end
  else 
 	begin
@@ -211,7 +202,7 @@ MAX10_ADC   madc(
 	.SYS_CLK ( AUDIO_MCLK   ),
 	.SYNC_TR ( SAMPLE_TR    ),
 	.RESET_n ( RESET_DELAY_n),
-	.ADC_CH  ( 4'b1000),
+	.ADC_CH  ( 8),
 	.DATA    (ADC_RD ) ,
 	.DATA_VALID(ADC_RESPONSE),
 	.FITER_EN (1) 
@@ -262,14 +253,13 @@ AUDIO_SPI_CTL_RD	u1(
 
 LED_METER   led(
    .RESET_n   ( RESET_DELAY_n), 
-	.CLK   ( AUDIO_MCLK )  , 
-	.SAMPLE_TR ( SAMPLE_TR) , 
-	.VALUE ( ADC_RD[11:0] ) ,
+	.clk   ( AUDIO_MCLK )  , 
+	.VALUE ( ADC_RD[11:8] ) ,
 	.LED   (  LED ), 	
 	.HEXR (HEXR)
 ) ; 
 
-assign GPIO[0] = AUDIO_WCLK; 
+//assign GPIO[0] = AUDIO_WCLK; 
 
 //--METER TO LED --  
 assign LEDR =  LED ; 

@@ -1,48 +1,20 @@
 module  LED_METER  (
   input  RESET_n , 
-  input CLK , 
-  input [11:0] VALUE ,
-  input SAMPLE_TR , 
+  input clk, 
+  input [11:8] VALUE , 
   output [9:0]LED,
   output [6:0]HEXR
 
 ) ; 
  
-//-- WAVE Rectifier -- 
-reg  [11:0] pcm_abs ; 
-`define ZERO_VALUE	12'h800
-
-always @ (negedge RESET_n or posedge SAMPLE_TR ) begin 
-if (!RESET_n) begin 
-    pcm_abs <=0 ; 
-end
-else 
-begin
-	if ( VALUE >= `ZERO_VALUE)
-		pcm_abs <= VALUE - `ZERO_VALUE;
-	else if (VALUE == 0)
-		pcm_abs <= `ZERO_VALUE - 1'b1;
-	else
-		pcm_abs <= `ZERO_VALUE - VALUE;
-end	
-end
-//--PEAK DELAY  --- 
-wire [11:0] PEAK ; 
-PEAK_DELAY  pk( 
-   .RESET_n   ( RESET_n), 
-	.SAMPLE_TR ( SAMPLE_TR),
-	.SAMPLE_DAT ( pcm_abs)  , 
-	.MPEAK  ( PEAK  ) 
-) ;
-
 
 //---LED OUT ----
 reg [9:0] vol;
 reg [6:0] hex0;
 reg [6:0] hex1;
-always @ (posedge SAMPLE_TR )
+always @ (posedge clk )
 begin
-	case(VALUE[11:8])
+	case(VALUE)
 	 4'b0000:	begin //0
 					vol = 10'b0000000000;
 					hex0 = 7'b0111111;
