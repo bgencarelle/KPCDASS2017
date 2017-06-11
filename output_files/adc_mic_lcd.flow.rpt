@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Sun Jun 11 22:55:53 2017
+Sun Jun 11 23:34:50 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,20 +41,20 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Jun 11 22:55:53 2017       ;
+; Flow Status                        ; Successful - Sun Jun 11 23:34:50 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484I7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 3,745 / 49,760 ( 8 % )                      ;
-;     Total combinational functions  ; 3,494 / 49,760 ( 7 % )                      ;
-;     Dedicated logic registers      ; 2,183 / 49,760 ( 4 % )                      ;
-; Total registers                    ; 2183                                        ;
+; Total logic elements               ; 3,738 / 49,760 ( 8 % )                      ;
+;     Total combinational functions  ; 3,422 / 49,760 ( 7 % )                      ;
+;     Dedicated logic registers      ; 2,550 / 49,760 ( 5 % )                      ;
+; Total registers                    ; 2550                                        ;
 ; Total pins                         ; 98 / 360 ( 27 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 190,720 / 1,677,312 ( 11 % )                ;
+; Total memory bits                  ; 321,792 / 1,677,312 ( 19 % )                ;
 ; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                             ;
 ; Total PLLs                         ; 3 / 4 ( 75 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/11/2017 22:54:18 ;
+; Start date & time ; 06/11/2017 23:33:22 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149721445806276                            ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 184857106377073.149721680207220                            ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --            ; --          ; --             ;
@@ -113,12 +113,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:36     ; 1.0                     ; 748 MB              ; 00:01:12                           ;
-; Fitter                    ; 00:00:36     ; 1.5                     ; 1874 MB             ; 00:01:18                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 585 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 2.5                     ; 796 MB              ; 00:00:13                           ;
-; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 575 MB              ; 00:00:04                           ;
-; Total                     ; 00:01:27     ; --                      ; --                  ; 00:02:52                           ;
+; Analysis & Synthesis      ; 00:00:34     ; 1.0                     ; 761 MB              ; 00:01:09                           ;
+; Fitter                    ; 00:00:32     ; 1.5                     ; 1881 MB             ; 00:01:10                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 588 MB              ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 2.4                     ; 798 MB              ; 00:00:12                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 581 MB              ; 00:00:04                           ;
+; Total                     ; 00:01:20     ; --                      ; --                  ; 00:02:40                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

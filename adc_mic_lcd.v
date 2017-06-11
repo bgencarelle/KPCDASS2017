@@ -79,10 +79,14 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1,
 //=======================================================
 // ### USER DEFINED
 wire signed [15:0]		PWM_OUT;
-wire signed [RANGE:0]		MEM0_OUT;
-wire signed [RANGE:0]		MEM1_OUT;
+wire signed [RANGE:0]		MEM0;
+wire signed [RANGE:0]		MEM1;
+wire signed [RANGE:0]		MEM2;
+wire signed [RANGE:0]		MEM3;
 
-reg signed [RANGE+1:0]		MIX_OUT;
+reg signed [RANGE+1:0]		MIX_01;
+reg signed [RANGE+1:0]		MIX_23;
+reg signed [RANGE+2:0]		MIXMASTER;
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -113,7 +117,7 @@ reg   [31:0]  			DELAY_CNT;
 //=======================================================
 // ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
-assign MASTER_OUT = MIX_OUT[RANGE+1:TRUNC+1];
+assign MASTER_OUT = MIXMASTER[RANGE+2:TRUNC+2];
 
 pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
@@ -125,32 +129,52 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     );
 	 
 always @(AUDIO_WCLK)
-	MIX_OUT <= MEM0_OUT + MEM1_OUT;
-	
+	MIXMASTER <= MEM2 + MEM3 + MEM0 + MEM1;
 	
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(31'h13030303),
-		  .octave(SW[9:8]),
-		  .filtsw(SW[2:0]),
-		  .trig(KEY[1]),
-		  .shift_register_length(ADC_RD[11:2]),
+		  .seed_val(32'hF3F3F303),
+		  .octave(2'b00),
+		  .filtsw(2'b11),
+		  .trig(KEY[3]),
+		  .shift_register_length(9'd200),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM0_OUT)    
+        .qout(MEM3)    
         ); 
 config_shift_register mem1 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(31'hf30303ff),
-		  .octave(SW[7:6]),
-		  .filtsw(SW[2:0]),
-		  .trig(KEY[0]),
-		  .shift_register_length((ADC_RD[11:2])),
+		  .seed_val(32'hf3B3B3ff),
+		  .octave(2'b00),
+		  .filtsw(2'b11),
+		  .trig(KEY[2]),
+		  .shift_register_length(9'd220),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM1_OUT)    
+        .qout(MEM2)    
         ); 
-
+config_shift_register mem2 (  
+			.m_clk(MAX10_CLK1_50),
+		  .clk(AUDIO_WCLK),
+		  .seed_val(32'hF3AF0334),
+		  .octave(2'b00),
+		  .filtsw(2'b11),
+		  .trig(KEY[1]),
+		  .shift_register_length(9'd240),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM1)    
+        ); 
+config_shift_register mem3 (  
+			.m_clk(MAX10_CLK1_50),
+		  .clk(AUDIO_WCLK),
+		  .seed_val(32'hf30356ff),
+		  .octave(2'b00),
+		  .filtsw(2'b11),
+		  .trig(KEY[0]),
+		  .shift_register_length(9'd260),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM0)    
+        );
 
 //--RESET DELAY ---
 
