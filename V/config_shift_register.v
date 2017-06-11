@@ -1,7 +1,8 @@
 
 
 module  config_shift_register(
-input wire clk, input wire reset_n,
+input wire clk, 
+input wire reset_n,
 input wire m_clk,
 input wire [31:0] seed_val,
 input wire  [2:0] filtsw,
@@ -39,7 +40,12 @@ begin
 end
 //main state machine
 always @ (posedge clk )
-begin 
+if (reset_n == 1'b0)
+begin
+trig_state <= 3'b00;
+end
+else if (reset_n != 1'b0)
+begin
 	case(trig_state)
 	
 	3'b000:	begin //start idle
@@ -68,7 +74,7 @@ begin
 		if (count < load)
 			begin
 			cnt_clr <=1'b0;
-			rd_ptr <= 11'b0;
+			rd_ptr <= count;
 			wr_ptr <= count;
 			rden <= 1'b0;
 			d <= dnoise;
@@ -78,17 +84,16 @@ begin
 		else if (count >= load)
 			begin
 			cnt_clr <=1'b1;
-			rd_ptr <= 11'b0;
-			wr_ptr <= 11'b0;
+			rd_ptr <= count;
+			wr_ptr <= count;
 			rden <= 1'b0;
 			d <= dnoise;
 			trig_state <= 3'b010;
 			end
 				end
 
-	3'b010:	begin 
-		if (trig_reset == 1'b0)
-		begin
+	3'b010:
+	begin 
 			if (count < load)
 				begin
 				rden <= 1'b1;
@@ -96,34 +101,40 @@ begin
 				cnt_clr <=1'b0;
 				rd_ptr <= count;
 				wr_ptr <= count;
+				if (trig_reset != 1'b1)
+				begin
 				trig_state <= 3'b010;
 				end
+				else if (trig_reset == 1'b1)
+					begin
+					trig_state <= 3'b001;
+					end
+				end
+				
 			else if (count >= load)
 				begin
 				rden <= 1'b1;
 				d <= dfilter;
 				cnt_clr <=1'b1;
-				rd_ptr <= 11'b0;
-				wr_ptr <= 11'b0;
-				trig_state <= 3'b010;
+				rd_ptr <= count;
+				wr_ptr <= count;
+					if (trig_reset != 1'b1)
+					begin
+					trig_state <= 3'b010;
+					end
+					else if (trig_reset == 1'b1)
+					begin
+					trig_state <= 3'b001;
+					end
 				end
-		end
-		else if (trig_reset == 1'b1)
-			begin
-			cnt_clr <=1'b1;
-			rd_ptr <= 11'b0;
-			wr_ptr <= 11'b0;
-			d <= dnoise;
-			rden <= 1'b0;
-			trig_state <= 3'b001;
-			end
-				end
+	end
 
 	default:	begin
 				trig_state <= 3'b000;
 				end
 	endcase
 end
+
 
 input_debounce mem_db(
 				
