@@ -7,8 +7,8 @@ input wire  [2:0] filtsw,
 input wire [1:0] octave,
 input wire trig,
 input wire [10:0] decay_length,
-output wire signed [31:0] qout,
-input wire signed [31:0]dsource
+output signed [31:0] qout,
+input signed [31:0]dsource
 );
 
 wire signed [31:0] q;
@@ -39,8 +39,9 @@ end
 
 reg signed [3:0] DQ_MIX;
 //main state machine
-reg signed [34:0] decay_reg;
+reg signed [31:0] decay_reg;
 always @ (posedge clk )
+
 if (reset_n == 1'b0)
 begin
 cnt_clr <=1'b1;
@@ -48,10 +49,11 @@ cnt_clr <=1'b1;
 			rd_ptr <= 0;
 			wr_ptr <= 0;
 end
+
 else if (reset_n != 1'b0)
 begin
-				decay_reg <= q;
-				d <= dsource;
+				decay_reg <= dsource;
+				
 			rd_ptr <= count;
 			wr_ptr <= count;
 			if (count < load)
@@ -80,15 +82,15 @@ filter filt0(//FILTER
 			.q(dfilter),
 			);
 
-reverb_ram	verb_ram(		.clock(clk),//RAM
-							.aclr(~reset_n),
-							.data(d),
-							.rdaddress(rd_ptr),
-							.rden(1),
-							.wraddress(wr_ptr),
-							.wren(1'b1),
-							.q(qout)
-							);
-							
-
+//reverb_ram	verb_ram(		.clock(clk),//RAM
+//							.aclr(~reset_n),
+//							.data(d),
+//							.rdaddress(rd_ptr),
+//							.rden(1),
+//							.wraddress(wr_ptr),
+//							.wren(1'b1),
+//							.q(qout)
+//							);
+//							
+assign quot = decay_reg;
 endmodule 

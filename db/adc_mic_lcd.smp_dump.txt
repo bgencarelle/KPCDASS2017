@@ -46,3 +46,9 @@ Name trig_state.000 trig_state.010 trig_state.001
 trig_state.000 0 0 0 
 trig_state.001 1 0 1 
 trig_state.010 1 1 0 
+
+State Machine - |adc_mic_lcd|config_shift_register:mem4|trig_state
+Name trig_state.000 trig_state.010 trig_state.001 
+trig_state.000 0 0 0 
+trig_state.001 1 0 1 
+trig_state.010 1 1 0 

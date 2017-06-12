@@ -8,7 +8,7 @@ input wire [31:0] seed_val,
 input wire  [2:0] filtsw,
 input wire [1:0] octave,
 input wire trig,
-input wire [9:0] shift_register_length,
+input wire [8:0] shift_register_length,
 output  wire signed [31:0] qout
 );
 wire signed [31:0] dnoise;
@@ -22,9 +22,9 @@ reg cnt_clr = 1'b1;
 wire trig_reset;
 
 wire [10:0] count;
-reg [10:0] wr_ptr=0;
-reg [10:0] rd_ptr=0;
-reg [10:0] reg_compare =0;
+reg [11:0] wr_ptr=0;
+reg [11:0] rd_ptr=0;
+reg [11:0] reg_compare =0;
 
 always@ (posedge clk)
 begin
@@ -52,8 +52,8 @@ begin
 		if (trig_reset == 1'b1)
 			begin
 			cnt_clr <=1'b1;
-			rd_ptr <= 11'b0;
-			wr_ptr <= 11'b0;
+			rd_ptr <= count;
+			wr_ptr <= count;
 			d <= dnoise;
 			rden <= 1'b0;
 			trig_state <= 3'b001;
@@ -63,7 +63,7 @@ begin
 			cnt_clr <=1'b0;
 			rd_ptr <= 11'b0;
 			wr_ptr <= count;
-			d <= 32'b0;
+			d <= dnoise;
 			rden <= 1'b0;
 			trig_state <= 3'b000;
 			end
@@ -172,7 +172,6 @@ lfsr noise (
 	// .out16(SEED_OUT),
 		.out32(dnoise),
 		.data(seed_val),//seed value
-		.enable(1'b1),  // Enable  for counter
 		.a_clk(clk),  // clock input
 		.clk(m_clk),  // clock input
 		.reset(~reset_n) 

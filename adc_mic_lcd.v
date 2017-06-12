@@ -83,6 +83,7 @@ wire signed [RANGE:0]		MEM0;
 wire signed [RANGE:0]		MEM1;
 wire signed [RANGE:0]		MEM2;
 wire signed [RANGE:0]		MEM3;
+wire signed [RANGE:0]		MEM4;
 wire signed [RANGE+4:0]		VERB0;
 
 reg signed [RANGE+1:0]		MIX_01;
@@ -130,65 +131,67 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
 	 
 always @(AUDIO_WCLK)
 	begin
-	MIXMASTER <= MEM2 + MEM3 + MEM0 + MEM1;
+	MIXMASTER <= ((MEM4>>1)	+ (MEM3>>1)) + MEM2 + MEM0 + MEM1 ;
 	end
 	
-	assign MASTER_OUT = VERB0 [31:16];
+	assign MASTER_OUT = MIXMASTER [33:17];
 
+config_shift_register mem4 (  
+			.m_clk(MAX10_CLK1_50),
+		  .clk(AUDIO_WCLK),
+		  .seed_val(32'h00ff56ff),
+		  .octave(SW[9:8]),
+		  .filtsw(2'b11),
+		  .trig(KEY[3]),
+		  .shift_register_length(10'd320),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM4)    
+        );
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hF3F3F303),
-		  .octave(2'b00),
+		  .seed_val(32'h00F3F3ff),
+		  .octave(SW[7:6]),
 		  .filtsw(2'b11),
-		  .trig(KEY[3]),
-		  .shift_register_length(9'd290),
+		  .trig(KEY[2]),
+		  .shift_register_length(10'd290),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
 config_shift_register mem1 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf3B3B3ff),
-		  .octave(2'b00),
+		  .seed_val(32'hf003B3ff),
+		  .octave(SW[5:4]),
 		  .filtsw(2'b11),
 		  .trig(KEY[2]),
-		  .shift_register_length(10'd250),
+		  .shift_register_length(10'd260),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 config_shift_register mem2 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf3aa_ffaa),
-		  .octave(2'b00),
+		  .seed_val(32'hfffaa),
+		  .octave(SW[3:2]),
 		  .filtsw(2'b11),
 		  .trig(KEY[1]),
-		  .shift_register_length(10'd210),
+		  .shift_register_length(10'd240),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
 config_shift_register mem3 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf30356ff),
-		  .octave(2'b00),
+		  .seed_val(32'h56ff),
+		  .octave(SW[1:0]),
 		  .filtsw(2'b11),
 		  .trig(KEY[0]),
-		  .shift_register_length(10'd180),
+		  .shift_register_length(10'd195),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         );
-reverb_inst reverb1(  
-		  .clk(AUDIO_WCLK),
-		  .octave(SW[9:8]),
-		  .filtsw(SW[2:0]),
-		  .trig(KEY[4]),
-		  .dsource(MIXMASTER),
-		  .decay_length(9'd511),
-		  .reset_n(RESET_DELAY_n),
-        .qout(VERB0)    
-        );
+
 
 //--RESET DELAY ---
 

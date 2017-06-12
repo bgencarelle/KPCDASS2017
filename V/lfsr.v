@@ -1,31 +1,26 @@
-//-----------------------------------------------------
-// Design Name : lfsr
-// File Name   : lfsr.v
-// Function    : Linear feedback shift register
-// Coder       : Deepak Kumar Tala
-//-----------------------------------------------------
+
 module lfsr    (
-//out16           ,  // Output of the counter 16bit
 out32				 ,  // 32 bit 
 data			    ,
-enable          ,  // Enable  for counter
+
 a_clk					,
 clk             ,  // clock input
 reset              // reset input
 );
 
 //----------Output Ports--------------
-output wire signed  [31:0] out32;
-reg signed [31:0] out32hold;
+output wire  [31:0] out32;
+reg  [31:0] out32hold;
+reg  [31:0] out32ref;
 //------------Input Ports--------------
 input signed [31:0] data;//seed value
-input enable, a_clk, clk, reset;
+ input wire a_clk, clk, reset;
 //------------Internal Variables--------
 reg signed [31:0] out;
 wire        linear_feedback;
 
 //-------------Code Starts Here-------
-assign linear_feedback = !(out[31] ^ out[21] ^ out[1] ^ out[0]  );
+assign linear_feedback = (out[31] ^ out[30]  );
 
 always @(posedge clk)
 begin
@@ -33,21 +28,26 @@ if (reset)
 	begin // active high reset
   out <= data;
 	end
-if (out == 32'hffffffff) 
+if (out == 32'h0) 
 	begin // active high reset
   out <= ~data;
 	end
-	
-	else if (enable) 
+if (out == out32ref) 
+	begin // active high reset
+  out <= ~data-12'b1;
+	end
+	else if (!reset) 
 	begin 
 	out <= {out[30:0], linear_feedback};
+	out32ref <= out;
+	
 	end 
 end
 	always @(posedge a_clk)
 	begin
-	out32hold <= $signed(out );
+	out32hold <= (out );
 	end
 	
-	assign out32 = $signed(out32hold);
+	assign out32 = (out32hold);
 	
 endmodule // End Of Module counter
