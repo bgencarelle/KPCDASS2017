@@ -83,10 +83,11 @@ wire signed [RANGE:0]		MEM0;
 wire signed [RANGE:0]		MEM1;
 wire signed [RANGE:0]		MEM2;
 wire signed [RANGE:0]		MEM3;
+wire signed [RANGE+4:0]		VERB0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
-reg signed [RANGE+2:0]		MIXMASTER;
+reg signed [RANGE+4:0]		MIXMASTER;
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -117,7 +118,6 @@ reg   [31:0]  			DELAY_CNT;
 //=======================================================
 // ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
-assign MASTER_OUT = MIXMASTER[RANGE+2:TRUNC+2];
 
 pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     .clk(MAX10_CLK1_50 ), 
@@ -129,8 +129,12 @@ pulse_width_modulation_gen pwm1 (//to do: add frequency control)
     );
 	 
 always @(AUDIO_WCLK)
+	begin
 	MIXMASTER <= MEM2 + MEM3 + MEM0 + MEM1;
+	end
 	
+	assign MASTER_OUT = VERB0 [31:16];
+
 config_shift_register mem0 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
@@ -138,7 +142,7 @@ config_shift_register mem0 (
 		  .octave(2'b00),
 		  .filtsw(2'b11),
 		  .trig(KEY[3]),
-		  .shift_register_length(9'd200),
+		  .shift_register_length(9'd290),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
@@ -149,18 +153,18 @@ config_shift_register mem1 (
 		  .octave(2'b00),
 		  .filtsw(2'b11),
 		  .trig(KEY[2]),
-		  .shift_register_length(9'd220),
+		  .shift_register_length(10'd250),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 config_shift_register mem2 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hF3AF0334),
+		  .seed_val(32'hf3aa_ffaa),
 		  .octave(2'b00),
 		  .filtsw(2'b11),
 		  .trig(KEY[1]),
-		  .shift_register_length(9'd240),
+		  .shift_register_length(10'd210),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
@@ -171,9 +175,19 @@ config_shift_register mem3 (
 		  .octave(2'b00),
 		  .filtsw(2'b11),
 		  .trig(KEY[0]),
-		  .shift_register_length(9'd260),
+		  .shift_register_length(10'd180),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
+        );
+reverb_inst reverb1(  
+		  .clk(AUDIO_WCLK),
+		  .octave(SW[9:8]),
+		  .filtsw(SW[2:0]),
+		  .trig(KEY[4]),
+		  .dsource(MIXMASTER),
+		  .decay_length(9'd511),
+		  .reset_n(RESET_DELAY_n),
+        .qout(VERB0)    
         );
 
 //--RESET DELAY ---
