@@ -38,8 +38,8 @@ MAX10_CLK3_50 => MAX10_CLK3_50.IN1
 FPGA_RESET_n => FPGA_RESET_n.IN1
 KEY[0] => KEY[0].IN1
 KEY[1] => KEY[1].IN1
-KEY[2] => KEY[2].IN2
-KEY[3] => KEY[3].IN1
+KEY[2] => KEY[2].IN1
+KEY[3] => KEY[3].IN2
 KEY[4] => ~NO_FANOUT~
 SW[0] => SW[0].IN1
 SW[1] => SW[1].IN1
@@ -251,7 +251,7 @@ q_pwm[15] <= q_pwm[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem4
-clk => clk.IN3
+clk => clk.IN2
 reset_n => cnt_clr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -310,16 +310,15 @@ reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => rden.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
 reset_n => ram_4096_32bit:shift_reg_ram.aclr
 reset_n => _.IN1
 reset_n => _.IN1
-reset_n => d[6].ENA
 reset_n => d[5].ENA
 reset_n => d[4].ENA
 reset_n => d[3].ENA
@@ -327,6 +326,7 @@ reset_n => d[2].ENA
 reset_n => d[1].ENA
 reset_n => d[0].ENA
 reset_n => rden.ENA
+reset_n => d[6].ENA
 reset_n => d[7].ENA
 reset_n => d[8].ENA
 reset_n => d[9].ENA
@@ -415,7 +415,7 @@ filtsw[1] => filtsw[1].IN1
 filtsw[2] => filtsw[2].IN1
 octave[0] => ShiftRight0.IN5
 octave[1] => ShiftRight0.IN4
-trig => trig.IN1
+trig => trig_sync_0.DATAIN
 shift_register_length[0] => ShiftRight0.IN14
 shift_register_length[1] => ShiftRight0.IN13
 shift_register_length[2] => ShiftRight0.IN12
@@ -457,19 +457,6 @@ qout[28] <= filter:filt0.q
 qout[29] <= filter:filt0.q
 qout[30] <= filter:filt0.q
 qout[31] <= filter:filt0.q
-
-
-|adc_mic_lcd|config_shift_register:mem4|input_debounce:mem_db
-clk => PB_state~reg0.CLK
-clk => PB_cnt[0].CLK
-clk => PB_cnt[1].CLK
-clk => PB_cnt[2].CLK
-clk => PB_sync_1.CLK
-clk => PB_sync_0.CLK
-PB => PB_sync_0.DATAIN
-PB_state <= PB_state~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PB_down <= PB_down.DB_MAX_OUTPUT_PORT_TYPE
-PB_up <= PB_up.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem4|varcnt:mem_cnt
@@ -3700,7 +3687,7 @@ reset => out32ref.OUTPUTSELECT
 
 
 |adc_mic_lcd|config_shift_register:mem0
-clk => clk.IN3
+clk => clk.IN2
 reset_n => cnt_clr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -3759,16 +3746,15 @@ reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => rden.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
 reset_n => ram_4096_32bit:shift_reg_ram.aclr
 reset_n => _.IN1
 reset_n => _.IN1
-reset_n => d[6].ENA
 reset_n => d[5].ENA
 reset_n => d[4].ENA
 reset_n => d[3].ENA
@@ -3776,6 +3762,7 @@ reset_n => d[2].ENA
 reset_n => d[1].ENA
 reset_n => d[0].ENA
 reset_n => rden.ENA
+reset_n => d[6].ENA
 reset_n => d[7].ENA
 reset_n => d[8].ENA
 reset_n => d[9].ENA
@@ -3864,7 +3851,7 @@ filtsw[1] => filtsw[1].IN1
 filtsw[2] => filtsw[2].IN1
 octave[0] => ShiftRight0.IN5
 octave[1] => ShiftRight0.IN4
-trig => trig.IN1
+trig => trig_sync_0.DATAIN
 shift_register_length[0] => ShiftRight0.IN14
 shift_register_length[1] => ShiftRight0.IN13
 shift_register_length[2] => ShiftRight0.IN12
@@ -3906,19 +3893,6 @@ qout[28] <= filter:filt0.q
 qout[29] <= filter:filt0.q
 qout[30] <= filter:filt0.q
 qout[31] <= filter:filt0.q
-
-
-|adc_mic_lcd|config_shift_register:mem0|input_debounce:mem_db
-clk => PB_state~reg0.CLK
-clk => PB_cnt[0].CLK
-clk => PB_cnt[1].CLK
-clk => PB_cnt[2].CLK
-clk => PB_sync_1.CLK
-clk => PB_sync_0.CLK
-PB => PB_sync_0.DATAIN
-PB_state <= PB_state~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PB_down <= PB_down.DB_MAX_OUTPUT_PORT_TYPE
-PB_up <= PB_up.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem0|varcnt:mem_cnt
@@ -7149,7 +7123,7 @@ reset => out32ref.OUTPUTSELECT
 
 
 |adc_mic_lcd|config_shift_register:mem1
-clk => clk.IN3
+clk => clk.IN2
 reset_n => cnt_clr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -7208,16 +7182,15 @@ reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => rden.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
 reset_n => ram_4096_32bit:shift_reg_ram.aclr
 reset_n => _.IN1
 reset_n => _.IN1
-reset_n => d[6].ENA
 reset_n => d[5].ENA
 reset_n => d[4].ENA
 reset_n => d[3].ENA
@@ -7225,6 +7198,7 @@ reset_n => d[2].ENA
 reset_n => d[1].ENA
 reset_n => d[0].ENA
 reset_n => rden.ENA
+reset_n => d[6].ENA
 reset_n => d[7].ENA
 reset_n => d[8].ENA
 reset_n => d[9].ENA
@@ -7313,7 +7287,7 @@ filtsw[1] => filtsw[1].IN1
 filtsw[2] => filtsw[2].IN1
 octave[0] => ShiftRight0.IN5
 octave[1] => ShiftRight0.IN4
-trig => trig.IN1
+trig => trig_sync_0.DATAIN
 shift_register_length[0] => ShiftRight0.IN14
 shift_register_length[1] => ShiftRight0.IN13
 shift_register_length[2] => ShiftRight0.IN12
@@ -7355,19 +7329,6 @@ qout[28] <= filter:filt0.q
 qout[29] <= filter:filt0.q
 qout[30] <= filter:filt0.q
 qout[31] <= filter:filt0.q
-
-
-|adc_mic_lcd|config_shift_register:mem1|input_debounce:mem_db
-clk => PB_state~reg0.CLK
-clk => PB_cnt[0].CLK
-clk => PB_cnt[1].CLK
-clk => PB_cnt[2].CLK
-clk => PB_sync_1.CLK
-clk => PB_sync_0.CLK
-PB => PB_sync_0.DATAIN
-PB_state <= PB_state~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PB_down <= PB_down.DB_MAX_OUTPUT_PORT_TYPE
-PB_up <= PB_up.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem1|varcnt:mem_cnt
@@ -10598,7 +10559,7 @@ reset => out32ref.OUTPUTSELECT
 
 
 |adc_mic_lcd|config_shift_register:mem2
-clk => clk.IN3
+clk => clk.IN2
 reset_n => cnt_clr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -10657,16 +10618,15 @@ reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => rden.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
 reset_n => ram_4096_32bit:shift_reg_ram.aclr
 reset_n => _.IN1
 reset_n => _.IN1
-reset_n => d[6].ENA
 reset_n => d[5].ENA
 reset_n => d[4].ENA
 reset_n => d[3].ENA
@@ -10674,6 +10634,7 @@ reset_n => d[2].ENA
 reset_n => d[1].ENA
 reset_n => d[0].ENA
 reset_n => rden.ENA
+reset_n => d[6].ENA
 reset_n => d[7].ENA
 reset_n => d[8].ENA
 reset_n => d[9].ENA
@@ -10762,7 +10723,7 @@ filtsw[1] => filtsw[1].IN1
 filtsw[2] => filtsw[2].IN1
 octave[0] => ShiftRight0.IN5
 octave[1] => ShiftRight0.IN4
-trig => trig.IN1
+trig => trig_sync_0.DATAIN
 shift_register_length[0] => ShiftRight0.IN14
 shift_register_length[1] => ShiftRight0.IN13
 shift_register_length[2] => ShiftRight0.IN12
@@ -10804,19 +10765,6 @@ qout[28] <= filter:filt0.q
 qout[29] <= filter:filt0.q
 qout[30] <= filter:filt0.q
 qout[31] <= filter:filt0.q
-
-
-|adc_mic_lcd|config_shift_register:mem2|input_debounce:mem_db
-clk => PB_state~reg0.CLK
-clk => PB_cnt[0].CLK
-clk => PB_cnt[1].CLK
-clk => PB_cnt[2].CLK
-clk => PB_sync_1.CLK
-clk => PB_sync_0.CLK
-PB => PB_sync_0.DATAIN
-PB_state <= PB_state~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PB_down <= PB_down.DB_MAX_OUTPUT_PORT_TYPE
-PB_up <= PB_up.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem2|varcnt:mem_cnt
@@ -14047,7 +13995,7 @@ reset => out32ref.OUTPUTSELECT
 
 
 |adc_mic_lcd|config_shift_register:mem3
-clk => clk.IN3
+clk => clk.IN2
 reset_n => cnt_clr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
 reset_n => rd_ptr.OUTPUTSELECT
@@ -14106,16 +14054,15 @@ reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => d.OUTPUTSELECT
 reset_n => rden.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
-reset_n => trig_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
+reset_n => KP_state.OUTPUTSELECT
 reset_n => ram_4096_32bit:shift_reg_ram.aclr
 reset_n => _.IN1
 reset_n => _.IN1
-reset_n => d[6].ENA
 reset_n => d[5].ENA
 reset_n => d[4].ENA
 reset_n => d[3].ENA
@@ -14123,6 +14070,7 @@ reset_n => d[2].ENA
 reset_n => d[1].ENA
 reset_n => d[0].ENA
 reset_n => rden.ENA
+reset_n => d[6].ENA
 reset_n => d[7].ENA
 reset_n => d[8].ENA
 reset_n => d[9].ENA
@@ -14211,7 +14159,7 @@ filtsw[1] => filtsw[1].IN1
 filtsw[2] => filtsw[2].IN1
 octave[0] => ShiftRight0.IN5
 octave[1] => ShiftRight0.IN4
-trig => trig.IN1
+trig => trig_sync_0.DATAIN
 shift_register_length[0] => ShiftRight0.IN14
 shift_register_length[1] => ShiftRight0.IN13
 shift_register_length[2] => ShiftRight0.IN12
@@ -14253,19 +14201,6 @@ qout[28] <= filter:filt0.q
 qout[29] <= filter:filt0.q
 qout[30] <= filter:filt0.q
 qout[31] <= filter:filt0.q
-
-
-|adc_mic_lcd|config_shift_register:mem3|input_debounce:mem_db
-clk => PB_state~reg0.CLK
-clk => PB_cnt[0].CLK
-clk => PB_cnt[1].CLK
-clk => PB_cnt[2].CLK
-clk => PB_sync_1.CLK
-clk => PB_sync_0.CLK
-PB => PB_sync_0.DATAIN
-PB_state <= PB_state~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PB_down <= PB_down.DB_MAX_OUTPUT_PORT_TYPE
-PB_up <= PB_up.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |adc_mic_lcd|config_shift_register:mem3|varcnt:mem_cnt

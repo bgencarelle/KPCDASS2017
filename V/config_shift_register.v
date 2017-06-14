@@ -14,7 +14,6 @@ output  wire signed [31:0] qout
 wire signed [31:0] dnoise;
 wire signed [31:0] q;
 wire signed [31:0] dfilter;
-reg [2:0] trig_state = 3'b000;
 reg signed [31:0] d;
 reg rden = 1'b0;
 reg [10:0] load = 10'b0;
@@ -38,15 +37,17 @@ begin
 		load <= 11'b00000000100;
 	end
 end
+
+reg [2:0] KP_state = 3'b000;
 //main state machine
 always @ (posedge clk )
 if (reset_n == 1'b0)
 begin
-trig_state <= 3'b00;
+KP_state<= 3'b00;
 end
 else if (reset_n != 1'b0)
 begin
-	case(trig_state)
+	case(KP_state)
 	
 	3'b000:	begin //start idle
 		if (trig_reset == 1'b1)
@@ -56,7 +57,7 @@ begin
 			wr_ptr <= count;
 			d <= dnoise;
 			rden <= 1'b0;
-			trig_state <= 3'b001;
+			KP_state<= 3'b001;
 			end
 		else if (trig_reset == 1'b0)
 			begin
@@ -65,7 +66,7 @@ begin
 			wr_ptr <= count;
 			d <= dnoise;
 			rden <= 1'b0;
-			trig_state <= 3'b000;
+			KP_state<= 3'b000;
 			end
 				end
 
@@ -78,7 +79,7 @@ begin
 			wr_ptr <= count;
 			rden <= 1'b0;
 			d <= dnoise;
-			trig_state <= 3'b001;
+			KP_state<= 3'b001;
 			end
 			
 		else if (count >= load)
@@ -88,7 +89,7 @@ begin
 			wr_ptr <= count;
 			rden <= 1'b0;
 			d <= dnoise;
-			trig_state <= 3'b010;
+			KP_state<= 3'b010;
 			end
 				end
 
@@ -103,11 +104,11 @@ begin
 				wr_ptr <= count;
 				if (trig_reset != 1'b1)
 				begin
-				trig_state <= 3'b010;
+				KP_state<= 3'b010;
 				end
 				else if (trig_reset == 1'b1)
 					begin
-					trig_state <= 3'b001;
+					KP_state<= 3'b001;
 					end
 				end
 				
@@ -120,30 +121,53 @@ begin
 				wr_ptr <= count;
 					if (trig_reset != 1'b1)
 					begin
-					trig_state <= 3'b010;
+KP_state<= 3'b010;
 					end
 					else if (trig_reset == 1'b1)
 					begin
-					trig_state <= 3'b001;
+					KP_state<= 3'b001;
 					end
 				end
 	end
 
 	default:	begin
-				trig_state <= 3'b000;
+				KP_state<= 3'b000;
 				end
 	endcase
 end
 
+//debounce
+reg trig_now;  // 1 as long as the push-button is active (down)
+wire trig_down;
+reg trig_sync_0;  
+reg trig_sync_1; 
+reg [2:0] 	trig_cnt;
+wire trig_idle = (trig_now==trig_sync_1);
+wire trig_cnt_max = &trig_cnt;
 
-input_debounce mem_db(
-				
-				.clk(clk),
-				.PB(trig), 
-//						.PB_state(trig_up),  // 1 as long as the push-button is active (down)
-				.PB_down(trig_reset),// 1 for one clock cycle when the push-button goes down 
-//						.PB_up(trig_up)// 1 for one clock cycle when the push-button goes up (i.e. just released)
-);
+always @(posedge clk) 
+begin
+	trig_sync_0 <= ~trig;  
+	trig_sync_1 <= trig_sync_0;
+end
+
+always @(posedge clk)
+if(trig_idle)
+begin
+    trig_cnt <= 0;  // nothing's going on
+end
+ else
+ 
+begin
+    trig_cnt <= trig_cnt + 1'b1;  // something's going on, increment the counter
+    if(trig_cnt_max) 
+	begin
+	trig_now <= ~trig_now;  // if the counter is maxed out, PB changed!
+	end
+end
+assign trig_reset = ~trig_idle & trig_cnt_max & ~trig_now;
+// end debounce
+
 varcnt mem_cnt(
 			.clock(clk),
 			.sclr(cnt_clr),

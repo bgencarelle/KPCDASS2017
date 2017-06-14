@@ -138,5 +138,5 @@ module filter # (parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1)(
 		endcase
 
 	end
-		assign 	q =reg_q[RANGE:0];
+		assign 	q =$signed(reg_q[RANGE:0]);
 	endmodule

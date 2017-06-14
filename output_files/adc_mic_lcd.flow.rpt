@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Tue Jun 13 01:46:20 2017
+Wed Jun 14 12:55:06 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 13 01:46:20 2017       ;
+; Flow Status                        ; Successful - Wed Jun 14 12:55:06 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484I7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 4,858 / 49,760 ( 10 % )                     ;
-;     Total combinational functions  ; 4,166 / 49,760 ( 8 % )                      ;
-;     Dedicated logic registers      ; 3,272 / 49,760 ( 7 % )                      ;
-; Total registers                    ; 3272                                        ;
+; Total logic elements               ; 7,546 / 49,760 ( 15 % )                     ;
+;     Total combinational functions  ; 6,855 / 49,760 ( 14 % )                     ;
+;     Dedicated logic registers      ; 4,746 / 49,760 ( 10 % )                     ;
+; Total registers                    ; 4746                                        ;
 ; Total pins                         ; 98 / 360 ( 27 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 387,328 / 1,677,312 ( 23 % )                ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/13/2017 01:44:29 ;
+; Start date & time ; 06/14/2017 12:52:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149731106901404                            ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 184857106377073.149743757508236                            ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --            ; --          ; --             ;
@@ -116,12 +116,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:44     ; 1.0                     ; 768 MB              ; 00:01:25                           ;
-; Fitter                    ; 00:00:42     ; 1.5                     ; 1962 MB             ; 00:01:32                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 594 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:07     ; 2.6                     ; 813 MB              ; 00:00:14                           ;
-; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 588 MB              ; 00:00:04                           ;
-; Total                     ; 00:01:42     ; --                      ; --                  ; 00:03:20                           ;
+; Analysis & Synthesis      ; 00:00:34     ; 1.0                     ; 767 MB              ; 00:01:04                           ;
+; Fitter                    ; 00:01:11     ; 1.5                     ; 1996 MB             ; 00:02:34                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 597 MB              ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:09     ; 3.1                     ; 821 MB              ; 00:00:20                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 600 MB              ; 00:00:04                           ;
+; Total                     ; 00:02:03     ; --                      ; --                  ; 00:04:07                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

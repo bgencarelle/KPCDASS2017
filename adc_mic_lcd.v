@@ -134,16 +134,16 @@ always @(AUDIO_WCLK)
 	MIXMASTER <= ((MEM4>>1)	+ (MEM3>>1)) + MEM2 + MEM0 + MEM1 ;
 	end
 	
-	assign MASTER_OUT = MIXMASTER [33:17];
+	assign MASTER_OUT = MIXMASTER [33:18];
 
 config_shift_register mem4 (  
 			.m_clk(MAX10_CLK1_50),
 		  .clk(AUDIO_WCLK),
 		  .seed_val(32'h00ff56ff),
 		  .octave(SW[9:8]),
-		  .filtsw(2'b11),
+		  .filtsw(3'b111),
 		  .trig(KEY[3]),
-		  .shift_register_length(10'd320),
+		  .shift_register_length(10'd420),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
@@ -152,9 +152,9 @@ config_shift_register mem0 (
 		  .clk(AUDIO_WCLK),
 		  .seed_val(32'h00F3F3ff),
 		  .octave(SW[7:6]),
-		  .filtsw(2'b11),
-		  .trig(KEY[2]),
-		  .shift_register_length(10'd290),
+		  .filtsw(3'b111),
+		  .trig(KEY[3]),
+		  .shift_register_length(10'd390),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
@@ -163,9 +163,9 @@ config_shift_register mem1 (
 		  .clk(AUDIO_WCLK),
 		  .seed_val(32'hf003B3ff),
 		  .octave(SW[5:4]),
-		  .filtsw(2'b11),
+		  .filtsw(3'b111),
 		  .trig(KEY[2]),
-		  .shift_register_length(10'd260),
+		  .shift_register_length(10'd360),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
@@ -174,9 +174,9 @@ config_shift_register mem2 (
 		  .clk(AUDIO_WCLK),
 		  .seed_val(32'hfffaa),
 		  .octave(SW[3:2]),
-		  .filtsw(2'b11),
+		  .filtsw(3'b111),
 		  .trig(KEY[1]),
-		  .shift_register_length(10'd240),
+		  .shift_register_length(10'd340),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
@@ -185,9 +185,9 @@ config_shift_register mem3 (
 		  .clk(AUDIO_WCLK),
 		  .seed_val(32'h56ff),
 		  .octave(SW[1:0]),
-		  .filtsw(2'b11),
+		  .filtsw(3'b111),
 		  .trig(KEY[0]),
-		  .shift_register_length(10'd195),
+		  .shift_register_length(10'd295),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         );
