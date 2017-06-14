@@ -8,15 +8,15 @@ input wire trig,
 input wire				[1:0] octave,
 input wire				[2:0] filtsw,
 input wire				[8:0] shift_register_length,
-input wire 				[23:0] seed_val,
-output wire signed	[23:0] qout
+input wire 				[31:0] seed_val,
+output wire signed	[31:0] qout
 );
 
-wire signed [23:0] dnoise;	//noise source
-wire signed [23:0] q;		//output from RAM
-wire signed [23:0] dfilter;//filter output
+wire signed [31:0] dnoise;	//noise source
+wire signed [31:0] q;		//output from RAM
+wire signed [31:0] dfilter;//filter output
 
-reg signed [23:0] d;			//input to RAM
+reg signed [31:0] d;			//input to RAM
 reg rden = 1'b0;//	
 reg cnt_clr = 1'b1;
 
