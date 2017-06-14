@@ -1,9 +1,9 @@
-module  ADC_SEG_LED (
-  input  RESET_n , 
-  input clk, 
-  input [11:8] VALUE , 
-  output [9:0]LED,
-  output [6:0]HEXR
+module  ADC_SEG_LED(
+  input  			reset_n , 
+  input 				clk, 
+  input 	[3:0]	adc_rd , 
+  output [9:0]		LED,
+  output [6:0]		HEXR
 
 ) ; 
  
@@ -12,9 +12,11 @@ module  ADC_SEG_LED (
 reg [9:0] vol;
 reg [6:0] hex0;
 reg [6:0] hex1;
+
 always @ (posedge clk )
+
 begin
-	case(VALUE)
+	case(adc_rd)
 	 4'b0000:	begin //0
 					vol = 10'b0000000000;
 					hex0 = 7'b0111111;
@@ -101,7 +103,7 @@ end
 
 //---LED OUT --- 
 assign LED =  vol ; 
-assign HEXR = hex0;
+assign HEXR = ~hex0;
 
 
 

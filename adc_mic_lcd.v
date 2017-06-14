@@ -47,17 +47,17 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1,
 	output		          		DAC_SCLK,
 	output		          		DAC_SYNC_n,
 
-	//////////// MTL2 //////////
-	output		     [7:0]		MTL2_B,
-	output		          		MTL2_BL_ON_n,
-	output		          		MTL2_DCLK,
-	output		     [7:0]		MTL2_G,
-	output		          		MTL2_HSD,
-	output		          		MTL2_I2C_SCL,
-	inout 		          		MTL2_I2C_SDA,
-	input 		          		MTL2_INT,
-	output		     [7:0]		MTL2_R,
-	output		          		MTL2_VSD,
+//	//////////// MTL2 //////////
+//	output		     [7:0]		MTL2_B,
+//	output		          		MTL2_BL_ON_n,
+//	output		          		MTL2_DCLK,
+//	output		     [7:0]		MTL2_G,
+//	output		          		MTL2_HSD,
+//	output		          		MTL2_I2C_SCL,
+//	inout 		          		MTL2_I2C_SDA,
+//	input 		          		MTL2_INT,
+//	output		     [7:0]		MTL2_R,
+//	output		          		MTL2_VSD,
 //
 //	//////////// PS2 //////////
 //	inout 		          		PS2_CLK,
@@ -136,9 +136,9 @@ always @(AUDIO_WCLK)
 	
 	assign MASTER_OUT = MIXMASTER [33:18];
 
-config_shift_register mem4 (  
+KP_main mem4(  
 			.m_clk(MAX10_CLK1_50),
-		  .clk(AUDIO_WCLK),
+		  .a_clk(AUDIO_WCLK),
 		  .seed_val(32'h00ff56ff),
 		  .octave(SW[9:8]),
 		  .filtsw(3'b111),
@@ -147,52 +147,70 @@ config_shift_register mem4 (
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
-config_shift_register mem0 (  
-			.m_clk(MAX10_CLK1_50),
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'h00F3F3ff),
-		  .octave(SW[7:6]),
-		  .filtsw(3'b111),
-		  .trig(KEY[3]),
-		  .shift_register_length(10'd390),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM3)    
-        ); 
-config_shift_register mem1 (  
-			.m_clk(MAX10_CLK1_50),
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf003B3ff),
-		  .octave(SW[5:4]),
-		  .filtsw(3'b111),
-		  .trig(KEY[2]),
-		  .shift_register_length(10'd360),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM2)    
-        ); 
-config_shift_register mem2 (  
-			.m_clk(MAX10_CLK1_50),
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hfffaa),
-		  .octave(SW[3:2]),
-		  .filtsw(3'b111),
-		  .trig(KEY[1]),
-		  .shift_register_length(10'd340),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM1)    
-        ); 
-config_shift_register mem3 (  
-			.m_clk(MAX10_CLK1_50),
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'h56ff),
-		  .octave(SW[1:0]),
-		  .filtsw(3'b111),
-		  .trig(KEY[0]),
-		  .shift_register_length(10'd295),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM0)    
-        );
+//KP_main mem3(  
+//			.m_clk(MAX10_CLK1_50),
+//		  .a_clk(AUDIO_WCLK),
+//		  .seed_val(32'h00F3F3ff),
+//		  .octave(SW[7:6]),
+//		  .filtsw(3'b111),
+//		  .trig(KEY[3]),
+//		  .shift_register_length(10'd390),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM3)    
+//        ); 
+//KP_main mem2(  
+//			.m_clk(MAX10_CLK1_50),
+//		  .a_clk(AUDIO_WCLK),
+//		  .seed_val(32'hf003B3ff),
+//		  .octave(SW[5:4]),
+//		  .filtsw(3'b111),
+//		  .trig(KEY[2]),
+//		  .shift_register_length(10'd360),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM2)    
+//        ); 
+//KP_main mem1(  
+//			.m_clk(MAX10_CLK1_50),
+//		  .a_clk(AUDIO_WCLK),
+//		  .seed_val(32'hfffaa),
+//		  .octave(SW[3:2]),
+//		  .filtsw(3'b111),
+//		  .trig(KEY[1]),
+//		  .shift_register_length(10'd340),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM1)    
+//        ); 
+//KP_main mem0(  
+//			.m_clk(MAX10_CLK1_50),
+//		  .a_clk(AUDIO_WCLK),
+//		  .seed_val(32'h56ff),
+//		  .octave(SW[1:0]),
+//		  .filtsw(3'b111),
+//		  .trig(KEY[0]),
+//		  .shift_register_length(10'd295),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM0)    
+//        );
+//
+//
+//ADC_SEG_LED segR(
+//			.reset_n(RESET_DELAY_n), 
+//			.clk (AUDIO_MCLK), 
+//			.adc_rd (ADC_RD[11:8]),
+//			.LED(LED), 	
+//			.HEXR(HEXL)
+//			); 
+ADC_SEG_LED segL(
+			.reset_n(RESET_DELAY_n), 
+			.clk (AUDIO_MCLK), 
+			.adc_rd (ADC_RD[7:4]),	
+			.HEXR(HEXR)
+			); 
 
-
+//--METER TO LED --  
+assign LEDR =  LED;
+//assign HEX0 = HEXL;
+assign HEX1 = HEXR; 
 //--RESET DELAY ---
 
 //--I2S PROCESSS  CODEC LINE OUT --
@@ -289,22 +307,6 @@ AUDIO_SPI_CTL_RD	u1(
 	);
 
 
-
-//-- SOUND-LEVEL Dispaly to LED
-
-LED_METER   led(
-   .RESET_n   ( RESET_DELAY_n), 
-	.clk   ( AUDIO_MCLK )  , 
-	.VALUE ( ADC_RD[11:8] ) ,
-	.LED   (  LED ), 	
-	.HEXR (HEXR)
-) ; 
-
-//assign GPIO[0] = AUDIO_WCLK; 
-
-//--METER TO LED --  
-assign LEDR =  LED ; 
-assign HEX0 = ~HEXR;
 
 //---MTL2 --- 
 PLL_VGA PP(
