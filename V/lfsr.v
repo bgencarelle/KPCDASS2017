@@ -1,6 +1,7 @@
 
 module lfsr    (
-out32				 ,  // 32 bit 
+out24				 ,  
+out32,// 32 bit 
 data			    ,
 
 a_clk					,
@@ -9,9 +10,16 @@ reset              // reset input
 );
 
 //----------Output Ports--------------
+<<<<<<< HEAD
+output wire signed [31:0] out32;
+output wire signed [23:0] out24;
+reg  [31:0] out32hold;
+reg  [31:0] out32ref;
+=======
 output wire  [23:0] out32;
 reg  [23:0] out32hold;
 reg  [23:0] out32ref;
+>>>>>>> origin/Octave
 //------------Input Ports--------------
 input signed [23:0] data;//seed value
  input wire a_clk, clk, reset;
@@ -45,9 +53,13 @@ if (out == out32ref)
 end
 	always @(posedge a_clk)
 	begin
+<<<<<<< HEAD
+	out32hold <= $signed(out);
+=======
 	out32hold <= (out);
+>>>>>>> origin/Octave
 	end
 	
-	assign out32 = (out32hold);
+	assign out24 = $signed(out32hold[31:8]);
 	
 endmodule // End Of Module counter

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
+<<<<<<< HEAD
+ date="2017.06.15.20:52:41"
+=======
  date="2017.06.14.18:38:08"
+>>>>>>> origin/Octave
  outputDirectory="C:/Users/ben/Documents/GitHub/KPCDASS2017/db/ip/sldaf1daf55/">
  <perimeter>
   <parameter
