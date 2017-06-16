@@ -1,5 +1,5 @@
 
-module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
+module filter # (parameter BIT_WIDTH = 32, parameter RANGE = BIT_WIDTH-1)(
 	input wire [2:0] filt_sel,
 	input wire clk,
 	input  wire signed [RANGE:0] d,
@@ -29,7 +29,23 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	 reg signed [RANGE+5:0]reg_div4;
 	 reg signed [RANGE+6:0]reg_div8;
 	 reg signed [RANGE+7:0]reg_div16;
-
+	 //	 reg [RANGE:0]reg_16;
+//	 reg [RANGE:0]reg_17;
+//	 reg [RANGE:0]reg_18;
+//	 reg [RANGE:0]reg_19;
+//	 reg [RANGE:0]reg_20;
+//	 reg [RANGE:0]reg_21;
+//	 reg [RANGE:0]reg_22;
+//	 reg [RANGE:0]reg_23;
+//	 reg [RANGE:0]reg_24;
+//	 reg [RANGE:0]reg_25;
+//	 reg [RANGE:0]reg_26;
+//	 reg [RANGE:0]reg_27;
+//	 reg [RANGE:0]reg_28;
+//	 reg [RANGE:0]reg_29;
+//	 reg [RANGE:0]reg_30;
+//    reg [RANGE:0]reg_31;
+//	 reg signed [BIT_WIDTH*2:0] reg_case;
 	 reg signed [RANGE+1:0]reg_q;
 
  always @ (posedge clk)
@@ -50,7 +66,23 @@ module filter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 			reg_12 <= 0;
 			reg_13 <= 0;
 			reg_14 <= 0;
-
+//    		reg_15 <= 0;
+//			reg_16 <= 0;
+//			reg_17 <= 0;
+//			reg_18 <= 0;
+//			reg_19 <= 0;
+//			reg_20 <= 0;
+//			reg_21 <= 0;
+//			reg_22 <= 0;
+//			reg_23 <= 0;
+//			reg_24 <= 0;
+//			reg_25 <= 0;
+//			reg_26 <= 0;
+//			reg_27 <= 0;
+//			reg_28 <= 0;
+//			reg_29 <= 0;
+//			reg_30 <= 0;
+//			reg_31 <= 0;
 			end
 	else begin
 			reg_0 <= d ;

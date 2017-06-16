@@ -124,15 +124,11 @@
 					"strict" : false
 				},
 				{
-<<<<<<< HEAD
-					"name" : "KEY[4]",
-=======
 					"name" : "KEY[3]",
 					"strict" : false
 				},
 				{
 					"name" : "KEY[2]",
->>>>>>> origin/Octave
 					"strict" : false
 				},
 				{
@@ -144,13 +140,6 @@
 					"strict" : false
 				},
 				{
-<<<<<<< HEAD
-					"name" : "KEY[1]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[0]",
-=======
 					"name" : "SW[7]",
 					"strict" : false
 				},
@@ -188,7 +177,6 @@
 				},
 				{
 					"name" : "SW[3]",
->>>>>>> origin/Octave
 					"strict" : false
 				},
 				{

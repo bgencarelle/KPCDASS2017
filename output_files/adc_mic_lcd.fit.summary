@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-Fitter Status : Successful - Thu Jun 15 20:53:32 2017
-=======
 Fitter Status : Successful - Wed Jun 14 18:39:15 2017
->>>>>>> origin/Octave
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : adc_mic_lcd
 Top-level Entity Name : adc_mic_lcd
 Family : MAX 10
 Device : 10M50DAF484I7G
 Timing Models : Final
-<<<<<<< HEAD
-Total logic elements : 3,329 / 49,760 ( 7 % )
-    Total combinational functions : 2,359 / 49,760 ( 5 % )
-    Dedicated logic registers : 2,552 / 49,760 ( 5 % )
-Total registers : 2552
-Total pins : 98 / 360 ( 27 % )
-Total virtual pins : 0
-Total memory bits : 295,168 / 1,677,312 ( 18 % )
-=======
 Total logic elements : 6,872 / 49,760 ( 14 % )
     Total combinational functions : 6,558 / 49,760 ( 13 % )
     Dedicated logic registers : 2,305 / 49,760 ( 5 % )
@@ -25,7 +12,6 @@ Total registers : 2305
 Total pins : 67 / 360 ( 19 % )
 Total virtual pins : 0
 Total memory bits : 2,288 / 1,677,312 ( < 1 % )
->>>>>>> origin/Octave
 Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
 Total PLLs : 2 / 4 ( 50 % )
 UFM blocks : 0 / 1 ( 0 % )

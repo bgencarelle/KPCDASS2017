@@ -88,7 +88,7 @@ wire signed [RANGE+4:0]		VERB0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
-reg signed [RANGE+4:0]		MIXMASTER=0;
+reg signed [RANGE+4:0]		MIXMASTER;
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -132,92 +132,63 @@ reg   [31:0]  			DELAY_CNT;
 //	 
 always @(AUDIO_WCLK)
 	begin
-	MIXMASTER <=  MEM4+ MEM3 + MEM2 + MEM0 + MEM1 ;
+	MIXMASTER <= ((MEM4>>1)	+ (MEM3>>1)) + MEM2 + MEM0 + MEM1 ;
 	end
 	
-<<<<<<< HEAD
-	assign MASTER_OUT = MIXMASTER [23:8];
-=======
 	assign MASTER_OUT = MIXMASTER [25:10];
->>>>>>> origin/Octave
 
 KP_main mem4(  
 			.m_clk(MAX10_CLK1_50),
-<<<<<<< HEAD
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf0ff56),
-=======
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff6ff),
->>>>>>> origin/Octave
 		  .octave(SW[9:8]),
-		  .filtsw(3'b011),
-		  .trig(KEY[4]),
-		  .shift_register_length(10'd48),
+		  .filtsw(3'b111),
+		  .trig(KEY[3]),
+		  .shift_register_length(10'd420),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
 KP_main mem3(  
 			.m_clk(MAX10_CLK1_50),
-<<<<<<< HEAD
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf0F3F3),
-=======
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff3ff),
->>>>>>> origin/Octave
 		  .octave(SW[7:6]),
-		  .filtsw(3'b100),
+		  .filtsw(3'b111),
 		  .trig(KEY[3]),
-		  .shift_register_length(10'd48),
+		  .shift_register_length(10'd390),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
 KP_main mem2(  
 			.m_clk(MAX10_CLK1_50),
-<<<<<<< HEAD
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hf003f3),
-=======
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hf3B3ff),
->>>>>>> origin/Octave
 		  .octave(SW[5:4]),
-		  .filtsw(3'b101),
+		  .filtsw(3'b111),
 		  .trig(KEY[2]),
-		  .shift_register_length(10'd48),
+		  .shift_register_length(10'd360),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 KP_main mem1(  
 			.m_clk(MAX10_CLK1_50),
-<<<<<<< HEAD
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hfff0aa),
-=======
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfffaa),
->>>>>>> origin/Octave
 		  .octave(SW[3:2]),
-		  .filtsw(3'b110),
+		  .filtsw(3'b111),
 		  .trig(KEY[1]),
-		  .shift_register_length(10'd48),
+		  .shift_register_length(10'd340),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
 KP_main mem0(  
 			.m_clk(MAX10_CLK1_50),
-<<<<<<< HEAD
-		  .clk(AUDIO_WCLK),
-		  .seed_val(32'hff0056ff),
-=======
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'h56ffff),
->>>>>>> origin/Octave
 		  .octave(SW[1:0]),
 		  .filtsw(3'b111),
 		  .trig(KEY[0]),
-		  .shift_register_length(10'd48),
+		  .shift_register_length(10'd295),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         );
