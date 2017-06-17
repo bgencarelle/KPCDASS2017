@@ -282,12 +282,11 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name BOARD "MAX 10 NEEK"
 
-set_global_assignment -name VERILOG_FILE V/shiftreg.v
-set_global_assignment -name VERILOG_FILE V/audiomux.v
+set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
+set_global_assignment -name VERILOG_FILE V/newfilter.v
+set_global_assignment -name VERILOG_FILE V/config_shift_register.v
 set_global_assignment -name VERILOG_FILE V/pulse_width_modulation_gen.v
 set_global_assignment -name VERILOG_FILE V/lfsr.v
-set_global_assignment -name VERILOG_FILE V/input_debounce.v
-set_global_assignment -name VERILOG_FILE V/filter.v
 set_global_assignment -name QIP_FILE adc_qsys/synthesis/adc_qsys.qip
 set_global_assignment -name HEX_FILE V/LOOP.hex
 set_global_assignment -name SOURCE_FILE V/VGA_Param.h
@@ -310,10 +309,6 @@ set_global_assignment -name QIP_FILE varcnt.qip
 set_global_assignment -name QIP_FILE ram_4096_32bit.qip
 set_global_assignment -name QIP_FILE reverbcnt.qip
 set_global_assignment -name QIP_FILE reverb_ram.qip
-set_global_assignment -name VERILOG_FILE V/reverb_inst.v
 set_global_assignment -name CDF_FILE output_files/Chain2.cdf
-set_global_assignment -name VERILOG_FILE db2.v
 set_global_assignment -name VERILOG_FILE V/ADC_SEG_LED.v
-set_global_assignment -name VERILOG_FILE V/KP_main.v
-set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

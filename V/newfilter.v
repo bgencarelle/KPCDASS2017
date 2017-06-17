@@ -3,89 +3,93 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	input wire [2:0] filt_sel,
 	input wire clk,
 	input  wire signed [RANGE:0] d,
-	input wire sclr,
+	input wire reset_n,
 	output signed [RANGE:0] q
 	 );
 
+	reg signed [23:0] regq;
+	
+   reg signed [23:0] del[15:0];
+      integer i;
 
-	reg signed [RANGE:0]	reg_0;
-	reg signed [RANGE:0]	reg_div2a;
-	reg signed [RANGE:0]	reg_div2b;
-	reg signed [RANGE:0]	reg_div4a;
-	reg signed [RANGE:0]	reg_div4b;
-	reg signed [RANGE:0]	reg_div8a;
-	reg signed [RANGE:0]	reg_div8b;
-	reg signed [RANGE:0]	reg_div16a;
-	reg signed [RANGE:0]	reg_div16b;
-	reg signed [RANGE:0]	reg_div32a;
-	reg signed [RANGE:0]	reg_div32b;
-	reg signed [RANGE:0]	reg_div64a;
-	reg signed [RANGE:0]	reg_div64b;
-	reg signed [RANGE:0]	reg_div128;
-	reg signed [RANGE:0]	reg_q;
-
- always @ (posedge clk)
-
-	if(sclr== 1)
-	begin
-		reg_0 <= 0;
-	end
-
-	else
-	begin
-			reg_0 <= {d[23],d[23:1]} ;
-			reg_div2a<= ({d[23],d[23:1]} + {reg_0[23],reg_0[23:1]});
-			reg_div2b<= reg_div2a;
-			reg_div4a<= {reg_div2a[23],reg_div2a[23:1]}+ {reg_div2b[23],reg_div2b[23:1]};
-			reg_div4b<= reg_div4a;
-			reg_div8a<= {reg_div4a[23],reg_div4a[23:1]}+ {reg_div4b[23],reg_div4b[23:1]};
-			reg_div8b<= reg_div8a;
-			reg_div16a<= {reg_div8a[23],reg_div8a[23:1]} +{reg_div8b[23],reg_div8b[23:1]};
-			reg_div16b<= reg_div16a;
-			reg_div32a<= {reg_div16a[23],reg_div16a[23:1]} + {reg_div16b[23],reg_div16b[23:1]};
-			reg_div32b<= reg_div32a;
-			reg_div64a<= {reg_div32a[23],reg_div32a[23:1]} + {reg_div32b[23],reg_div32b[23:1]};
-			reg_div64b<= reg_div64a;
-			reg_div128<= {reg_div64a[23],reg_div64a[23:1]} + {reg_div64b[23],reg_div64b[23:1]};
-	end
+      always @ ( posedge clk ) 
+		begin
+      if(reset_n == 1'b0)
+         for (i = 0; i <= 15; i = i+ 1) 
+				begin: clear_fir
+					del[i] <= 0;
+            end
+      else
+         for (i = 0; i <= 15; i = i+ 1) 
+				begin: shift_fir
+             if(i == 0)
+               del[0] <= d;
+             else
+               del[i] <= del[i-1] ;
+             end
+		end
+						
+		reg signed [31:0] sum;
 
 	always @ (posedge clk)
 
 	begin case(filt_sel)
 		 3'b000:begin
-					reg_q <= d;
+					regq <= $signed(del[0]);
 					end
 
 		3'b001:begin
-						reg_q 	<= reg_div2a[RANGE:0];
+      sum <= $signed(del[0] + del[1]);
+
+      regq = $signed(sum[24:1]);
 				end
 
 		3'b010:begin
-						reg_q <= reg_div4a[RANGE:0];
+      sum <= $signed(del[0]+ del[1]+ del[2]+ del[3]);
+
+      regq = $signed(sum[25:2]);
 				 end
 
 		3'b011:begin
-						reg_q <= reg_div8a[(RANGE):0];
+      sum <= $signed(del[0] + del[1]  + del[2]  + del[3]  + del[4]  + del[5]  + del[6] + del[7]);
+
+      regq = $signed(sum[26:3]);
 				 end
 
 		3'b100:begin
-						reg_q <= reg_div16a[(RANGE):0];
+      sum <= del[0] + del[1]  + del[2]  + del[3]  + del[4]  + del[5]  + del[6] + del[7] + 
+					del[8] + del[9]  + del[10]  + del[11]  + del[12]  + del[13]  + del[14] + del[15];
+      regq = $signed(sum[27:4]);
 				 end
 				 
 		3'b101:begin
-						reg_q <= reg_div32a[(RANGE):0];
+		sum <= 	$signed(
+					{{3{del[0][23]}},del[0][23:3]} +//1/16
+					{{3{del[1][23]}},del[1][23:3]} +//1/16
+					{{2{del[2][23]}},del[2][23:2]} +//1/8
+					{{1{del[3][23]}},del[3][23:1]} //1/4
+					);
+					regq = $signed(sum[23:0]);
 				 end
 
 		3'b110:begin
-						reg_q <= reg_div64a[(RANGE):0];
+			sum <=$signed(
+					{{4{del[0][23]}},del[0][23:4]} +//1/16
+					{{4{del[1][23]}},del[1][23:4]} +//1/16
+					{{3{del[2][23]}},del[2][23:3]} +//1/8
+					{{2{del[3][23]}},del[3][23:2]} +//1/4
+					{{1{del[4][23]}},del[4][23:1]}//1/2
+					);
+					regq = $signed(sum[23:0]);
 				 end
 				 
 		default:begin
-					reg_q <= reg_div128[(RANGE+0):0];
+		sum <= del[0][23:3] + del[1][23:3]  + del[1][23:2] + del[1][23:1];
+      regq = $signed(sum[23:0]);
 				 end
 
 		endcase
 
 	end
-		assign 	q =$signed(reg_q[RANGE:0]);
+		assign 	q =$signed(regq);
 	endmodule

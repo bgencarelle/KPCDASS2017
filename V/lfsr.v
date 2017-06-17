@@ -1,17 +1,20 @@
 
 module lfsr    (
-out32				 ,  // 32 bit 
+out24				 ,  
 data			    ,
-
 a_clk					,
 clk             ,  // clock input
 reset              // reset input
 );
 
 //----------Output Ports--------------
-output wire  [23:0] out32;
-reg  [23:0] out32hold;
-reg  [23:0] out32ref;
+
+output wire signed [23:0] out24;
+reg  [23:0] out24hold;
+reg  [23:0] out24ref;
+
+
+
 //------------Input Ports--------------
 input signed [23:0] data;//seed value
  input wire a_clk, clk, reset;
@@ -28,26 +31,29 @@ if (reset)
 	begin // active high reset
   out <= data;
 	end
-if (out == 32'h0) 
+if (out == 24'h0) 
 	begin // active high reset
   out <= ~data;
 	end
-if (out == out32ref) 
+if (out == out24ref) 
 	begin // active high reset
-  out <= ~data-12'b1;
+  out <= ~data;
 	end
 	else if (!reset) 
 	begin 
-	out <= {out[22:0], linear_feedback};
-	out32ref <= out;
+	out <= {out[22:0],linear_feedback,};
+	out24ref <= out;
+	end
+end
+
+always @(posedge a_clk)
+   begin
+	out24hold <= {out24ref[23],out24ref[23:1]}+{out[23],out[23:1]};
 	
 	end 
-end
-	always @(posedge a_clk)
-	begin
-	out32hold <= (out);
-	end
+
+
 	
-	assign out32 = (out32hold);
+	assign out24 = $signed(out24hold);
 	
 endmodule // End Of Module counter
