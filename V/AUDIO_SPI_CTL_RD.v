@@ -46,7 +46,7 @@ parameter    W_WORD_NUM  = 128;
 //reg        CLK_1M ; 
 reg [15:0] CLK_DELAY ;  
 always @ (posedge  CLK_50)  begin 
-if  ( CLK_DELAY  > 25  )   // 25= 1M clock  / 62 =400k  
+if  ( CLK_DELAY  > 62  )   // 25= 1M clock  / 62 =400k  
   begin  
     CLK_DELAY <= 0; 
 	 CLK_1M    <= ~CLK_1M; 
@@ -60,13 +60,13 @@ reg [31:0]RESET_DELAY ;
 	always @(negedge RESET_n  or posedge  CLK_1M )  begin 
 	if ( !RESET_n ) RESET_DELAY  <= 0; 
 	else begin 
-	    if ( RESET_DELAY < 10000 ) RESET_DELAY <=RESET_DELAY+1; 
+	    if ( RESET_DELAY < 100000 ) RESET_DELAY <=RESET_DELAY+1; 
 		 else RESET_DELAY<=RESET_DELAY ; 
 	end 
 end
 
 wire   ST_RESET  ;
-assign ST_RESET = ( RESET_DELAY == 5000)?1'b0:1'b1 ; 
+assign ST_RESET = ( RESET_DELAY == 50000)?1'b0:1'b1 ; 
 
 //==== SPI ST === // 
 always@( negedge RESET_n or posedge CLK_1M )begin

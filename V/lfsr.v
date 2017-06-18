@@ -48,7 +48,7 @@ end
 
 always @(posedge a_clk)
    begin
-	out24hold <= {out24ref[23],out24ref[23:1]}+{out[23],out[23:1]};
+	out24hold <= out;
 	
 	end 
 

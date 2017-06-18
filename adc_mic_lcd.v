@@ -115,15 +115,7 @@ reg   [31:0]  			DELAY_CNT;
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
-//pulse_width_modulation_gen pwm1 (//to do: add frequency control)
-//    .clk(MAX10_CLK1_50 ), 
-//	 .outclk(AUDIO_WCLK),
-//	 .reset(~RESET_DELAY_n),
-////	 .freq_in(ADCCTRL),
-//    .q_pwm(PWM_OUT[15:0])
-////  .q_saw(SAW_OUT);	 
-//    );
-//	 
+
 always @(AUDIO_WCLK)
 	begin
 	MIXMASTER <={MEM4[23],MEM4[23:1]}+{MEM3[23],MEM3[23:1]}+{MEM2[23],MEM2[23:1]} + {MEM1[23],MEM1[23:1]}+{MEM0[23],MEM0[23:1]};
@@ -134,57 +126,57 @@ always @(AUDIO_WCLK)
 
 
 KP_main mem4(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff_6ff),
 		  .octave(0),
 		  .filtsw(3'b110),
 		  .trig(KEY[4]),
-		  .shift_register_length(10'd145),
+		  .delay_length(10'd146),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
 KP_main mem3(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hf0f_3ff),
 		  .octave(0),
 		  .filtsw(3'b110),
 		  .trig(KEY[3]),
-		  .shift_register_length(10'd194),
+		  .delay_length(10'd194),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
 KP_main mem2(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff_30f),
 		  .octave(0),
 		  .filtsw(3'b110),
 		  .trig(KEY[2]),
-		  .shift_register_length(10'd244),
+		  .delay_length(10'd244),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 KP_main mem1(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff_faa),
 		  .octave(0),
 		  .filtsw(3'b110),
 		  .trig(KEY[1]),
-		  .shift_register_length(10'd327),
+		  .delay_length(10'd327),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
 KP_main mem0(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hf0f_fff),
 		  .octave(0),
-		  .filtsw(3'b110),
+		  .filtsw(3'b100),
 		  .trig(KEY[0]),
-		  .shift_register_length(10'd436),
+		  .delay_length(10'd436),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         );
@@ -206,7 +198,7 @@ ADC_SEG_LED segL(
 
 //--METER TO LED --  
 assign LEDR =  LED;
-//assign HEX0 = HEXL;
+assign HEX0 = HEXL;
 assign HEX1 = HEXR; 
 //--RESET DELAY ---
 
@@ -265,7 +257,7 @@ MAX10_ADC   madc(
  );
 
 //--------------DAC out --------------------
-assign      TODAC = {~SUM_AUDIO[RANGE] ,  SUM_AUDIO[RANGE-1:TRUNC] }  ; 
+assign      TODAC = {~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:TRUNC] }  ; 
 //
 DAC16 dac1 (
 	.LOAD    ( ROM_CK   ) ,

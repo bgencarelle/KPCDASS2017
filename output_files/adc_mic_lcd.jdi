@@ -3,7 +3,7 @@
     <hash md5_digest_80b="8fdf9f5654ad31b86664"/>
   </project>
   <file_info>
-    <file device="10M50DAF484I7G" path="adc_mic_lcd.sof" usercode="0xFFFFFFFF"/>
+    <file device="10M50DAF484C6GES" path="adc_mic_lcd.sof" usercode="0xFFFFFFFF"/>
   </file_info>
   <hub_info hub_ir_width="8" ir_width="8" node_addr_width="1" node_count="1"/>
   <node_info>

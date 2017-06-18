@@ -1,5 +1,4 @@
 Warning (10268): Verilog HDL information at newfilter.v(34): always construct contains both blocking and non-blocking assignments File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/newfilter.v Line: 34
-Info (10281): Verilog HDL Declaration information at config_shift_register.v(42): object "KP_state" differs only in case from object "KP_STATE" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/config_shift_register.v Line: 42
 Warning (10273): Verilog HDL warning at altera_modular_adc_control_fsm.v(696): extended using "x" or "z" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/synthesis/submodules/altera_modular_adc_control_fsm.v Line: 696
 Info (10281): Verilog HDL Declaration information at MAX10_ADC.v(2): object "SYS_CLK" differs only in case from object "sys_clk" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/MAX10_ADC.v Line: 2
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(82): object "MEM4" differs only in case from object "mem4" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 82
@@ -7,3 +6,4 @@ Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(81): object "
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(80): object "MEM2" differs only in case from object "mem2" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 80
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(79): object "MEM1" differs only in case from object "mem1" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 79
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(78): object "MEM0" differs only in case from object "mem0" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 78
+Info (10281): Verilog HDL Declaration information at KP_main.v(29): object "KP_state" differs only in case from object "KP_STATE" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 29

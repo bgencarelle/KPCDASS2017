@@ -1,12 +1,13 @@
 // Configurable Pulse Width Modulation Circuitry in Verilog ...
 // written by Dr. C. Jakob, fbeit, h_da, October 2015, christian.jakob@h-da.de
 
-module pulse_width_modulation_gen # (parameter BIT_WIDTH = 12,
-                                     parameter PWM_FREQ = 1000,
+module pulse_width_modulation_gen # (parameter BIT_WIDTH = 8,
+													parameter PWM_FREQ = 1000,
                                      parameter SYS_FREQ = 50000000)(
     input wire clk, reset, outclk, PWM_IN,
 	 input wire sel,
-    output reg [15:0]  q_pwm
+	 input wire freq_in,
+    output reg [23:0]  q_pwm
 	 
     );
 	  
@@ -32,8 +33,8 @@ module pulse_width_modulation_gen # (parameter BIT_WIDTH = 12,
             if(pwm_en)
                   pwm_cnt <= pwm_cnt + 1'b1;
 
-    wire [15:0]q_tmp;
-    assign q_tmp = (pwm_cnt >= 127) ? 16'b0000000000000000 : 16'b1111111111111111;
+    wire signed [23								:0]q_tmp;
+    assign q_tmp = (pwm_cnt >= 127) ? 8388608 : -8388607;
 	// assign q_tmp = pwm_cnt ;
    // synchronize the final pwm output ...
     always@(posedge outclk) 

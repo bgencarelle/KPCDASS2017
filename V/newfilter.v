@@ -23,7 +23,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
          for (i = 0; i <= 15; i = i+ 1) 
 				begin: shift_fir
              if(i == 0)
-               del[0] <= d;
+               del[i] <= d;
              else
                del[i] <= del[i-1] ;
              end

@@ -66,7 +66,7 @@
  ---------------------------------------------------------------------------------
 
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-CHIP  "adc_mic_lcd"  ASSIGNED TO AN: 10M50DAF484I7G
+CHIP  "adc_mic_lcd"  ASSIGNED TO AN: 10M50DAF484C6GES
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
