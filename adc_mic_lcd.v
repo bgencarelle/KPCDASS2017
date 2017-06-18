@@ -84,7 +84,7 @@ wire signed [RANGE+4:0]		VERB0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
-reg signed [RANGE+4:0]		MIXMASTER=0;
+wire signed [RANGE+4:0]		MIXMASTER;
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -116,12 +116,8 @@ reg   [31:0]  			DELAY_CNT;
 
 
 
-always @(AUDIO_WCLK)
-	begin
-	MIXMASTER <={MEM4[23],MEM4[23:1]}+{MEM3[23],MEM3[23:1]}+{MEM2[23],MEM2[23:1]} + {MEM1[23],MEM1[23:1]}+{MEM0[23],MEM0[23:1]};
-	end
-	
 
+	assign MIXMASTER = {MEM4[23],MEM4[23:1]}+{MEM3[23],MEM3[23:1]}+{MEM2[23],MEM2[23:1]} + {MEM1[23],MEM1[23:1]}+{MEM0[23],MEM0[23:1]};
 	assign MASTER_OUT = MIXMASTER [23:8];
 
 
@@ -130,9 +126,9 @@ KP_main mem4(
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff_6ff),
 		  .octave(0),
-		  .filtsw(3'b110),
+		  .filtsw(3'b011),
 		  .trig(KEY[4]),
-		  .delay_length(10'd146),
+		  .delay_length(10'd536),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
@@ -141,9 +137,9 @@ KP_main mem3(
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hf0f_3ff),
 		  .octave(0),
-		  .filtsw(3'b110),
+		  .filtsw(3'b100),
 		  .trig(KEY[3]),
-		  .delay_length(10'd194),
+		  .delay_length(10'd536),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
@@ -152,20 +148,20 @@ KP_main mem2(
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hfff_30f),
 		  .octave(0),
-		  .filtsw(3'b110),
+		  .filtsw(3'b101),
 		  .trig(KEY[2]),
-		  .delay_length(10'd244),
+		  .delay_length(10'd536),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 KP_main mem1(  
 			.m_clk(AUDIO_MCLK),
 		  .a_clk(AUDIO_WCLK),
-		  .seed_val(24'hfff_faa),
+		  .seed_val(24'hf0f_faa),
 		  .octave(0),
-		  .filtsw(3'b110),
+		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(10'd327),
+		  .delay_length(10'd536),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
@@ -174,9 +170,9 @@ KP_main mem0(
 		  .a_clk(AUDIO_WCLK),
 		  .seed_val(24'hf0f_fff),
 		  .octave(0),
-		  .filtsw(3'b100),
+		  .filtsw(3'b111),
 		  .trig(KEY[0]),
-		  .delay_length(10'd436),
+		  .delay_length(10'd536),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         );

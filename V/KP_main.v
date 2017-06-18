@@ -90,15 +90,15 @@ begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-	if (count >= load)
-		begin
-		count <= 0;
-		KP_state<= 3'b010;
-		end
 	if (trig_pulse != 1'b1)
 		begin
 			KP_state<= 3'b010;
+			if (count >= load)
+			begin
+			count <= 0;
+			end
 		end
+		
 	else if (trig_pulse == 1'b1)
 		begin
 			KP_state<= 3'b001;
@@ -156,7 +156,7 @@ assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
 ram_4096_32bit	shift_reg_ram(		
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
-							.data( {{8{d[23]}}, d[23:0]}),
+							.data( {d[23:0],8'b0}),
 							.rdaddress(rd_ptr),
 							.rden(rden),
 							.wraddress(wr_ptr),
@@ -167,7 +167,7 @@ ram_4096_32bit	shift_reg_ram(
 newfilter filt0(//FILTER
 			.filt_sel(filtsw),
 			.clk(a_clk),
-			.d(q[23:0]),
+			.d(q[31:8]),
 			.reset_n(reset_n),
 			.q(dfilter)
 			);
