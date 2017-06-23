@@ -2,7 +2,7 @@ module  DAC16  (
  input LOAD , 
  input RESET_N , 
  input CLK_50 , 
- input [15:0] DATA16 ,
+ input signed [23:0] DATA24 ,
  output reg SYNC ,
  output reg SCLK,
  output reg DIN ,
@@ -38,7 +38,7 @@ module  DAC16  (
  else begin 
   case (ST)
   0: begin 
-     { DIN , RDATA[23:0] }   <= {  9'h0, DATA16[15:0]  } ;
+     { DIN , RDATA[23:0] }   <= { 9'b0, DATA24[23:8]  } ;
 	  	CNT   <=0; 
       ST<=1 ;  
 		DELAY<=0; 

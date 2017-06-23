@@ -4,27 +4,27 @@ module  KP_main(
 input wire a_clk,
 input wire reset_n,
 input wire m_clk,
+input wire signed [23:0] dnoise,
 input wire [23:0] seed_val,
 input wire [2:0] filtsw,
-input wire [1:0] octave,
+	input wire [2:0] loops,
 input wire trig,
 input wire [10:0] delay_length,
 output wire signed [23:0] qout
 );
-wire signed [23:0] dnoise;
+
 wire signed [31:0] q;
 wire signed [23:0] dfilter;
+wire signed [23:0] dfilter_a;
 reg signed [23:0] d = 0;
 reg rden = 1'b0;
 
 wire [10:0] load;
-wire [9:0] loadby2;
 reg [10:0] count=0;
 reg [11:0] wr_ptr=0;
 reg [11:0] rd_ptr=0;
 
 assign load =  delay_length;
-assign loadby2 = delay_length [10:1];
 
 reg [2:0] KP_state = 3'b000;
 //main state machine
@@ -109,10 +109,27 @@ begin
 	
 	default:	
 	begin
-		KP_state<= 3'b000;
-		count <= 0;
-		rden <= 1'b0;
+	rden <= 1'b1;
+	d <= dfilter;
+	rd_ptr <= count;
+	wr_ptr <= count;
+	count <= count + 1'b1;
+	if (trig_pulse != 1'b1)
+		begin
+			KP_state<= 3'b010;
+			if (count >= load)
+			begin
+			count <= 0;
+			end
+		end
+		
+	else if (trig_pulse == 1'b1)
+		begin
+			KP_state<= 3'b001;
+			count <= 0;
+		end
 	end
+	
 	endcase
 end
 
@@ -163,23 +180,24 @@ ram_4096_32bit	shift_reg_ram(
 							.wren(1'b1),
 							.q(q)
 							);
+wire signed [31:0] dfilter_gain;
+assign dfilter_gain = $signed(q) - $signed(q>>>10); 
 
 newfilter filt0(//FILTER
 			.filt_sel(filtsw),
 			.clk(a_clk),
-			.d(q[31:8]),
+			.d(dfilter_gain[31:8]),
+			.reset_n(reset_n),
+			.q(dfilter_a)
+			);
+
+newfilter filt1(//FILTER
+			.filt_sel(loops),
+			.clk(a_clk),
+			.d(dfilter_a),
 			.reset_n(reset_n),
 			.q(dfilter)
 			);
-
-lfsr noise (
-		.out24(dnoise),
-		.data(seed_val),//seed value
-		.a_clk(a_clk),  // clock input
-		.clk(m_clk),  // clock input
-		.reset(~reset_n)
-	);
-wire signed [23:0] PWM_OUT;
 	 
 assign qout = dfilter;
 endmodule

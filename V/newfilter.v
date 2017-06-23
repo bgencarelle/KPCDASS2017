@@ -1,5 +1,5 @@
 
-module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1, parameter decay = 0.9999)(
+module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	input wire [2:0] filt_sel,
 	input wire clk,
 	input  wire signed [RANGE:0] d,
@@ -8,7 +8,6 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1, par
 	 );
 
 	reg signed [23:0] regq;
-	
    reg signed [23:0] del[15:0];
       integer i;
 
@@ -20,13 +19,11 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1, par
 					del[i] <= 0;
             end
       else
-         for (i = 0; i <= 15; i = i+ 1) 
+         for (i = 1; i <= 15; i = i+ 1) 
 				begin: shift_fir
-             if(i == 0)
-               del[i] <= d;
-             else
+               del[0] <= d;
                del[i] <= del[i-1] ;
-             end
+            end
 		end
 						
 		reg signed [31:0] sum;
@@ -35,60 +32,106 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1, par
 
 	begin case(filt_sel)
 		 3'b000:begin
-					regq <= $signed(del[0]);
-					end
+			sum <=
+					$signed(del[0]>>>1) +//1/2
+					$signed(del[1]>>>1);//1/2
+					regq <= $signed(sum);
+				 end
 
 		3'b001:begin
-      sum <= $signed(del[0] + del[1]);
-
-      regq <= $signed(sum[24:1]);
-				end
+			sum <=
+					$signed(del[0]>>>2) +//1/4
+					$signed(del[1]>>>2) +//1/4
+					$signed(del[0]>>>1);//1/2
+					regq <= $signed(sum);
+				 end
 
 		3'b010:begin
-      sum <= $signed(del[0]+ del[1]+ del[2]+ del[3]);
-
-      regq <= $signed(sum[25:2]);
+			sum <=
+					$signed(del[0]>>>3) +//1/8
+					$signed(del[1]>>>3) +//1/8
+					$signed(del[2]>>>2) +//1/4
+					$signed(del[3]>>>1);//1/2
+					regq <= $signed(sum);
 				 end
 
 		3'b011:begin
-      sum <= $signed(del[0] + del[1]  + del[2]  + del[3]  + del[4]  + del[5]  + del[6] + del[7]);
-
-      regq <= $signed(sum[26:3]);
+			sum <=
+					$signed(del[0]>>>5) +//1/32
+					$signed(del[1]>>>5) +//1/32
+					$signed(del[2]>>>4) +//1/16
+					$signed(del[3]>>>3) +//1/8
+					$signed(del[4]>>>2) +//1/4
+					$signed(del[5]>>>1);//1/2
+					regq <= $signed(sum);
 				 end
-
+				 
 		3'b100:begin
-      sum <= del[0] + del[1]  - del[2]  + del[3]  + del[4]  + del[5]  + del[6] + del[7] + 
-					del[8] + del[9]  + del[10]  + del[11]  + del[12]  + del[13]  + del[14] + del[15];
-      regq <= $signed(sum[27:4]);
+			sum <=
+					$signed(del[0]>>>6) +//1/64
+					$signed(del[1]>>>6) +//1/64
+					$signed(del[2]>>>5) +//1/32
+					$signed(del[3]>>>4) +//1/16
+					$signed(del[4]>>>3) +//1/8
+					$signed(del[5]>>>2) +//1/4
+					$signed(del[6]>>>1); //1/2
+					regq <= $signed(sum);
 				 end
 				 
 		3'b101:begin
-		sum <= 	$signed(
-					{{3{del[0][23]}},del[0][23:3]} +//1/16
-					{{3{del[1][23]}},del[1][23:3]} +//1/16
-					{{2{del[2][23]}},del[2][23:2]} +//1/8
-					{{1{del[3][23]}},del[3][23:1]} //1/4
-					);
-					regq <= $signed(sum[23:0]);
-				 end
-
-		3'b110:begin
-			sum <=$signed(
-					{{4{del[0][23]}},del[0][23:4]} +//1/16
-					{{4{del[1][23]}},del[1][23:4]} +//1/16
-					{{3{del[2][23]}},del[2][23:3]} +//1/8
-					{{2{del[3][23]}},del[3][23:2]} +//1/4
-					{{1{del[4][23]}},del[4][23:1]}//1/2
-					);
-					regq <= $signed(sum[23:0]);
+			sum <=
+					$signed(del[0]>>>9) +//1/512
+					$signed(del[1]>>>9) +//1/512
+					$signed(del[2]>>>8) +//1/256
+					$signed(del[3]>>>7) +//1/128
+					$signed(del[4]>>>6) +//1/64
+					$signed(del[5]>>>5) +//1/32
+					$signed(del[6]>>>4) +//1/16
+					$signed(del[7]>>>3) +//1/8
+					$signed(del[8]>>>2) +//1/4
+					$signed(del[9]>>>1);//1/2
+					regq <= $signed(sum);
 				 end
 				 
-		default:begin
-			sum <=$signed((del[0][23:0]));
-					regq <= $signed(sum[23:0]);
-					end
+		3'b110:begin
+			sum <=
+					$signed(del[0]>>>11) +//1/2048
+					$signed(del[1]>>>11) +//1/2048
+					$signed(del[2]>>>10) +//1/1024
+					$signed(del[3]>>>9)  +//1/512
+					$signed(del[4]>>>8)  +//1/256
+					$signed(del[5]>>>7)  +//1/128
+					$signed(del[6]>>>6) +//1/64
+					$signed(del[7]>>>5) +//1/32
+					$signed(del[8]>>>4) +//1/16
+					$signed(del[9]>>>3) +//1/8
+					$signed(del[10]>>>2) +//1/4
+					$signed(del[11]>>>1);//1/2
+					regq <= $signed(sum);
+				 end
+				 
+		3'b111:begin
+			sum <=$signed(del[0]>>>15) +//1/32768
+					$signed(del[1]>>>15) +//1/32768
+					$signed(del[2]>>>14) +//1/16384
+					$signed(del[3]>>>13) +//1/8192
+					$signed(del[4]>>>12) +//1/4096
+					$signed(del[5]>>>11) +//1/2048
+					$signed(del[6]>>>10) +//1/1024
+					$signed(del[7]>>>9)  +//1/512
+					$signed(del[8]>>>8)  +//1/256
+					$signed(del[9]>>>7)  +//1/128
+					$signed(del[10]>>>6) +//1/64
+					$signed(del[11]>>>5) +//1/32
+					$signed(del[12]>>>4) +//1/16
+					$signed(del[13]>>>3) +//1/8
+					$signed(del[14]>>>2) +//1/4
+					$signed(del[15]>>>1);//1/2
+					regq <= $signed(sum);
+				 end
 		endcase
-
 	end
-		assign 	q =$signed(regq);
+
+
+	assign 	q =$signed(regq);
 	endmodule

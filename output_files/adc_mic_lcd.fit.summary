@@ -1,17 +1,17 @@
-Fitter Status : Successful - Sun Jun 18 22:00:03 2017
+Fitter Status : Successful - Fri Jun 23 22:05:40 2017
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : adc_mic_lcd
 Top-level Entity Name : adc_mic_lcd
 Family : MAX 10
 Device : 10M50DAF484C6GES
 Timing Models : Preliminary
-Total logic elements : 2,837 / 49,760 ( 6 % )
-    Total combinational functions : 2,508 / 49,760 ( 5 % )
-    Dedicated logic registers : 1,963 / 49,760 ( 4 % )
-Total registers : 1963
+Total logic elements : 10,243 / 49,760 ( 21 % )
+    Total combinational functions : 9,658 / 49,760 ( 19 % )
+    Dedicated logic registers : 4,063 / 49,760 ( 8 % )
+Total registers : 4063
 Total pins : 67 / 360 ( 19 % )
 Total virtual pins : 0
-Total memory bits : 245,760 / 1,677,312 ( 15 % )
+Total memory bits : 329,728 / 1,677,312 ( 20 % )
 Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
 Total PLLs : 1 / 4 ( 25 % )
 UFM blocks : 0 / 1 ( 0 % )
