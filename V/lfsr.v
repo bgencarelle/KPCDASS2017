@@ -26,21 +26,21 @@ wire [23:0]data;
 assign data = 24'h9ff_faf;
 
 reg signed [23:0] out;
-wire        linear_feedback; 
+wire        linear_feedback;
 //-------------Code Starts Here-------
 assign linear_feedback = (out[20] ^ out[19]  ) ^ (out[23] ^ out[22]  );
 always @(posedge clk)
 begin
-if (reset == 1'b0) 
+if (reset == 1'b0)
 	begin // active high reset
   out <= data;
 	end
-if (out == 24'h0) 
+if (out == 24'h0)
 	begin // active high reset
   out <= ~data;
 	end
-	else if (reset) 
-	begin 
+	else if (reset)
+	begin
 	out <= {out[22:0],linear_feedback};
 	out24ref_5 <= out;
 	out24ref_4 <= out24ref_5;
@@ -51,12 +51,12 @@ if (out == 24'h0)
 	end
 	end
 
-	
+
 	assign out24_5 = $signed(out24ref_5[23:8]);
 	assign out24_4 = $signed(out24ref_4[23:8]);
 	assign out24_3 = $signed(out24ref_3[23:8]);
 	assign out24_2 = $signed(out24ref_2[23:8]);
 	assign out24_1 = $signed(out24ref_1[23:8]);
 	assign out24_0 = $signed(out24ref_0[23:8]);
-	
+
 endmodule // End Of Module counter

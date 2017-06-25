@@ -1,4 +1,4 @@
-Midi Note  		Delay as integers(rounding)  		Output Frequency(roundig) 
+Midi Note  	Delay  		Freq(@96khz) 
   		
 24  		1468  		32.6975 //c1
 25  		1385  		34.6570
