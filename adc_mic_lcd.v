@@ -11,7 +11,7 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 	input 		          		MAX10_CLK1_50,
 	input 		          		MAX10_CLK2_50,
 	input 		          		MAX10_CLK3_50,
-	
+
 	//////////// KEY //////////
 	input 		          		FPGA_RESET_n,
 	input 		     [4:0]		KEY,
@@ -80,6 +80,7 @@ wire signed [RANGE:0]		MEM1;
 wire signed [RANGE:0]		MEM2;
 wire signed [RANGE:0]		MEM3;
 wire signed [RANGE:0]		MEM4;
+wire signed [RANGE:0]		MEM5;
 wire signed [RANGE+4:0]		VERB0;
 
 
@@ -125,64 +126,101 @@ reg   [31:0]  			DELAY_CNT;
 
 
 
-	assign MIXMASTER = $signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
+	assign MIXMASTER = $signed(MEM5>>>3) +$signed(MEM4>>>3) + $signed(MEM3>>>3)+ $signed(MEM2>>>3)+ $signed(MEM1>>>3)+ $signed(MEM0>>>3);
+	wire KEYMIX;
+	assign KEYMIX = (~KEY[4] & ~KEY[3]) ? 1'b1 : 1'b0;
 	
-
-
+//	wire ninety6khz_clk;
+//	wire ninety6khz_locked;
+//	
+//	assign GPIO[0] = ninety6khz_clk;
+//	assign GPIO[1] = ninety6khz_locked;
+//	
+	altclk ninety6khz(
+	.areset (~RESET_DELAY_n),
+	.inclk0 (AUDIO_MCLK),
+	.c0 (ninety6khz_clk),
+	.locked(ninety6khz_locked)
+	);
+//KP_main mem5(  
+//			.m_clk(AUDIO_MCLK),
+//		  .a_clk(ninety6khz_clk),
+//		  .dnoise(NOISE5),
+//		  .velocity(12'd4090),
+//		  .decay(12'd4090),
+//		  .loops(SW[9:7]),
+//		  .filtsw(3'b001),
+//		  .trig(KEYMIX),
+//		  .delay_length(10'd331),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM5)    
+//        );
+//	
 KP_main mem4(  
 			.m_clk(AUDIO_MCLK),
-		  .a_clk(AUDIO_WCLK),
-		   .dnoise(NOISE4),
+		  .a_clk(ninety6khz_clk),
+		  .dnoise(NOISE4),
+		  .velocity(12'd4000),
+		  .decay(12'd4000),
 		  .loops(SW[9:7]),
 		  .filtsw(3'b001),
 		  .trig(KEY[4]),
-		  .delay_length(10'd31),
+		  .delay_length(10'd127),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)    
         );
+		  
 KP_main mem3(  
 			.m_clk(AUDIO_MCLK),
-		  .a_clk(AUDIO_WCLK),
+		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE3),
+		  .velocity(12'd4090),
+		  .decay(12'd4090),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b010),
+		  .filtsw(3'b001),
 		  .trig(KEY[3]),
-		  .delay_length(10'd63),
+		  .delay_length(10'd255),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)    
         ); 
 KP_main mem2(  
 			.m_clk(AUDIO_MCLK),
-		  .a_clk(AUDIO_WCLK),
+		  .a_clk(ninety6khz_clk),
 		  .dnoise(NOISE2),
+		  .velocity(12'd4090),
+		  .decay(12'd4090),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b011),
+		  .filtsw(3'b001),
 		  .trig(KEY[2]),
-		  .delay_length(10'd127),
+		  .delay_length(10'd511),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)    
         ); 
 		  
 KP_main mem1(  
 			.m_clk(AUDIO_MCLK),
-		  .a_clk(AUDIO_WCLK),
+		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE1),
+		  .velocity(12'd4090),
+		  .decay(12'd4095),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b101),
+		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(10'd255),
+		  .delay_length(10'd1023),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)    
         ); 
 
 KP_main mem0(  
 			.m_clk(AUDIO_MCLK),
-		  .a_clk(AUDIO_WCLK),
+		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE0),
+		  .velocity(12'd4095),
+		  .decay({SW[9:0],2'b11}),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b111),
+		  .filtsw(3'b011),
 		  .trig(KEY[0]),
-		  .delay_length(10'd511),
+		  .delay_length(11'd2047),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)    
         ); 
@@ -197,7 +235,7 @@ lfsr  noise(
 			
 			.data(24'h9ff_faf),
 			.clk(AUDIO_MCLK),
-			.a_clk(AUDIO_WCLK),
+			.a_clk(ninety6khz_clk),
 			.reset(RESET_DELAY_N)
 					);
 
@@ -216,7 +254,7 @@ ADC_SEG_LED segL(
 			); 
 
 //--METER TO LED --  
-assign LEDR =  ({3'd7,SW[9],SW[8]});
+assign LEDR =  ({7'd0,SW[9],SW[8]});
 assign HEX0 = HEXL;
 assign HEX1 = HEXR; 
 //--RESET DELAY ---
@@ -279,7 +317,7 @@ MAX10_ADC   madc(
 assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ; 
 //
 DAC16 dac1 (
-	.LOAD    ( ROM_CK   ) ,
+	.LOAD    ( ninety6khz_clk   ) ,
 	.RESET_N ( FPGA_RESET_n ) , 
 	.CLK_50  ( AUDIO_MCLK ) , 
 	.DATA24  ( TODAC  )  ,

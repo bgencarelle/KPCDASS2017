@@ -44,10 +44,10 @@ module varcnt (
 
 	input	  clock;
 	input	  sclr;
-	output	[10:0]  q;
+	output	[11:0]  q;
 
-	wire [10:0] sub_wire0;
-	wire [10:0] q = sub_wire0[10:0];
+	wire [11:0] sub_wire0;
+	wire [11:0] q = sub_wire0[11:0];
 
 	lpm_counter	LPM_COUNTER_component (
 				.clock (clock),
@@ -60,7 +60,7 @@ module varcnt (
 				.clk_en (1'b1),
 				.cnt_en (1'b1),
 				.cout (),
-				.data ({11{1'b0}}),
+				.data ({12{1'b0}}),
 				.eq (),
 				.sload (1'b0),
 				.sset (1'b0),
@@ -69,7 +69,7 @@ module varcnt (
 		LPM_COUNTER_component.lpm_direction = "UP",
 		LPM_COUNTER_component.lpm_port_updown = "PORT_UNUSED",
 		LPM_COUNTER_component.lpm_type = "LPM_COUNTER",
-		LPM_COUNTER_component.lpm_width = 11;
+		LPM_COUNTER_component.lpm_width = 12;
 
 
 endmodule
@@ -94,19 +94,19 @@ endmodule
 // Retrieval info: PRIVATE: SSET NUMERIC "0"
 // Retrieval info: PRIVATE: SSET_ALL1 NUMERIC "1"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
-// Retrieval info: PRIVATE: nBit NUMERIC "11"
+// Retrieval info: PRIVATE: nBit NUMERIC "12"
 // Retrieval info: PRIVATE: new_diagram STRING "1"
 // Retrieval info: LIBRARY: lpm lpm.lpm_components.all
 // Retrieval info: CONSTANT: LPM_DIRECTION STRING "UP"
 // Retrieval info: CONSTANT: LPM_PORT_UPDOWN STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_COUNTER"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "11"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "12"
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL "clock"
-// Retrieval info: USED_PORT: q 0 0 11 0 OUTPUT NODEFVAL "q[10..0]"
+// Retrieval info: USED_PORT: q 0 0 12 0 OUTPUT NODEFVAL "q[11..0]"
 // Retrieval info: USED_PORT: sclr 0 0 0 0 INPUT NODEFVAL "sclr"
 // Retrieval info: CONNECT: @clock 0 0 0 0 clock 0 0 0 0
 // Retrieval info: CONNECT: @sclr 0 0 0 0 sclr 0 0 0 0
-// Retrieval info: CONNECT: q 0 0 11 0 @q 0 0 11 0
+// Retrieval info: CONNECT: q 0 0 12 0 @q 0 0 12 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.inc FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.cmp FALSE

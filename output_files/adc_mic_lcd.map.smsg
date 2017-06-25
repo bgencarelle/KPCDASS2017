@@ -5,4 +5,4 @@ Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(81): object "
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(80): object "MEM2" differs only in case from object "mem2" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 80
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(79): object "MEM1" differs only in case from object "mem1" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 79
 Info (10281): Verilog HDL Declaration information at adc_mic_lcd.v(78): object "MEM0" differs only in case from object "mem0" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 78
-Info (10281): Verilog HDL Declaration information at KP_main.v(29): object "KP_state" differs only in case from object "KP_STATE" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 29
+Info (10281): Verilog HDL Declaration information at KP_main.v(36): object "KP_state" differs only in case from object "KP_STATE" in the same scope File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 36

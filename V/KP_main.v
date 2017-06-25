@@ -4,12 +4,14 @@ module  KP_main(
 input wire a_clk,
 input wire reset_n,
 input wire m_clk,
-input wire signed [23:0] dnoise,
-input wire [23:0] seed_val,
-input wire [2:0] filtsw,
-	input wire [2:0] loops,
 input wire trig,
+input wire signed [23:0] dnoise,
+input wire signed [23:0] velocity,
+input wire signed [23:0] decay,
+input wire [23:0] seed_val,
 input wire [10:0] delay_length,
+input wire [2:0] filtsw,
+input wire [2:0] loops,
 output wire signed [23:0] qout
 );
 
@@ -20,11 +22,16 @@ reg signed [23:0] d = 0;
 reg rden = 1'b0;
 
 wire [10:0] load;
-reg [10:0] count=0;
+reg [11:0] count=0;
 reg [11:0] wr_ptr=0;
 reg [11:0] rd_ptr=0;
 
+wire signed [47:0] dgain;
 assign load =  delay_length;
+assign dgain = $signed(dnoise) * $signed(velocity); 
+
+wire signed [47:0] dfilter_gain;
+assign dfilter_gain = $signed(dfilter) * $signed(decay); 
 
 reg [2:0] KP_state = 3'b000;
 //main state machine
@@ -52,7 +59,7 @@ begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-	d <= dnoise;
+	d <= (dgain[35:12]);
 	rden <= 1'b0;
 		if (trig_pulse == 1'b1) //loads value for next clock
 			begin
@@ -70,7 +77,7 @@ begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	rden <= 1'b0;
-	d <= dnoise;
+	d <= (dgain[35:12]);
 	count <= count + 1'b1;
 	if (count < load)
 			begin
@@ -86,7 +93,7 @@ begin
 	3'b010:
 	begin
 	rden <= 1'b1;
-	d <= dfilter;
+	d <= dfilter_gain[35:12];
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
@@ -110,7 +117,7 @@ begin
 	default:	
 	begin
 	rden <= 1'b1;
-	d <= dfilter;
+	d <= dfilter_gain[35:12];
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
@@ -136,17 +143,13 @@ end
 end
 
 //debounce
-
 wire trig_pulse;  // single clock pulse at new trigger
 reg trig_now;  // button status
-
 reg trig_sync_0;
 reg trig_sync_1;
 reg [1:0] 	trig_cnt; //debounce and tempo limiter
-
 wire trig_idle = (trig_now==trig_sync_1);
 wire trig_cnt_max = &trig_cnt;
-
 
 always @(posedge a_clk)
 
@@ -168,36 +171,30 @@ begin
 	end
 end
 assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
+//end debounce
+
 
 
 ram_4096_32bit	shift_reg_ram(		
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
-							.data( {d[23:0],8'b0}),
+							.data( {d, 8'b0}),
 							.rdaddress(rd_ptr),
 							.rden(rden),
 							.wraddress(wr_ptr),
 							.wren(1'b1),
 							.q(q)
 							);
-wire signed [31:0] dfilter_gain;
-assign dfilter_gain = $signed(q) - $signed(q>>>10); 
 
+wire signed [23:0] raw_filter;
 newfilter filt0(//FILTER
 			.filt_sel(filtsw),
 			.clk(a_clk),
-			.d(dfilter_gain[31:8]),
-			.reset_n(reset_n),
-			.q(dfilter_a)
-			);
-
-newfilter filt1(//FILTER
-			.filt_sel(loops),
-			.clk(a_clk),
-			.d(dfilter_a),
+			.d(q[31:8]),
 			.reset_n(reset_n),
 			.q(dfilter)
 			);
-	 
+
+	// assign dfilter = raw_filter;
 assign qout = dfilter;
 endmodule
