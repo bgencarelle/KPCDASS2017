@@ -31,7 +31,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 	always @ (posedge clk)
 
 	begin case(filt_sel)
-		 3'b000:begin
+		 3'b000:begin // start of classic running average LPF
 			regq <=
 					$signed(d>>>1) +//1/2
 					$signed(del[1]>>>1);//1/2
@@ -60,7 +60,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 
 				 end
 
-		3'b011:begin
+		3'b011:begin // end of classic running average LPF
 			regq <=
 					$signed(d >>>4) +//1/8
 					$signed(del[1]>>>4) +//1/8
@@ -80,7 +80,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					$signed(del[15]>>>4);
 					end
 				 
-		3'b100:begin
+		3'b100:begin // start of experimental section
 			regq <=
 					$signed(d >>>6) +//1/64
 					$signed(del[1]>>>6) +//1/64
@@ -94,14 +94,15 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 				 
 		3'b101:begin
 			regq <=
-					$signed(del[0]>>>9) +//1/512
-					$signed(del[1]>>>9) +//1/512
-					$signed(del[2]>>>8) +//1/256
-					$signed(del[3]>>>7) +//1/128
-					$signed(del[4]>>>6) +//1/64
-					$signed(del[5]>>>5) +//1/32
-					$signed(del[6]>>>4) +//1/16
-					$signed(del[7]>>>3);//1/8
+					$signed(del[0]>>>8) +//1/512
+					$signed(del[1]>>>8) +//1/512
+					$signed(del[2]>>>7) +//1/256
+					$signed(del[3]>>>6) +//1/128
+					$signed(del[4]>>>5) +//1/64
+					$signed(del[5]>>>4) +//1/32
+					$signed(del[6]>>>3) +//1/16
+					$signed(del[7]>>>2) +//1/8#
+					$signed(del[8]>>>2);//1/8
 				 end
 				 
 		3'b110:begin
@@ -120,11 +121,10 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					$signed(del[11]>>>3) +//1/2
 					$signed(del[12]>>>3) +//1/2
 					$signed(del[13]>>>3) +//1/2
-					$signed(del[14]>>>3) +//1/2
-					$signed(del[15]>>>3);//1/2
+					$signed(del[14]>>>3);
 				 end
 				 
-		3'b111:begin
+		3'b111:begin // end of experimental section
 			regq <=$signed(del[0]>>>15) +//1/32768
 					$signed(del[1]>>>15) +//1/32768
 					$signed(del[2]>>>14) +//1/16384
@@ -140,9 +140,9 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					$signed(del[12]>>>4) +//1/16
 					$signed(del[13]>>>3) +//1/8
 					$signed(del[14]>>>2) +//1/4///1/2					
-					$signed(del[15]>>>1);///1/2
- 
-				 end
+					$signed(del[15]>>>2)+///1/2
+					$signed(del[13]>>>2);///1/2	
+					end
 		endcase
 	end
 

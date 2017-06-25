@@ -84,12 +84,12 @@ wire signed [RANGE:0]		MEM5;
 wire signed [RANGE+4:0]		VERB0;
 
 
-wire signed [RANGE:0]		NOISE5;
-wire signed [RANGE:0]		NOISE4;
-wire signed [RANGE:0]		NOISE3;
-wire signed [RANGE:0]		NOISE2;
-wire signed [RANGE:0]		NOISE1;
-wire signed [RANGE:0]		NOISE0;
+wire signed [15:0]		NOISE5;
+wire signed [15:0]		NOISE4;
+wire signed [15:0]		NOISE3;
+wire signed [15:0]		NOISE2;
+wire signed [15:0]		NOISE1;
+wire signed [15:0]		NOISE0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
@@ -121,108 +121,114 @@ reg   [31:0]  			DELAY_CNT;
 
 
 //================================================//  Structural coding
+
+
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
+reg signed [24:0]presum;
+reg signed [23:0]sum;
 
+  always @(ninety6khz_clk) begin
+    presum <= $signed(MEM5>>>2) +$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);    
+    if (presum[24] == presum[23])
+      // Top two bits equal: no signed overflow.
+      sum <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
+    else
+      if (presum[24] == 1'b0)
+        // top bit of signed sum is zero, indicating a positive sum.
+        sum = 24'd8388607;   // maximum positive value representable by 8 bits.
+      else
+        sum = 24'd8388608;   // two's complement representation of -128.
+  end
 
-	assign MIXMASTER = $signed(MEM5>>>3) +$signed(MEM4>>>3) + $signed(MEM3>>>3)+ $signed(MEM2>>>3)+ $signed(MEM1>>>3)+ $signed(MEM0>>>3);
+	assign MIXMASTER = sum;
 	wire KEYMIX;
 	assign KEYMIX = (~KEY[4] & ~KEY[3]) ? 1'b1 : 1'b0;
+	wire ninety6khz_clk;
 	
-//	wire ninety6khz_clk;
-//	wire ninety6khz_locked;
-//	
-//	assign GPIO[0] = ninety6khz_clk;
-//	assign GPIO[1] = ninety6khz_locked;
-//	
 	altclk ninety6khz(
-	.areset (~RESET_DELAY_n),
-	.inclk0 (AUDIO_MCLK),
-	.c0 (ninety6khz_clk),
-	.locked(ninety6khz_locked)
+	.areset (0),
+	.inclk0 (MAX10_CLK1_50),
+	.c0 (ninety6khz_clk)
 	);
-//KP_main mem5(  
-//			.m_clk(AUDIO_MCLK),
-//		  .a_clk(ninety6khz_clk),
-//		  .dnoise(NOISE5),
-//		  .velocity(12'd4090),
-//		  .decay(12'd4090),
-//		  .loops(SW[9:7]),
-//		  .filtsw(3'b001),
-//		  .trig(KEYMIX),
-//		  .delay_length(10'd331),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM5)    
-//        );
-//	
-KP_main mem4(  
-			.m_clk(AUDIO_MCLK),
+KP_main string0(  /// HIGH STRING
+			.m_clk(MAX10_CLK1_50),
+		  .a_clk(ninety6khz_clk),
+		  .dnoise(NOISE5),
+		  .velocity(7'd127),
+		  .decay(12'd4090),
+		  .loops(SW[9:7]),
+		  .filtsw(3'b001),
+		  .trig(KEYMIX),
+		  .delay_length(10'd63),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM0)    
+        );
+	
+KP_main string1(   
+			.m_clk(MAX10_CLK1_50),
 		  .a_clk(ninety6khz_clk),
 		  .dnoise(NOISE4),
-		  .velocity(12'd4000),
-		  .decay(12'd4000),
-		  .loops(SW[9:7]),
-		  .filtsw(3'b000),
+		  .velocity(7'd127),
+		  .decay(12'd4095),
+		  .filtsw(3'b001),
 		  .trig(KEY[4]),
 		  .delay_length(10'd127),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM4)    
+        .qout(MEM1)    
         );
 		  
-KP_main mem3(  
-			.m_clk(AUDIO_MCLK),
+KP_main string2(  
+			.m_clk(MAX10_CLK1_50),
 		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE3),
-		  .velocity(12'd4090),
-		  .decay(12'd4090),
-		  .loops(SW[9:7]),
+		  .velocity(7'd127),
+		  .decay(12'd4095),
 		  .filtsw(3'b001),
 		  .trig(KEY[3]),
 		  .delay_length(10'd255),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM3)    
+        .qout(MEM2)    
         ); 
-KP_main mem2(  
-			.m_clk(AUDIO_MCLK),
+KP_main string3 (  
+			.m_clk(MAX10_CLK1_50),
 		  .a_clk(ninety6khz_clk),
 		  .dnoise(NOISE2),
-		  .velocity(12'd4090),
-		  .decay(12'd4090),
-		  .loops(SW[9:7]),
+		  .velocity(7'd127),
+		  .decay(12'd4095),
 		  .filtsw(3'b001),
 		  .trig(KEY[2]),
 		  .delay_length(10'd511),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM2)    
+        .qout(MEM3)    
         ); 
 		  
-KP_main mem1(  
-			.m_clk(AUDIO_MCLK),
+KP_main string4(  
+			.m_clk(MAX10_CLK1_50),
 		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE1),
-		  .velocity(12'd4090),
+		  .velocity(7'd127),
 		  .decay(12'd4095),
-		  .loops(SW[9:7]),
-		  .filtsw(3'b001),
+		  .filtsw(3'b100),
 		  .trig(KEY[1]),
 		  .delay_length(10'd1023),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM1)    
+        .qout(MEM4)    
         ); 
 
-KP_main mem0(  
-			.m_clk(AUDIO_MCLK),
+KP_main string5(  
+			.m_clk(MAX10_CLK1_50),
 		  .a_clk(ninety6khz_clk),
 		   .dnoise(NOISE0),
-		  .velocity(12'd4095),
+		  .velocity(7'd127),
 		  .decay({SW[9:0],2'b11}),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b111),
+		  .filtsw(3'b110),
 		  .trig(KEY[0]),
 		  .delay_length(11'd2047),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM0)    
+        .qout(MEM5)    
         ); 
 		  
 lfsr  noise(
@@ -232,23 +238,21 @@ lfsr  noise(
 			.out24_2(NOISE2),
 			.out24_1(NOISE1),
 			.out24_0(NOISE0),
-			
-			.data(24'h9ff_faf),
-			.clk(AUDIO_MCLK),
+			.clk(MAX10_CLK1_50),
 			.a_clk(ninety6khz_clk),
-			.reset(~RESET_DELAY_n)
+			.reset(RESET_DELAY_n)
 					);
 
 ADC_SEG_LED segR(
 			.reset_n(RESET_DELAY_n), 
-			.clk (AUDIO_MCLK), 
+			.clk (MAX10_CLK1_50), 
 			.adc_rd (MIXMASTER [23:20]),
 			.LED(LED), 	
 			.HEXR(HEXL)
 			); 
 ADC_SEG_LED segL(
 			.reset_n(RESET_DELAY_n), 
-			.clk (AUDIO_MCLK), 
+			.clk (MAX10_CLK1_50), 
 			.adc_rd (MIXMASTER [19:16]),	
 			.HEXR(HEXR)
 			); 
@@ -259,11 +263,16 @@ assign HEX0 = HEXL;
 assign HEX1 = HEXR; 
 //--RESET DELAY ---
 
+//// END USER DEFINED
+
+
+
+
 //--I2S PROCESSS  CODEC LINE OUT --
 
 I2S_ASSESS  i2s( 
 	.SAMPLE_TR ( SAMPLE_TR),
-	.AUDIO_MCLK( AUDIO_MCLK) ,  
+	.AUDIO_MCLK( MAX10_CLK1_50) ,  
 	.AUDIO_BCLK( AUDIO_BCLK),
 	.AUDIO_WCLK( AUDIO_WCLK),
 
@@ -289,7 +298,7 @@ if (!FPGA_RESET_n )
      DELAY_CNT   <=0;
 	end 
 
-	else  if ( DELAY_CNT < 32'hfffff  )  
+	else  if ( DELAY_CNT < 32'h00fff  )  
   begin
   DELAY_CNT<=DELAY_CNT+1'b1; 
   end
@@ -304,7 +313,7 @@ end
 //--- MIC  TO  MAX10-ADC  ----
 
 MAX10_ADC   madc(  
-	.SYS_CLK ( AUDIO_MCLK   ),
+	.SYS_CLK ( MAX10_CLK1_50   ),
 	.SYNC_TR ( SAMPLE_TR    ),
 	.RESET_n ( RESET_DELAY_n),
 	.ADC_CH  ( 8),
@@ -318,8 +327,8 @@ assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ;
 //
 DAC16 dac1 (
 	.LOAD    ( ninety6khz_clk   ) ,
-	.RESET_N ( FPGA_RESET_n ) , 
-	.CLK_50  ( AUDIO_MCLK ) , 
+	.RESET_N ( RESET_DELAY_n) , 
+	.CLK_50  ( MAX10_CLK1_50 ) , 
 	.DATA24  ( TODAC  )  ,
 	.DIN     ( DAC_DATA ),
 	.SCLK    ( DAC_SCLK ),

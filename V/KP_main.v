@@ -5,46 +5,43 @@ input wire a_clk,
 input wire reset_n,
 input wire m_clk,
 input wire trig,
-input wire signed [23:0] dnoise,
-input wire signed [23:0] velocity,
-input wire signed [23:0] decay,
-input wire [23:0] seed_val,
+input wire signed [15:0] dnoise,
+input wire signed [11:0] decay,
+input wire signed [6:0] velocity,
 input wire [10:0] delay_length,
 input wire [2:0] filtsw,
 input wire [2:0] loops,
+
 output wire signed [23:0] qout
 );
 
-wire signed [31:0] q;
-wire signed [23:0] dfilter;
-wire signed [23:0] dfilter_a;
-reg signed [23:0] d = 0;
-reg rden = 1'b0;
 
-wire [10:0] load;
+
+wire signed [47:0] start_level;
+assign load =  delay_length;
+assign start_level = $signed(dnoise) * $signed({8'b0,velocity}); 
+
+wire signed [47:0] dfilter_gain;
+assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay})); 
+
+
+reg signed [23:0] d = 0;
 reg [11:0] count=0;
 reg [11:0] wr_ptr=0;
 reg [11:0] rd_ptr=0;
-
-wire signed [47:0] dgain;
-assign load =  delay_length;
-assign dgain = $signed(dnoise) * $signed(velocity); 
-
-wire signed [47:0] dfilter_gain;
-assign dfilter_gain = $signed(dfilter) * $signed(decay); 
-
+reg rden = 1'b0;
 reg [2:0] KP_state = 3'b000;
+
 //main state machine
 always @ (posedge a_clk )
 begin:KP_STATE
 
 if (reset_n == 1'b0)
-
 	begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	d <= 0;
-	count <= 0;
+	count <= count + 1'b1;
 	rden <= 1'b0;
 	KP_state <= 3'b000;
 	end
@@ -59,7 +56,7 @@ begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-	d <= (dgain[35:12]);
+		d <= (start_level[23:0]);
 	rden <= 1'b0;
 		if (trig_pulse == 1'b1) //loads value for next clock
 			begin
@@ -77,13 +74,13 @@ begin
 	rd_ptr <= count;
 	wr_ptr <= count;
 	rden <= 1'b0;
-	d <= (dgain[35:12]);
+	d <= (start_level[23:0]);
 	count <= count + 1'b1;
-	if (count < load)
+	if (count < delay_length)
 			begin
 				KP_state<= 3'b001;
 			end
-	else if (count >= load)
+	else if (count >= delay_length)
 			begin
 					count <= 0;
 				KP_state<= 3'b010;
@@ -100,7 +97,7 @@ begin
 	if (trig_pulse != 1'b1)
 		begin
 			KP_state<= 3'b010;
-			if (count >= load)
+			if (count >= delay_length)
 			begin
 			count <= 0;
 			end
@@ -111,30 +108,16 @@ begin
 			KP_state<= 3'b001;
 			count <= 0;
 		end
+	end 
 
-	end
-	
 	default:	
 	begin
-	rden <= 1'b1;
-	d <= dfilter_gain[35:12];
+	rden <= 1'b0;
+	d <= 0;
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-	if (trig_pulse != 1'b1)
-		begin
-			KP_state<= 3'b010;
-			if (count >= load)
-			begin
-			count <= 0;
-			end
-		end
-		
-	else if (trig_pulse == 1'b1)
-		begin
-			KP_state<= 3'b001;
-			count <= 0;
-		end
+	KP_state<= 3'b001;
 	end
 	
 	endcase
@@ -173,12 +156,15 @@ end
 assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
 //end debounce
 
+wire signed [23:0] dfilter;
+wire signed [31:0] q;
+
 
 
 ram_4096_32bit	shift_reg_ram(		
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
-							.data( {d, 8'b0}),
+							.data( {8'b0,d}),
 							.rdaddress(rd_ptr),
 							.rden(rden),
 							.wraddress(wr_ptr),
@@ -186,11 +172,10 @@ ram_4096_32bit	shift_reg_ram(
 							.q(q)
 							);
 
-wire signed [23:0] raw_filter;
 newfilter filt0(//FILTER
 			.filt_sel(filtsw),
 			.clk(a_clk),
-			.d(q[31:8]),
+			.d(q[23:0]),
 			.reset_n(reset_n),
 			.q(dfilter)
 			);

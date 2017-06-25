@@ -108,11 +108,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "FPGA_RESET_n",
+					"name" : "MAX10_CLK2_50",
 					"strict" : false
 				},
 				{
-					"name" : "MAX10_CLK2_50",
+					"name" : "FPGA_RESET_n",
 					"strict" : false
 				},
 				{
@@ -121,14 +121,6 @@
 				},
 				{
 					"name" : "KEY[4]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[2]",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[1]",
 					"strict" : false
 				},
 				{
@@ -161,6 +153,14 @@
 				},
 				{
 					"name" : "SW[7]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[1]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[2]",
 					"strict" : false
 				},
 				{

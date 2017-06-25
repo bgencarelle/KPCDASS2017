@@ -23,31 +23,37 @@ ctrl_state.PUTRESP_PEND 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 ctrl_state.AVRG_CNT 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 ctrl_state.SYNC1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
-State Machine - |adc_mic_lcd|KP_main:mem0|KP_state
+State Machine - |adc_mic_lcd|KP_main:string5|KP_state
 Name KP_state.000 KP_state.010 KP_state.001 
 KP_state.000 0 0 0 
 KP_state.001 1 0 1 
 KP_state.010 1 1 0 
 
-State Machine - |adc_mic_lcd|KP_main:mem1|KP_state
+State Machine - |adc_mic_lcd|KP_main:string4|KP_state
 Name KP_state.000 KP_state.010 KP_state.001 
 KP_state.000 0 0 0 
 KP_state.001 1 0 1 
 KP_state.010 1 1 0 
 
-State Machine - |adc_mic_lcd|KP_main:mem2|KP_state
+State Machine - |adc_mic_lcd|KP_main:string3|KP_state
 Name KP_state.000 KP_state.010 KP_state.001 
 KP_state.000 0 0 0 
 KP_state.001 1 0 1 
 KP_state.010 1 1 0 
 
-State Machine - |adc_mic_lcd|KP_main:mem3|KP_state
+State Machine - |adc_mic_lcd|KP_main:string2|KP_state
 Name KP_state.000 KP_state.010 KP_state.001 
 KP_state.000 0 0 0 
 KP_state.001 1 0 1 
 KP_state.010 1 1 0 
 
-State Machine - |adc_mic_lcd|KP_main:mem4|KP_state
+State Machine - |adc_mic_lcd|KP_main:string1|KP_state
+Name KP_state.000 KP_state.010 KP_state.001 
+KP_state.000 0 0 0 
+KP_state.001 1 0 1 
+KP_state.010 1 1 0 
+
+State Machine - |adc_mic_lcd|KP_main:string0|KP_state
 Name KP_state.000 KP_state.010 KP_state.001 
 KP_state.000 0 0 0 
 KP_state.001 1 0 1 
