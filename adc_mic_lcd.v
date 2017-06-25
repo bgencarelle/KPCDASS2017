@@ -163,7 +163,7 @@ KP_main mem4(
 		  .velocity(12'd4000),
 		  .decay(12'd4000),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b001),
+		  .filtsw(3'b000),
 		  .trig(KEY[4]),
 		  .delay_length(10'd127),
 		  .reset_n(RESET_DELAY_n),
@@ -218,7 +218,7 @@ KP_main mem0(
 		  .velocity(12'd4095),
 		  .decay({SW[9:0],2'b11}),
 		  .loops(SW[9:7]),
-		  .filtsw(3'b011),
+		  .filtsw(3'b111),
 		  .trig(KEY[0]),
 		  .delay_length(11'd2047),
 		  .reset_n(RESET_DELAY_n),
@@ -236,7 +236,7 @@ lfsr  noise(
 			.data(24'h9ff_faf),
 			.clk(AUDIO_MCLK),
 			.a_clk(ninety6khz_clk),
-			.reset(RESET_DELAY_N)
+			.reset(~RESET_DELAY_n)
 					);
 
 ADC_SEG_LED segR(
@@ -289,7 +289,7 @@ if (!FPGA_RESET_n )
      DELAY_CNT   <=0;
 	end 
 
-	else  if ( DELAY_CNT < 32'h0ffff  )  
+	else  if ( DELAY_CNT < 32'hfffff  )  
   begin
   DELAY_CNT<=DELAY_CNT+1'b1; 
   end

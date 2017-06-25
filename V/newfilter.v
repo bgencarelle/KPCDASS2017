@@ -139,9 +139,8 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					$signed(del[11]>>>5) +//1/32
 					$signed(del[12]>>>4) +//1/16
 					$signed(del[13]>>>3) +//1/8
-					$signed(del[14]>>>2) +//1/4
-					$signed(del[13]>>>2) +///1/2					
-					$signed(del[15]>>>2);///1/2
+					$signed(del[14]>>>2) +//1/4///1/2					
+					$signed(del[15]>>>1);///1/2
  
 				 end
 		endcase
