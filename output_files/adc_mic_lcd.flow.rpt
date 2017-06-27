@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Tue Jun 06 10:54:07 2017
+Tue Jun 27 07:06:50 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,24 +41,24 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 06 10:54:07 2017       ;
+; Flow Status                        ; Successful - Tue Jun 27 07:06:50 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
-; Device                             ; 10M50DAF484I7G                              ;
-; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 2,340 / 49,760 ( 5 % )                      ;
-;     Total combinational functions  ; 2,205 / 49,760 ( 4 % )                      ;
-;     Dedicated logic registers      ; 1,332 / 49,760 ( 3 % )                      ;
-; Total registers                    ; 1332                                        ;
-; Total pins                         ; 98 / 360 ( 27 % )                           ;
+; Device                             ; 10M50DAF484C6GES                            ;
+; Timing Models                      ; Preliminary                                 ;
+; Total logic elements               ; 3,221 / 49,760 ( 6 % )                      ;
+;     Total combinational functions  ; 3,029 / 49,760 ( 6 % )                      ;
+;     Dedicated logic registers      ; 1,743 / 49,760 ( 4 % )                      ;
+; Total registers                    ; 1743                                        ;
+; Total pins                         ; 67 / 360 ( 19 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 92,416 / 1,677,312 ( 6 % )                  ;
-; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                             ;
-; Total PLLs                         ; 3 / 4 ( 75 % )                              ;
+; Total memory bits                  ; 542,720 / 1,677,312 ( 32 % )                ;
+; Embedded Multiplier 9-bit elements ; 24 / 288 ( 8 % )                            ;
+; Total PLLs                         ; 2 / 4 ( 50 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
-; ADC blocks                         ; 1 / 2 ( 50 % )                              ;
+; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -67,46 +67,54 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/06/2017 10:52:40 ;
+; Start date & time ; 06/27/2017 01:37:45 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                ;
-+-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
-; Assignment Name                     ; Value                                                      ; Default Value ; Entity Name ; Section Id     ;
-+-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149673916004928                            ; --            ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>        ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                                          ; --            ; --          ; --             ;
-; MISC_FILE                           ; V/memory_16bit_1024_inst.v                                 ; --            ; --          ; --             ;
-; MISC_FILE                           ; V/memory_16bit_1024_bb.v                                   ; --            ; --          ; --             ;
-; MISC_FILE                           ; V/memory_32bit_2048_bb.v                                   ; --            ; --          ; --             ;
-; MISC_FILE                           ; adc_qsys/synthesis/../adc_qsys.cmp                         ; --            ; --          ; --             ;
-; MISC_FILE                           ; adc_qsys/synthesis/../../adc_qsys.qsys                     ; --            ; --          ; --             ;
-; MISC_FILE                           ; memory_32_4096_bb.v                                        ; --            ; --          ; --             ;
-; MISC_FILE                           ; varcnt_bb.v                                                ; --            ; --          ; --             ;
-; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                          ; --            ; --          ; --             ;
-; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                          ; --            ; --          ; --             ;
-; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                 ; --            ; --          ; --             ;
-; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                 ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family)                     ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                     ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                     ; --            ; --          ; Top            ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                        ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                      ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                                               ; --            ; --          ; --             ;
-; SAFE_STATE_MACHINE                  ; On                                                         ; Off           ; --          ; --             ;
-; SLD_FILE                            ; adc_qsys/synthesis/adc_qsys.debuginfo                      ; --            ; --          ; --             ;
-; SLD_INFO                            ; QSYS_NAME adc_qsys HAS_SOPCINFO 1 GENERATION_ID 1433315579 ; --            ; adc_qsys    ; --             ;
-; SOPCINFO_FILE                       ; adc_qsys/synthesis/../../adc_qsys.sopcinfo                 ; --            ; --          ; --             ;
-; SYNTHESIS_EFFORT                    ; Fast                                                       ; Auto          ; --          ; --             ;
-; SYNTHESIS_ONLY_QIP                  ; On                                                         ; --            ; --          ; --             ;
-+-------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                       ;
++-------------------------------------+------------------------------------------------------------+--------------------------------------+-------------+----------------+
+; Assignment Name                     ; Value                                                      ; Default Value                        ; Entity Name ; Section Id     ;
++-------------------------------------+------------------------------------------------------------+--------------------------------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 107765168740670.149852026407836                            ; --                                   ; --          ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --                                   ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>                               ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --                                   ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                          ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; adc_qsys/synthesis/../adc_qsys.cmp                         ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; adc_qsys/synthesis/../../adc_qsys.qsys                     ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; varcnt_inst.v                                              ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; varcnt_bb.v                                                ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; ram_4096_32bit_inst.v                                      ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; ram_4096_32bit_bb.v                                        ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; reverbcnt_inst.v                                           ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; reverbcnt_bb.v                                             ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; reverb_ram_inst.v                                          ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; reverb_ram_bb.v                                            ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; altclk_inst.v                                              ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; altclk_bb.v                                                ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; altclk.ppf                                                 ; --                                   ; --          ; --             ;
+; MISC_FILE                           ; altclk_syn.v                                               ; --                                   ; --          ; --             ;
+; NUM_PARALLEL_PROCESSORS             ; All                                                        ; --                                   ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                          ; --                                   ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                                          ; --                                   ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                 ; --                                   ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                                                 ; --                                   ; --          ; --             ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                     ; --                                   ; --          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                     ; --                                   ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                     ; --                                   ; --          ; Top            ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                        ; --                                   ; --          ; --             ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                      ; --                                   ; --          ; --             ;
+; PROJECT_IP_REGENERATION_POLICY      ; ALWAYS_REGENERATE_IP                                       ; SKIP_REGENERATING_IP_IF_HDL_MODIFIED ; --          ; --             ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                               ; --                                   ; --          ; --             ;
+; SAFE_STATE_MACHINE                  ; On                                                         ; Off                                  ; --          ; --             ;
+; SLD_FILE                            ; adc_qsys/synthesis/adc_qsys.debuginfo                      ; --                                   ; --          ; --             ;
+; SLD_INFO                            ; QSYS_NAME adc_qsys HAS_SOPCINFO 1 GENERATION_ID 1433315579 ; --                                   ; adc_qsys    ; --             ;
+; SOPCINFO_FILE                       ; adc_qsys/synthesis/../../adc_qsys.sopcinfo                 ; --                                   ; --          ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                         ; --                                   ; --          ; --             ;
++-------------------------------------+------------------------------------------------------------+--------------------------------------+-------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -114,12 +122,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:39     ; 1.0                     ; 747 MB              ; 00:01:18                           ;
-; Fitter                    ; 00:00:28     ; 1.4                     ; 1854 MB             ; 00:00:54                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 581 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 2.0                     ; 784 MB              ; 00:00:09                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 569 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:20     ; --                      ; --                  ; 00:02:28                           ;
+; Analysis & Synthesis      ; 00:00:37     ; 1.0                     ; 768 MB              ; 00:01:11                           ;
+; Fitter                    ; 00:00:41     ; 1.1                     ; 1371 MB             ; 00:00:57                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 586 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 05:27:32     ; 1.0                     ; 709 MB              ; 00:00:10                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 584 MB              ; 00:00:03                           ;
+; Total                     ; 05:28:57     ; --                      ; --                  ; 00:02:25                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -128,11 +136,11 @@ agreement for further details.
 +---------------------------+------------------+------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer        ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis      ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; MacRe10a         ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 

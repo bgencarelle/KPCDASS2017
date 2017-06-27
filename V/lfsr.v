@@ -1,47 +1,62 @@
-//-----------------------------------------------------
-// Design Name : lfsr
-// File Name   : lfsr.v
-// Function    : Linear feedback shift register
-// Coder       : Deepak Kumar Tala
-//-----------------------------------------------------
-module lfsr    (
-//out16           ,  // Output of the counter 16bit
-out32				 ,  // 32 bit 
-data			    ,
-enable          ,  // Enable  for counter
-clk             ,  // clock input
-reset              // reset input
+
+module lfsr    (//originally based on borrowed code, reworked following CDA lecture.
+
+//MARGINALLY cheaper to do registered outputs than separate LFSRS, also makes for velocity control.
+
+output wire signed [15:0] out24_5,
+output wire signed [15:0] out24_4,
+output wire signed [15:0] out24_3,
+output wire signed [15:0] out24_2,
+output wire signed [15:0] out24_1,
+output wire signed [15:0] out24_0,
+
+input wire a_clk, clk, reset
 );
 
-//----------Output Ports--------------
-output wire  [31:0] out32;
-//------------Input Ports--------------
-input  wire signed [11:0] data;
-input enable, clk, reset;
-//------------Internal Variables--------
-reg signed [31:0] out;
+
+reg  [23:0] out24ref_6;
+reg  [23:0] out24ref_5;
+reg  [23:0] out24ref_4;
+reg  [23:0] out24ref_3;
+reg  [23:0] out24ref_2;
+reg  [23:0] out24ref_1;
+reg  [23:0] out24ref_0;
+
+wire [23:0]data;
+assign data = 24'h9ff_faf;
+
+reg signed [23:0] out;
 wire        linear_feedback;
-
 //-------------Code Starts Here-------
-assign linear_feedback = !(out[31] ^ out[21] ^ out[1] ^ out[0]  );
-
+assign linear_feedback = (out[20] ^ out[19]  ) ^ (out[23] ^ out[22]  );
 always @(posedge clk)
 begin
-if (reset) 
+if (reset == 1'b0)
 	begin // active high reset
-  out <= 32'h00000000;
+  out <= data;
 	end
-if (out == 0) 
+if (out == 24'h0)
 	begin // active high reset
-  out <= 32'h0fff_0fff;
+  out <= ~data;
 	end
-	
-	else if (enable) 
-	begin 
-	out <= {out[30:0], linear_feedback};
-	end 
-end
+	else if (reset)
+	begin
+	out <= {out[22:0],linear_feedback};
+	out24ref_5 <= out;
+	out24ref_4 <= out24ref_5;
+	out24ref_3 <= out24ref_4;
+	out24ref_2 <= out24ref_3;
+	out24ref_1 <= out24ref_2;
+	out24ref_0 <= out24ref_1;
+	end
+	end
 
-	assign  out32 = (out );
+
+	assign out24_5 = $signed(out24ref_5[23:8]);
+	assign out24_4 = $signed(out24ref_4[23:8]);
+	assign out24_3 = $signed(out24ref_3[23:8]);
+	assign out24_2 = $signed(out24ref_2[23:8]);
+	assign out24_1 = $signed(out24ref_1[23:8]);
+	assign out24_0 = $signed(out24ref_0[23:8]);
 
 endmodule // End Of Module counter

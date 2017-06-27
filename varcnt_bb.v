@@ -80,6 +80,6 @@ endmodule
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.inc FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.cmp FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL varcnt_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL varcnt_inst.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL varcnt_bb.v TRUE
 // Retrieval info: LIB_FILE: lpm

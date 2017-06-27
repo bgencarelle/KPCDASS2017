@@ -12,38 +12,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[7]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[8]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[9]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX0[0]",
 					"strict" : false
 				},
@@ -72,7 +40,31 @@
 					"strict" : false
 				},
 				{
-					"name" : "AUDIO_DIN_MFP1",
+					"name" : "HEX1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX1[6]",
 					"strict" : false
 				},
 				{
@@ -92,114 +84,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "MTL2_B[0]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_B[1]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_B[2]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_B[3]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_B[5]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_B[6]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_BL_ON_n",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[0]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[1]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[2]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[3]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[4]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[5]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[6]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_G[7]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_HSD",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[0]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[1]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[2]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[3]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[4]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[5]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[6]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_R[7]",
-					"strict" : false
-				},
-				{
-					"name" : "MTL2_VSD",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO[0]",
-					"strict" : false
-				},
-				{
-					"name" : "AUDIO_BCLK",
-					"strict" : false
-				},
-				{
 					"name" : "AUDIO_RESET_n",
 					"strict" : false
 				},
@@ -208,11 +92,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "AUDIO_WCLK",
+					"name" : "DAC_DATA",
 					"strict" : false
 				},
 				{
-					"name" : "DAC_DATA",
+					"name" : "SW[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[9]",
 					"strict" : false
 				},
 				{
@@ -220,11 +108,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "MAX10_CLK2_50",
+					"strict" : false
+				},
+				{
 					"name" : "FPGA_RESET_n",
 					"strict" : false
 				},
 				{
-					"name" : "MAX10_CLK2_50",
+					"name" : "KEY[3]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[4]",
 					"strict" : false
 				},
 				{
@@ -237,6 +133,34 @@
 				},
 				{
 					"name" : "SW[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[6]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[7]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[1]",
+					"strict" : false
+				},
+				{
+					"name" : "KEY[2]",
 					"strict" : false
 				},
 				{

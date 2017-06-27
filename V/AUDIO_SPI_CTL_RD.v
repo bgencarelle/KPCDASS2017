@@ -60,13 +60,13 @@ reg [31:0]RESET_DELAY ;
 	always @(negedge RESET_n  or posedge  CLK_1M )  begin 
 	if ( !RESET_n ) RESET_DELAY  <= 0; 
 	else begin 
-	    if ( RESET_DELAY < 1000000 ) RESET_DELAY <=RESET_DELAY+1; 
+	    if ( RESET_DELAY < 100000 ) RESET_DELAY <=RESET_DELAY+1; 
 		 else RESET_DELAY<=RESET_DELAY ; 
 	end 
 end
 
 wire   ST_RESET  ;
-assign ST_RESET = ( RESET_DELAY == 100000/2)?1'b0:1'b1 ; 
+assign ST_RESET = ( RESET_DELAY == 50000)?1'b0:1'b1 ; 
 
 //==== SPI ST === // 
 always@( negedge RESET_n or posedge CLK_1M )begin
