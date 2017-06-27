@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Tue Jun 27 09:17:20 2017
+Tue Jun 27 09:31:10 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 27 09:17:20 2017       ;
+; Flow Status                        ; Successful - Tue Jun 27 09:31:10 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/27/2017 09:15:28 ;
+; Start date & time ; 06/27/2017 09:29:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+------------------------------------------------------------+--------------------------------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                      ; Default Value                        ; Entity Name ; Section Id     ;
 +-------------------------------------+------------------------------------------------------------+--------------------------------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 107765168740670.149854772805868                            ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 107765168740670.149854855808868                            ; --                                   ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                  ; <None>                               ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                         ; --                                   ; --          ; --             ;
@@ -116,12 +116,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:39     ; 1.0                     ; 770 MB              ; 00:01:12                           ;
-; Fitter                    ; 00:00:49     ; 1.2                     ; 1372 MB             ; 00:01:06                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 586 MB              ; 00:00:05                           ;
+; Analysis & Synthesis      ; 00:00:44     ; 1.0                     ; 770 MB              ; 00:01:23                           ;
+; Fitter                    ; 00:00:46     ; 1.1                     ; 1371 MB             ; 00:01:03                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 586 MB              ; 00:00:04                           ;
 ; TimeQuest Timing Analyzer ; 00:00:07     ; 1.4                     ; 709 MB              ; 00:00:09                           ;
-; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 587 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:43     ; --                      ; --                  ; 00:02:35                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 587 MB              ; 00:00:03                           ;
+; Total                     ; 00:01:45     ; --                      ; --                  ; 00:02:42                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
