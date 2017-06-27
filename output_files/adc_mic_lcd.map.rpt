@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adc_mic_lcd
-Tue Jun 27 01:38:24 2017
+Tue Jun 27 09:16:10 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -150,7 +150,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jun 27 01:38:23 2017       ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 27 09:16:09 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -375,6 +375,7 @@ agreement for further details.
 ; db/mult_eks.tdf                                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_eks.tdf                                                        ;             ;
 ; db/mult_qgs.tdf                                                        ; yes             ; Auto-Generated Megafunction                  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_qgs.tdf                                                        ;             ;
 ; V/config_shift_register.v                                              ; yes             ; User Verilog HDL File                        ; V/config_shift_register.v                                                                                        ;             ;
+; varcnt.v                                                               ; yes             ; User Wizard-Generated File                   ; C:/Users/ben/Documents/GitHub/KPCDASS2017/varcnt.v                                                               ;             ;
 ; lpm_counter.tdf                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_counter.tdf                                           ;             ;
 ; lpm_constant.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_constant.inc                                          ;             ;
 ; cmpconst.inc                                                           ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/cmpconst.inc                                              ;             ;
@@ -6270,7 +6271,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -6280,13 +6281,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Tue Jun 27 01:37:44 2017
+    Info: Processing started: Tue Jun 27 09:15:28 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file v/newfilter.v
     Info (12023): Found entity 1: newfilter File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/newfilter.v Line: 2
-Info (12021): Found 1 design units, including 1 entities, in source file v/pulse_width_modulation_gen.v
-    Info (12023): Found entity 1: pulse_width_modulation_gen File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/pulse_width_modulation_gen.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file v/lfsr.v
     Info (12023): Found entity 1: lfsr File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/lfsr.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file adc_qsys/synthesis/adc_qsys.v
@@ -6342,14 +6341,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file v/audio
     Info (12023): Found entity 1: AUDIO_PLL File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/AUDIO_PLL.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file adc_mic_lcd.v
     Info (12023): Found entity 1: adc_mic_lcd File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 4
-Info (12021): Found 1 design units, including 1 entities, in source file varcnt.v
-    Info (12023): Found entity 1: varcnt File: C:/Users/ben/Documents/GitHub/KPCDASS2017/varcnt.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file ram_4096_32bit.v
     Info (12023): Found entity 1: ram_4096_32bit File: C:/Users/ben/Documents/GitHub/KPCDASS2017/ram_4096_32bit.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file reverbcnt.v
-    Info (12023): Found entity 1: reverbcnt File: C:/Users/ben/Documents/GitHub/KPCDASS2017/reverbcnt.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file reverb_ram.v
-    Info (12023): Found entity 1: reverb_ram File: C:/Users/ben/Documents/GitHub/KPCDASS2017/reverb_ram.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file v/adc_seg_led.v
     Info (12023): Found entity 1: ADC_SEG_LED File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/ADC_SEG_LED.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/kp_main.v
@@ -6635,7 +6628,7 @@ Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "AUDI
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "AUDIO_SPI_CTL_RD:u1|SPI_RAM:R|altsyncram:altsyncram_component|altsyncram_iej1:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2017.06.27.01:38:06 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2017.06.27.09:15:50 Progress: Loading sldaf1daf55/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -8224,9 +8217,9 @@ Info (21057): Implemented 3513 device resources after synthesis - the final reso
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 24 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1475 warnings
-    Info: Peak virtual memory: 768 megabytes
-    Info: Processing ended: Tue Jun 27 01:38:24 2017
-    Info: Elapsed time: 00:00:40
+    Info: Peak virtual memory: 770 megabytes
+    Info: Processing ended: Tue Jun 27 09:16:10 2017
+    Info: Elapsed time: 00:00:42
     Info: Total CPU time (on all processors): 00:01:14
 
 

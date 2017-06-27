@@ -286,7 +286,6 @@ set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name SAFE_STATE_MACHINE ON
 set_global_assignment -name VERILOG_FILE V/newfilter.v
-set_global_assignment -name VERILOG_FILE V/pulse_width_modulation_gen.v
 set_global_assignment -name VERILOG_FILE V/lfsr.v
 set_global_assignment -name QIP_FILE adc_qsys/synthesis/adc_qsys.qip
 set_global_assignment -name HEX_FILE V/LOOP.hex
@@ -306,11 +305,7 @@ set_global_assignment -name VERILOG_FILE V/AUDIO_SPI_CTL_RD.v
 set_global_assignment -name VERILOG_FILE V/AUDIO_PLL.v
 set_global_assignment -name SDC_FILE adc_mic_lcd.SDC
 set_global_assignment -name VERILOG_FILE adc_mic_lcd.v
-set_global_assignment -name QIP_FILE varcnt.qip
 set_global_assignment -name QIP_FILE ram_4096_32bit.qip
-set_global_assignment -name QIP_FILE reverbcnt.qip
-set_global_assignment -name QIP_FILE reverb_ram.qip
-set_global_assignment -name CDF_FILE output_files/Chain2.cdf
 set_global_assignment -name VERILOG_FILE V/ADC_SEG_LED.v
 set_global_assignment -name VERILOG_FILE V/KP_main.v
 set_global_assignment -name QIP_FILE altclk.qip
