@@ -144,7 +144,7 @@ end
 assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
 //end debounce
 
-/
+//
 wire signed [31:0] q;
 ram_4096_32bit	shift_reg_ram(		// RAM. currently using too much-can implement smaller amounts when tuning
 							.clock(a_clk),//RAM
@@ -165,6 +165,6 @@ newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.q(dfilter) // output to DAC
 			);
 
-wire signed [23:0] dfilter; /
+wire signed [23:0] dfilter; //
 assign qout = dfilter;
 endmodule
