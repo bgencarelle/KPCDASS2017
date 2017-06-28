@@ -81,9 +81,12 @@ wire signed [RANGE:0]		MEM2;
 wire signed [RANGE:0]		MEM3;
 wire signed [RANGE:0]		MEM4;
 wire signed [RANGE:0]		MEM5;
+wire signed [RANGE:0]		MEM6;
+wire signed [RANGE:0]		MEM7;
 wire signed [RANGE+4:0]		VERB0;
 
-
+wire signed [15:0]		NOISE7;
+wire signed [15:0]		NOISE6;
 wire signed [15:0]		NOISE5;
 wire signed [15:0]		NOISE4;
 wire signed [15:0]		NOISE3;
@@ -127,112 +130,160 @@ reg   [31:0]  			DELAY_CNT;
 
 
 reg signed [24:0]presum;
-reg signed [23:0]sum;
+reg signed [23:0]sum0;
+reg signed [23:0]sum1;
 
-  always @(ninety6khz_clk) begin//will move mixer to another .V file at some point
+  always @(posedge seven0068khz_clk) begin//will move mixer to another .V file at some point
 	//a bit of borrowed code
-    presum <= $signed(MEM5>>>2) +$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
-    if (presum[24] == presum[23])
+    presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
+    sum1 <= sum0;
+	 if (presum[24] == presum[23])
+		begin
       // Top two bits equal: no signed overflow.
-      sum <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
+      sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
+		end
     else
       if (presum[24] == 1'b0)
-        // top bit of signed sum is zero, indicating a positive sum.
-        sum = 24'd8388607;   // maximum positive value representable by 8 bits.
+        begin
+        sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
+		  end
       else
-        sum = 24'd8388608;   // two's complement representation of -128.
+			begin
+        sum0 <= 24'd8388608;   
+			end
+		
   end
 
-	assign MIXMASTER = sum;
+	assign MIXMASTER = (sum1>>>1)+(sum0>>>1);
 	wire KEYMIX;
-	assign KEYMIX = (~KEY[4] & ~KEY[3]) ? 1'b1 : 1'b0;
-	wire ninety6khz_clk;
+	assign KEYMIX0 = (SW[0] & KEY[0]) ? 1'b1 : 1'b0;
+	assign KEYMIX1 = (SW[1] & KEY[1]) ? 1'b1 : 1'b0;
+	assign KEYMIX2 = (SW[2] & KEY[2]) ? 1'b1 : 1'b0;
+	assign KEYMIX3 = (SW[3] & KEY[3]) ? 1'b1 : 1'b0;
 
-	altclk ninety6khz(//added clock, infinitely better sound.
-	.areset (0),
+	wire seven0068khz_clk;
+	
+	altclk clockyclock(//added clock, infinitely better sound.
 	.inclk0 (MAX10_CLK1_50),
-	.c0 (ninety6khz_clk)
+	.c0 (seven0068khz_clk)
 	);
+
+
 KP_main string0(  /// HIGH STRING
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		  .dnoise(NOISE5),
+		  .audio_clk(seven0068khz_clk),
+		  .dnoise(NOISE0),
 		  .velocity(7'd127),
-		  .decay(12'd4090),
-		  .loops(SW[9:7]),
-		  .filtsw(3'b001),//each filter can be tuned to the specific string
-		  .trig(KEYMIX),
-		  .delay_length(10'd63),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b111),
+		  .filtsw(3'b000),//each filter can be tuned to the specific string
+		  .trig(KEYMIX0),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM0)
         );
 
 KP_main string1(
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		  .dnoise(NOISE4),
+		  .audio_clk(seven0068khz_clk),
+		  .dnoise(NOISE1),
 		  .velocity(7'd127),
-		  .decay(12'd4095),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b110),
 		  .filtsw(3'b001),
-		  .trig(KEY[4]),
-		  .delay_length(10'd127),
+		  .trig(KEYMIX1),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM1)
         );
 
 KP_main string2(
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		   .dnoise(NOISE3),
+		  .audio_clk(seven0068khz_clk),
+		   .dnoise(NOISE2),
 		  .velocity(7'd127),
-		  .decay(12'd4095),
-		  .filtsw(3'b001),
-		  .trig(KEY[3]),
-		  .delay_length(10'd255),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b101),
+		  .filtsw(3'b010),
+		  .trig(KEYMIX2),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM2)
         );
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		  .dnoise(NOISE2),
+		  .audio_clk(seven0068khz_clk),
+		  .dnoise(NOISE3),
 		  .velocity(7'd127),
-		  .decay(12'd4095),
-		  .filtsw(3'b001),
-		  .trig(KEY[2]),
-		  .delay_length(10'd511),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b100),
+		  .filtsw(3'b011),
+		  .trig(KEYMIX3),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)
         );
 
 KP_main string4(
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		   .dnoise(NOISE1),
+		  .audio_clk(seven0068khz_clk),
+		   .dnoise(NOISE4),
 		  .velocity(7'd127),
-		  .decay(12'd4095),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b011),
 		  .filtsw(3'b100),
-		  .trig(KEY[1]),
-		  .delay_length(10'd1023),
+		  .trig(KEY[0]),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
 
 KP_main string5(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .a_clk(ninety6khz_clk),
-		   .dnoise(NOISE0),
+		  .audio_clk(seven0068khz_clk),
+		   .dnoise(NOISE5),
 		  .velocity(7'd127),
-		  .decay({SW[9:0],2'b11}),
-		  .loops(SW[9:7]),
-		  .filtsw(3'b110),
-		  .trig(KEY[0]),
-		  .delay_length(11'd2047),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b010),
+		  .filtsw(3'b101),
+		  .trig(KEY[1]),
+		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
         );
 
+KP_main string6(  
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(seven0068khz_clk),
+		   .dnoise(NOISE6),
+		  .velocity(7'd127),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b001),
+		  .filtsw(3'b110),
+		  .trig(KEY[2]),
+		  .delay_length(11'd1959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM6)
+        );
+
+KP_main string7(  //low string
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(seven0068khz_clk),
+		   .dnoise(NOISE7),
+		  .velocity(7'd127),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b000),
+		  .filtsw(3'b111),
+		  .trig(KEY[3]),
+		  .delay_length(11'd1959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM7)
+        );
+
 lfsr  noise(//easier to add more voices, shown to be marginally cheaper
+			.out24_7(NOISE7),
+			.out24_6(NOISE6),
 			.out24_5(NOISE5),
 			.out24_4(NOISE4),
 			.out24_3(NOISE3),
@@ -240,7 +291,7 @@ lfsr  noise(//easier to add more voices, shown to be marginally cheaper
 			.out24_1(NOISE1),
 			.out24_0(NOISE0),
 			.clk(MAX10_CLK1_50),
-			.a_clk(ninety6khz_clk),
+			.a_clk(seven0068khz_clk),
 			.reset(RESET_DELAY_n)
 					);
 
@@ -327,7 +378,7 @@ MAX10_ADC   madc(
 assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ;
 //
 DAC16 dac1 (
-	.LOAD    ( ninety6khz_clk   ) ,
+	.LOAD    ( seven0068khz_clk   ) ,
 	.RESET_N ( RESET_DELAY_n) ,
 	.CLK_50  ( MAX10_CLK1_50 ) ,
 	.DATA24  ( TODAC  )  ,
