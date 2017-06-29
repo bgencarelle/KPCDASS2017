@@ -156,11 +156,11 @@ reg signed [23:0]sum1;
   end
 
 	assign MIXMASTER = (sum1>>>1)+(sum0>>>1);
-	wire KEYMIX;
-	assign KEYMIX0 = (SW[0] & KEY[0]) ? 1'b1 : 1'b0;
-	assign KEYMIX1 = (SW[1] & KEY[1]) ? 1'b1 : 1'b0;
-	assign KEYMIX2 = (SW[2] & KEY[2]) ? 1'b1 : 1'b0;
-	assign KEYMIX3 = (SW[3] & KEY[3]) ? 1'b1 : 1'b0;
+//	wire KEYMIX;
+//	assign KEYMIX0 = (~SW[0] & KEY[0]) ? 1'b1 : 1'b0;
+//	assign KEYMIX1 = (~SW[1] & KEY[1]) ? 1'b1 : 1'b0;
+//	assign KEYMIX2 = (~SW[2] & KEY[2]) ? 1'b1 : 1'b0;
+//	assign KEYMIX3 = (~SW[3] & KEY[3]) ? 1'b1 : 1'b0;
 
 	wire seven0068khz_clk;
 	
@@ -170,56 +170,56 @@ reg signed [23:0]sum1;
 	);
 
 
-KP_main string0(  /// HIGH STRING
-			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
-		  .dnoise(NOISE0),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b000),//each filter can be tuned to the specific string
-		  .trig(KEYMIX0),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM0)
-        );
-
-KP_main string1(
-			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
-		  .dnoise(NOISE1),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b110),
-		  .filtsw(3'b001),
-		  .trig(KEYMIX1),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM1)
-        );
-
-KP_main string2(
-			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
-		   .dnoise(NOISE2),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b101),
-		  .filtsw(3'b010),
-		  .trig(KEYMIX2),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM2)
-        );
+//KP_main string0(  /// HIGH STRING
+//			.m_clk(MAX10_CLK1_50),
+//		  .audio_clk(seven0068khz_clk),
+//		  .dnoise(NOISE0),
+//		  .velocity(7'd127),
+//		  .decay({SW[9:4],6'b111111}),
+//		  .loops(3'b111),
+//		  .filtsw(3'b000),//each filter can be tuned to the specific string
+//		  .trig(KEYMIX0),
+//		  .delay_length(11'd1959),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM0)
+//        );
+//
+//KP_main string1(
+//			.m_clk(MAX10_CLK1_50),
+//		  .audio_clk(seven0068khz_clk),
+//		  .dnoise(NOISE1),
+//		  .velocity(7'd127),
+//		  .decay({SW[9:4],6'b111111}),
+//		  .loops(3'b110),
+//		  .filtsw(3'b001),
+//		  .trig(KEYMIX1),
+//		  .delay_length(11'd1959),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM1)
+//        );
+//
+//KP_main string2(
+//			.m_clk(MAX10_CLK1_50),
+//		  .audio_clk(seven0068khz_clk),
+//		   .dnoise(NOISE2),
+//		  .velocity(7'd127),
+//		  .decay({SW[9:4],6'b111111}),
+//		  .loops(3'b101),
+//		  .filtsw(3'b010),
+//		  .trig(KEYMIX2),
+//		  .delay_length(11'd1959),
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM2)
+//        );
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(seven0068khz_clk),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b100),
-		  .filtsw(3'b011),
-		  .trig(KEYMIX3),
+		  .loops(3'b000),
+		  .filtsw(3'b000),
+		  .trig(KEY[4]),
 		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)
@@ -231,9 +231,9 @@ KP_main string4(
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b011),
-		  .filtsw(3'b100),
-		  .trig(KEY[0]),
+		  .loops(3'b001),
+		  .filtsw(3'b000),
+		  .trig(KEY[3]),
 		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
@@ -246,8 +246,8 @@ KP_main string5(  //low string
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops(3'b010),
-		  .filtsw(3'b101),
-		  .trig(KEY[1]),
+		  .filtsw(3'b000),
+		  .trig(KEY[2]),
 		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
@@ -259,9 +259,9 @@ KP_main string6(
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b110),
-		  .trig(KEY[2]),
+		  .loops(3'b011),
+		  .filtsw(3'b000),
+		  .trig(KEY[1]),
 		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
@@ -273,9 +273,9 @@ KP_main string7(  //low string
 		   .dnoise(NOISE7),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b000),
-		  .filtsw(3'b111),
-		  .trig(KEY[3]),
+		  .loops(3'b100),
+		  .filtsw(3'b000),
+		  .trig(KEY[0]),
 		  .delay_length(11'd1959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)

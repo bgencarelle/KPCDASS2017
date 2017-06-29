@@ -30,13 +30,13 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//e
 	begin case(filt_sel)
 		 3'b000:begin // start of classic running average LPF
 			regq <=
-					$signed(d>>>1) +//1/2
+					$signed(del[0]>>>1) +//1/2
 					$signed(del[1]>>>1);//1/2
 				 	end
 
 		3'b001:begin
 			regq <=
-					$signed(d>>>2) +//1/4
+					$signed(del[0]>>2) +//1/4
 					$signed(del[1]>>>2) +//1/4
 					$signed(del[2]>>>2)+//1/4
 					$signed(del[3]>>>2);//1/4
@@ -44,7 +44,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//e
 
 		3'b010:begin
 			regq <=
-					$signed(d >>>3) +//1/8
+					$signed(del[0] >>>3) +//1/8
 					$signed(del[1]>>>3) +//1/8
 					$signed(del[2]>>>3) +//1/8
 					$signed(del[3]>>>3) +//1/8
@@ -56,7 +56,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//e
 
 		3'b011:begin // end of classic running average LPF
 			regq <=
-					$signed(d >>>4) +//1/16
+					$signed(del[0] >>>4) +//1/16
 					$signed(del[1]>>>4) +//1/16
 					$signed(del[2]>>>4) +//1/16
 					$signed(del[3]>>>4) +//1/16

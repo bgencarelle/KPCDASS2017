@@ -13,8 +13,6 @@ input wire [2:0] loops,//not currrently implemented
 output wire signed [23:0] qout //output to top level
 );
 
-wire a_clk;
-assign a_clk = audio_clk;
 
 wire signed [47:0] start_level; //initial level
 assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
@@ -167,6 +165,20 @@ newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.reset_n(reset_n),
 			.q(dfilter) // output to DAC
 			);
+multi_clk_div div(
+		.octave(loops),
+		.reset(reset_n),
+		.clk(audio_clk),
+		.divoutput(a_clk_reg)
+		);
+		
+
+reg a_clk;
+wire a_clk_reg;
+
+always @(posedge audio_clk)
+a_clk <= a_clk_reg;
+
 
 wire signed [23:0] dfilter; //
 assign qout = dfilter;
