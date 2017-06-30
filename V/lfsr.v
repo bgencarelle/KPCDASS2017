@@ -25,7 +25,7 @@ reg  [23:0] out24ref_1;
 reg  [23:0] out24ref_0;
 
 wire [23:0]data;
-assign data = 24'haf;
+assign data = 24'h00_0001;
 
 reg signed [23:0] out;
 wire        linear_feedback;
@@ -43,7 +43,7 @@ if (out == 24'h0)
 	end
 	else if (reset)
 	begin
-	out <= {out[22:0],linear_feedback};
+	out <= {out[22:0],linear_feedback,};
 	out24ref_7 <= out;
 	out24ref_6 <= out24ref_7;
 	out24ref_5 <= out24ref_6;	

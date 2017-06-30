@@ -96,7 +96,7 @@ wire signed [15:0]		NOISE0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
-wire signed [RANGE+4:0]		MIXMASTER;
+
 wire signed [RANGE:0]		SEED_OUT;
 wire signed [RANGE:0] 		FILTER_OUT;
 wire signed [RANGE:0]		MUX0_OUT;
@@ -129,22 +129,23 @@ reg   [31:0]  			DELAY_CNT;
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
-reg signed [24:0]presum;
+reg signed [25:0]presum;
 reg signed [23:0]sum0;
 reg signed [23:0]sum1;
 
-  always @(posedge seven0068khz_clk) begin//will move mixer to another .V file at some point
-	//a bit of borrowed code
+	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
+	begin
+ //	//a bit of borrowed code
     presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
     sum1 <= sum0;
-	 if (presum[24] == presum[23])
+	 if (presum[25] == presum[23])
 		begin
       // Top two bits equal: no signed overflow.
       sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
 		end
     else
-      if (presum[24] == 1'b0)
+      if (presum[25] == 1'b0)
         begin
         sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
 		  end
@@ -154,8 +155,11 @@ reg signed [23:0]sum1;
 			end
 		
   end
+wire signed [RANGE:0] MIXMASTER;
 
-	assign MIXMASTER = (sum1>>>1)+(sum0>>>1);
+assign MIXMASTER = sum0;
+
+
 //	wire KEYMIX;
 //	assign KEYMIX0 = (~SW[0] & KEY[0]) ? 1'b1 : 1'b0;
 //	assign KEYMIX1 = (~SW[1] & KEY[1]) ? 1'b1 : 1'b0;
@@ -217,10 +221,10 @@ KP_main string3 (
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b011),
+		  .loops(3'b001),
 		  .filtsw(3'b001),
 		  .trig(KEY[4]),
-		  .delay_length(10'd959),
+		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)
         );
@@ -231,10 +235,10 @@ KP_main string4(
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b100),
+		  .loops(3'b010),
 		  .filtsw(3'b001),
 		  .trig(KEY[3]),
-		  .delay_length(10'd959),
+		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
@@ -245,10 +249,10 @@ KP_main string5(  //low string
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b101),
+		  .loops(3'b001),
 		  .filtsw(3'b001),
 		  .trig(KEY[2]),
-		  .delay_length(10'd959),
+		  .delay_length(10'd480),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
         );
@@ -259,10 +263,10 @@ KP_main string6(
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b110),
+		  .loops(3'b100),
 		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(10'd959),
+		  .delay_length(10'd95),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
@@ -270,11 +274,11 @@ KP_main string6(
 KP_main string7(  //low string
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(seven0068khz_clk),
-		   .dnoise(NOISE7),
+		   .dnoise(MEM6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b011),
+		  .loops({SW[2:0]}),
+		  .filtsw(3'b001),
 		  .trig(KEY[0]),
 		  .delay_length(10'd0959),
 		  .reset_n(RESET_DELAY_n),

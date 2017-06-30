@@ -13,12 +13,9 @@ input wire [2:0] loops,//not currrently implemented
 output wire signed [23:0] qout //output to top level
 );
 
-reg signed [15:0] dnoisein;
-always@(a_clk)
-dnoisein <= dnoise;
 
-wire signed [23:0] start_level; //initial level
-assign start_level = $signed(dnoisein) * $signed({8'b0,velocity});
+wire signed [31:0] start_level; //initial level
+assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
 
 wire signed [47:0] dfilter_gain;//limiting feedback allows for faster decay
 assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
@@ -51,7 +48,7 @@ begin:KP_STATE_BEGIN
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-		d <= (start_level[23:0]);
+		d <= (start_level);
 	rden <= 1'b0;
 		if (trig_pulse == 1'b1) //loads value for next clock
 			begin
@@ -69,7 +66,7 @@ begin:KP_STATE_BEGIN
 	rd_ptr <= count;
 	wr_ptr <= count;
 	rden <= 1'b0;//still not reading, prevents white noise during load
-	d <= (start_level[23:0]);// scaled by velocity
+	d <= start_level;// scaled by velocity
 	count <= count + 1'b1;
 	if (count < delay_length)//as long as RAM isnt full, keep loading.
 			begin
@@ -178,10 +175,10 @@ multi_clk_div div(
 
 reg a_clk;
 wire a_clk_reg;
+reg dfilter_reg;
 
 always @(posedge audio_clk)
 a_clk <= a_clk_reg;
-
 
 wire signed [23:0] dfilter; //
 assign qout = dfilter;

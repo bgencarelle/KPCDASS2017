@@ -36,7 +36,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//e
 
 		3'b001:begin
 			regq <=
-					$signed(del[0]>>2) +//1/4
+					$signed(del[0]>>>2) +//1/4
 					$signed(del[1]>>>2) +//1/4
 					$signed(del[2]>>>2)+//1/4
 					$signed(del[3]>>>2);//1/4
@@ -76,7 +76,7 @@ module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//e
 
 		3'b100:begin // start of experimental section
 			regq <=
-					$signed(d >>>6) +//1/64
+					$signed(del[0]>>>6) +//1/64
 					$signed(del[1]>>>6) +//1/64
 					$signed(del[2]>>>5) +//1/32
 					$signed(del[3]>>>4) +//1/16
