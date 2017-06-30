@@ -6,24 +6,27 @@ input wire trig,//input trigger
 input wire signed [15:0] dnoise,//input from LFSR
 input wire signed [11:0] decay,//sustain time
 input wire signed [6:0] velocity,//velocity from MIDI or other source
-input wire [11:0] delay_length,//tuning
+input wire [9:0] delay_length,//tuning
 input wire [2:0] filtsw,//filter choosing
 input wire [2:0] loops,//not currrently implemented
 
 output wire signed [23:0] qout //output to top level
 );
 
+reg signed [15:0] dnoisein;
+always@(a_clk)
+dnoisein <= dnoise;
 
-wire signed [47:0] start_level; //initial level
-assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
+wire signed [23:0] start_level; //initial level
+assign start_level = $signed(dnoisein) * $signed({8'b0,velocity});
 
 wire signed [47:0] dfilter_gain;//limiting feedback allows for faster decay
 assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM
-reg [12:0] count=0; //basic counter
-reg [12:0] wr_ptr=0;// RAM write pointer
-reg [12:0] rd_ptr=0;//  RAM read pointer
+reg [10:0] count=0; //basic counter
+reg [10:0] wr_ptr=0;// RAM write pointer
+reg [10:0] rd_ptr=0;//  RAM read pointer
 reg rden = 1'b0; // silences output when not in use
 reg [1:0] KP_state = 2'b00; // initial state of state machine
 //main state machine

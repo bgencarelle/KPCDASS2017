@@ -25,7 +25,7 @@ reg  [23:0] out24ref_1;
 reg  [23:0] out24ref_0;
 
 wire [23:0]data;
-assign data = 24'h9ff_faf;
+assign data = 24'haf;
 
 reg signed [23:0] out;
 wire        linear_feedback;

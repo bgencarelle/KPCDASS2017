@@ -217,10 +217,10 @@ KP_main string3 (
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b000),
-		  .filtsw(3'b000),
+		  .loops(3'b011),
+		  .filtsw(3'b001),
 		  .trig(KEY[4]),
-		  .delay_length(11'd1959),
+		  .delay_length(10'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)
         );
@@ -231,10 +231,10 @@ KP_main string4(
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b000),
+		  .loops(3'b100),
+		  .filtsw(3'b001),
 		  .trig(KEY[3]),
-		  .delay_length(11'd1959),
+		  .delay_length(10'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
@@ -245,10 +245,10 @@ KP_main string5(  //low string
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b010),
-		  .filtsw(3'b000),
+		  .loops(3'b101),
+		  .filtsw(3'b001),
 		  .trig(KEY[2]),
-		  .delay_length(11'd1959),
+		  .delay_length(10'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
         );
@@ -259,10 +259,10 @@ KP_main string6(
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b011),
-		  .filtsw(3'b000),
+		  .loops(3'b110),
+		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(11'd1959),
+		  .delay_length(10'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
@@ -273,10 +273,10 @@ KP_main string7(  //low string
 		   .dnoise(NOISE7),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b100),
-		  .filtsw(3'b000),
+		  .loops(3'b111),
+		  .filtsw(3'b011),
 		  .trig(KEY[0]),
-		  .delay_length(11'd1959),
+		  .delay_length(10'd0959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );
