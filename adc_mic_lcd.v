@@ -177,8 +177,13 @@ assign MIXMASTER = sum0;
 	.inclk0 (MAX10_CLK1_50),
 	.c0 (clkbuff)
 	);
-
-
+multi_clk_div div(
+		.octave(loops),
+		.reset(reset_n),
+		.clk(seven0068khz_clk),
+		.divoutput(a_clk_reg)
+		);
+		
 //KP_main string0(  /// HIGH STRING
 //			.m_clk(MAX10_CLK1_50),
 //		  .audio_clk(seven0068khz_clk),
@@ -221,7 +226,7 @@ assign MIXMASTER = sum0;
 //        .qout(MEM2)
 //        );
 KP_main string3 (
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(seven0068khz_clk),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
@@ -235,7 +240,7 @@ KP_main string3 (
         );
 
 KP_main string4(
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(seven0068khz_clk),
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
@@ -249,7 +254,7 @@ KP_main string4(
         );
 
 KP_main string5(  //low string
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(seven0068khz_clk),
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
@@ -263,7 +268,7 @@ KP_main string5(  //low string
         );
 
 KP_main string6(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(seven0068khz_clk),
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
@@ -280,7 +285,7 @@ assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2)
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
 		  
 KP_main string7(  //low string
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(seven0068khz_clk),
 		   .dnoise(submix),
 		  .velocity(7'd127),

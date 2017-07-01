@@ -1,7 +1,7 @@
 module  KP_main(///main KP sound generation
 input wire audio_clk,//96khz clock
 input wire reset_n,//reset
-input wire m_clk,//not used currently,50mhz clock
+input wire a_clk_wire,//not used currently,50mhz clock
 input wire trig,//input trigger
 input wire signed [15:0] dnoise,//input from LFSR
 input wire signed [11:0] decay,//sustain time
@@ -167,22 +167,9 @@ newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.reset_n(reset_n),
 			.q(dfilter) // output to DAC
 			);
-multi_clk_div div(
-		.octave(loops),
-		.reset(reset_n),
-		.clk(audio_clk),
-		.divoutput(a_clk_reg)
-		);
-		
-
-wire a_clk;
-wire a_clk_reg;
-reg dfilter_reg;
-
-//always @(posedge audio_clk)
-//a_clk <= a_clk_reg;
+			
 	clock_buff kpbuff (
-		.inclk  (a_clk_reg),  //  altclkctrl_input.inclk
+		.inclk  (a_clk_wire),  //  altclkctrl_input.inclk
 		.outclk (a_clk)  // altclkctrl_output.outclk
 	);
 wire signed [23:0] dfilter; //

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for adc_mic_lcd
-Sat Jul 01 13:58:33 2017
+Sun Jul 02 00:43:05 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -98,9 +98,9 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  24.5%      ;
-;     Processor 3            ;  24.0%      ;
-;     Processor 4            ;  23.7%      ;
+;     Processor 2            ;  24.3%      ;
+;     Processor 3            ;  23.8%      ;
+;     Processor 4            ;  23.5%      ;
 +----------------------------+-------------+
 
 
@@ -109,7 +109,7 @@ agreement for further details.
 +-----------------+--------+--------------------------+
 ; SDC File Path   ; Status ; Read at                  ;
 +-----------------+--------+--------------------------+
-; adc_mic_lcd.SDC ; OK     ; Sat Jul 01 13:58:29 2017 ;
+; adc_mic_lcd.SDC ; OK     ; Sun Jul 02 00:43:01 2017 ;
 +-----------------+--------+--------------------------+
 
 
@@ -778,7 +778,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sat Jul 01 13:58:28 2017
+    Info: Processing started: Sun Jul 02 00:43:00 2017
 Info: Command: quartus_sta adc_mic_lcd -c adc_mic_lcd
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -898,8 +898,8 @@ Info (332114): Report Metastability: Found 116 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 722 megabytes
-    Info: Processing ended: Sat Jul 01 13:58:33 2017
+    Info: Peak virtual memory: 725 megabytes
+    Info: Processing ended: Sun Jul 02 00:43:05 2017
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:07
 

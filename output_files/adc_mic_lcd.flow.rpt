@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Sat Jul 01 14:03:04 2017
+Sun Jul 02 00:43:07 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,21 +41,21 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Sat Jul 01 14:03:04 2017      ;
+; Flow Status                        ; Successful - Sun Jul 02 00:43:07 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 3,158 / 49,760 ( 6 % )                      ;
-;     Total combinational functions  ; 2,933 / 49,760 ( 6 % )                      ;
-;     Dedicated logic registers      ; 1,619 / 49,760 ( 3 % )                      ;
-; Total registers                    ; 1619                                        ;
+; Total logic elements               ; 1,907 / 49,760 ( 4 % )                      ;
+;     Total combinational functions  ; 1,793 / 49,760 ( 4 % )                      ;
+;     Dedicated logic registers      ; 1,025 / 49,760 ( 2 % )                      ;
+; Total registers                    ; 1025                                        ;
 ; Total pins                         ; 67 / 360 ( 19 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 362,496 / 1,677,312 ( 22 % )                ;
-; Embedded Multiplier 9-bit elements ; 32 / 288 ( 11 % )                           ;
+; Total memory bits                  ; 227,328 / 1,677,312 ( 14 % )                ;
+; Embedded Multiplier 9-bit elements ; 20 / 288 ( 7 % )                            ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
 ; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/01/2017 14:02:34 ;
+; Start date & time ; 07/02/2017 00:42:00 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                        ; Default Value                        ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149891055403648                              ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 184857106377073.149894892004444                              ; --                                   ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                  ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                    ; <None>                               ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                           ; --                                   ; --          ; --             ;
@@ -111,25 +111,31 @@ agreement for further details.
 +-------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 710 MB              ; 00:00:39                           ;
-; Fitter               ; 00:00:06     ; 1.0                     ; 858 MB              ; 00:00:07                           ;
-; Total                ; 00:00:27     ; --                      ; --                  ; 00:00:46                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:24     ; 1.0                     ; 700 MB              ; 00:00:35                           ;
+; Fitter                    ; 00:00:27     ; 1.3                     ; 1566 MB             ; 00:00:44                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 577 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:05     ; 1.7                     ; 725 MB              ; 00:00:07                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 570 MB              ; 00:00:01                           ;
+; Total                     ; 00:01:01     ; --                      ; --                  ; 00:01:31                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++-----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                         ;
++---------------------------+------------------+------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++---------------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis      ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; MiniWini         ; Windows 10 ; 10.0       ; x86_64         ;
++---------------------------+------------------+------------+------------+----------------+
 
 
 ------------
@@ -137,6 +143,9 @@ agreement for further details.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 quartus_fit --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
+quartus_asm --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
+quartus_sta adc_mic_lcd -c adc_mic_lcd
+quartus_eda --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 
 
 
