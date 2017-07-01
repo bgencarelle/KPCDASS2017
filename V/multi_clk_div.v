@@ -9,15 +9,55 @@ module multi_clk_div(
 		always@ (posedge clk)
 				time_base_counter <= time_base_counter + 1'b1;
 		
+		wire div2;
+	clock_buff u0 (
+		.inclk  ( time_base_counter[1]),  //  altclkctrl_input.inclk
+		.outclk (div2)  // altclkctrl_output.outclk
+	);
+		wire div4;
+	clock_buff u1 (
+		.inclk  ( time_base_counter[2]),  //  altclkctrl_input.inclk
+		.outclk (div4)  // altclkctrl_output.outclk
+	);
+		wire div8;
+	clock_buff u2 (
+		.inclk  ( time_base_counter[3]),  //  altclkctrl_input.inclk
+		.outclk (div8)  // altclkctrl_output.outclk
+	);
+		wire div16;
+	clock_buff u3 (
+		.inclk  ( time_base_counter[4]),  //  altclkctrl_input.inclk
+		.outclk (div16)  // altclkctrl_output.outclk
+	); 
+		wire div32;
+	clock_buff u4 (
+		.inclk  ( time_base_counter[5]),  //  altclkctrl_input.inclk
+		.outclk (div32)  // altclkctrl_output.outclk
+	);
+		wire div64;
+	clock_buff u5 (
+		.inclk  ( time_base_counter[6]),  //  altclkctrl_input.inclk
+		.outclk (div64)  // altclkctrl_output.outclk
+	);
+		wire div128;
+	clock_buff u6 (
+		.inclk  ( time_base_counter[7]),  //  altclkctrl_input.inclk
+		.outclk (div128)  // altclkctrl_output.outclk
+	);
 
+		wire div256;
+	clock_buff u7 (
+		.inclk  ( time_base_counter[8]),  //  altclkctrl_input.inclk
+		.outclk (div256)  // altclkctrl_output.outclk
+	);
 assign divoutput =(reset == 1'b0)?clk: 
-						(octave==3'd0)?time_base_counter[1]:
-						(octave==3'd1)?time_base_counter[2]:
-						(octave==3'd2)?time_base_counter[3]:
-						(octave==3'd3)?time_base_counter[4]:
-						(octave==3'd4)?time_base_counter[5]:
-						(octave==3'd5)?time_base_counter[6]:
-						(octave==3'd6)?time_base_counter[7]:
-						time_base_counter[8];
+						(octave==3'd0)?div2:
+						(octave==3'd1)?div4:
+						(octave==3'd2)?div8:
+						(octave==3'd3)?div16:
+						(octave==3'd4)?div32:
+						(octave==3'd5)?div64:
+						(octave==3'd6)?div128:
+						div256;
 
 endmodule

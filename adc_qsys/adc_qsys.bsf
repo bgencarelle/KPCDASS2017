@@ -4,18 +4,18 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
-Your use of Altera Corporation's design tools, logic functions 
+Copyright (C) 2016  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus II License Agreement,
-the Altera MegaCore Function License Agreement, or other 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
 applicable license agreement, including, without limitation, 
 that your use is for the sole purpose of programming logic 
-devices manufactured by Altera and sold by Altera or its 
+devices manufactured by Intel and sold by Intel or its 
 authorized distributors.  Please refer to the applicable 
 agreement for further details.
 */
@@ -134,7 +134,7 @@ agreement for further details.
 		(text "endofpacket" (rect 297 171 660 352)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 179 187 388 387)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 213 211 468 432)(font "Arial" (color 0 0 0)))
-		(text " adc_qsys " (rect 515 232 1090 474)(font "Arial" ))
+		(text " system " (rect 525 232 1098 474)(font "Arial" ))
 		(line (pt 208 32)(pt 352 32)(line_width 1))
 		(line (pt 352 32)(pt 352 232)(line_width 1))
 		(line (pt 208 232)(pt 352 232)(line_width 1))

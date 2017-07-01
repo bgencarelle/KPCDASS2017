@@ -9,14 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element $${FILENAME}
-   {
-      datum _originalDeviceFamily
-      {
-         value = "MAX 10";
-         type = "String";
-      }
-   }
    element altpll_sys
    {
       datum _sortIndex
@@ -79,7 +71,7 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="NEEK10_OB_MIC.qpf" />
+ <parameter name="projectName" value="adc_mic_lcd.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
@@ -103,7 +95,7 @@
    type="avalon_streaming"
    dir="start" />
  <interface name="reset" internal="clk_50.clk_in_reset" type="reset" dir="end" />
- <module name="altpll_sys" kind="altpll" version="15.0" enabled="1">
+ <module name="altpll_sys" kind="altpll" version="16.1" enabled="1">
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
   <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE" value="50000000" />
   <parameter name="AVALON_USE_SEPARATE_SYSCLK" value="NO" />
@@ -270,7 +262,7 @@
   <parameter name="WIDTH_CLOCK" value="5" />
   <parameter name="WIDTH_PHASECOUNTERSELECT" value="" />
  </module>
- <module name="clk_50" kind="clock_source" version="15.0" enabled="1">
+ <module name="clk_50" kind="clock_source" version="16.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -279,7 +271,7 @@
  <module
    name="clock_bridge_sys"
    kind="altera_clock_bridge"
-   version="15.0"
+   version="16.1"
    enabled="1">
   <parameter name="DERIVED_CLOCK_RATE" value="50000000" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
@@ -288,7 +280,7 @@
  <module
    name="modular_adc_0"
    kind="altera_modular_adc"
-   version="15.0"
+   version="16.1"
    enabled="1">
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="CLOCK_FREQ" value="50000000" />
@@ -334,12 +326,14 @@
   <parameter name="en_thmin_ch9" value="false" />
   <parameter name="en_tsd_max" value="false" />
   <parameter name="en_tsd_min" value="false" />
+  <parameter name="enable_usr_sim" value="0" />
   <parameter name="external_vref" value="2.5" />
   <parameter name="int_vref_vr" value="3.0" />
   <parameter name="ip_is_for_which_adc" value="2" />
   <parameter name="prescaler_ch16" value="false" />
   <parameter name="prescaler_ch8" value="false" />
   <parameter name="refsel" value="0" />
+  <parameter name="sample_rate" value="0" />
   <parameter name="seq_order_length" value="8" />
   <parameter name="seq_order_slot_1" value="1" />
   <parameter name="seq_order_slot_10" value="30" />
@@ -405,6 +399,23 @@
   <parameter name="seq_order_slot_7" value="7" />
   <parameter name="seq_order_slot_8" value="8" />
   <parameter name="seq_order_slot_9" value="30" />
+  <parameter name="simfilename_ch0" value="" />
+  <parameter name="simfilename_ch1" value="" />
+  <parameter name="simfilename_ch10" value="" />
+  <parameter name="simfilename_ch11" value="" />
+  <parameter name="simfilename_ch12" value="" />
+  <parameter name="simfilename_ch13" value="" />
+  <parameter name="simfilename_ch14" value="" />
+  <parameter name="simfilename_ch15" value="" />
+  <parameter name="simfilename_ch16" value="" />
+  <parameter name="simfilename_ch2" value="" />
+  <parameter name="simfilename_ch3" value="" />
+  <parameter name="simfilename_ch4" value="" />
+  <parameter name="simfilename_ch5" value="" />
+  <parameter name="simfilename_ch6" value="" />
+  <parameter name="simfilename_ch7" value="" />
+  <parameter name="simfilename_ch8" value="" />
+  <parameter name="simfilename_ch9" value="" />
   <parameter name="thmax_ch0" value="0.0" />
   <parameter name="thmax_ch1" value="0.0" />
   <parameter name="thmax_ch10" value="0.0" />
@@ -439,7 +450,6 @@
   <parameter name="thmin_ch7" value="0.0" />
   <parameter name="thmin_ch8" value="0.0" />
   <parameter name="thmin_ch9" value="0.0" />
-  <parameter name="tsclkdiv" value="1" />
   <parameter name="tsclksel" value="1" />
   <parameter name="tsd_max" value="125" />
   <parameter name="tsd_min" value="0" />
@@ -464,27 +474,27 @@
  </module>
  <connection
    kind="clock"
-   version="15.0"
+   version="16.1"
    start="altpll_sys.c0"
    end="modular_adc_0.clock" />
  <connection
    kind="clock"
-   version="15.0"
+   version="16.1"
    start="altpll_sys.c0"
    end="clock_bridge_sys.in_clk" />
  <connection
    kind="clock"
-   version="15.0"
+   version="16.1"
    start="altpll_sys.c1"
    end="modular_adc_0.adc_pll_clock" />
  <connection
    kind="clock"
-   version="15.0"
+   version="16.1"
    start="clk_50.clk"
    end="altpll_sys.inclk_interface" />
  <connection
    kind="conduit"
-   version="15.0"
+   version="16.1"
    start="altpll_sys.locked_conduit"
    end="modular_adc_0.adc_pll_locked">
   <parameter name="endPort" value="" />
@@ -495,12 +505,12 @@
  </connection>
  <connection
    kind="reset"
-   version="15.0"
+   version="16.1"
    start="clk_50.clk_reset"
    end="altpll_sys.inclk_interface_reset" />
  <connection
    kind="reset"
-   version="15.0"
+   version="16.1"
    start="clk_50.clk_reset"
    end="modular_adc_0.reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

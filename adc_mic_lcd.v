@@ -167,10 +167,15 @@ assign MIXMASTER = sum0;
 //	assign KEYMIX3 = (~SW[3] & KEY[3]) ? 1'b1 : 1'b0;
 
 	wire seven0068khz_clk;
+	wire clkbuff;
 	
+	clock_buff buff (
+		.inclk  (clkbuff),  //  altclkctrl_input.inclk
+		.outclk (seven0068khz_clk)  // altclkctrl_output.outclk
+	);	
 	altclk clockyclock(//added clock, infinitely better sound.
 	.inclk0 (MAX10_CLK1_50),
-	.c0 (seven0068khz_clk)
+	.c0 (clkbuff)
 	);
 
 
@@ -365,18 +370,18 @@ if (!FPGA_RESET_n )
 
 
 end
-
-//--- MIC  TO  MAX10-ADC  ----
-
-MAX10_ADC   madc(
-	.SYS_CLK ( MAX10_CLK1_50   ),
-	.SYNC_TR ( SAMPLE_TR    ),
-	.RESET_n ( RESET_DELAY_n),
-	.ADC_CH  ( 8),
-	.DATA    (ADC_RD ) ,
-	.DATA_VALID(ADC_RESPONSE),
-	.FITER_EN (1)
- );
+//
+////--- MIC  TO  MAX10-ADC  ----
+//
+//MAX10_ADC   madc(
+//	.SYS_CLK ( MAX10_CLK1_50   ),
+//	.SYNC_TR ( SAMPLE_TR    ),
+//	.RESET_n ( RESET_DELAY_n),
+//	.ADC_CH  ( 8),
+//	.DATA    (ADC_RD ) ,
+//	.DATA_VALID(ADC_RESPONSE),
+//	.FITER_EN (1)
+// );
 
 //--------------DAC out --------------------
 assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ;
