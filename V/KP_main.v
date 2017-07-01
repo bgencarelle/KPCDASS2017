@@ -14,7 +14,7 @@ output wire signed [23:0] qout //output to top level
 );
 
 
-wire signed [31:0] start_level; //initial level
+wire signed [23:0] start_level; //initial level
 assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
 
 wire signed [47:0] dfilter_gain;//limiting feedback allows for faster decay
@@ -26,6 +26,8 @@ reg [10:0] wr_ptr=0;// RAM write pointer
 reg [10:0] rd_ptr=0;//  RAM read pointer
 reg rden = 1'b0; // silences output when not in use
 reg [1:0] KP_state = 2'b00; // initial state of state machine
+
+
 //main state machine
 always @ (posedge a_clk )
 begin:KP_STATE_RESET//reset state
@@ -65,7 +67,7 @@ begin:KP_STATE_BEGIN
 	begin //trigger event, counter started, it is so quick we can ignore any triggering during this load
 	rd_ptr <= count;
 	wr_ptr <= count;
-	rden <= 1'b0;//still not reading, prevents white noise during load
+	rden <= 1'b1;//now reading always
 	d <= start_level;// scaled by velocity
 	count <= count + 1'b1;
 	if (count < delay_length)//as long as RAM isnt full, keep loading.
@@ -82,7 +84,7 @@ begin:KP_STATE_BEGIN
 	2'b10:
 	begin// begin feedback process.
 	rden <= 1'b1;
-	d <= dfilter_gain[35:12];// in addition LPF, audio is gain staged by adjustable decay
+	d <= $signed(dfilter_gain[35:12]);// in addition LPF, audio is gain staged by adjustable decay
 	rd_ptr <= count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
@@ -173,13 +175,16 @@ multi_clk_div div(
 		);
 		
 
-reg a_clk;
+wire a_clk;
 wire a_clk_reg;
 reg dfilter_reg;
 
-always @(posedge audio_clk)
-a_clk <= a_clk_reg;
-
+//always @(posedge audio_clk)
+//a_clk <= a_clk_reg;
+	clock_buff kpbuff (
+		.inclk  (a_clk_reg),  //  altclkctrl_input.inclk
+		.outclk (a_clk)  // altclkctrl_output.outclk
+	);
 wire signed [23:0] dfilter; //
 assign qout = dfilter;
 endmodule

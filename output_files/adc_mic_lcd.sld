@@ -5,6 +5,36 @@
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>
     </sld_info>
+    <sld_info hpath="DAC16:dac1|clock_buff:dac_buff" name="dac_buff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
+    <sld_info hpath="KP_main:string3|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
+    <sld_info hpath="KP_main:string4|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
+    <sld_info hpath="KP_main:string5|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
+    <sld_info hpath="KP_main:string6|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
+    <sld_info hpath="KP_main:string7|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
     <sld_info hpath="KP_main:string3|multi_clk_div:div|clock_buff:u0" name="u0">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
@@ -203,11 +233,6 @@
     <sld_info hpath="KP_main:string7|multi_clk_div:div|clock_buff:u7" name="u7">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
-      </assignment_values>
-    </sld_info>
-    <sld_info hpath="sld_hub:auto_hub|alt_sld_fab:\instrumentation_fabric_with_node_gen:instrumentation_fabric" library="alt_sld_fab" name="instrumentation_fabric">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME alt_sld_fab HAS_SOPCINFO 1"/>
       </assignment_values>
     </sld_info>
   </sld_infos>

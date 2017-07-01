@@ -28,3 +28,21 @@ Name KP_state.00 KP_state.10 KP_state.01
 KP_state.00 0 0 0 
 KP_state.01 1 0 1 
 KP_state.10 1 1 0 
+
+State Machine - |adc_mic_lcd|KP_main:string2|KP_state
+Name KP_state.00 KP_state.10 KP_state.01 
+KP_state.00 0 0 0 
+KP_state.01 1 0 1 
+KP_state.10 1 1 0 
+
+State Machine - |adc_mic_lcd|KP_main:string1|KP_state
+Name KP_state.00 KP_state.10 KP_state.01 
+KP_state.00 0 0 0 
+KP_state.01 1 0 1 
+KP_state.10 1 1 0 
+
+State Machine - |adc_mic_lcd|KP_main:string0|KP_state
+Name KP_state.00 KP_state.10 KP_state.01 
+KP_state.00 0 0 0 
+KP_state.01 1 0 1 
+KP_state.10 1 1 0 

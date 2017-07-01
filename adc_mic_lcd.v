@@ -243,7 +243,7 @@ KP_main string4(
 		  .loops(3'b010),
 		  .filtsw(3'b001),
 		  .trig(KEY[3]),
-		  .delay_length(10'd960),
+		  .delay_length(10'd480),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
@@ -268,27 +268,31 @@ KP_main string6(
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b100),
+		  .loops(3'b111),
 		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(10'd95),
+		  .delay_length(10'd0959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
-
+wire signed [23:0] submix;
+assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
+		  
 KP_main string7(  //low string
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(seven0068khz_clk),
-		   .dnoise(MEM6),
+		   .dnoise(submix),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops({SW[2:0]}),
-		  .filtsw(3'b001),
+		  .filtsw(3'b000),
 		  .trig(KEY[0]),
 		  .delay_length(10'd0959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );
+	
 
 lfsr  noise(//easier to add more voices, shown to be marginally cheaper
 			.out24_7(NOISE7),
@@ -330,24 +334,24 @@ assign HEX1 = HEXR;
 
 
 //--I2S PROCESSS  CODEC LINE OUT --
-
-I2S_ASSESS  i2s(
-	.SAMPLE_TR ( SAMPLE_TR),
-	.AUDIO_MCLK( MAX10_CLK1_50) ,
-	.AUDIO_BCLK( AUDIO_BCLK),
-	.AUDIO_WCLK( AUDIO_WCLK),
-
-	.SDATA_OUT ( AUDIO_DIN_MFP1),
-	.SDATA_IN  ( AUDIO_DOUT_MFP2),
-	.RESET_n   ( RESET_DELAY_n),
-	.ADC_MIC      ( MASTER_OUT),
-	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
-	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
-//	.ROM_ADDR     ( ROM_ADDR),
-	.ROM_CK       ( ROM_CK ),
-	.SUM_AUDIO    ( SUM_AUDIO )
-
-	) ;
+//
+//I2S_ASSESS  i2s(
+//	.SAMPLE_TR ( SAMPLE_TR),
+//	.AUDIO_MCLK( MAX10_CLK1_50) ,
+//	.AUDIO_BCLK( AUDIO_BCLK),
+//	.AUDIO_WCLK( AUDIO_WCLK),
+//
+//	.SDATA_OUT ( AUDIO_DIN_MFP1),
+//	.SDATA_IN  ( AUDIO_DOUT_MFP2),
+//	.RESET_n   ( RESET_DELAY_n),
+//	.ADC_MIC      ( MASTER_OUT),
+//	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
+//	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
+////	.ROM_ADDR     ( ROM_ADDR),
+//	.ROM_CK       ( ROM_CK ),
+//	.SUM_AUDIO    ( SUM_AUDIO )
+//
+//	) ;
 
 
 always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 )
@@ -398,29 +402,29 @@ DAC16 dac1 (
 	);
 
 //-----MCLK GENERATER ----------
-assign AUDIO_MCLK  = MCLK_48M ;
-
-AUDIO_PLL pll (
-	.inclk0 (MAX10_CLK1_50),
-	.c0     (MCLK_48M)
-	);
+//assign AUDIO_MCLK  = MCLK_48M ;
+//
+//AUDIO_PLL pll (
+//	.inclk0 (MAX10_CLK1_50),
+//	.c0     (MCLK_48M)
+//	);
 
 
 //---AUDIO CODEC SPI CONFIG ------------------------------------
 //--I2S mode ,  48ksample rate  ,MCLK = 24.567MhZ x 2
-assign AUDIO_GPIO_MFP5  =  1;   //GPIO
-assign AUDIO_SPI_SELECT =  1;   //SPI mode
-assign AUDIO_RESET_n    =  RESET_DELAY_n ;
-
-AUDIO_SPI_CTL_RD	u1(
-	.iRESET_n ( RESET_DELAY_n) ,
-	.iCLK_50( MAX10_CLK1_50),   //50Mhz clock
-	.oCS_n ( AUDIO_SCL_SS_n ),   //SPI interface mode chip-select signal
-	.oSCLK ( AUDIO_SCLK_MFP3),  //SPI serial clock
-	.oDIN  ( AUDIO_SDA_MOSI ),   //SPI Serial data output
-	.iDOUT ( AUDIO_MISO_MFP4)   //SPI serial data input
-
-	);
+//assign AUDIO_GPIO_MFP5  =  1;   //GPIO
+//assign AUDIO_SPI_SELECT =  1;   //SPI mode
+//assign AUDIO_RESET_n    =  RESET_DELAY_n ;
+//
+//AUDIO_SPI_CTL_RD	u1(
+//	.iRESET_n ( RESET_DELAY_n) ,
+//	.iCLK_50( MAX10_CLK1_50),   //50Mhz clock
+//	.oCS_n ( AUDIO_SCL_SS_n ),   //SPI interface mode chip-select signal
+//	.oSCLK ( AUDIO_SCLK_MFP3),  //SPI serial clock
+//	.oDIN  ( AUDIO_SDA_MOSI ),   //SPI Serial data output
+//	.iDOUT ( AUDIO_MISO_MFP4)   //SPI serial data input
+//
+//	);
 
 
 

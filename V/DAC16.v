@@ -8,7 +8,7 @@ module  DAC16  (
  output reg DIN ,
  
  //--test
- output reg SYS_CLK  ,  
+ output wire SYS_CLK  ,  
  output reg [7:0]ST  ,
  output reg [7:0]CNT ,
  
@@ -16,12 +16,19 @@ module  DAC16  (
  output DIN_  
  
  );
- 
+
  parameter TIM  =  4;// 
  reg [7:0]DELAY ; 
- //-- 25MHZ --
+ //-- 25MHZ -- 
+		reg time_base_counter ;
+		always@ (posedge CLK_50)
+		time_base_counter <= time_base_counter + 1'b1; 
 
- always @( posedge CLK_50 ) SYS_CLK <=~SYS_CLK ; 
+
+ 	clock_buff dac_buff (
+		.inclk  (time_base_counter),  //  altclkctrl_input.inclk
+		.outclk (SYS_CLK)  // altclkctrl_output.outclk
+	);
  
  assign  DIN_ = DIN ;  
  
