@@ -48,7 +48,7 @@ begin
 
 	 4'b0110:	begin //6
 					vol= 10'b0000111111;
-					hex0 = 7'b1111101;//6
+					hex0 = 7'b1111101;
 					end
 
 	 4'b0111:	begin //7
@@ -86,7 +86,7 @@ begin
 					
 	 4'b1110:	begin //e
 					vol= 10'b1111111111;
-					hex0 = 7'b1111001;//e
+					hex0 = 7'b1111001;
 					end		
 					
 	 4'b1111:	begin //f
