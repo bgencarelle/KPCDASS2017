@@ -75,14 +75,19 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 //================================================//  REG/WIRE declarations
 //================================================// ### USER DEFINED
 wire signed [15:0]		PWM_OUT;
-wire signed [RANGE:0]		MEM0;
-wire signed [RANGE:0]		MEM1;
-wire signed [RANGE:0]		MEM2;
-wire signed [RANGE:0]		MEM3;
-wire signed [RANGE:0]		MEM4;
-wire signed [RANGE:0]		MEM5;
-wire signed [RANGE:0]		MEM6;
-wire signed [RANGE:0]		MEM7;
+wire signed [RANGE:0]		MEMC;
+wire signed [RANGE:0]		MEMD;
+wire signed [RANGE:0]		MEMDb;
+wire signed [RANGE:0]		MEME;
+wire signed [RANGE:0]		MEMEb;
+wire signed [RANGE:0]		MEMF;
+wire signed [RANGE:0]		MEMG;
+wire signed [RANGE:0]		MEMGb;
+wire signed [RANGE:0]		MEMA;
+wire signed [RANGE:0]		MEMAb;
+wire signed [RANGE:0]		MEMB;
+wire signed [RANGE:0]		MEMBb;
+
 wire signed [RANGE+4:0]		VERB0;
 
 wire signed [15:0]		NOISE7;
@@ -136,8 +141,9 @@ reg signed [23:0]sum1;
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
+    presum <=  $signed(MEMC>>>2) + $signed(MEMDb>>>2) + $signed(MEMD>>>2)+ $signed(MEMEb>>>2) + 
+					+$signed(MEME>>>2) + $signed(MEMF>>>2)+ $signed(MEMG>>>2) 
+					+$signed(MEMGb>>>2) + $signed(MEMAb>>>2)+ $signed(MEMA>>>2)+ $signed(MEMBb>>>2)+ $signed(MEMB>>>2);
     sum1 <= sum0;
 	 if (presum[25] == presum[23])
 		begin
@@ -157,17 +163,10 @@ reg signed [23:0]sum1;
   end
 wire signed [RANGE:0] MIXMASTER;
 
-assign MIXMASTER = sum0;
+assign MIXMASTER = $signed(sum0);
 
-
-//	wire KEYMIX;
-//	assign KEYMIX0 = (~SW[0] & KEY[0]) ? 1'b1 : 1'b0;
-//	assign KEYMIX1 = (~SW[1] & KEY[1]) ? 1'b1 : 1'b0;
-//	assign KEYMIX2 = (~SW[2] & KEY[2]) ? 1'b1 : 1'b0;
-//	assign KEYMIX3 = (~SW[3] & KEY[3]) ? 1'b1 : 1'b0;
-
-	wire seven0068khz_clk;
-	wire clkbuff;
+wire seven0068khz_clk;
+wire clkbuff;
 	
 	clock_buff buff (
 		.inclk  (clkbuff),  //  altclkctrl_input.inclk
@@ -177,141 +176,9 @@ assign MIXMASTER = sum0;
 	.inclk0 (MAX10_CLK1_50),
 	.c0 (clkbuff)
 	);
-multi_clk_div div(
-		.octave(loops),
-		.reset(reset_n),
-		.clk(seven0068khz_clk),
-		.divoutput(a_clk_reg)
-		);
-		
-//KP_main string0(  /// HIGH STRING
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		  .dnoise(NOISE0),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
-//		  .loops(3'b111),
-//		  .filtsw(3'b000),//each filter can be tuned to the specific string
-//		  .trig(KEYMIX0),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM0)
-//        );
-//
-//KP_main string1(
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		  .dnoise(NOISE1),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
-//		  .loops(3'b110),
-//		  .filtsw(3'b001),
-//		  .trig(KEYMIX1),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM1)
-//        );
-//
-//KP_main string2(
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		   .dnoise(NOISE2),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
-//		  .loops(3'b101),
-//		  .filtsw(3'b010),
-//		  .trig(KEYMIX2),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM2)
-//        );
-KP_main string3 (
-			.m_clk(seven0068khz_clk),
-		  .audio_clk(seven0068khz_clk),
-		  .dnoise(NOISE3),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b001),
-		  .trig(KEY[4]),
-		  .delay_length(10'd960),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM3)
-        );
 
-KP_main string4(
-			.m_clk(seven0068khz_clk),
-		  .audio_clk(seven0068khz_clk),
-		   .dnoise(NOISE4),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b010),
-		  .filtsw(3'b001),
-		  .trig(KEY[3]),
-		  .delay_length(10'd480),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM4)
-        );
-
-KP_main string5(  //low string
-			.m_clk(seven0068khz_clk),
-		  .audio_clk(seven0068khz_clk),
-		   .dnoise(NOISE5),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b001),
-		  .trig(KEY[2]),
-		  .delay_length(10'd480),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM5)
-        );
-
-KP_main string6(  
-			.m_clk(seven0068khz_clk),
-		  .audio_clk(seven0068khz_clk),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM6)
-        );
-wire signed [23:0] submix;
-assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
-		  
-KP_main string7(  //low string
-			.m_clk(seven0068khz_clk),
-		  .audio_clk(seven0068khz_clk),
-		   .dnoise(submix),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops({SW[2:0]}),
-		  .filtsw(3'b000),
-		  .trig(KEY[0]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM7)
-        );
 	
 
-lfsr  noise(//easier to add more voices, shown to be marginally cheaper
-			.out24_7(NOISE7),
-			.out24_6(NOISE6),
-			.out24_5(NOISE5),
-			.out24_4(NOISE4),
-			.out24_3(NOISE3),
-			.out24_2(NOISE2),
-			.out24_1(NOISE1),
-			.out24_0(NOISE0),
-			.clk(MAX10_CLK1_50),
-			.a_clk(seven0068khz_clk),
-			.reset(RESET_DELAY_n)
-					);
 
 ADC_SEG_LED segR(//this will be modified to display Note name and number
 			.reset_n(RESET_DELAY_n),

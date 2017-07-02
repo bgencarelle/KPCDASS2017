@@ -167,7 +167,8 @@ newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.reset_n(reset_n),
 			.q(dfilter) // output to DAC
 			);
-			
+wire a_clk;
+		
 	clock_buff kpbuff (
 		.inclk  (a_clk_wire),  //  altclkctrl_input.inclk
 		.outclk (a_clk)  // altclkctrl_output.outclk
