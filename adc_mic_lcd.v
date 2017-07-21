@@ -134,33 +134,6 @@ reg   [31:0]  			DELAY_CNT;
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
-reg signed [25:0]presum;
-reg signed [23:0]sum0;
-reg signed [23:0]sum1;
-
-	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
-	begin
- //	//a bit of borrowed code
-    presum <=  $signed(MEMC>>>2) + $signed(MEMDb>>>2) + $signed(MEMD>>>2)+ $signed(MEMEb>>>2) + 
-					+$signed(MEME>>>2) + $signed(MEMF>>>2)+ $signed(MEMG>>>2) 
-					+$signed(MEMGb>>>2) + $signed(MEMAb>>>2)+ $signed(MEMA>>>2)+ $signed(MEMBb>>>2)+ $signed(MEMB>>>2);
-    sum1 <= sum0;
-	 if (presum[25] == presum[23])
-		begin
-      // Top two bits equal: no signed overflow.
-      sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
-		end
-    else
-      if (presum[25] == 1'b0)
-        begin
-        sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
-		  end
-      else
-			begin
-        sum0 <= 24'd8388608;   
-			end
-		
-  end
 wire signed [RANGE:0] MIXMASTER;
 
 assign MIXMASTER = $signed(sum0);
@@ -202,28 +175,6 @@ assign HEX1 = HEXR;
 
 //// END USER DEFINED
 
-
-
-
-//--I2S PROCESSS  CODEC LINE OUT --
-//
-//I2S_ASSESS  i2s(
-//	.SAMPLE_TR ( SAMPLE_TR),
-//	.AUDIO_MCLK( MAX10_CLK1_50) ,
-//	.AUDIO_BCLK( AUDIO_BCLK),
-//	.AUDIO_WCLK( AUDIO_WCLK),
-//
-//	.SDATA_OUT ( AUDIO_DIN_MFP1),
-//	.SDATA_IN  ( AUDIO_DOUT_MFP2),
-//	.RESET_n   ( RESET_DELAY_n),
-//	.ADC_MIC      ( MASTER_OUT),
-//	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
-//	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
-////	.ROM_ADDR     ( ROM_ADDR),
-//	.ROM_CK       ( ROM_CK ),
-//	.SUM_AUDIO    ( SUM_AUDIO )
-//
-//	) ;
 
 
 always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 )
@@ -272,63 +223,197 @@ DAC16 dac1 (
 	.SYNC    ( DAC_SYNC_n )
 
 	);
+reg signed [23:0] weighted_noise_C;
+reg signed [23:0] weighted_noise_Db;
+reg signed [23:0] weighted_noise_D;
+reg signed [23:0] weighted_noise_Eb;
+reg signed [23:0] weighted_noise_E;
+reg signed [23:0] weighted_noise_F;
+reg signed [23:0] weighted_noise_Gb;
+reg signed [23:0] weighted_noise_G;
+reg signed [23:0] weighted_noise_Ab;
+reg signed [23:0] weighted_noise_A;
+reg signed [23:0] weighted_noise_Bb;
+reg signed [23:0] weighted_noise_B;
 
-//-----MCLK GENERATER ----------
-//assign AUDIO_MCLK  = MCLK_48M ;
-//
-//AUDIO_PLL pll (
-//	.inclk0 (MAX10_CLK1_50),
-//	.c0     (MCLK_48M)
-//	);
+KP_main stringC(  /// HIGH STRING
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_C),
+		  .dnoise(weighted_noise_C),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b000),//each filter can be tuned to the specific string
+		  .trig(KEYMIX0),
+		  .delay_length(11'd1959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMC)
+        );
+
+KP_main stringDb(
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_Db),
+		  .dnoise(weighted_noise_Db),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b110),
+		  .filtsw(3'b001),
+		  .trig(KEYMIX1),
+		  .delay_length(11'd1959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMDb)
+        );
+
+KP_main stringD(
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_D),
+		   .dnoise(weighted_noise_D),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b101),
+		  .filtsw(3'b010),
+		  .trig(KEYMIX2),
+		  .delay_length(11'd1959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMD)
+        );
+KP_main stringEb (
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_Eb),
+		  .dnoise(weighted_noise_Eb),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b001),
+		  .filtsw(3'b001),
+		  .trig(KEY[4]),
+		  .delay_length(10'd960),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMEb)
+        );
+
+KP_main stringE(
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_E),
+		   .dnoise(weighted_noise_E),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b010),
+		  .filtsw(3'b001),
+		  .trig(KEY[3]),
+		  .delay_length(10'd480),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEME)
+        );
+
+KP_main stringF(  //low string
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_F),
+		   .dnoise(weighted_noise_F),
+		  .decay({SW[9:4],6'b111111}),
+		  .loops(3'b001),
+		  .filtsw(3'b001),
+		  .trig(KEY[2]),
+		  .delay_length(10'd480),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMF)
+        );
+
+KP_main stringGb(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_Gb),
+		   .dnoise(weighted_noise_Gb),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMGb)
+        );
+
+KP_main stringG(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_G),
+		   .dnoise(weighted_noise_G),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMG)
+        );
+
+KP_main stringAb(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_Ab),
+		   .dnoise(weighted_noise_Ab),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMAb)
+        );
 
 
-//---AUDIO CODEC SPI CONFIG ------------------------------------
-//--I2S mode ,  48ksample rate  ,MCLK = 24.567MhZ x 2
-//assign AUDIO_GPIO_MFP5  =  1;   //GPIO
-//assign AUDIO_SPI_SELECT =  1;   //SPI mode
-//assign AUDIO_RESET_n    =  RESET_DELAY_n ;
-//
-//AUDIO_SPI_CTL_RD	u1(
-//	.iRESET_n ( RESET_DELAY_n) ,
-//	.iCLK_50( MAX10_CLK1_50),   //50Mhz clock
-//	.oCS_n ( AUDIO_SCL_SS_n ),   //SPI interface mode chip-select signal
-//	.oSCLK ( AUDIO_SCLK_MFP3),  //SPI serial clock
-//	.oDIN  ( AUDIO_SDA_MOSI ),   //SPI Serial data output
-//	.iDOUT ( AUDIO_MISO_MFP4)   //SPI serial data input
-//
-//	);
+KP_main stringA(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_A),
+		   .dnoise(weighted_noise_A),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMA)
+        );
+		  
+KP_main stringBb(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_Bb),
+		   .dnoise(weighted_noise_Bb),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMBb)
+        );
+		  
+KP_main stringB(  
+		  .audio_clk(a_clk),
+			.a_clk_wire(clock_B),
+		   .dnoise(weighted_noise_B),
+		  .decay({SW[9:4],6'b111111}),
+		  .filtsw(3'b001),
+		  .trig(KEY[1]),
+		  .delay_length(10'd0959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEMB)
+        );		  
+		  
 
+reg signed [25:0]presum;
+reg signed [23:0]sum0;
+reg signed [23:0]sum1;
 
-
-//---MTL2 ---
-//PLL_VGA PP(
-//	.areset ( 0),
-//	.inclk0 ( MAX10_CLK3_50) ,
-//	.c0     ( MTL_CLK),
-//	.locked ()
-//);
-
-//--SOUND-WAVE display to MTL2 ----
-//assign  MTL2_BL_ON_n = ~RESET_DELAY_n  ;
-//
-//SOUND_TO_MTL2  sm(
-//	.WAVE      ( SUM_AUDIO),
-//	.AUDIO_MCLK( AUDIO_MCLK),
-//	.SAMPLE_TR ( SAMPLE_TR),
-//	.RESET_n   ( RESET_DELAY_n),
-//
-//	.MTL_CLK  ( MTL_CLK  ),
-//	.MTL2_R   ( MTL2_R   ),
-//	.MTL2_G   ( MTL2_G   ),
-//	.MTL2_B   ( MTL2_B   ),
-//   .MTL2_HSD ( MTL2_HSD ),
-//   .MTL2_VSD ( MTL2_VSD ),
-//   .MTL2_DCLK( MTL2_DCLK) ,
-//   .SCAL      ( 7), //0:NONE SCA  1: SCALE+1  ...
-//	.DRAW_DOT  ( 0),
-//	.START_STOP( 1)
-//);
-
+	always @(posedge a_clk) //will move mixer to another .V file at some point
+	begin
+ //	//a bit of borrowed code
+    presum <=  $signed(MEMC>>>2) + $signed(MEMDb>>>2) + $signed(MEMD>>>2)+ $signed(MEMEb>>>2) + 
+					+$signed(MEME>>>2) + $signed(MEMF>>>2)+ $signed(MEMG>>>2) 
+					+$signed(MEMGb>>>2) + $signed(MEMAb>>>2)+ $signed(MEMA>>>2)+ $signed(MEMBb>>>2)+ $signed(MEMB>>>2);
+    sum1 <= sum0;
+	 if (presum[25] == presum[23])
+		begin
+      // Top two bits equal: no signed overflow.
+      sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
+		end
+    else
+      if (presum[25] == 1'b0)
+        begin
+        sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
+		  end
+      else
+			begin
+        sum0 <= 24'd8388608;   
+			end
+		
+  end
+  
 
 
 endmodule

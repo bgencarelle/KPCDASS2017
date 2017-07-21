@@ -7,40 +7,28 @@ input wire reset_n,
 input wire note_off,
 input wire note_on,
 input wire a_clk,
-
+input wire SW[9:0],
 output reg [6:0] hex0,
 output reg [6:0] hex1,
 output wire signed [23:0] String_Mix
-
 );
 
 
-reg [9:0] delay_out_0,
-reg [9:0] delay_out_1,
-reg [9:0] delay_out_2,
-reg [9:0] delay_out_3,
-reg [9:0] delay_out_4,
-reg [9:0] delay_out_5,
-reg [9:0] delay_out_6,
-reg [9:0] delay_out_7,
-reg [9:0] delay_out_8,
-reg [9:0] delay_out_9,
-reg [9:0] delay_out_10,
-reg [9:0] delay_out_11,
 
 
-reg signed [23:0] weighted_noise_0,
-reg signed [23:0] weighted_noise_1,
-reg signed [23:0] weighted_noise_2,
-reg signed [23:0] weighted_noise_3,
-reg signed [23:0] weighted_noise_4,
-reg signed [23:0] weighted_noise_5,
-reg signed [23:0] weighted_noise_6,
-reg signed [23:0] weighted_noise_7,
-reg signed [23:0] weighted_noise_8,
-reg signed [23:0] weighted_noise_9,
-reg signed [23:0] weighted_noise_10,
-reg signed [23:0] weighted_noise_11,
+
+reg signed [23:0] weighted_noise_C;
+reg signed [23:0] weighted_noise_Db;
+reg signed [23:0] weighted_noise_D;
+reg signed [23:0] weighted_noise_Eb;
+reg signed [23:0] weighted_noise_E;
+reg signed [23:0] weighted_noise_F;
+reg signed [23:0] weighted_noise_Gb;
+reg signed [23:0] weighted_noise_G;
+reg signed [23:0] weighted_noise_Ab;
+reg signed [23:0] weighted_noise_A;
+reg signed [23:0] weighted_noise_Bb;
+reg signed [23:0] weighted_noise_B;
 
 
 reg octave_note_C;
@@ -56,6 +44,50 @@ reg octave_note_A;
 reg octave_note_Bb;
 reg octave_note_B;
 
+wire signed [15:0] out24_11;
+wire signed [15:0] out24_10;
+wire signed [15:0] out24_9;
+wire signed [15:0] out24_8;
+wire signed [15:0] out24_7;
+wire signed [15:0] out24_6;
+wire signed [15:0] out24_5;
+wire signed [15:0] out24_4;
+wire signed [15:0] out24_3;
+wire signed [15:0] out24_2;
+wire signed [15:0] out24_1;
+wire signed [15:0] out24_0;
+
+wire note_on_11;
+wire note_on_10;
+wire note_on_9;
+wire note_on_8;
+wire note_on_7;
+wire note_on_6;
+wire note_on_5;
+wire note_on_4;
+wire note_on_3;
+wire note_on_2;
+wire note_on_1;
+wire note_on_0,
+
+lfsr  noise(//easier to add more voices, shown to be marginally cheaper
+			.out24_11(out24_11),
+			.out24_10(out24_10),
+			.out24_9(out24_9),
+			.out24_8(out24_8),
+			.out24_7(out24_7),
+			.out24_6(out24_6),
+			.out24_5(out24_5),
+			.out24_4(out24_4),
+			.out24_3(out24_3),
+			.out24_2(out24_2),
+			.out24_1(out24_1),
+			.out24_0(out24_0),
+			.clk(MAX10_CLK1_50),
+			.a_clk(a_clk),
+			.reset(RESET_DELAY_n)
+					);
+	
 
 always @ (posedge a_clk )
 begin:octave_PICKER//reset state
@@ -82,6 +114,7 @@ begin
 							hex0 <= 7'b0111001;//c 
 							hex0 <= 7'b1111111;//
 							octave_note_C <= note_number;
+							weighted_noise_C <= out24_0 * velocity;
 		
 		end
 		
@@ -97,7 +130,7 @@ begin
 							hex0 <= 7'b1011110;//d
 							hex0 <= 7'b1111100;////b
 							octave_note_Db <= note_number;
-
+							weighted_noise_Db <= out24_1 * velocity;
 		
 		end
 
@@ -113,7 +146,8 @@ begin
 							hex0 <= 7'b1011110;//d
 							hex0 <= 7'b1111111;//
 							octave_note_D <= note_number;
-							end
+							weighted_noise_D <= out24_2 * velocity;			
+		end
 
 	7'd3,7'd15,7'd27,7'd39,7'd51,7'd63,7'd75,7'd87,7'd99,7'd111,7'd123: //Eb
 		begin
@@ -127,6 +161,7 @@ begin
 							hex0 <= 7'b1111001;//e
 							hex0 <= 7'b1111100;//b//
 							octave_note_Eb <= note_number;
+							weighted_noise_Eb <= out24_3	* velocity;
 		
 		end
 
@@ -142,7 +177,7 @@ begin
 							hex0 <= 7'b1111001;//e
 							hex0 <= 7'b1111111;////
 							octave_note_E <= note_number;
-		
+							weighted_noise_E <= out24_4 * velocity;
 							end
 
 	7'd5,7'd17,7'd29,7'd41,7'd53,7'd65,7'd77,7'd89,7'd101,7'd113,7'd125: //F
@@ -157,6 +192,7 @@ begin
 							hex0 <= 7'b1110001;//f
 							hex0 <= 7'b1111111;////
 							octave_note_F <= note_number;
+							weighted_noise_F <= out24_5 * velocity;
 							end
 	
 	7'd6,7'd18,7'd30,7'd42,7'd54,7'd66,7'd78,7'd90,7'd102,7'd114,7'd126: //Gb
@@ -171,6 +207,7 @@ begin
 							hex0 <= 7'b1111101;//G
 							hex0 <= 7'b1111111;////
 							octave_note_Gb <= note_number;
+							weighted_noise_Gb <= out24_6 * velocity;
 							end
 
 	
@@ -186,6 +223,7 @@ begin
 							hex0 <= 7'b1111101;//G
 							hex0 <= 7'b1111111;////
 							octave_note_G <= note_number;
+							weighted_noise_G <= out24_7 * velocity;
 							end
 	
 	7'd8,7'd20,7'd32,7'd44,7'd56,7'd68,7'd80,7'd92,7'd104,7'd116: 			//Ab
@@ -194,7 +232,7 @@ begin
 							hex0 <= 7'b1110111; //a
 							hex0 <= 7'b1111100;//b//
 							octave_note_Ab <= note_number;
-		
+							weighted_noise_Ab <= out24_8 * velocity;
 		end
 		
 	7'd9,7'd21,7'd33,7'd45,7'd57,7'd69,7'd81,7'd93,7'd105,7'd117: 			//A
@@ -203,6 +241,7 @@ begin
 							hex0 <= 7'b1110111; //a
 							hex0 <= 7'b1111111;////
 							octave_note_A <= note_number;
+							weighted_noise_A <= out24_9 * velocity;
 							end
 		
 	7'd10,7'd22,7'd34,7'd46,7'd58,7'd70,7'd82,7'd94,7'd106,7'd118: 			//Bb
@@ -211,6 +250,7 @@ begin
 							hex0 <= 7'b1111100;//b
 							hex0 <= 7'b1111100;//b//
 							octave_note_Bb <= note_number;
+							weighted_noise_Bb <= out24_10 * velocity;
 		end
 	
 	7'd11,7'd23,7'd35,7'd47,7'd59,7'd71,7'd83,7'd95,7'd107,7'd119: 			//B
@@ -218,15 +258,16 @@ begin
 							delay_out_11 <= 10'd389;
 							hex0 <= 7'b1111100;//b
 							hex0 <= 7'b1111111;////
-							octave_note_B <= note_number;	
+							octave_note_B <= note_number;
+							weighted_noise_B <= out24_11 * velocity;	
 						end	
 endcase
 end
 end	
 
 wire clock_C;
-assign 				clock_C =(reset_n == 1'b0)  a_clk://C
-						((octave_note_C == 7'd108) || (octave_note_C == 7'd120))   a_clk:
+assign 				clock_C =(reset_n == 1'b0)?  a_clk://C
+						((octave_note_C == 7'd108) || (octave_note_C == 7'd120))?a_clk:
 						 (octave_note_C == 7'd96) ?div2:
 						 (octave_note_C == 7'd84) ?div4:
 						 (octave_note_C == 7'd72) ?div8:
@@ -240,8 +281,8 @@ assign 				clock_C =(reset_n == 1'b0)  a_clk://C
 						
 
 wire clock_Db;						
-assign 				clock_Db =(reset_n == 1'b0)  a_clk://Db
-						((octave_note_Db == 7'd109) || (octave_note_Db == 7'd121))  a_clk:
+assign 				clock_Db =(reset_n == 1'b0)?  a_clk://Db
+						((octave_note_Db == 7'd109) || (octave_note_Db == 7'd121))?a_clk:
 						 (octave_note_Db == 7'd97) ?div2:
 						 (octave_note_Db == 7'd85) ?div4:
 						 (octave_note_Db == 7'd73) ?div8:
@@ -255,8 +296,8 @@ assign 				clock_Db =(reset_n == 1'b0)  a_clk://Db
 
 						
 wire clock_D;						
-assign 				clock_D =(reset_n == 1'b0)  a_clk://D
-						((octave_note_D == 7'd110) || (octave_note_D == 7'd122))  a_clk:
+assign 				clock_D =(reset_n == 1'b0)?  a_clk://D
+						((octave_note_D == 7'd110) || (octave_note_D == 7'd122))?a_clk:
 						 (octave_note_D == 7'd98) ?div2:
 						 (octave_note_D == 7'd86) ?div4:
 						 (octave_note_D == 7'd74) ?div8:
@@ -271,8 +312,8 @@ assign 				clock_D =(reset_n == 1'b0)  a_clk://D
 
 						
 wire clock_Eb;
-assign 				clock_Eb =(reset_n == 1'b0)  a_clk://Eb
-						((octave_note_Eb == 7'd111) || (octave_note_Eb == 7'd123))  a_clk:
+assign 				clock_Eb =(reset_n == 1'b0)?  a_clk://Eb
+						((octave_note_Eb == 7'd111) || (octave_note_Eb == 7'd123))?a_clk:
 						 (octave_note_Eb == 7'd99)  ?div2:
 						 (octave_note_Eb == 7'd87)  ?div4:
 						 (octave_note_Eb == 7'd75)  ?div8:
@@ -285,8 +326,8 @@ assign 				clock_Eb =(reset_n == 1'b0)  a_clk://Eb
 //	7'd3,7'd15,7'd27,7'd39,7'd51,7'd63,7'd75,7'd87,7'd99,7'd111,7'd123: //Eb
 
 wire clock_E;
-assign 				clock_E =(reset_n == 1'b0)  a_clk://E
-						((octave_note_E == 7'd112) || (octave_note_E == 7'd124))  a_clk:
+assign 				clock_E =(reset_n == 1'b0)?  a_clk://E
+						((octave_note_E == 7'd112) || (octave_note_E == 7'd124))?a_clk:
 						 (octave_note_E == 7'd100)  ?div2:
 						 (octave_note_E == 7'd88)  ?div4:
 						 (octave_note_E == 7'd76)  ?div8:
@@ -299,8 +340,8 @@ assign 				clock_E =(reset_n == 1'b0)  a_clk://E
 //	7'd4,7'd16,7'd28,7'd40,7'd52,7'd64,7'd76,7'd88,7'd100,7'd112,7'd124: //E
 
 wire clock_F;
-assign 				clock_F =(reset_n == 1'b0)  a_clk://C
-						((octave_note_F == 7'd113) || (octave_note_F == 7'd125))  a_clk:
+assign 				clock_F =(reset_n == 1'b0)?  a_clk://C
+						((octave_note_F == 7'd113) || (octave_note_F == 7'd125))?a_clk:
 						 (octave_note_F == 7'd101)  ?div2:
 						 (octave_note_F == 7'd89) ?div4:
 						 (octave_note_F == 7'd77) ?div8:
@@ -314,8 +355,8 @@ assign 				clock_F =(reset_n == 1'b0)  a_clk://C
 						
 
 wire clock_Gb;
-assign 				clock_G =(reset_n == 1'b0)  a_clk://C
-						((octave_note_Gb == 7'd114) || (octave_note_Gb == 7'd126))  a_clk:
+assign 				clock_G =(reset_n == 1'b0)?  a_clk://C
+						((octave_note_Gb == 7'd114) || (octave_note_Gb == 7'd126))?a_clk:
 						 (octave_note_Gb == 7'd102) ?div2:
 						 (octave_note_Gb == 7'd90)  ?div4:
 						 (octave_note_Gb == 7'd78)  ?div8:
@@ -329,8 +370,8 @@ assign 				clock_G =(reset_n == 1'b0)  a_clk://C
 
 
 wire clock_G;
-assign 				clock_Gb =(reset_n == 1'b0)  a_clk://G
-						((octave_note_G == 7'd115) || (octave_note_G == 7'd127))  a_clk:
+assign 				clock_Gb =(reset_n == 1'b0)?  a_clk://G
+						((octave_note_G == 7'd115) || (octave_note_G == 7'd127))?a_clk:
 						 (octave_note_G == 7'd103) ?div2:
 						 (octave_note_G == 7'd91)  ?div4:
 						 (octave_note_G == 7'd79)  ?div8:
@@ -344,8 +385,8 @@ assign 				clock_Gb =(reset_n == 1'b0)  a_clk://G
 
 
 wire clock_Ab;
-assign 				clock_Ab =(reset_n == 1'b0)  a_clk://C
-						(octave_note_Ab == 7'd116)  a_clk:
+assign 				clock_Ab =(reset_n == 1'b0)?  a_clk://C
+						(octave_note_Ab == 7'd116)? a_clk:
 						 (octave_note_Ab == 7'd104) ?div2:
 						 (octave_note_Ab == 7'd92)  ?div4:
 						 (octave_note_Ab == 7'd80)  ?div8:
@@ -358,8 +399,8 @@ assign 				clock_Ab =(reset_n == 1'b0)  a_clk://C
 //	7'd8,7'd20,7'd32,7'd44,7'd56,7'd68,7'd80,7'd92,7'd104,7'd116: 			//Ab						
 
 wire clock_A;
-assign 				clock_A =(reset_n == 1'b0)  a_clk://A
-						(octave_note_A == 7'd117)  a_clk:
+assign 				clock_A =(reset_n == 1'b0)?  a_clk://A
+						(octave_note_A == 7'd117)? a_clk:
 						 (octave_note_A == 7'd105) ?div2:
 						 (octave_note_A == 7'd93)  ?div4:
 						 (octave_note_A == 7'd81)  ?div8:
@@ -372,8 +413,8 @@ assign 				clock_A =(reset_n == 1'b0)  a_clk://A
 //	7'd9,7'd21,7'd33,7'd45,7'd57,7'd69,7'd81,7'd93,7'd105,7'd117: 			//A						
 
 wire clock_Bb;
-assign 				clock_Bb =(reset_n == 1'b0)  a_clk://Bb
-						(octave_note_Bb == 7'd118)  a_clk:
+assign 				clock_Bb =(reset_n == 1'b0)?  a_clk://Bb
+						(octave_note_Bb == 7'd118)? a_clk:
 						 (octave_note_Bb == 7'd106) ?div2:
 						 (octave_note_Bb == 7'd94)  ?div4:
 						 (octave_note_Bb == 7'd82)  ?div8:
@@ -386,8 +427,8 @@ assign 				clock_Bb =(reset_n == 1'b0)  a_clk://Bb
 //	7'd10,7'd22,7'd34,7'd46,7'd58,7'd70,7'd82,7'd94,7'd106,7'd118: 			//Bb
 						
 wire clock_B;
-assign 				clock_B =(reset_n == 1'b0)  a_clk://C
-						(octave_note_B == 7'd119)  a_clk:
+assign 				clock_B =(reset_n == 1'b0)?  a_clk://C
+						(octave_note_B == 7'd119)? a_clk:
 						 (octave_note_B == 7'd107)  ?div2:
 						 (octave_note_B == 7'd95)  ?div4:
 						 (octave_note_B == 7'd83)  ?div8:
@@ -399,181 +440,6 @@ assign 				clock_B =(reset_n == 1'b0)  a_clk://C
 						 (octave_note_B == 7'd11)  ?div512:a_clk;	
 //	7'd11,7'd23,7'd35,7'd47,7'd59,7'd71,7'd83,7'd95,7'd107,7'd119: 			//B
 
-lfsr  noise(//easier to add more voices, shown to be marginally cheaper
-			.out24_0(NOISE0),
-			.clk(MAX10_CLK1_50),
-			.a_clk(seven0068khz_clk),
-			.reset(RESET_DELAY_n)
-					);
-	
-KP_main stringC(  /// HIGH STRING
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_C),
-		  .dnoise(NOISE0),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b000),//each filter can be tuned to the specific string
-		  .trig(KEYMIX0),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMC)
-        );
-
-KP_main stringDb(
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_Db),
-		  .dnoise(NOISE1),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b110),
-		  .filtsw(3'b001),
-		  .trig(KEYMIX1),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMDb)
-        );
-
-KP_main stringD(
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_D),
-		   .dnoise(NOISE2),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b101),
-		  .filtsw(3'b010),
-		  .trig(KEYMIX2),
-		  .delay_length(11'd1959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMD)
-        );
-KP_main stringEb (
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_Eb),
-		  .dnoise(NOISE3),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b001),
-		  .trig(KEY[4]),
-		  .delay_length(10'd960),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMEb)
-        );
-
-KP_main stringE(
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_E),
-		   .dnoise(NOISE4),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b010),
-		  .filtsw(3'b001),
-		  .trig(KEY[3]),
-		  .delay_length(10'd480),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEME)
-        );
-
-KP_main stringF(  //low string
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_F),
-		   .dnoise(NOISE5),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
-		  .filtsw(3'b001),
-		  .trig(KEY[2]),
-		  .delay_length(10'd480),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMF)
-        );
-
-KP_main stringGb(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_Gb),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMGb)
-        );
-
-KP_main stringG(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_G),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMG)
-        );
-
-KP_main stringAb(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_Ab),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMAb)
-        );
-
-
-KP_main stringA(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_A),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMA)
-        );
-		  
-KP_main stringBb(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_Bb),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMBb)
-        );
-		  
-KP_main stringB(  
-		  .audio_clk(seven0068khz_clk),
-			.a_clk_wire(clock_B),
-		   .dnoise(NOISE6),
-		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
-		  .filtsw(3'b001),
-		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEMB)
-        );		  
-		  
 
 wire div2;
 wire div4;

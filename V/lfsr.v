@@ -2,7 +2,10 @@
 module lfsr    (//originally based on borrowed code, reworked following CDA lecture.
 
 //MARGINALLY cheaper to do registered outputs than separate LFSRS, also makes for velocity control.
-
+output wire signed [15:0] out24_11,
+output wire signed [15:0] out24_10,
+output wire signed [15:0] out24_0,
+output wire signed [15:0] out24_8,
 output wire signed [15:0] out24_7,
 output wire signed [15:0] out24_6,
 output wire signed [15:0] out24_5,
@@ -15,6 +18,10 @@ output wire signed [15:0] out24_0,
 input wire a_clk, clk, reset
 );
 
+reg  [23:0] out24ref_11;
+reg  [23:0] out24ref_10;
+reg  [23:0] out24ref_9;
+reg  [23:0] out24ref_8;
 reg  [23:0] out24ref_7;
 reg  [23:0] out24ref_6;
 reg  [23:0] out24ref_5;
@@ -44,7 +51,11 @@ if (out == 24'h0)
 	else if (reset)
 	begin
 	out <= {out[22:0],linear_feedback,};
-	out24ref_7 <= out;
+	out24ref_11 <= out;
+	out24ref_10 <= out24ref_11;
+	out24ref_9 <= out24ref_10;
+	out24ref_8 <= out24ref_9;
+	out24ref_7 <= out24ref_8;
 	out24ref_6 <= out24ref_7;
 	out24ref_5 <= out24ref_6;	
 	out24ref_4 <= out24ref_5;
@@ -55,6 +66,10 @@ if (out == 24'h0)
 	end
 	end
 
+	assign out24_11 = $signed(out24ref_7[23:8]);
+	assign out24_10 = $signed(out24ref_6[23:8]);
+	assign out24_9 = $signed(out24ref_5[23:8]);
+	assign out24_8 = $signed(out24ref_4[23:8]);
 	assign out24_7 = $signed(out24ref_7[23:8]);
 	assign out24_6 = $signed(out24ref_6[23:8]);
 	assign out24_5 = $signed(out24ref_5[23:8]);
