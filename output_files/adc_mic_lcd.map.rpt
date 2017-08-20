@@ -1,5 +1,5 @@
 Analysis & Synthesis report for adc_mic_lcd
-Sat Jul 08 18:28:02 2017
+Sun Aug 20 15:41:16 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sat Jul 08 18:28:02 2017           ;
+; Analysis & Synthesis Status        ; Failed - Sun Aug 20 15:41:16 2017           ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -166,7 +166,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sat Jul 08 18:27:50 2017
+    Info: Processing started: Sun Aug 20 15:41:04 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file v/newfilter.v
@@ -216,37 +216,49 @@ Info (12021): Found 2 design units, including 2 entities, in source file clock_b
     Info (12023): Found entity 2: clock_buff_altclkctrl_0 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/synthesis/submodules/clock_buff_altclkctrl_0.v Line: 90
 Info (12021): Found 1 design units, including 1 entities, in source file v/midi_input.v
     Info (12023): Found entity 1: midi_input File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(402): created implicit net for "NOISE0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 402
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(403): created implicit net for "MAX10_CLK1_50" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 403
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(405): created implicit net for "RESET_DELAY_n" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 405
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(416): created implicit net for "KEYMIX0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 416
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(419): created implicit net for "MEMC" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 419
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(425): created implicit net for "NOISE1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 425
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(430): created implicit net for "KEYMIX1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 430
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(433): created implicit net for "MEMDb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 433
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(439): created implicit net for "NOISE2" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 439
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(444): created implicit net for "KEYMIX2" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 444
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(447): created implicit net for "MEMD" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 447
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(452): created implicit net for "NOISE3" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 452
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(460): created implicit net for "MEMEb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 460
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(466): created implicit net for "NOISE4" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 466
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(474): created implicit net for "MEME" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 474
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(480): created implicit net for "NOISE5" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 480
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(488): created implicit net for "MEMF" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 488
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(494): created implicit net for "NOISE6" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 494
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(502): created implicit net for "MEMGb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 502
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(516): created implicit net for "MEMG" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 516
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(530): created implicit net for "MEMAb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 530
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(545): created implicit net for "MEMA" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 545
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(559): created implicit net for "MEMBb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 559
-Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(573): created implicit net for "MEMB" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 573
-Error (10161): Verilog HDL error at adc_mic_lcd.v(139): object "sum0" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 139
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(240): created implicit net for "a_clk" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 240
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(241): created implicit net for "clock_C" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 241
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(245): created implicit net for "KEYMIX0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 245
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(253): created implicit net for "clock_Db" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 253
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(258): created implicit net for "KEYMIX1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 258
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(266): created implicit net for "clock_D" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 266
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(271): created implicit net for "KEYMIX2" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 271
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(278): created implicit net for "clock_Eb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 278
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(291): created implicit net for "clock_E" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 291
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(304): created implicit net for "clock_F" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 304
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(317): created implicit net for "clock_Gb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 317
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(329): created implicit net for "clock_G" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 329
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(341): created implicit net for "clock_Ab" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 341
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(354): created implicit net for "clock_A" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 354
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(366): created implicit net for "clock_Bb" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 366
+Warning (10236): Verilog HDL Implicit Net warning at adc_mic_lcd.v(378): created implicit net for "clock_B" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 378
+Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(86): created implicit net for "MAX10_CLK1_50" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 86
+Warning (10236): Verilog HDL Implicit Net warning at midi_input.v(88): created implicit net for "RESET_DELAY_n" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 88
+Error (10773): Verilog HDL error at midi_input.v(10): declaring module ports or function arguments with unpacked array types requires SystemVerilog extensions File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 10
+Error (10161): Verilog HDL error at midi_input.v(96): object "delay_out_0" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 96
+Error (10161): Verilog HDL error at midi_input.v(109): object "delay_out_0" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 109
+Error (10161): Verilog HDL error at midi_input.v(112): object "delay_out_0" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 112
+Error (10161): Verilog HDL error at midi_input.v(125): object "delay_out_1" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 125
+Error (10161): Verilog HDL error at midi_input.v(128): object "delay_out_1" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 128
+Error (10161): Verilog HDL error at midi_input.v(141): object "delay_out_2" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 141
+Error (10161): Verilog HDL error at midi_input.v(144): object "delay_out_2" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 144
+Error (10161): Verilog HDL error at midi_input.v(156): object "delay_out_3" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 156
+Error (10161): Verilog HDL error at midi_input.v(159): object "delay_out_3" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 159
+Error (10161): Verilog HDL error at midi_input.v(172): object "delay_out_4" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 172
+Error (10161): Verilog HDL error at midi_input.v(175): object "delay_out_4" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 175
+Error (10161): Verilog HDL error at midi_input.v(187): object "delay_out_5" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 187
+Error (10161): Verilog HDL error at midi_input.v(190): object "delay_out_5" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 190
+Error (10161): Verilog HDL error at midi_input.v(202): object "delay_out_6" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 202
+Error (10161): Verilog HDL error at midi_input.v(205): object "delay_out_6" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 205
+Error (10161): Verilog HDL error at midi_input.v(218): object "delay_out_7" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 218
+Error (10161): Verilog HDL error at midi_input.v(221): object "delay_out_7" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 221
+Error (10161): Verilog HDL error at midi_input.v(231): object "delay_out_8" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/midi_input.v Line: 231
 Info (144001): Generated suppressed messages file C:/Users/ben/Documents/GitHub/KPCDASS2017/output_files/adc_mic_lcd.map.smsg
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 24 warnings
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 19 errors, 18 warnings
     Error: Peak virtual memory: 601 megabytes
-    Error: Processing ended: Sat Jul 08 18:28:02 2017
+    Error: Processing ended: Sun Aug 20 15:41:16 2017
     Error: Elapsed time: 00:00:12
-    Error: Total CPU time (on all processors): 00:00:29
+    Error: Total CPU time (on all processors): 00:00:28
 
 
 +------------------------------------------+

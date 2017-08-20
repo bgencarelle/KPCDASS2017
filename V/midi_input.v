@@ -68,7 +68,7 @@ wire note_on_4;
 wire note_on_3;
 wire note_on_2;
 wire note_on_1;
-wire note_on_0,
+wire note_on_0;
 
 lfsr  noise(//easier to add more voices, shown to be marginally cheaper
 			.out24_11(out24_11),

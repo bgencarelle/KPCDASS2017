@@ -1,5 +1,5 @@
 Flow report for adc_mic_lcd
-Sat Jul 08 18:28:02 2017
+Sun Aug 20 15:41:16 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Sat Jul 08 18:28:02 2017      ;
+; Flow Status                        ; Flow Failed - Sun Aug 20 15:41:16 2017      ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/08/2017 18:27:50 ;
+; Start date & time ; 08/20/2017 15:41:05 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; adc_mic_lcd         ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ agreement for further details.
 +-------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                        ; Default Value                        ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 184857106377073.149953127004516                              ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 184857106377073.150323646404176                              ; --                                   ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                  ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                    ; <None>                               ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                           ; --                                   ; --          ; --             ;
@@ -116,8 +116,8 @@ agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 601 MB              ; 00:00:29                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:29                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 601 MB              ; 00:00:28                           ;
+; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:28                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

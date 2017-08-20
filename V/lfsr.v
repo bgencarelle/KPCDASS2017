@@ -4,7 +4,7 @@ module lfsr    (//originally based on borrowed code, reworked following CDA lect
 //MARGINALLY cheaper to do registered outputs than separate LFSRS, also makes for velocity control.
 output wire signed [15:0] out24_11,
 output wire signed [15:0] out24_10,
-output wire signed [15:0] out24_0,
+output wire signed [15:0] out24_9,
 output wire signed [15:0] out24_8,
 output wire signed [15:0] out24_7,
 output wire signed [15:0] out24_6,
