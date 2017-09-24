@@ -34,10 +34,10 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 	output		          		AUDIO_MCLK,
 	input 		          		AUDIO_MISO_MFP4,
 	inout 		          		AUDIO_RESET_n,
-	output		          		AUDIO_SCL_SS_n,
-	output		          		AUDIO_SCLK_MFP3,
+//	output		          		AUDIO_SCL_SS_n,
+//	output		          		AUDIO_SCLK_MFP3,
 	inout 		          		AUDIO_SDA_MOSI,
-	output		          		AUDIO_SPI_SELECT,
+//	output		          		AUDIO_SPI_SELECT,
 	inout 		          		AUDIO_WCLK,//48khz
 
 	//////////// DAC //////////
@@ -220,13 +220,36 @@ assign MIXMASTER = sum0;
 //		  .reset_n(RESET_DELAY_n),
 //        .qout(MEM2)
 //        );
+wire a_clk2;
+wire a_clk4;
+wire a_clk8;
+wire a_clk16;
+wire a_clk32;
+wire a_clk64;
+wire a_clk128;
+wire a_clk256;
+
+multi_clk_div div(
+		.octave(loops),
+		.reset(reset_n),
+		.clk(seven0068khz_clk),
+		.div2(a_clk2),
+		.div4(a_clk4),
+		.div8(a_clk8),
+		.div16(a_clk16),
+ 		.div32(a_clk32),
+		.div64(a_clk64),
+		.div128(a_clk128),
+		.div256(a_clk256)
+		);
+		
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
+		  .audio_clk(a_clk4),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
+		  .loops(3'b000),
 		  .filtsw(3'b001),
 		  .trig(KEY[4]),
 		  .delay_length(10'd960),
@@ -236,42 +259,42 @@ KP_main string3 (
 
 KP_main string4(
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
+		  .audio_clk(a_clk8),
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b010),
+		  .loops(3'b001),
 		  .filtsw(3'b001),
 		  .trig(KEY[3]),
-		  .delay_length(10'd480),
+		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
 
 KP_main string5(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
+		  .audio_clk(a_clk16),
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b001),
+		  .loops(3'b010),
 		  .filtsw(3'b001),
 		  .trig(KEY[2]),
-		  .delay_length(10'd480),
+		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
         );
 
 KP_main string6(  
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
+		  .audio_clk(a_clk32),
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
-		  .loops(3'b111),
+		  .loops(3'b011),
 		  .filtsw(3'b001),
 		  .trig(KEY[1]),
-		  .delay_length(10'd0959),
+		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
@@ -281,14 +304,14 @@ assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2)
 		  
 KP_main string7(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(seven0068khz_clk),
+		  .audio_clk(a_clk2),
 		   .dnoise(submix),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops({SW[2:0]}),
-		  .filtsw(3'b000),
+		  .filtsw(3'b001),
 		  .trig(KEY[0]),
-		  .delay_length(10'd0959),
+		  .delay_length(10'd0947),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );

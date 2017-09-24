@@ -167,7 +167,13 @@ newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.reset_n(reset_n),
 			.q(dfilter) // output to DAC
 			);
-
+multi_clk_div div(
+		.octave(loops),
+		.reset(reset_n),
+		.clk(audio_clk),
+		.divoutput(a_clk_reg)
+		);
+		
 
 wire a_clk;
 wire a_clk_reg;

@@ -20,9 +20,9 @@ module  DAC16  (
  parameter TIM  =  4;// 
  reg [7:0]DELAY ; 
  //-- 25MHZ -- 
-		reg time_base_counter ;
+		reg time_base_counter =1'b0;
 		always@ (posedge CLK_50)
-		time_base_counter <= time_base_counter + 1'b1; 
+		time_base_counter <= ~time_base_counter; 
 
 
  	clock_buff dac_buff (
