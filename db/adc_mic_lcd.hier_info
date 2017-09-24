@@ -1,5 +1,4 @@
 |adc_mic_lcd
-ADC_CLK_10 => ~NO_FANOUT~
 MAX10_CLK1_50 => MAX10_CLK1_50.IN10
 MAX10_CLK2_50 => DELAY_CNT[0].CLK
 MAX10_CLK2_50 => DELAY_CNT[1].CLK
@@ -34,7 +33,6 @@ MAX10_CLK2_50 => DELAY_CNT[29].CLK
 MAX10_CLK2_50 => DELAY_CNT[30].CLK
 MAX10_CLK2_50 => DELAY_CNT[31].CLK
 MAX10_CLK2_50 => RESET_DELAY_n.CLK
-MAX10_CLK3_50 => ~NO_FANOUT~
 FPGA_RESET_n => DELAY_CNT[0].ACLR
 FPGA_RESET_n => DELAY_CNT[1].ACLR
 FPGA_RESET_n => DELAY_CNT[2].ACLR
@@ -73,9 +71,9 @@ KEY[1] => KEY[1].IN1
 KEY[2] => KEY[2].IN1
 KEY[3] => KEY[3].IN1
 KEY[4] => KEY[4].IN1
-SW[0] => SW[0].IN1
-SW[1] => SW[1].IN1
-SW[2] => SW[2].IN1
+SW[0] => SW[0].IN2
+SW[1] => SW[1].IN2
+SW[2] => SW[2].IN2
 SW[3] => ~NO_FANOUT~
 SW[4] => SW[4].IN5
 SW[5] => SW[5].IN5
@@ -83,50 +81,48 @@ SW[6] => SW[6].IN5
 SW[7] => SW[7].IN5
 SW[8] => SW[8].IN5
 SW[9] => SW[9].IN5
-LEDR[0] <= SW[8].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[1] <= SW[9].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[2] <= <GND>
-LEDR[3] <= <GND>
-LEDR[4] <= <GND>
-LEDR[5] <= <GND>
-LEDR[6] <= <GND>
-LEDR[7] <= <GND>
-LEDR[8] <= <GND>
-LEDR[9] <= <GND>
-HEX0[0] <= ADC_SEG_LED:segR.HEXR
-HEX0[1] <= ADC_SEG_LED:segR.HEXR
-HEX0[2] <= ADC_SEG_LED:segR.HEXR
-HEX0[3] <= ADC_SEG_LED:segR.HEXR
-HEX0[4] <= ADC_SEG_LED:segR.HEXR
-HEX0[5] <= ADC_SEG_LED:segR.HEXR
-HEX0[6] <= ADC_SEG_LED:segR.HEXR
-HEX1[0] <= ADC_SEG_LED:segL.HEXR
-HEX1[1] <= ADC_SEG_LED:segL.HEXR
-HEX1[2] <= ADC_SEG_LED:segL.HEXR
-HEX1[3] <= ADC_SEG_LED:segL.HEXR
-HEX1[4] <= ADC_SEG_LED:segL.HEXR
-HEX1[5] <= ADC_SEG_LED:segL.HEXR
-HEX1[6] <= ADC_SEG_LED:segL.HEXR
+LEDR[0] << SW[8].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] << SW[9].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] << <GND>
+LEDR[3] << <GND>
+LEDR[4] << <GND>
+LEDR[5] << <GND>
+LEDR[6] << <GND>
+LEDR[7] << <GND>
+LEDR[8] << <GND>
+LEDR[9] << <GND>
+HEX0[0] << ADC_SEG_LED:segR.HEXR
+HEX0[1] << ADC_SEG_LED:segR.HEXR
+HEX0[2] << ADC_SEG_LED:segR.HEXR
+HEX0[3] << ADC_SEG_LED:segR.HEXR
+HEX0[4] << ADC_SEG_LED:segR.HEXR
+HEX0[5] << ADC_SEG_LED:segR.HEXR
+HEX0[6] << ADC_SEG_LED:segR.HEXR
+HEX1[0] << ADC_SEG_LED:segL.HEXR
+HEX1[1] << ADC_SEG_LED:segL.HEXR
+HEX1[2] << ADC_SEG_LED:segL.HEXR
+HEX1[3] << ADC_SEG_LED:segL.HEXR
+HEX1[4] << ADC_SEG_LED:segL.HEXR
+HEX1[5] << ADC_SEG_LED:segL.HEXR
+HEX1[6] << ADC_SEG_LED:segL.HEXR
 AUDIO_BCLK <> <UNC>
-AUDIO_DIN_MFP1 <= <GND>
-AUDIO_DOUT_MFP2 => ~NO_FANOUT~
+AUDIO_DIN_MFP1 << <GND>
 AUDIO_GPIO_MFP5 <> <UNC>
-AUDIO_MCLK <= <GND>
-AUDIO_MISO_MFP4 => ~NO_FANOUT~
+AUDIO_MCLK << <GND>
 AUDIO_RESET_n <> <UNC>
 AUDIO_SDA_MOSI <> <UNC>
 AUDIO_WCLK <> <UNC>
 DAC_DATA <> DAC16:dac1.DIN
-DAC_SCLK <= DAC16:dac1.SCLK
-DAC_SYNC_n <= DAC16:dac1.SYNC
-GPIO[0] <= <GND>
-GPIO[1] <= <GND>
-GPIO[2] <= <GND>
-GPIO[3] <= <GND>
-GPIO[4] <= <GND>
-GPIO[5] <= <GND>
-GPIO[6] <= <GND>
-GPIO[7] <= <GND>
+DAC_SCLK << DAC16:dac1.SCLK
+DAC_SYNC_n << DAC16:dac1.SYNC
+GPIO[0] << <GND>
+GPIO[1] << <GND>
+GPIO[2] << <GND>
+GPIO[3] << <GND>
+GPIO[4] << <GND>
+GPIO[5] << <GND>
+GPIO[6] << <GND>
+GPIO[7] << <GND>
 
 
 |adc_mic_lcd|clock_buff:buff
@@ -245,18 +241,10 @@ octave[2] => Equal3.IN2
 octave[2] => Equal4.IN0
 octave[2] => Equal5.IN0
 octave[2] => Equal6.IN0
-reset => divoutput.OUTPUTSELECT
-clk => divoutput.DATAB
-clk => time_base_counter[0].CLK
-clk => time_base_counter[1].CLK
-clk => time_base_counter[2].CLK
-clk => time_base_counter[3].CLK
-clk => time_base_counter[4].CLK
-clk => time_base_counter[5].CLK
-clk => time_base_counter[6].CLK
-clk => time_base_counter[7].CLK
-clk => time_base_counter[8].CLK
-divoutput <= divoutput.DB_MAX_OUTPUT_PORT_TYPE
+reset => divoutputwire.OUTPUTSELECT
+clk => divoutputwire.DATAB
+clk => time_base_counter0.CLK
+divoutput <= clock_buff:uvar.outclk
 div2 <= clock_buff:u0.outclk
 div4 <= clock_buff:u1.outclk
 div8 <= clock_buff:u2.outclk
@@ -411,6 +399,25 @@ outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outc
 
 
 |adc_mic_lcd|multi_clk_div:div|clock_buff:u7|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+ena => clkctrl1.ENA
+inclk[0] => clkctrl1.INCLK
+inclk[1] => clkctrl1.INCLK1
+inclk[2] => clkctrl1.INCLK2
+inclk[3] => clkctrl1.INCLK3
+outclk <= clkctrl1.CLK
+
+
+|adc_mic_lcd|multi_clk_div:div|clock_buff:uvar
+inclk => inclk.IN1
+outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
+
+
+|adc_mic_lcd|multi_clk_div:div|clock_buff:uvar|clock_buff_altclkctrl_0:altclkctrl_0
+inclk => sub_wire3[0].IN1
+outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
+
+
+|adc_mic_lcd|multi_clk_div:div|clock_buff:uvar|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1

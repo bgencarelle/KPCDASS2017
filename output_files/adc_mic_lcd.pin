@@ -214,7 +214,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : E9        :        :                   :      
 HEX1[4]                      : E10       : output : 3.3-V LVTTL       :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : E11       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E12       :        :                   :         : 7         :                
-AUDIO_MISO_MFP4              : E13       : input  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : E13       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E14       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E15       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E16       :        :                   :         : 7         :                
@@ -280,7 +280,7 @@ VCCA3                        : H8        : power  :                   : 2.5V    
 ~ALTERA_CONFIG_SEL~ / RESERVED_INPUT : H10       : input  : 3.3-V LVTTL       :         : 8         : N              
 HEX1[5]                      : H11       : output : 3.3-V LVTTL       :         : 8         : Y              
 AUDIO_WCLK                   : H12       : bidir  : 2.5 V             :         : 7         : Y              
-AUDIO_DOUT_MFP2              : H13       : input  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H14       :        :                   :         : 7         :                
 VCCA2                        : H15       : power  :                   : 2.5V    :           :                
 VCCIO6                       : H16       : power  :                   : 1.5V    : 6         :                
@@ -364,7 +364,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : M4        :        :                   :      
 VCCIO1B                      : M6        : power  :                   : 2.5V    : 1B        :                
 GND                          : M7        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M8        :        :                   :         : 2         :                
-ADC_CLK_10                   : M9        : input  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M9        :        :                   :         : 2         :                
 GND                          : M10       : gnd    :                   :         :           :                
 VCC                          : M11       : power  :                   : 1.2V    :           :                
 VCC                          : M12       : power  :                   : 1.2V    :           :                
@@ -391,7 +391,7 @@ VCC                          : N10       : power  :                   : 1.2V    
 GND                          : N11       : gnd    :                   :         :           :                
 VCC                          : N12       : power  :                   : 1.2V    :           :                
 GND                          : N13       : gnd    :                   :         :           :                
-MAX10_CLK3_50                : N14       : input  : 1.5 V             :         : 6         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : N14       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : N15       :        :                   :         : 6         :                
 VCCIO5                       : N16       : power  :                   : 1.5V    : 5         :                
 VCCIO6                       : N17       : power  :                   : 1.5V    : 6         :                

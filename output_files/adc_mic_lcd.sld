@@ -50,6 +50,11 @@
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>
     </sld_info>
+    <sld_info hpath="multi_clk_div:div|clock_buff:uvar" name="uvar">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
     <sld_info hpath="KP_main:string3|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>

@@ -1,5 +1,5 @@
 Assembler report for adc_mic_lcd
-Sat Sep 23 21:09:03 2017
+Sun Sep 24 13:13:49 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sat Sep 23 21:09:03 2017 ;
+; Assembler Status      ; Successful - Sun Sep 24 13:13:49 2017 ;
 ; Revision Name         ; adc_mic_lcd                           ;
 ; Top-level Entity Name ; adc_mic_lcd                           ;
 ; Family                ; MAX 10                                ;
@@ -68,8 +68,8 @@ agreement for further details.
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
 ; Device         ; 10M50DAF484C6GES                                                                ;
-; JTAG usercode  ; 0x00398126                                                                      ;
-; Checksum       ; 0x00398126                                                                      ;
+; JTAG usercode  ; 0x003AA8A0                                                                      ;
+; Checksum       ; 0x003AA8A0                                                                      ;
 +----------------+---------------------------------------------------------------------------------+
 
 
@@ -79,13 +79,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sat Sep 23 21:09:00 2017
+    Info: Processing started: Sun Sep 24 13:13:45 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 582 megabytes
-    Info: Processing ended: Sat Sep 23 21:09:04 2017
+    Info: Peak virtual memory: 581 megabytes
+    Info: Processing ended: Sun Sep 24 13:13:49 2017
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 

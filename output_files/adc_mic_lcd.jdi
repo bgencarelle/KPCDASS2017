@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="20a10d54e8b032659e19"/>
+    <hash md5_digest_80b="f9397cd24b027ebd02a7"/>
   </project>
   <file_info>
     <file device="10M50DAF484C6GES" path="adc_mic_lcd.sof" usercode="0xFFFFFFFF"/>
@@ -61,6 +61,12 @@
       <parameters/>
     </sld_info>
     <sld_info hpath="multi_clk_div:div|clock_buff:u7" name="u7">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="multi_clk_div:div|clock_buff:uvar" name="uvar">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>

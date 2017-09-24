@@ -34,7 +34,7 @@
 //agreement for further details.
 
 
-//altpll bandwidth_type="AUTO" clk0_divide_by=3125 clk0_duty_cycle=50 clk0_multiply_by=96 clk0_phase_shift="0" compensate_clock="CLK0" device_family="MAX 10" inclk0_input_frequency=20000 intended_device_family="MAX 10" lpm_hint="CBX_MODULE_PREFIX=altclk" operation_mode="normal" pll_type="AUTO" port_clk0="PORT_USED" port_clk1="PORT_UNUSED" port_clk2="PORT_UNUSED" port_clk3="PORT_UNUSED" port_clk4="PORT_UNUSED" port_clk5="PORT_UNUSED" port_extclk0="PORT_UNUSED" port_extclk1="PORT_UNUSED" port_extclk2="PORT_UNUSED" port_extclk3="PORT_UNUSED" port_inclk1="PORT_UNUSED" port_phasecounterselect="PORT_UNUSED" port_phasedone="PORT_UNUSED" port_scandata="PORT_UNUSED" port_scandataout="PORT_UNUSED" width_clock=5 clk inclk
+//altpll bandwidth_type="LOW" clk0_divide_by=3125 clk0_duty_cycle=50 clk0_multiply_by=192 clk0_phase_shift="0" device_family="MAX 10" inclk0_input_frequency=20000 intended_device_family="MAX 10" lpm_hint="CBX_MODULE_PREFIX=altclk" operation_mode="no_compensation" pll_type="AUTO" port_clk0="PORT_USED" port_clk1="PORT_UNUSED" port_clk2="PORT_UNUSED" port_clk3="PORT_UNUSED" port_clk4="PORT_UNUSED" port_clk5="PORT_UNUSED" port_extclk0="PORT_UNUSED" port_extclk1="PORT_UNUSED" port_extclk2="PORT_UNUSED" port_extclk3="PORT_UNUSED" port_inclk1="PORT_UNUSED" port_phasecounterselect="PORT_UNUSED" port_phasedone="PORT_UNUSED" port_scandata="PORT_UNUSED" port_scandataout="PORT_UNUSED" width_clock=5 clk inclk
 //VERSION_BEGIN 16.1 cbx_altclkbuf 2016:10:24:15:04:16:SJ cbx_altiobuf_bidir 2016:10:24:15:04:16:SJ cbx_altiobuf_in 2016:10:24:15:04:16:SJ cbx_altiobuf_out 2016:10:24:15:04:16:SJ cbx_altpll 2016:10:24:15:04:16:SJ cbx_cycloneii 2016:10:24:15:04:16:SJ cbx_lpm_add_sub 2016:10:24:15:04:16:SJ cbx_lpm_compare 2016:10:24:15:04:16:SJ cbx_lpm_counter 2016:10:24:15:04:16:SJ cbx_lpm_decode 2016:10:24:15:04:16:SJ cbx_lpm_mux 2016:10:24:15:04:16:SJ cbx_mgl 2016:10:24:15:05:03:SJ cbx_nadder 2016:10:24:15:04:16:SJ cbx_stratix 2016:10:24:15:04:16:SJ cbx_stratixii 2016:10:24:15:04:16:SJ cbx_stratixiii 2016:10:24:15:04:16:SJ cbx_stratixv 2016:10:24:15:04:16:SJ cbx_util_mgl 2016:10:24:15:04:16:SJ  VERSION_END
 // synthesis VERILOG_INPUT_VERSION VERILOG_2001
 // altera message_off 10463
@@ -94,14 +94,13 @@ module  altclk_altpll
 	`endif
 	);
 	defparam
-		pll1.bandwidth_type = "auto",
+		pll1.bandwidth_type = "low",
 		pll1.clk0_divide_by = 3125,
 		pll1.clk0_duty_cycle = 50,
-		pll1.clk0_multiply_by = 96,
+		pll1.clk0_multiply_by = 192,
 		pll1.clk0_phase_shift = "0",
-		pll1.compensate_clock = "clk0",
 		pll1.inclk0_input_frequency = 20000,
-		pll1.operation_mode = "normal",
+		pll1.operation_mode = "no_compensation",
 		pll1.pll_type = "auto",
 		pll1.lpm_type = "fiftyfivenm_pll";
 	assign
@@ -141,20 +140,20 @@ endmodule
 // Retrieval info: PRIVATE: BANDWIDTH_FEATURE_ENABLED STRING "1"
 // Retrieval info: PRIVATE: BANDWIDTH_FREQ_UNIT STRING "MHz"
 // Retrieval info: PRIVATE: BANDWIDTH_PRESET STRING "Low"
-// Retrieval info: PRIVATE: BANDWIDTH_USE_AUTO STRING "1"
-// Retrieval info: PRIVATE: BANDWIDTH_USE_PRESET STRING "0"
+// Retrieval info: PRIVATE: BANDWIDTH_USE_AUTO STRING "0"
+// Retrieval info: PRIVATE: BANDWIDTH_USE_PRESET STRING "1"
 // Retrieval info: PRIVATE: CLKBAD_SWITCHOVER_CHECK STRING "0"
 // Retrieval info: PRIVATE: CLKLOSS_CHECK STRING "0"
 // Retrieval info: PRIVATE: CLKSWITCH_CHECK STRING "0"
-// Retrieval info: PRIVATE: CNX_NO_COMPENSATE_RADIO STRING "0"
+// Retrieval info: PRIVATE: CNX_NO_COMPENSATE_RADIO STRING "1"
 // Retrieval info: PRIVATE: CREATE_CLKBAD_CHECK STRING "0"
 // Retrieval info: PRIVATE: CREATE_INCLK1_CHECK STRING "0"
 // Retrieval info: PRIVATE: CUR_DEDICATED_CLK STRING "c0"
 // Retrieval info: PRIVATE: CUR_FBIN_CLK STRING "c0"
 // Retrieval info: PRIVATE: DEVICE_SPEED_GRADE STRING "Any"
-// Retrieval info: PRIVATE: DIV_FACTOR0 NUMERIC "1"
+// Retrieval info: PRIVATE: DIV_FACTOR0 NUMERIC "489"
 // Retrieval info: PRIVATE: DUTY_CYCLE0 STRING "50.00000000"
-// Retrieval info: PRIVATE: EFF_OUTPUT_FREQ_VALUE0 STRING "1.536000"
+// Retrieval info: PRIVATE: EFF_OUTPUT_FREQ_VALUE0 STRING "3.072000"
 // Retrieval info: PRIVATE: EXPLICIT_SWITCHOVER_COUNTER STRING "0"
 // Retrieval info: PRIVATE: EXT_FEEDBACK_RADIO STRING "0"
 // Retrieval info: PRIVATE: GLOCKED_COUNTER_EDIT_CHANGED STRING "1"
@@ -177,16 +176,16 @@ endmodule
 // Retrieval info: PRIVATE: LVDS_PHASE_SHIFT_UNIT0 STRING "deg"
 // Retrieval info: PRIVATE: MIG_DEVICE_SPEED_GRADE STRING "Any"
 // Retrieval info: PRIVATE: MIRROR_CLK0 STRING "0"
-// Retrieval info: PRIVATE: MULT_FACTOR0 NUMERIC "1"
-// Retrieval info: PRIVATE: NORMAL_MODE_RADIO STRING "1"
-// Retrieval info: PRIVATE: OUTPUT_FREQ0 STRING "1.53600000"
+// Retrieval info: PRIVATE: MULT_FACTOR0 NUMERIC "30"
+// Retrieval info: PRIVATE: NORMAL_MODE_RADIO STRING "0"
+// Retrieval info: PRIVATE: OUTPUT_FREQ0 STRING "3.07200000"
 // Retrieval info: PRIVATE: OUTPUT_FREQ_MODE0 STRING "1"
 // Retrieval info: PRIVATE: OUTPUT_FREQ_UNIT0 STRING "MHz"
 // Retrieval info: PRIVATE: PHASE_RECONFIG_FEATURE_ENABLED STRING "1"
 // Retrieval info: PRIVATE: PHASE_RECONFIG_INPUTS_CHECK STRING "0"
-// Retrieval info: PRIVATE: PHASE_SHIFT0 STRING "0.00000000"
+// Retrieval info: PRIVATE: PHASE_SHIFT0 STRING "-0.00000000"
 // Retrieval info: PRIVATE: PHASE_SHIFT_STEP_ENABLED_CHECK STRING "0"
-// Retrieval info: PRIVATE: PHASE_SHIFT_UNIT0 STRING "deg"
+// Retrieval info: PRIVATE: PHASE_SHIFT_UNIT0 STRING "ns"
 // Retrieval info: PRIVATE: PLL_ADVANCED_PARAM_CHECK STRING "0"
 // Retrieval info: PRIVATE: PLL_ARESET_CHECK STRING "0"
 // Retrieval info: PRIVATE: PLL_AUTOPLL_CHECK NUMERIC "1"
@@ -200,7 +199,7 @@ endmodule
 // Retrieval info: PRIVATE: RECONFIG_FILE STRING "altclk.mif"
 // Retrieval info: PRIVATE: SACN_INPUTS_CHECK STRING "0"
 // Retrieval info: PRIVATE: SCAN_FEATURE_ENABLED STRING "1"
-// Retrieval info: PRIVATE: SELF_RESET_LOCK_LOSS STRING "0"
+// Retrieval info: PRIVATE: SELF_RESET_LOCK_LOSS STRING "1"
 // Retrieval info: PRIVATE: SHORT_SCAN_RADIO STRING "0"
 // Retrieval info: PRIVATE: SPREAD_FEATURE_ENABLED STRING "0"
 // Retrieval info: PRIVATE: SPREAD_FREQ STRING "50.000"
@@ -221,16 +220,15 @@ endmodule
 // Retrieval info: PRIVATE: USE_MIL_SPEED_GRADE NUMERIC "0"
 // Retrieval info: PRIVATE: ZERO_DELAY_RADIO STRING "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
-// Retrieval info: CONSTANT: BANDWIDTH_TYPE STRING "AUTO"
+// Retrieval info: CONSTANT: BANDWIDTH_TYPE STRING "LOW"
 // Retrieval info: CONSTANT: CLK0_DIVIDE_BY NUMERIC "3125"
 // Retrieval info: CONSTANT: CLK0_DUTY_CYCLE NUMERIC "50"
-// Retrieval info: CONSTANT: CLK0_MULTIPLY_BY NUMERIC "96"
+// Retrieval info: CONSTANT: CLK0_MULTIPLY_BY NUMERIC "192"
 // Retrieval info: CONSTANT: CLK0_PHASE_SHIFT STRING "0"
-// Retrieval info: CONSTANT: COMPENSATE_CLOCK STRING "CLK0"
 // Retrieval info: CONSTANT: INCLK0_INPUT_FREQUENCY NUMERIC "20000"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "MAX 10"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altpll"
-// Retrieval info: CONSTANT: OPERATION_MODE STRING "NORMAL"
+// Retrieval info: CONSTANT: OPERATION_MODE STRING "NO_COMPENSATION"
 // Retrieval info: CONSTANT: PLL_TYPE STRING "AUTO"
 // Retrieval info: CONSTANT: PORT_ACTIVECLOCK STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: PORT_ARESET STRING "PORT_UNUSED"

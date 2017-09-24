@@ -7,10 +7,10 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 							(
 
 	//////////// CLOCK //////////
-	input 		          		ADC_CLK_10,
+//	input 		          		ADC_CLK_10,
 	input 		          		MAX10_CLK1_50,
 	input 		          		MAX10_CLK2_50,
-	input 		          		MAX10_CLK3_50,
+//	input 		          		MAX10_CLK3_50,
 
 	//////////// KEY //////////
 	input 		          		FPGA_RESET_n,
@@ -29,10 +29,10 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 	//////////// Audio //////////
 	inout 		          		AUDIO_BCLK,
 	output		          		AUDIO_DIN_MFP1,
-	input 		          		AUDIO_DOUT_MFP2,
+//	input 		          		AUDIO_DOUT_MFP2,
 	inout 		          		AUDIO_GPIO_MFP5,
 	output		          		AUDIO_MCLK,
-	input 		          		AUDIO_MISO_MFP4,
+//	input 		          		AUDIO_MISO_MFP4,
 	inout 		          		AUDIO_RESET_n,
 //	output		          		AUDIO_SCL_SS_n,
 //	output		          		AUDIO_SCLK_MFP3,
@@ -228,11 +228,13 @@ wire a_clk32;
 wire a_clk64;
 wire a_clk128;
 wire a_clk256;
+wire a_clkdiv;
 
 multi_clk_div div(
-		.octave(loops),
-		.reset(reset_n),
+		.octave({SW[2:0]}),
+		.reset(RESET_DELAY_n),
 		.clk(seven0068khz_clk),
+		.divoutput(a_clkdiv),
 		.div2(a_clk2),
 		.div4(a_clk4),
 		.div8(a_clk8),
@@ -304,7 +306,7 @@ assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2)
 		  
 KP_main string7(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk2),
+		  .audio_clk(a_clkdiv),
 		   .dnoise(submix),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
