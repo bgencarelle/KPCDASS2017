@@ -304,16 +304,16 @@ wire signed [23:0] submix;
 assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
 		  
-KP_main string7(  //low string
+KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clkdiv),
+		  .audio_clk(a_clk2),
 		   .dnoise(submix),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops({SW[2:0]}),
-		  .filtsw(3'b001),
+		  .filtsw(3'b000),
 		  .trig(KEY[0]),
-		  .delay_length(10'd0947),
+		  .delay_length(16'd32767),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );
@@ -416,7 +416,7 @@ end
 assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ;
 //
 DAC16 dac1 (
-	.LOAD    ( seven0068khz_clk   ) ,
+
 	.RESET_N ( RESET_DELAY_n) ,
 	.CLK_50  ( MAX10_CLK1_50 ) ,
 	.DATA24  ( TODAC  )  ,

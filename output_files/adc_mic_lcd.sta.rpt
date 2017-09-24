@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for adc_mic_lcd
-Sun Sep 24 13:13:55 2017
+Sun Sep 24 23:42:41 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -93,14 +93,13 @@ agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.78        ;
+; Average used               ; 1.81        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  26.4%      ;
-;     Processor 3            ;  25.9%      ;
-;     Processor 4            ;  25.9%      ;
+;     Processor 2            ;  27.2%      ;
+;     Processors 3-4         ;  27.0%      ;
 +----------------------------+-------------+
 
 
@@ -109,7 +108,7 @@ agreement for further details.
 +-----------------+--------+--------------------------+
 ; SDC File Path   ; Status ; Read at                  ;
 +-----------------+--------+--------------------------+
-; adc_mic_lcd.SDC ; OK     ; Sun Sep 24 13:13:52 2017 ;
+; adc_mic_lcd.SDC ; OK     ; Sun Sep 24 23:42:37 2017 ;
 +-----------------+--------+--------------------------+
 
 
@@ -118,33 +117,33 @@ agreement for further details.
 +---------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+-----------------------------------------------------------+-------------------------------------------------------------+
 ; Clock Name                                              ; Type      ; Period  ; Frequency ; Rise  ; Fall    ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master        ; Source                                                    ; Targets                                                     ;
 +---------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+-----------------------------------------------------------+-------------------------------------------------------------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; Generated ; 325.490 ; 3.07 MHz  ; 0.000 ; 162.745 ; 50.00      ; 830       ; 51          ;       ;        ;           ;            ; false    ; MAX10_CLK1_50 ; clockyclock|altpll_component|auto_generated|pll1|inclk[0] ; { clockyclock|altpll_component|auto_generated|pll1|clk[0] } ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; Generated ; 325.517 ; 3.07 MHz  ; 0.000 ; 162.758 ; 50.00      ; 472       ; 29          ;       ;        ;           ;            ; false    ; MAX10_CLK1_50 ; clockyclock|altpll_component|auto_generated|pll1|inclk[0] ; { clockyclock|altpll_component|auto_generated|pll1|clk[0] } ;
 ; MAX10_CLK1_50                                           ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000  ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                           ; { MAX10_CLK1_50 }                                           ;
 ; MAX10_CLK2_50                                           ; Base      ; 20.000  ; 50.0 MHz  ; 0.000 ; 10.000  ;            ;           ;             ;       ;        ;           ;            ;          ;               ;                                                           ; { MAX10_CLK2_50 }                                           ;
 +---------------------------------------------------------+-----------+---------+-----------+-------+---------+------------+-----------+-------------+-------+--------+-----------+------------+----------+---------------+-----------------------------------------------------------+-------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Fmax Summary                                                            ;
-+------------+-----------------+---------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                              ; Note ;
-+------------+-----------------+---------------------------------------------------------+------+
-; 74.42 MHz  ; 74.42 MHz       ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ;      ;
-; 208.03 MHz ; 208.03 MHz      ; MAX10_CLK2_50                                           ;      ;
-; 248.32 MHz ; 248.32 MHz      ; MAX10_CLK1_50                                           ;      ;
-+------------+-----------------+---------------------------------------------------------+------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary                                                                                                                     ;
++------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                              ; Note                                                          ;
++------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
+; 194.97 MHz ; 194.97 MHz      ; MAX10_CLK1_50                                           ;                                                               ;
+; 270.78 MHz ; 250.0 MHz       ; MAX10_CLK2_50                                           ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 314.17 MHz ; 314.17 MHz      ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ;                                                               ;
++------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+----------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Setup Summary                                              ;
-+---------------------------------------------------------+--------+---------------+
-; Clock                                                   ; Slack  ; End Point TNS ;
-+---------------------------------------------------------+--------+---------------+
-; MAX10_CLK1_50                                           ; -3.720 ; -50.870       ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; -3.692 ; -413.793      ;
-; MAX10_CLK2_50                                           ; 15.193 ; 0.000         ;
-+---------------------------------------------------------+--------+---------------+
++-----------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup Summary                                               ;
++---------------------------------------------------------+---------+---------------+
+; Clock                                                   ; Slack   ; End Point TNS ;
++---------------------------------------------------------+---------+---------------+
+; MAX10_CLK1_50                                           ; -3.109  ; -85.206       ;
+; MAX10_CLK2_50                                           ; 16.307  ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 322.334 ; 0.000         ;
++---------------------------------------------------------+---------+---------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -152,9 +151,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------+-------+---------------+
 ; Clock                                                   ; Slack ; End Point TNS ;
 +---------------------------------------------------------+-------+---------------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.325 ; 0.000         ;
-; MAX10_CLK2_50                                           ; 0.327 ; 0.000         ;
-; MAX10_CLK1_50                                           ; 0.364 ; 0.000         ;
+; MAX10_CLK1_50                                           ; 0.323 ; 0.000         ;
+; MAX10_CLK2_50                                           ; 0.324 ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.335 ; 0.000         ;
 +---------------------------------------------------------+-------+---------------+
 
 
@@ -175,22 +174,16 @@ No paths to report.
 +---------------------------------------------------------+---------+---------------+
 ; Clock                                                   ; Slack   ; End Point TNS ;
 +---------------------------------------------------------+---------+---------------+
-; MAX10_CLK1_50                                           ; 9.468   ; 0.000         ;
-; MAX10_CLK2_50                                           ; 9.522   ; 0.000         ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.320 ; 0.000         ;
+; MAX10_CLK2_50                                           ; 9.584   ; 0.000         ;
+; MAX10_CLK1_50                                           ; 9.606   ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.485 ; 0.000         ;
 +---------------------------------------------------------+---------+---------------+
 
 
 -----------------------------------------------
 ; Slow 1200mV 85C Model Metastability Summary ;
 -----------------------------------------------
-The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 23
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 322.887 ns
-
-
+No synchronizer chains to report.
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -198,22 +191,22 @@ Worst Case Available Settling Time: 322.887 ns
 +------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                              ; Note                                                          ;
 +------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
-; 81.81 MHz  ; 81.81 MHz       ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ;                                                               ;
-; 232.23 MHz ; 232.23 MHz      ; MAX10_CLK2_50                                           ;                                                               ;
-; 270.86 MHz ; 250.0 MHz       ; MAX10_CLK1_50                                           ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 212.95 MHz ; 212.95 MHz      ; MAX10_CLK1_50                                           ;                                                               ;
+; 296.47 MHz ; 250.0 MHz       ; MAX10_CLK2_50                                           ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 348.55 MHz ; 348.55 MHz      ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ;                                                               ;
 +------------+-----------------+---------------------------------------------------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+----------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Setup Summary                                               ;
-+---------------------------------------------------------+--------+---------------+
-; Clock                                                   ; Slack  ; End Point TNS ;
-+---------------------------------------------------------+--------+---------------+
-; MAX10_CLK1_50                                           ; -3.446 ; -47.356       ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; -3.306 ; -368.679      ;
-; MAX10_CLK2_50                                           ; 15.694 ; 0.000         ;
-+---------------------------------------------------------+--------+---------------+
++-----------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup Summary                                                ;
++---------------------------------------------------------+---------+---------------+
+; Clock                                                   ; Slack   ; End Point TNS ;
++---------------------------------------------------------+---------+---------------+
+; MAX10_CLK1_50                                           ; -2.916  ; -79.075       ;
+; MAX10_CLK2_50                                           ; 16.627  ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 322.648 ; 0.000         ;
++---------------------------------------------------------+---------+---------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -221,9 +214,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------+-------+---------------+
 ; Clock                                                   ; Slack ; End Point TNS ;
 +---------------------------------------------------------+-------+---------------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.295 ; 0.000         ;
-; MAX10_CLK2_50                                           ; 0.296 ; 0.000         ;
-; MAX10_CLK1_50                                           ; 0.338 ; 0.000         ;
+; MAX10_CLK1_50                                           ; 0.293 ; 0.000         ;
+; MAX10_CLK2_50                                           ; 0.294 ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.306 ; 0.000         ;
 +---------------------------------------------------------+-------+---------------+
 
 
@@ -244,33 +237,27 @@ No paths to report.
 +---------------------------------------------------------+---------+---------------+
 ; Clock                                                   ; Slack   ; End Point TNS ;
 +---------------------------------------------------------+---------+---------------+
-; MAX10_CLK1_50                                           ; 9.553   ; 0.000         ;
-; MAX10_CLK2_50                                           ; 9.591   ; 0.000         ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.408 ; 0.000         ;
+; MAX10_CLK2_50                                           ; 9.593   ; 0.000         ;
+; MAX10_CLK1_50                                           ; 9.616   ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.472 ; 0.000         ;
 +---------------------------------------------------------+---------+---------------+
 
 
 ----------------------------------------------
 ; Slow 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 23
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 323.104 ns
+No synchronizer chains to report.
 
 
-
-
-+----------------------------------------------------------------------------------+
-; Fast 1200mV 0C Model Setup Summary                                               ;
-+---------------------------------------------------------+--------+---------------+
-; Clock                                                   ; Slack  ; End Point TNS ;
-+---------------------------------------------------------+--------+---------------+
-; MAX10_CLK1_50                                           ; -1.910 ; -26.157       ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; -1.622 ; -176.355      ;
-; MAX10_CLK2_50                                           ; 17.523 ; 0.000         ;
-+---------------------------------------------------------+--------+---------------+
++-----------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup Summary                                                ;
++---------------------------------------------------------+---------+---------------+
+; Clock                                                   ; Slack   ; End Point TNS ;
++---------------------------------------------------------+---------+---------------+
+; MAX10_CLK1_50                                           ; -1.415  ; -37.724       ;
+; MAX10_CLK2_50                                           ; 18.253  ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 323.940 ; 0.000         ;
++---------------------------------------------------------+---------+---------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -278,9 +265,9 @@ Worst Case Available Settling Time: 323.104 ns
 +---------------------------------------------------------+-------+---------------+
 ; Clock                                                   ; Slack ; End Point TNS ;
 +---------------------------------------------------------+-------+---------------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.149 ; 0.000         ;
-; MAX10_CLK2_50                                           ; 0.150 ; 0.000         ;
-; MAX10_CLK1_50                                           ; 0.161 ; 0.000         ;
+; MAX10_CLK1_50                                           ; 0.147 ; 0.000         ;
+; MAX10_CLK2_50                                           ; 0.148 ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.151 ; 0.000         ;
 +---------------------------------------------------------+-------+---------------+
 
 
@@ -301,38 +288,32 @@ No paths to report.
 +---------------------------------------------------------+---------+---------------+
 ; Clock                                                   ; Slack   ; End Point TNS ;
 +---------------------------------------------------------+---------+---------------+
-; MAX10_CLK1_50                                           ; 9.170   ; 0.000         ;
-; MAX10_CLK2_50                                           ; 9.209   ; 0.000         ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.311 ; 0.000         ;
+; MAX10_CLK1_50                                           ; 9.329   ; 0.000         ;
+; MAX10_CLK2_50                                           ; 9.332   ; 0.000         ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 162.537 ; 0.000         ;
 +---------------------------------------------------------+---------+---------------+
 
 
 ----------------------------------------------
 ; Fast 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-The design MTBF is not calculated because there are no specified synchronizers in the design.
-Number of Synchronizer Chains Found: 23
-Shortest Synchronizer Chain: 2 Registers
-Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 324.115 ns
+No synchronizer chains to report.
 
 
-
-
-+------------------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                                    ;
-+----------------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Clock                                                    ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+----------------------------------------------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack                                         ; -3.720   ; 0.149 ; N/A      ; N/A     ; 9.170               ;
-;  MAX10_CLK1_50                                           ; -3.720   ; 0.161 ; N/A      ; N/A     ; 9.170               ;
-;  MAX10_CLK2_50                                           ; 15.193   ; 0.150 ; N/A      ; N/A     ; 9.209               ;
-;  clockyclock|altpll_component|auto_generated|pll1|clk[0] ; -3.692   ; 0.149 ; N/A      ; N/A     ; 162.311             ;
-; Design-wide TNS                                          ; -464.663 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
-;  MAX10_CLK1_50                                           ; -50.870  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  MAX10_CLK2_50                                           ; 0.000    ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-;  clockyclock|altpll_component|auto_generated|pll1|clk[0] ; -413.793 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
-+----------------------------------------------------------+----------+-------+----------+---------+---------------------+
++-----------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                   ;
++----------------------------------------------------------+---------+-------+----------+---------+---------------------+
+; Clock                                                    ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++----------------------------------------------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack                                         ; -3.109  ; 0.147 ; N/A      ; N/A     ; 9.329               ;
+;  MAX10_CLK1_50                                           ; -3.109  ; 0.147 ; N/A      ; N/A     ; 9.329               ;
+;  MAX10_CLK2_50                                           ; 16.307  ; 0.148 ; N/A      ; N/A     ; 9.332               ;
+;  clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 322.334 ; 0.151 ; N/A      ; N/A     ; 162.472             ;
+; Design-wide TNS                                          ; -85.206 ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  MAX10_CLK1_50                                           ; -85.206 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  MAX10_CLK2_50                                           ; 0.000   ; 0.000 ; N/A      ; N/A     ; 0.000               ;
+;  clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 0.000   ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++----------------------------------------------------------+---------+-------+----------+---------+---------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -391,6 +372,9 @@ Worst Case Available Settling Time: 324.115 ns
 +---------------------+-----------------------+-----------------+-----------------+
 ; Pin                 ; I/O Standard          ; 10-90 Rise Time ; 90-10 Fall Time ;
 +---------------------+-----------------------+-----------------+-----------------+
+; SW[0]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; SW[1]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
+; SW[2]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; SW[3]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; AUDIO_BCLK          ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
 ; AUDIO_GPIO_MFP5     ; 2.5 V                 ; 2000 ps         ; 2000 ps         ;
@@ -403,9 +387,6 @@ Worst Case Available Settling Time: 324.115 ns
 ; MAX10_CLK1_50       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; MAX10_CLK2_50       ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
 ; FPGA_RESET_n        ; 3.3-V LVTTL           ; 2640 ps         ; 2640 ps         ;
-; SW[2]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; SW[1]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
-; SW[0]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; SW[4]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; SW[5]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
 ; SW[6]               ; 1.5 V                 ; 1200 ps         ; 1200 ps         ;
@@ -583,11 +564,10 @@ Worst Case Available Settling Time: 324.115 ns
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                              ; To Clock                                                ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 146915   ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                           ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 125      ; 0        ; 0        ; 0        ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; MAX10_CLK1_50                                           ; 56       ; 0        ; 0        ; 0        ;
-; MAX10_CLK1_50                                           ; MAX10_CLK1_50                                           ; 3180     ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                           ; MAX10_CLK1_50                                           ; 104      ; 0        ; 0        ; 0        ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 47       ; 0        ; 0        ; 0        ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; MAX10_CLK1_50                                           ; 72       ; 0        ; 0        ; 0        ;
+; MAX10_CLK1_50                                           ; MAX10_CLK1_50                                           ; 3368     ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                           ; MAX10_CLK1_50                                           ; 141      ; 0        ; 0        ; 0        ;
 ; MAX10_CLK2_50                                           ; MAX10_CLK2_50                                           ; 1585     ; 0        ; 0        ; 0        ;
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -598,11 +578,10 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                              ; To Clock                                                ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 146915   ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                           ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 125      ; 0        ; 0        ; 0        ;
-; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; MAX10_CLK1_50                                           ; 56       ; 0        ; 0        ; 0        ;
-; MAX10_CLK1_50                                           ; MAX10_CLK1_50                                           ; 3180     ; 0        ; 0        ; 0        ;
-; MAX10_CLK2_50                                           ; MAX10_CLK1_50                                           ; 104      ; 0        ; 0        ; 0        ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; 47       ; 0        ; 0        ; 0        ;
+; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; MAX10_CLK1_50                                           ; 72       ; 0        ; 0        ; 0        ;
+; MAX10_CLK1_50                                           ; MAX10_CLK1_50                                           ; 3368     ; 0        ; 0        ; 0        ;
+; MAX10_CLK2_50                                           ; MAX10_CLK1_50                                           ; 141      ; 0        ; 0        ; 0        ;
 ; MAX10_CLK2_50                                           ; MAX10_CLK2_50                                           ; 1585     ; 0        ; 0        ; 0        ;
 +---------------------------------------------------------+---------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -626,9 +605,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 8     ; 8    ;
+; Unconstrained Clocks            ; 5     ; 5    ;
 ; Unconstrained Input Ports       ; 12    ; 12   ;
-; Unconstrained Input Port Paths  ; 700   ; 700  ;
+; Unconstrained Input Port Paths  ; 706   ; 706  ;
 ; Unconstrained Output Ports      ; 19    ; 19   ;
 ; Unconstrained Output Port Paths ; 19    ; 19   ;
 +---------------------------------+-------+------+
@@ -639,7 +618,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------------------------------+---------------------------------------------------------+-----------+---------------+
 ; Target                                                  ; Clock                                                   ; Type      ; Status        ;
 +---------------------------------------------------------+---------------------------------------------------------+-----------+---------------+
-; DAC16:dac1|time_base_counter                            ;                                                         ; Base      ; Unconstrained ;
 ; MAX10_CLK1_50                                           ; MAX10_CLK1_50                                           ; Base      ; Constrained   ;
 ; MAX10_CLK2_50                                           ; MAX10_CLK2_50                                           ; Base      ; Constrained   ;
 ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; clockyclock|altpll_component|auto_generated|pll1|clk[0] ; Generated ; Constrained   ;
@@ -648,8 +626,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; multi_clk_div:div|time_base_counter2                    ;                                                         ; Base      ; Unconstrained ;
 ; multi_clk_div:div|time_base_counter3                    ;                                                         ; Base      ; Unconstrained ;
 ; multi_clk_div:div|time_base_counter4                    ;                                                         ; Base      ; Unconstrained ;
-; multi_clk_div:div|time_base_counter5                    ;                                                         ; Base      ; Unconstrained ;
-; multi_clk_div:div|time_base_counter6                    ;                                                         ; Base      ; Unconstrained ;
 +---------------------------------------------------------+---------------------------------------------------------+-----------+---------------+
 
 
@@ -753,7 +729,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Sep 24 13:13:50 2017
+    Info: Processing started: Sun Sep 24 23:42:36 2017
 Info: Command: quartus_sta adc_mic_lcd -c adc_mic_lcd
 Info: qsta_default_script.tcl version: #1
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -767,157 +743,118 @@ Warning (332174): Ignored filter at adc_mic_lcd.sdc(12): MAX10_CLK3_50 could not
 Warning (332049): Ignored create_clock at adc_mic_lcd.sdc(12): Argument <targets> is an empty collection File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.sdc Line: 12
     Info (332050): create_clock -period "50.0 MHz" [get_ports MAX10_CLK3_50] File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.sdc Line: 12
 Info (332110): Deriving PLL clocks
-    Info (332110): create_generated_clock -source {clockyclock|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 830 -multiply_by 51 -duty_cycle 50.00 -name {clockyclock|altpll_component|auto_generated|pll1|clk[0]} {clockyclock|altpll_component|auto_generated|pll1|clk[0]}
+    Info (332110): create_generated_clock -source {clockyclock|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 472 -multiply_by 29 -duty_cycle 50.00 -name {clockyclock|altpll_component|auto_generated|pll1|clk[0]} {clockyclock|altpll_component|auto_generated|pll1|clk[0]}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
-Warning (332060): Node: DAC16:dac1|time_base_counter was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register DAC16:dac1|DELAY[2] is being clocked by DAC16:dac1|time_base_counter
-Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
-Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter4 is being clocked by multi_clk_div:div|time_base_counter3
-Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter3 is being clocked by multi_clk_div:div|time_base_counter2
 Warning (332060): Node: multi_clk_div:div|time_base_counter1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter2 is being clocked by multi_clk_div:div|time_base_counter1
+    Info (13166): Register KP_main:string3|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter1
 Warning (332060): Node: multi_clk_div:div|time_base_counter0 was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register multi_clk_div:div|time_base_counter1 is being clocked by multi_clk_div:div|time_base_counter0
-Warning (332060): Node: multi_clk_div:div|time_base_counter5 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter6 is being clocked by multi_clk_div:div|time_base_counter5
-Warning (332060): Node: multi_clk_div:div|time_base_counter6 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter7 is being clocked by multi_clk_div:div|time_base_counter6
+Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string4|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter2
+Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string5|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter3
+Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -3.720
+Info (332146): Worst-case setup slack is -3.109
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.720             -50.870 MAX10_CLK1_50 
-    Info (332119):    -3.692            -413.793 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    15.193               0.000 MAX10_CLK2_50 
-Info (332146): Worst-case hold slack is 0.325
+    Info (332119):    -3.109             -85.206 MAX10_CLK1_50 
+    Info (332119):    16.307               0.000 MAX10_CLK2_50 
+    Info (332119):   322.334               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.323
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.325               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.327               0.000 MAX10_CLK2_50 
-    Info (332119):     0.364               0.000 MAX10_CLK1_50 
+    Info (332119):     0.323               0.000 MAX10_CLK1_50 
+    Info (332119):     0.324               0.000 MAX10_CLK2_50 
+    Info (332119):     0.335               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 9.468
+Info (332146): Worst-case minimum pulse width slack is 9.584
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.468               0.000 MAX10_CLK1_50 
-    Info (332119):     9.522               0.000 MAX10_CLK2_50 
-    Info (332119):   162.320               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-Info (332114): Report Metastability: Found 23 synchronizer chains.
-    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 23
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 322.887 ns
-    Info (332114): 
+    Info (332119):     9.584               0.000 MAX10_CLK2_50 
+    Info (332119):     9.606               0.000 MAX10_CLK1_50 
+    Info (332119):   162.485               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
-Warning (332060): Node: DAC16:dac1|time_base_counter was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register DAC16:dac1|DELAY[2] is being clocked by DAC16:dac1|time_base_counter
-Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
-Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter4 is being clocked by multi_clk_div:div|time_base_counter3
-Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter3 is being clocked by multi_clk_div:div|time_base_counter2
 Warning (332060): Node: multi_clk_div:div|time_base_counter1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter2 is being clocked by multi_clk_div:div|time_base_counter1
+    Info (13166): Register KP_main:string3|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter1
 Warning (332060): Node: multi_clk_div:div|time_base_counter0 was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register multi_clk_div:div|time_base_counter1 is being clocked by multi_clk_div:div|time_base_counter0
-Warning (332060): Node: multi_clk_div:div|time_base_counter5 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter6 is being clocked by multi_clk_div:div|time_base_counter5
-Warning (332060): Node: multi_clk_div:div|time_base_counter6 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter7 is being clocked by multi_clk_div:div|time_base_counter6
+Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string4|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter2
+Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string5|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter3
+Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -3.446
+Info (332146): Worst-case setup slack is -2.916
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.446             -47.356 MAX10_CLK1_50 
-    Info (332119):    -3.306            -368.679 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    15.694               0.000 MAX10_CLK2_50 
-Info (332146): Worst-case hold slack is 0.295
+    Info (332119):    -2.916             -79.075 MAX10_CLK1_50 
+    Info (332119):    16.627               0.000 MAX10_CLK2_50 
+    Info (332119):   322.648               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.293
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.295               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.296               0.000 MAX10_CLK2_50 
-    Info (332119):     0.338               0.000 MAX10_CLK1_50 
+    Info (332119):     0.293               0.000 MAX10_CLK1_50 
+    Info (332119):     0.294               0.000 MAX10_CLK2_50 
+    Info (332119):     0.306               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 9.553
+Info (332146): Worst-case minimum pulse width slack is 9.593
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.553               0.000 MAX10_CLK1_50 
-    Info (332119):     9.591               0.000 MAX10_CLK2_50 
-    Info (332119):   162.408               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-Info (332114): Report Metastability: Found 23 synchronizer chains.
-    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 23
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 323.104 ns
-    Info (332114): 
+    Info (332119):     9.593               0.000 MAX10_CLK2_50 
+    Info (332119):     9.616               0.000 MAX10_CLK1_50 
+    Info (332119):   162.472               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info: Analyzing Fast 1200mV 0C Model
-Warning (332060): Node: DAC16:dac1|time_base_counter was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register DAC16:dac1|DELAY[2] is being clocked by DAC16:dac1|time_base_counter
-Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
-Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter4 is being clocked by multi_clk_div:div|time_base_counter3
-Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter3 is being clocked by multi_clk_div:div|time_base_counter2
 Warning (332060): Node: multi_clk_div:div|time_base_counter1 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter2 is being clocked by multi_clk_div:div|time_base_counter1
+    Info (13166): Register KP_main:string3|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter1
 Warning (332060): Node: multi_clk_div:div|time_base_counter0 was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register multi_clk_div:div|time_base_counter1 is being clocked by multi_clk_div:div|time_base_counter0
-Warning (332060): Node: multi_clk_div:div|time_base_counter5 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter6 is being clocked by multi_clk_div:div|time_base_counter5
-Warning (332060): Node: multi_clk_div:div|time_base_counter6 was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register multi_clk_div:div|time_base_counter7 is being clocked by multi_clk_div:div|time_base_counter6
+Warning (332060): Node: multi_clk_div:div|time_base_counter2 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string4|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter2
+Warning (332060): Node: multi_clk_div:div|time_base_counter3 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string5|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter3
+Warning (332060): Node: multi_clk_div:div|time_base_counter4 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register KP_main:string6|newfilter:filt0|regq[2]~_Duplicate_1 is being clocked by multi_clk_div:div|time_base_counter4
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -1.910
+Info (332146): Worst-case setup slack is -1.415
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.910             -26.157 MAX10_CLK1_50 
-    Info (332119):    -1.622            -176.355 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):    17.523               0.000 MAX10_CLK2_50 
-Info (332146): Worst-case hold slack is 0.149
+    Info (332119):    -1.415             -37.724 MAX10_CLK1_50 
+    Info (332119):    18.253               0.000 MAX10_CLK2_50 
+    Info (332119):   323.940               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.147
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.149               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-    Info (332119):     0.150               0.000 MAX10_CLK2_50 
-    Info (332119):     0.161               0.000 MAX10_CLK1_50 
+    Info (332119):     0.147               0.000 MAX10_CLK1_50 
+    Info (332119):     0.148               0.000 MAX10_CLK2_50 
+    Info (332119):     0.151               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is 9.170
+Info (332146): Worst-case minimum pulse width slack is 9.329
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     9.170               0.000 MAX10_CLK1_50 
-    Info (332119):     9.209               0.000 MAX10_CLK2_50 
-    Info (332119):   162.311               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
-Info (332114): Report Metastability: Found 23 synchronizer chains.
-    Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
-    Info (332114): Number of Synchronizer Chains Found: 23
-    Info (332114): Shortest Synchronizer Chain: 2 Registers
-    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 324.115 ns
-    Info (332114): 
+    Info (332119):     9.329               0.000 MAX10_CLK1_50 
+    Info (332119):     9.332               0.000 MAX10_CLK2_50 
+    Info (332119):   162.537               0.000 clockyclock|altpll_component|auto_generated|pll1|clk[0] 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 720 megabytes
-    Info: Processing ended: Sun Sep 24 13:13:55 2017
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 723 megabytes
+    Info: Processing ended: Sun Sep 24 23:42:41 2017
     Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Total CPU time (on all processors): 00:00:07
 
 

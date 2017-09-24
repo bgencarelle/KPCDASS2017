@@ -5,11 +5,6 @@
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>
     </sld_info>
-    <sld_info hpath="DAC16:dac1|clock_buff:dac_buff" name="dac_buff">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
-      </assignment_values>
-    </sld_info>
     <sld_info hpath="multi_clk_div:div|clock_buff:u0" name="u0">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
@@ -55,6 +50,11 @@
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>
     </sld_info>
+    <sld_info hpath="KP_delay:effect|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+    </sld_info>
     <sld_info hpath="KP_main:string3|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
@@ -71,11 +71,6 @@
       </assignment_values>
     </sld_info>
     <sld_info hpath="KP_main:string6|clock_buff:kpbuff" name="kpbuff">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
-      </assignment_values>
-    </sld_info>
-    <sld_info hpath="KP_main:string7|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>

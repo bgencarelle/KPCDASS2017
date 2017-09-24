@@ -1,18 +1,12 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="f9397cd24b027ebd02a7"/>
+    <hash md5_digest_80b="305a6669599845d1a97b"/>
   </project>
   <file_info>
     <file device="10M50DAF484C6GES" path="adc_mic_lcd.sof" usercode="0xFFFFFFFF"/>
   </file_info>
   <sld_infos>
     <sld_info hpath="clock_buff:buff" name="buff">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
-      </assignment_values>
-      <parameters/>
-    </sld_info>
-    <sld_info hpath="DAC16:dac1|clock_buff:dac_buff" name="dac_buff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>
@@ -72,6 +66,12 @@
       </assignment_values>
       <parameters/>
     </sld_info>
+    <sld_info hpath="KP_delay:effect|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
     <sld_info hpath="KP_main:string3|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
@@ -91,12 +91,6 @@
       <parameters/>
     </sld_info>
     <sld_info hpath="KP_main:string6|clock_buff:kpbuff" name="kpbuff">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
-      </assignment_values>
-      <parameters/>
-    </sld_info>
-    <sld_info hpath="KP_main:string7|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1498901528"/>
       </assignment_values>

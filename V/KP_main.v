@@ -148,11 +148,11 @@ assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
 //end debounce
 
 //
-wire signed [31:0] q;
+wire signed [23:0] q;
 ram_4096_32bit	shift_reg_ram(		// RAM. currently using too much-can implement smaller amounts when tuning
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
-							.data( {8'b0,d}),
+							.data( d),
 							.rdaddress(rd_ptr),
 							.rden(rden),
 							.wraddress(wr_ptr),
