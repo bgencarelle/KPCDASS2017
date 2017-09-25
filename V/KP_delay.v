@@ -13,12 +13,15 @@ input wire [2:0] loops,//not currrently implemented
 output wire signed [23:0] qout //output to top level
 );
 
-
+	clock_buff kpbuff (
+		.inclk  (audio_clk),  //  altclkctrl_input.inclk
+		.outclk (a_clk)  // altclkctrl_output.outclk
+	);
 wire signed [23:0] start_level; //initial level
 assign start_level = $signed(dnoise);
 
 wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
-assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
+assign dfilter_gain = ($signed(dfilter) <<< 12); //* $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM
 reg [15:0] count=0; //basic counter
@@ -175,10 +178,7 @@ reg dfilter_reg;
 
 //always @(posedge audio_clk)
 //a_clk <= a_clk_reg;
-	clock_buff kpbuff (
-		.inclk  (audio_clk),  //  altclkctrl_input.inclk
-		.outclk (a_clk)  // altclkctrl_output.outclk
-	);
+
 wire signed [23:0] dfilter; //
 assign qout = dfilter;
 endmodule

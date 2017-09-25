@@ -129,7 +129,7 @@ reg   [31:0]  			DELAY_CNT;
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
-reg signed [25:0]presum;
+reg signed [24:0]presum;
 reg signed [23:0]sum0;
 reg signed [23:0]sum1;
 
@@ -139,13 +139,13 @@ reg signed [23:0]sum1;
     presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
     sum1 <= sum0;
-	 if (presum[25] == presum[23])
+	 if (presum[24] == presum[23])
 		begin
       // Top two bits equal: no signed overflow.
       sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
 		end
     else
-      if (presum[25] == 1'b0)
+      if (presum[24] == 1'b0)
         begin
         sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
 		  end
@@ -247,7 +247,7 @@ multi_clk_div div(
 		
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk4),
+		  .audio_clk(a_clk8),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
@@ -261,7 +261,7 @@ KP_main string3 (
 
 KP_main string4(
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk8),
+		  .audio_clk(a_clk16),
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
@@ -275,7 +275,7 @@ KP_main string4(
 
 KP_main string5(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk16),
+		  .audio_clk(a_clk32),
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
@@ -289,7 +289,7 @@ KP_main string5(  //low string
 
 KP_main string6(  
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk32),
+		  .audio_clk(a_clk64),
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
@@ -309,9 +309,9 @@ reg signed [23:0]sub1;
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presub <= $signed(MEM7>>>(SW[2:0]))+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+    presub <= $signed(MEM7)+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
-					$signed(MEM1>>>2)+ $signed(MEM0>>>2);;
+					$signed(MEM1>>>2)+ $signed(MEM0>>>2);
 	 if (presub[25] == presub[23])
 		begin
       // Top two bits equal: no signed overflow.
@@ -333,12 +333,12 @@ assign submix = sub0;
 		  
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk64),
+		  .audio_clk(a_clk32),
 		   .dnoise(submix),
 		  .velocity(7'd127),
 		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
-		  .filtsw(3'b000),
+		  .filtsw(SW[2:0]),
 		  .trig(KEY[0]),
 		  .delay_length(16'd32767),
 		  .reset_n(RESET_DELAY_n),
@@ -375,7 +375,7 @@ ADC_SEG_LED segL(
 			);
 
 //--METER TO LED --
-assign LEDR =  ({7'd0,SW[9],SW[8]});
+assign LEDR =  (HEXL);
 assign HEX0 = HEXL;
 assign HEX1 = HEXR;
 //--RESET DELAY ---

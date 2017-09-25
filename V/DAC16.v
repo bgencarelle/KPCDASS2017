@@ -36,13 +36,13 @@ reg  [23:0] RDATA ;
 	    ST<= 2; 
   end
   2:begin 
-	     CNT <= CNT +1; 
+	     CNT <= CNT +5'd1; 
 		  ST<= 3; 
 		  SCLK  <=1; 
    end
   3: begin 
         SCLK  <=0;	  
-	  if  ( CNT==24) begin 
+	  if  ( CNT==5'd24) begin 
 	       ST<=4  ;  	
 
 		end 

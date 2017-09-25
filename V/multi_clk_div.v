@@ -13,67 +13,72 @@ module multi_clk_div(
 		output wire div256	
 		);
 		
-		reg time_base_counter0 = 1;
+		reg time_base_counter0 = 0;
 		reg time_base_counter1 = 0;
-		reg time_base_counter2 = 1;
+		reg time_base_counter2 = 0;
 		reg time_base_counter3 = 0;
-		reg time_base_counter4 = 1;
+		reg time_base_counter4 = 0;
 		reg time_base_counter5 = 0;
-		reg time_base_counter6 = 1;
+		reg time_base_counter6 = 0;
 		reg time_base_counter7 = 0;
-		reg time_base_counter8 = 1;
+		reg time_base_counter8 = 0;
 		
 		always@ (posedge clk)
 				time_base_counter0 <= ~time_base_counter0;		
-		
+	
+# Create a clock and a divide-by-2 generated clock
+create_clock -period 10 [get_ports clk]
+create_generated_clock -divide_by 2 -source [get_ports clk] -name clkdiv [get_registers clkdiv]
+	
+	
 	clock_buff u0 (
 		.inclk  ( time_base_counter0),  //  altclkctrl_input.inclk
 		.outclk (div2)  // altclkctrl_output.outclk
 	);
 	
-		always@ (posedge div2)
+		always@ (posedge time_base_counter0)
 				time_base_counter1 <= ~time_base_counter1;
 	clock_buff u1 (
 		.inclk  ( time_base_counter1),  //  altclkctrl_input.inclk
 		.outclk (div4)  // altclkctrl_output.outclk
 	);
 
-			always@ (posedge div4)
+			always@ (posedge time_base_counter1)
 				time_base_counter2 <= ~time_base_counter2;
 	clock_buff u2 (
 		.inclk  ( time_base_counter2),  //  altclkctrl_input.inclk
 		.outclk (div8)  // altclkctrl_output.outclk
 	);
 	
-			always@ (posedge div8)
+			always@ (posedge time_base_counter2)
 				time_base_counter3 <= ~time_base_counter3;				
 	clock_buff u3 (
 		.inclk  ( time_base_counter3),  //  altclkctrl_input.inclk
 		.outclk (div16)  // altclkctrl_output.outclk
 	); 
 
-			always@ (posedge div16)
+			always@ (posedge time_base_counter3)
 				time_base_counter4 <= ~time_base_counter4;					
 	clock_buff u4 (
 		.inclk  ( time_base_counter4),  //  altclkctrl_input.inclk
 		.outclk (div32)  // altclkctrl_output.outclk
 	);
 	
-			always@ (posedge div32)
+			always@ (posedge time_base_counter4)
 				time_base_counter5 <= ~time_base_counter5;	
 	clock_buff u5 (
 		.inclk  ( time_base_counter5),  //  altclkctrl_input.inclk
 		.outclk (div64)  // altclkctrl_output.outclk
 	);
 		
-			always@ (posedge div64)
+			always@ (posedge time_base_counter5)
 				time_base_counter6 <= ~time_base_counter6;	
 	clock_buff u6 (
 		.inclk  ( time_base_counter6),  //  altclkctrl_input.inclk
 		.outclk (div128)  // altclkctrl_output.outclk
 	);
 	
-				always@ (posedge div128)
+				always@ (posedge time_base_counter6)
 				time_base_counter7 <= ~time_base_counter7;
 	clock_buff u7 (
 		.inclk  ( time_base_counter7),  //  altclkctrl_input.inclk
