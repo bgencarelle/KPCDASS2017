@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -43,7 +43,7 @@ agreement for further details.
 		(text "inclk" (rect 101 67 232 144)(font "Arial" (color 0 0 0)))
 		(text "altclkctrl_output" (rect 161 43 424 99)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "outclk" (rect 132 67 300 144)(font "Arial" (color 0 0 0)))
-		(text " system " (rect 237 88 522 186)(font "Arial" ))
+		(text " clock_buff " (rect 223 88 518 186)(font "Arial" ))
 		(line (pt 96 32)(pt 160 32)(line_width 1))
 		(line (pt 160 32)(pt 160 88)(line_width 1))
 		(line (pt 96 88)(pt 160 88)(line_width 1))

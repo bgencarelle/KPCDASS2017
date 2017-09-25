@@ -1,6 +1,6 @@
 Analysis & Synthesis report for adc_mic_lcd
-Sun Sep 24 23:42:06 2017
-Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Mon Sep 25 11:54:03 2017
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
 ---------------------
@@ -50,37 +50,36 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
  42. Parameter Settings for Inferred Entity Instance: KP_main:string4|lpm_mult:Mult0
  43. Parameter Settings for Inferred Entity Instance: KP_main:string4|lpm_mult:Mult1
  44. Parameter Settings for Inferred Entity Instance: KP_delay:effect|lpm_mult:Mult0
- 45. Parameter Settings for Inferred Entity Instance: KP_delay:effect|lpm_mult:Mult1
- 46. Parameter Settings for Inferred Entity Instance: KP_main:string5|lpm_mult:Mult0
- 47. Parameter Settings for Inferred Entity Instance: KP_main:string5|lpm_mult:Mult1
- 48. Parameter Settings for Inferred Entity Instance: KP_main:string6|lpm_mult:Mult0
- 49. Parameter Settings for Inferred Entity Instance: KP_main:string6|lpm_mult:Mult1
- 50. altpll Parameter Settings by Entity Instance
- 51. altsyncram Parameter Settings by Entity Instance
- 52. lpm_mult Parameter Settings by Entity Instance
- 53. Port Connectivity Checks: "ADC_SEG_LED:segL"
- 54. Port Connectivity Checks: "ADC_SEG_LED:segR"
- 55. Port Connectivity Checks: "lfsr:noise"
- 56. Port Connectivity Checks: "KP_delay:effect|ram_delay:delay_ram"
- 57. Port Connectivity Checks: "KP_delay:effect"
- 58. Port Connectivity Checks: "KP_main:string6"
- 59. Port Connectivity Checks: "KP_main:string5"
- 60. Port Connectivity Checks: "KP_main:string4"
- 61. Port Connectivity Checks: "KP_main:string3|ram_4096_32bit:shift_reg_ram"
- 62. Port Connectivity Checks: "KP_main:string3"
- 63. Port Connectivity Checks: "multi_clk_div:div"
- 64. Port Connectivity Checks: "clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component"
- 65. Post-Synthesis Netlist Statistics for Top Partition
- 66. Elapsed Time Per Partition
- 67. Analysis & Synthesis Messages
- 68. Analysis & Synthesis Suppressed Messages
+ 45. Parameter Settings for Inferred Entity Instance: KP_main:string5|lpm_mult:Mult0
+ 46. Parameter Settings for Inferred Entity Instance: KP_main:string5|lpm_mult:Mult1
+ 47. Parameter Settings for Inferred Entity Instance: KP_main:string6|lpm_mult:Mult0
+ 48. Parameter Settings for Inferred Entity Instance: KP_main:string6|lpm_mult:Mult1
+ 49. altpll Parameter Settings by Entity Instance
+ 50. altsyncram Parameter Settings by Entity Instance
+ 51. lpm_mult Parameter Settings by Entity Instance
+ 52. Port Connectivity Checks: "ADC_SEG_LED:segL"
+ 53. Port Connectivity Checks: "ADC_SEG_LED:segR"
+ 54. Port Connectivity Checks: "lfsr:noise"
+ 55. Port Connectivity Checks: "KP_delay:effect|ram_delay:delay_ram"
+ 56. Port Connectivity Checks: "KP_delay:effect"
+ 57. Port Connectivity Checks: "KP_main:string6"
+ 58. Port Connectivity Checks: "KP_main:string5"
+ 59. Port Connectivity Checks: "KP_main:string4"
+ 60. Port Connectivity Checks: "KP_main:string3|ram_4096_32bit:shift_reg_ram"
+ 61. Port Connectivity Checks: "KP_main:string3"
+ 62. Port Connectivity Checks: "multi_clk_div:div"
+ 63. Port Connectivity Checks: "clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component"
+ 64. Post-Synthesis Netlist Statistics for Top Partition
+ 65. Elapsed Time Per Partition
+ 66. Analysis & Synthesis Messages
+ 67. Analysis & Synthesis Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -100,15 +99,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Sep 24 23:42:06 2017       ;
-; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
+; Analysis & Synthesis Status        ; Successful - Mon Sep 25 11:54:03 2017       ;
+; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; adc_mic_lcd                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 1,909                                       ;
-;     Total combinational functions  ; 1,764                                       ;
-;     Dedicated logic registers      ; 1,018                                       ;
-; Total registers                    ; 1018                                        ;
+; Total logic elements               ; 1,970                                       ;
+;     Total combinational functions  ; 1,819                                       ;
+;     Dedicated logic registers      ; 1,067                                       ;
+; Total registers                    ; 1067                                        ;
 ; Total pins                         ; 60                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 843,776                                     ;
@@ -243,48 +242,49 @@ agreement for further details.
 ; clock_buff/synthesis/submodules/clock_buff_altclkctrl_0.v ; yes             ; User Verilog HDL File        ; C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/synthesis/submodules/clock_buff_altclkctrl_0.v ; clock_buff ;
 ; V/KP_delay.v                                              ; yes             ; User Verilog HDL File        ; C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v                                              ;            ;
 ; ram_delay.v                                               ; yes             ; User Wizard-Generated File   ; C:/Users/ben/Documents/GitHub/KPCDASS2017/ram_delay.v                                               ;            ;
-; altpll.tdf                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf                                   ;            ;
-; aglobal161.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                               ;            ;
-; stratix_pll.inc                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_pll.inc                              ;            ;
-; stratixii_pll.inc                                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratixii_pll.inc                            ;            ;
-; cycloneii_pll.inc                                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/cycloneii_pll.inc                            ;            ;
+; altpll.tdf                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf                                   ;            ;
+; aglobal170.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc                               ;            ;
+; stratix_pll.inc                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_pll.inc                              ;            ;
+; stratixii_pll.inc                                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratixii_pll.inc                            ;            ;
+; cycloneii_pll.inc                                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/cycloneii_pll.inc                            ;            ;
 ; db/altclk_altpll1.v                                       ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altclk_altpll1.v                                       ;            ;
-; altsyncram.tdf                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                               ;            ;
-; stratix_ram_block.inc                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                        ;            ;
-; lpm_mux.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                                  ;            ;
-; lpm_decode.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                               ;            ;
-; a_rdenreg.inc                                             ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                                ;            ;
-; altrom.inc                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                                   ;            ;
-; altram.inc                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                                   ;            ;
-; altdpram.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                                 ;            ;
+; altsyncram.tdf                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf                               ;            ;
+; stratix_ram_block.inc                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc                        ;            ;
+; lpm_mux.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mux.inc                                  ;            ;
+; lpm_decode.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_decode.inc                               ;            ;
+; a_rdenreg.inc                                             ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/a_rdenreg.inc                                ;            ;
+; altrom.inc                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.inc                                   ;            ;
+; altram.inc                                                ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altram.inc                                   ;            ;
+; altdpram.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altdpram.inc                                 ;            ;
 ; db/altsyncram_96r1.tdf                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_96r1.tdf                                    ;            ;
 ; db/altsyncram_4kq1.tdf                                    ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_4kq1.tdf                                    ;            ;
 ; db/decode_c7a.tdf                                         ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/decode_c7a.tdf                                         ;            ;
 ; db/mux_a3b.tdf                                            ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mux_a3b.tdf                                            ;            ;
-; lpm_mult.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mult.tdf                                 ;            ;
-; lpm_add_sub.inc                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_add_sub.inc                              ;            ;
-; multcore.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/multcore.inc                                 ;            ;
-; bypassff.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/bypassff.inc                                 ;            ;
-; altshift.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altshift.inc                                 ;            ;
-; multcore.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/multcore.tdf                                 ;            ;
-; csa_add.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/csa_add.inc                                  ;            ;
-; mpar_add.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.inc                                 ;            ;
-; muleabz.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/muleabz.inc                                  ;            ;
-; mul_lfrg.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mul_lfrg.inc                                 ;            ;
-; mul_boothc.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mul_boothc.inc                               ;            ;
-; alt_ded_mult.inc                                          ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/alt_ded_mult.inc                             ;            ;
-; alt_ded_mult_y.inc                                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/alt_ded_mult_y.inc                           ;            ;
-; dffpipe.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/dffpipe.inc                                  ;            ;
-; mpar_add.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.tdf                                 ;            ;
-; lpm_add_sub.tdf                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_add_sub.tdf                              ;            ;
-; addcore.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/addcore.inc                                  ;            ;
-; look_add.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/look_add.inc                                 ;            ;
-; alt_stratix_add_sub.inc                                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc                      ;            ;
+; lpm_mult.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mult.tdf                                 ;            ;
+; lpm_add_sub.inc                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_add_sub.inc                              ;            ;
+; multcore.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/multcore.inc                                 ;            ;
+; bypassff.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/bypassff.inc                                 ;            ;
+; altshift.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altshift.inc                                 ;            ;
+; multcore.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/multcore.tdf                                 ;            ;
+; csa_add.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/csa_add.inc                                  ;            ;
+; mpar_add.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.inc                                 ;            ;
+; muleabz.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/muleabz.inc                                  ;            ;
+; mul_lfrg.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mul_lfrg.inc                                 ;            ;
+; mul_boothc.inc                                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mul_boothc.inc                               ;            ;
+; alt_ded_mult.inc                                          ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/alt_ded_mult.inc                             ;            ;
+; alt_ded_mult_y.inc                                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/alt_ded_mult_y.inc                           ;            ;
+; dffpipe.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/dffpipe.inc                                  ;            ;
+; mpar_add.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.tdf                                 ;            ;
+; lpm_add_sub.tdf                                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_add_sub.tdf                              ;            ;
+; addcore.inc                                               ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/addcore.inc                                  ;            ;
+; look_add.inc                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/look_add.inc                                 ;            ;
+; alt_stratix_add_sub.inc                                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/alt_stratix_add_sub.inc                      ;            ;
 ; db/add_sub_3vg.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_3vg.tdf                                        ;            ;
 ; db/add_sub_8kg.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_8kg.tdf                                        ;            ;
 ; db/add_sub_6vg.tdf                                        ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_6vg.tdf                                        ;            ;
-; altshift.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altshift.tdf                                 ;            ;
+; altshift.tdf                                              ; yes             ; Megafunction                 ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altshift.tdf                                 ;            ;
 ; db/mult_qgs.tdf                                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_qgs.tdf                                           ;            ;
+; db/mult_eks.tdf                                           ; yes             ; Auto-Generated Megafunction  ; C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_eks.tdf                                           ;            ;
 +-----------------------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+------------+
 
 
@@ -293,20 +293,20 @@ agreement for further details.
 +---------------------------------------------+---------------+
 ; Resource                                    ; Usage         ;
 +---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 1,909         ;
+; Estimated Total logic elements              ; 1,970         ;
 ;                                             ;               ;
-; Total combinational functions               ; 1764          ;
+; Total combinational functions               ; 1819          ;
 ; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 263           ;
-;     -- 3 input functions                    ; 847           ;
-;     -- <=2 input functions                  ; 654           ;
+;     -- 4 input functions                    ; 258           ;
+;     -- 3 input functions                    ; 917           ;
+;     -- <=2 input functions                  ; 644           ;
 ;                                             ;               ;
 ; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 945           ;
-;     -- arithmetic mode                      ; 819           ;
+;     -- normal mode                          ; 985           ;
+;     -- arithmetic mode                      ; 834           ;
 ;                                             ;               ;
-; Total registers                             ; 1018          ;
-;     -- Dedicated logic registers            ; 1018          ;
+; Total registers                             ; 1067          ;
+;     -- Dedicated logic registers            ; 1067          ;
 ;     -- I/O registers                        ; 0             ;
 ;                                             ;               ;
 ; I/O pins                                    ; 60            ;
@@ -319,8 +319,8 @@ agreement for further details.
 ;                                             ;               ;
 ; Maximum fan-out node                        ; RESET_DELAY_n ;
 ; Maximum fan-out                             ; 726           ;
-; Total fan-out                               ; 10457         ;
-; Average fan-out                             ; 3.35          ;
+; Total fan-out                               ; 10763         ;
+; Average fan-out                             ; 3.34          ;
 +---------------------------------------------+---------------+
 
 
@@ -329,26 +329,16 @@ agreement for further details.
 +---------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
 ; Compilation Hierarchy Node                                                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                                   ; Entity Name                 ; Library Name ;
 +---------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
-; |adc_mic_lcd                                                                    ; 1764 (207)          ; 1018 (66)                 ; 843776      ; 0          ; 20           ; 0       ; 10        ; 60   ; 0            ; 0          ; |adc_mic_lcd                                                                                                                                          ; adc_mic_lcd                 ; work         ;
+; |adc_mic_lcd                                                                    ; 1819 (353)          ; 1067 (113)                ; 843776      ; 0          ; 20           ; 0       ; 10        ; 60   ; 0            ; 0          ; |adc_mic_lcd                                                                                                                                          ; adc_mic_lcd                 ; work         ;
 ;    |ADC_SEG_LED:segL|                                                           ; 7 (7)               ; 7 (7)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|ADC_SEG_LED:segL                                                                                                                         ; ADC_SEG_LED                 ; work         ;
 ;    |ADC_SEG_LED:segR|                                                           ; 7 (7)               ; 7 (7)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|ADC_SEG_LED:segR                                                                                                                         ; ADC_SEG_LED                 ; work         ;
 ;    |DAC16:dac1|                                                                 ; 49 (49)             ; 37 (37)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|DAC16:dac1                                                                                                                               ; DAC16                       ; work         ;
-;    |KP_delay:effect|                                                            ; 248 (41)            ; 136 (62)                  ; 753664      ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect                                                                                                                          ; KP_delay                    ; work         ;
+;    |KP_delay:effect|                                                            ; 156 (35)            ; 137 (63)                  ; 753664      ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect                                                                                                                          ; KP_delay                    ; work         ;
 ;       |clock_buff:kpbuff|                                                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff                                                                                                        ; clock_buff                  ; clock_buff   ;
 ;          |clock_buff_altclkctrl_0:altclkctrl_0|                                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0                                                                   ; clock_buff_altclkctrl_0     ; clock_buff   ;
 ;             |clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component ; clock_buff_altclkctrl_0_sub ; clock_buff   ;
-;       |lpm_mult:Mult0|                                                          ; 86 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0                                                                                                           ; lpm_mult                    ; work         ;
-;          |multcore:mult_core|                                                   ; 86 (30)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core                                                                                        ; multcore                    ; work         ;
-;             |mpar_add:padder|                                                   ; 56 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                        ; mpar_add                    ; work         ;
-;                |lpm_add_sub:adder[0]|                                           ; 12 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                   ; lpm_add_sub                 ; work         ;
-;                   |add_sub_8kg:auto_generated|                                  ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_8kg:auto_generated                        ; add_sub_8kg                 ; work         ;
-;                |lpm_add_sub:adder[1]|                                           ; 12 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]                                                   ; lpm_add_sub                 ; work         ;
-;                   |add_sub_3vg:auto_generated|                                  ; 12 (12)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]|add_sub_3vg:auto_generated                        ; add_sub_3vg                 ; work         ;
-;                |mpar_add:sub_par_add|                                           ; 32 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                   ; mpar_add                    ; work         ;
-;                   |lpm_add_sub:adder[0]|                                        ; 32 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                              ; lpm_add_sub                 ; work         ;
-;                      |add_sub_6vg:auto_generated|                               ; 32 (32)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_6vg:auto_generated   ; add_sub_6vg                 ; work         ;
-;       |lpm_mult:Mult1|                                                          ; 24 (0)              ; 0 (0)                     ; 0           ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult1                                                                                                           ; lpm_mult                    ; work         ;
-;          |mult_qgs:auto_generated|                                              ; 24 (24)             ; 0 (0)                     ; 0           ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult1|mult_qgs:auto_generated                                                                                   ; mult_qgs                    ; work         ;
+;       |lpm_mult:Mult0|                                                          ; 24 (0)              ; 0 (0)                     ; 0           ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0                                                                                                           ; lpm_mult                    ; work         ;
+;          |mult_eks:auto_generated|                                              ; 24 (24)             ; 0 (0)                     ; 0           ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|lpm_mult:Mult0|mult_eks:auto_generated                                                                                   ; mult_eks                    ; work         ;
 ;       |newfilter:filt0|                                                         ; 47 (47)             ; 70 (70)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|newfilter:filt0                                                                                                          ; newfilter                   ; work         ;
 ;       |ram_delay:delay_ram|                                                     ; 50 (0)              ; 4 (0)                     ; 753664      ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram                                                                                                      ; ram_delay                   ; work         ;
 ;          |altsyncram:altsyncram_component|                                      ; 50 (0)              ; 4 (0)                     ; 753664      ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component                                                                      ; altsyncram                  ; work         ;
@@ -442,7 +432,7 @@ agreement for further details.
 ;       |clock_buff_altclkctrl_0:altclkctrl_0|                                    ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0                                                                                     ; clock_buff_altclkctrl_0     ; clock_buff   ;
 ;          |clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component|    ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component                   ; clock_buff_altclkctrl_0_sub ; clock_buff   ;
 ;    |lfsr:noise|                                                                 ; 34 (34)             ; 104 (104)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|lfsr:noise                                                                                                                               ; lfsr                        ; work         ;
-;    |multi_clk_div:div|                                                          ; 8 (8)               ; 5 (5)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div                                                                                                                        ; multi_clk_div               ; work         ;
+;    |multi_clk_div:div|                                                          ; 9 (9)               ; 6 (6)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div                                                                                                                        ; multi_clk_div               ; work         ;
 ;       |clock_buff:u0|                                                           ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u0                                                                                                          ; clock_buff                  ; clock_buff   ;
 ;          |clock_buff_altclkctrl_0:altclkctrl_0|                                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u0|clock_buff_altclkctrl_0:altclkctrl_0                                                                     ; clock_buff_altclkctrl_0     ; clock_buff   ;
 ;             |clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u0|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component   ; clock_buff_altclkctrl_0_sub ; clock_buff   ;
@@ -458,6 +448,9 @@ agreement for further details.
 ;       |clock_buff:u4|                                                           ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u4                                                                                                          ; clock_buff                  ; clock_buff   ;
 ;          |clock_buff_altclkctrl_0:altclkctrl_0|                                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u4|clock_buff_altclkctrl_0:altclkctrl_0                                                                     ; clock_buff_altclkctrl_0     ; clock_buff   ;
 ;             |clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u4|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component   ; clock_buff_altclkctrl_0_sub ; clock_buff   ;
+;       |clock_buff:u5|                                                           ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u5                                                                                                          ; clock_buff                  ; clock_buff   ;
+;          |clock_buff_altclkctrl_0:altclkctrl_0|                                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u5|clock_buff_altclkctrl_0:altclkctrl_0                                                                     ; clock_buff_altclkctrl_0     ; clock_buff   ;
+;             |clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component| ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u5|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component   ; clock_buff_altclkctrl_0_sub ; clock_buff   ;
 +---------------------------------------------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -498,27 +491,27 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 +--------+--------------+---------+--------------+--------------+-----------------------------------------------------------+------------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                           ; IP Include File  ;
 +--------+--------------+---------+--------------+--------------+-----------------------------------------------------------+------------------+
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|clock_buff:buff                              ; clock_buff.qsys  ;
-; Altera ; ALTPLL       ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|altclk:clockyclock                           ; altclk.v         ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u0              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u1              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u2              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u3              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u4              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u5              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u6              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u7              ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:uvar            ; clock_buff.qsys  ;
-; Altera ; RAM: 2-PORT  ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram          ; ram_delay.v      ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff            ; clock_buff.qsys  ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string3|clock_buff:kpbuff            ; clock_buff.qsys  ;
-; Altera ; RAM: 2-PORT  ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string3|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string4|clock_buff:kpbuff            ; clock_buff.qsys  ;
-; Altera ; RAM: 2-PORT  ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string4|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string5|clock_buff:kpbuff            ; clock_buff.qsys  ;
-; Altera ; RAM: 2-PORT  ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string5|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
-; N/A    ; altclkctrl   ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string6|clock_buff:kpbuff            ; clock_buff.qsys  ;
-; Altera ; RAM: 2-PORT  ; 16.1    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string6|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|clock_buff:buff                              ; clock_buff.qsys  ;
+; Altera ; ALTPLL       ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|altclk:clockyclock                           ; altclk.v         ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u0              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u1              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u2              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u3              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u4              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u5              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u6              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:u7              ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|multi_clk_div:div|clock_buff:uvar            ; clock_buff.qsys  ;
+; Altera ; RAM: 2-PORT  ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram          ; ram_delay.v      ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff            ; clock_buff.qsys  ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string3|clock_buff:kpbuff            ; clock_buff.qsys  ;
+; Altera ; RAM: 2-PORT  ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string3|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string4|clock_buff:kpbuff            ; clock_buff.qsys  ;
+; Altera ; RAM: 2-PORT  ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string4|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string5|clock_buff:kpbuff            ; clock_buff.qsys  ;
+; Altera ; RAM: 2-PORT  ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string5|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
+; N/A    ; altclkctrl   ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string6|clock_buff:kpbuff            ; clock_buff.qsys  ;
+; Altera ; RAM: 2-PORT  ; 17.0    ; N/A          ; N/A          ; |adc_mic_lcd|KP_main:string6|ram_4096_32bit:shift_reg_ram ; ram_4096_32bit.v ;
 +--------+--------------+---------+--------------+--------------+-----------------------------------------------------------+------------------+
 
 
@@ -2002,12 +1995,13 @@ Encoding Type: Safe One-Hot
 ; KP_main:string3|newfilter:filt0|del[6][2]   ; Lost fanout                            ;
 ; KP_main:string3|newfilter:filt0|del[5][2]   ; Lost fanout                            ;
 ; KP_main:string3|newfilter:filt0|del[4][2]   ; Lost fanout                            ;
+; sub0[0]                                     ; Lost fanout                            ;
+; presub[0]                                   ; Lost fanout                            ;
 ; KP_delay:effect|d[0]                        ; Lost fanout                            ;
 ; KP_main:string6|d[0,1]                      ; Lost fanout                            ;
 ; KP_main:string5|d[0,1]                      ; Lost fanout                            ;
 ; KP_main:string4|d[0,1]                      ; Lost fanout                            ;
 ; KP_main:string3|d[0,1]                      ; Lost fanout                            ;
-; multi_clk_div:div|time_base_counter5        ; Lost fanout                            ;
 ; multi_clk_div:div|time_base_counter6        ; Lost fanout                            ;
 ; multi_clk_div:div|time_base_counter7        ; Lost fanout                            ;
 ; KP_delay:effect|rd_ptr[0]                   ; Merged with KP_delay:effect|wr_ptr[0]  ;
@@ -2067,7 +2061,7 @@ Encoding Type: Safe One-Hot
 ; KP_main:string3|rd_ptr[9]                   ; Merged with KP_main:string3|wr_ptr[9]  ;
 ; DAC16:dac1|ST~2                             ; Lost fanout                            ;
 ; DAC16:dac1|ST~3                             ; Lost fanout                            ;
-; Total Number of Removed Registers = 1441    ;                                        ;
+; Total Number of Removed Registers = 1442    ;                                        ;
 +---------------------------------------------+----------------------------------------+
 
 
@@ -3342,9 +3336,9 @@ Encoding Type: Safe One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1018  ;
-; Number of registers using Synchronous Clear  ; 200   ;
-; Number of registers using Synchronous Load   ; 10    ;
+; Total registers                              ; 1067  ;
+; Number of registers using Synchronous Clear  ; 201   ;
+; Number of registers using Synchronous Load   ; 33    ;
 ; Number of registers using Asynchronous Clear ; 33    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 137   ;
@@ -3357,9 +3351,9 @@ Encoding Type: Safe One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; multi_clk_div:div|time_base_counter0   ; 2       ;
 ; multi_clk_div:div|time_base_counter4   ; 2       ;
 ; multi_clk_div:div|time_base_counter2   ; 2       ;
+; multi_clk_div:div|time_base_counter0   ; 2       ;
 ; Total number of inverted registers = 3 ;         ;
 +----------------------------------------+---------+
 
@@ -3369,18 +3363,20 @@ Encoding Type: Safe One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_delay:effect|d[1]      ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string6|d[2]      ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string5|d[21]     ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string4|d[7]      ;
-; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string3|d[21]     ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|lfsr:noise|out[16]        ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[1]       ;
-; 6:1                ; 15 bits   ; 60 LEs        ; 15 LEs               ; 45 LEs                 ; Yes        ; |adc_mic_lcd|KP_delay:effect|count[12] ;
-; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string6|count[9]  ;
-; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string5|count[8]  ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_delay:effect|d[19]     ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string6|d[16]     ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string5|d[13]     ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string4|d[12]     ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|KP_main:string3|d[16]     ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |adc_mic_lcd|lfsr:noise|out[7]         ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |adc_mic_lcd|DAC16:dac1|RDATA[2]       ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |adc_mic_lcd|KP_delay:effect|count[2]  ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string6|count[10] ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string5|count[3]  ;
 ; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string4|count[2]  ;
-; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string3|count[6]  ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |adc_mic_lcd|KP_main:string3|count[8]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |adc_mic_lcd|ShiftRight0               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |adc_mic_lcd|ShiftRight0               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
 
 
@@ -4318,41 +4314,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +---------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: KP_delay:effect|lpm_mult:Mult0 ;
-+------------------------------------------------+---------+----------------------+
-; Parameter Name                                 ; Value   ; Type                 ;
-+------------------------------------------------+---------+----------------------+
-; AUTO_CARRY_CHAINS                              ; ON      ; AUTO_CARRY           ;
-; IGNORE_CARRY_BUFFERS                           ; OFF     ; IGNORE_CARRY         ;
-; AUTO_CASCADE_CHAINS                            ; ON      ; AUTO_CASCADE         ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF     ; IGNORE_CASCADE       ;
-; LPM_WIDTHA                                     ; 16      ; Untyped              ;
-; LPM_WIDTHB                                     ; 8       ; Untyped              ;
-; LPM_WIDTHP                                     ; 24      ; Untyped              ;
-; LPM_WIDTHR                                     ; 24      ; Untyped              ;
-; LPM_WIDTHS                                     ; 1       ; Untyped              ;
-; LPM_REPRESENTATION                             ; SIGNED  ; Untyped              ;
-; LPM_PIPELINE                                   ; 0       ; Untyped              ;
-; LATENCY                                        ; 0       ; Untyped              ;
-; INPUT_A_IS_CONSTANT                            ; NO      ; Untyped              ;
-; INPUT_B_IS_CONSTANT                            ; YES     ; Untyped              ;
-; USE_EAB                                        ; OFF     ; Untyped              ;
-; MAXIMIZE_SPEED                                 ; 5       ; Untyped              ;
-; DEVICE_FAMILY                                  ; MAX 10  ; Untyped              ;
-; CARRY_CHAIN                                    ; MANUAL  ; Untyped              ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT     ; TECH_MAPPER_APEX20K  ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO    ; Untyped              ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0       ; Untyped              ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0       ; Untyped              ;
-; CBXI_PARAMETER                                 ; NOTHING ; Untyped              ;
-; INPUT_A_FIXED_VALUE                            ; Bx      ; Untyped              ;
-; INPUT_B_FIXED_VALUE                            ; Bx      ; Untyped              ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF     ; Untyped              ;
-+------------------------------------------------+---------+----------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: KP_delay:effect|lpm_mult:Mult1 ;
 +------------------------------------------------+----------+---------------------+
 ; Parameter Name                                 ; Value    ; Type                ;
 +------------------------------------------------+----------+---------------------+
@@ -4369,7 +4330,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; LPM_PIPELINE                                   ; 0        ; Untyped             ;
 ; LATENCY                                        ; 0        ; Untyped             ;
 ; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
-; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; YES      ; Untyped             ;
 ; USE_EAB                                        ; OFF      ; Untyped             ;
 ; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
 ; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
@@ -4378,7 +4339,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
 ; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
 ; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
-; CBXI_PARAMETER                                 ; mult_qgs ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_eks ; Untyped             ;
 ; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
 ; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
 ; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
@@ -4612,7 +4573,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+--------------------------------+
 ; Name                                  ; Value                          ;
 +---------------------------------------+--------------------------------+
-; Number of entity instances            ; 10                             ;
+; Number of entity instances            ; 9                              ;
 ; Entity Instance                       ; KP_main:string3|lpm_mult:Mult0 ;
 ;     -- LPM_WIDTHA                     ; 16                             ;
 ;     -- LPM_WIDTHB                     ; 8                              ;
@@ -4658,23 +4619,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
 ;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
 ; Entity Instance                       ; KP_delay:effect|lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 16                             ;
-;     -- LPM_WIDTHB                     ; 8                              ;
-;     -- LPM_WIDTHP                     ; 24                             ;
-;     -- LPM_REPRESENTATION             ; SIGNED                         ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                             ;
-;     -- INPUT_B_IS_CONSTANT            ; YES                            ;
-;     -- USE_EAB                        ; OFF                            ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                             ;
-; Entity Instance                       ; KP_delay:effect|lpm_mult:Mult1 ;
 ;     -- LPM_WIDTHA                     ; 24                             ;
 ;     -- LPM_WIDTHB                     ; 13                             ;
 ;     -- LPM_WIDTHP                     ; 37                             ;
 ;     -- LPM_REPRESENTATION             ; SIGNED                         ;
 ;     -- INPUT_A_IS_CONSTANT            ; NO                             ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                             ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                            ;
 ;     -- USE_EAB                        ; OFF                            ;
 ;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                           ;
 ;     -- INPUT_A_FIXED_VALUE            ; Bx                             ;
@@ -4765,19 +4715,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+---------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "KP_delay:effect"                                                                                                                                                                                  ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port                ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; dnoise              ; Input  ; Warning  ; Input port expression (24 bits) is wider than the input port (16 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; velocity            ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
-; decay[5..0]         ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
-; filtsw              ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
-; delay_length        ; Input  ; Warning  ; Input port expression (16 bits) is wider than the input port (15 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; delay_length[14..0] ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
-; qout[1..0]          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-+---------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------+
+; Port Connectivity Checks: "KP_delay:effect"           ;
++---------------------+-------+----------+--------------+
+; Port                ; Type  ; Severity ; Details      ;
++---------------------+-------+----------+--------------+
+; velocity            ; Input ; Info     ; Stuck at VCC ;
+; decay               ; Input ; Info     ; Stuck at VCC ;
+; filtsw              ; Input ; Info     ; Stuck at GND ;
+; delay_length[14..0] ; Input ; Info     ; Stuck at VCC ;
+; delay_length[15]    ; Input ; Info     ; Stuck at GND ;
++---------------------+-------+----------+--------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------+
@@ -4863,7 +4811,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Port      ; Type   ; Severity ; Details                                                                             ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 ; divoutput ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; div64     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; div2      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; div128    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; div256    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
@@ -4885,33 +4833,34 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 60                          ;
-; cycloneiii_clkctrl    ; 11                          ;
-; cycloneiii_ff         ; 1018                        ;
+; cycloneiii_clkctrl    ; 12                          ;
+; cycloneiii_ff         ; 1067                        ;
 ;     CLR               ; 2                           ;
 ;     ENA               ; 97                          ;
 ;     ENA CLR           ; 31                          ;
 ;     ENA SLD           ; 9                           ;
-;     SCLR              ; 200                         ;
+;     SCLR              ; 178                         ;
+;     SCLR SLD          ; 23                          ;
 ;     SLD               ; 1                           ;
-;     plain             ; 678                         ;
+;     plain             ; 726                         ;
 ; cycloneiii_io_obuf    ; 6                           ;
-; cycloneiii_lcell_comb ; 1779                        ;
-;     arith             ; 819                         ;
-;         2 data inputs ; 172                         ;
-;         3 data inputs ; 647                         ;
-;     normal            ; 960                         ;
-;         0 data inputs ; 6                           ;
+; cycloneiii_lcell_comb ; 1834                        ;
+;     arith             ; 834                         ;
+;         2 data inputs ; 165                         ;
+;         3 data inputs ; 669                         ;
+;     normal            ; 1000                        ;
+;         0 data inputs ; 5                           ;
 ;         1 data inputs ; 49                          ;
-;         2 data inputs ; 442                         ;
-;         3 data inputs ; 200                         ;
-;         4 data inputs ; 263                         ;
+;         2 data inputs ; 440                         ;
+;         3 data inputs ; 248                         ;
+;         4 data inputs ; 258                         ;
 ; cycloneiii_mac_mult   ; 10                          ;
 ; cycloneiii_mac_out    ; 10                          ;
 ; cycloneiii_pll        ; 1                           ;
 ; cycloneiii_ram_block  ; 180                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 8.30                        ;
-; Average LUT depth     ; 3.23                        ;
+; Max LUT depth         ; 7.50                        ;
+; Average LUT depth     ; 3.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -4920,7 +4869,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -4929,8 +4878,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Sep 24 23:41:49 2017
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Mon Sep 25 11:53:44 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file v/newfilter.v
@@ -5059,7 +5008,7 @@ Info (12133): Instantiated megafunction "altclk:clockyclock|altpll:altpll_compon
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altclk_altpll1.v
     Info (12023): Found entity 1: altclk_altpll1 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altclk_altpll1.v Line: 30
-Info (12128): Elaborating entity "altclk_altpll1" for hierarchy "altclk:clockyclock|altpll:altpll_component|altclk_altpll1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "altclk_altpll1" for hierarchy "altclk:clockyclock|altpll:altpll_component|altclk_altpll1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "multi_clk_div" for hierarchy "multi_clk_div:div" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 246
 Warning (10036): Verilog HDL or VHDL warning at multi_clk_div.v(24): object "time_base_counter8" assigned a value but never read File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/multi_clk_div.v Line: 24
 Info (12128): Elaborating entity "KP_main" for hierarchy "KP_main:string3" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 260
@@ -5089,9 +5038,9 @@ Info (12133): Instantiated megafunction "KP_main:string3|ram_4096_32bit:shift_re
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_96r1.tdf
     Info (12023): Found entity 1: altsyncram_96r1 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_96r1.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_96r1" for hierarchy "KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "altsyncram_96r1" for hierarchy "KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "newfilter" for hierarchy "KP_main:string3|newfilter:filt0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 169
-Info (12128): Elaborating entity "KP_delay" for hierarchy "KP_delay:effect" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 319
+Info (12128): Elaborating entity "KP_delay" for hierarchy "KP_delay:effect" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 346
 Info (12128): Elaborating entity "ram_delay" for hierarchy "KP_delay:effect|ram_delay:delay_ram" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 161
 Info (12128): Elaborating entity "altsyncram" for hierarchy "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/ram_delay.v Line: 95
 Info (12130): Elaborated megafunction instantiation "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/ram_delay.v Line: 95
@@ -5118,16 +5067,16 @@ Info (12133): Instantiated megafunction "KP_delay:effect|ram_delay:delay_ram|alt
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4kq1.tdf
     Info (12023): Found entity 1: altsyncram_4kq1 File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_4kq1.tdf Line: 32
-Info (12128): Elaborating entity "altsyncram_4kq1" for hierarchy "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_4kq1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "altsyncram_4kq1" for hierarchy "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_4kq1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_c7a.tdf
     Info (12023): Found entity 1: decode_c7a File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/decode_c7a.tdf Line: 23
 Info (12128): Elaborating entity "decode_c7a" for hierarchy "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_4kq1:auto_generated|decode_c7a:decode2" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_4kq1.tdf Line: 46
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_a3b.tdf
     Info (12023): Found entity 1: mux_a3b File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mux_a3b.tdf Line: 23
 Info (12128): Elaborating entity "mux_a3b" for hierarchy "KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_4kq1:auto_generated|mux_a3b:mux3" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/altsyncram_4kq1.tdf Line: 47
-Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:noise" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 334
-Info (12128): Elaborating entity "ADC_SEG_LED" for hierarchy "ADC_SEG_LED:segR" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 342
-Info (12128): Elaborating entity "DAC16" for hierarchy "DAC16:dac1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 427
+Info (12128): Elaborating entity "lfsr" for hierarchy "lfsr:noise" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 361
+Info (12128): Elaborating entity "ADC_SEG_LED" for hierarchy "ADC_SEG_LED:segR" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 369
+Info (12128): Elaborating entity "DAC16" for hierarchy "DAC16:dac1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 454
 Warning (10230): Verilog HDL assignment warning at DAC16.v(39): truncated value with size 32 to match size of target (5) File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/DAC16.v Line: 39
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
@@ -5149,13 +5098,12 @@ Info (284007): State machine "|adc_mic_lcd|KP_main:string6|KP_state" will be imp
 Info (284007): State machine "|adc_mic_lcd|KP_main:string5|KP_state" will be implemented as a safe state machine. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 28
 Info (284007): State machine "|adc_mic_lcd|KP_main:string4|KP_state" will be implemented as a safe state machine. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 28
 Info (284007): State machine "|adc_mic_lcd|KP_main:string3|KP_state" will be implemented as a safe state machine. File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 28
-Info (278001): Inferred 10 megafunctions from design logic
+Info (278001): Inferred 9 megafunctions from design logic
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string3|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 18
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string3|Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 21
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string4|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 18
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string4|Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 21
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_delay:effect|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 18
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_delay:effect|Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_delay:effect|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string5|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 18
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string5|Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 21
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "KP_main:string6|Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 18
@@ -5171,19 +5119,19 @@ Info (12133): Instantiated megafunction "KP_main:string3|lpm_mult:Mult0" with th
     Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
     Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/multcore.tdf Line: 229
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/multcore.tdf Line: 229
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[1]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_3vg.tdf
     Info (12023): Found entity 1: add_sub_3vg File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_3vg.tdf Line: 23
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8kg.tdf
     Info (12023): Found entity 1: add_sub_8kg File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_8kg.tdf Line: 23
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/mpar_add.tdf Line: 115
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_6vg.tdf
     Info (12023): Found entity 1: add_sub_6vg File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/add_sub_6vg.tdf Line: 23
-Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
+Info (12131): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "KP_main:string3|lpm_mult:Mult0" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
 Info (12130): Elaborated megafunction instantiation "KP_main:string3|lpm_mult:Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 21
 Info (12133): Instantiated megafunction "KP_main:string3|lpm_mult:Mult1" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_main.v Line: 21
     Info (12134): Parameter "LPM_WIDTHA" = "24"
@@ -5197,19 +5145,8 @@ Info (12133): Instantiated megafunction "KP_main:string3|lpm_mult:Mult1" with th
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/mult_qgs.tdf
     Info (12023): Found entity 1: mult_qgs File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_qgs.tdf Line: 31
-Info (12130): Elaborated megafunction instantiation "KP_delay:effect|lpm_mult:Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 18
-Info (12133): Instantiated megafunction "KP_delay:effect|lpm_mult:Mult0" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 18
-    Info (12134): Parameter "LPM_WIDTHA" = "16"
-    Info (12134): Parameter "LPM_WIDTHB" = "8"
-    Info (12134): Parameter "LPM_WIDTHP" = "24"
-    Info (12134): Parameter "LPM_WIDTHR" = "24"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12130): Elaborated megafunction instantiation "KP_delay:effect|lpm_mult:Mult1" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
-Info (12133): Instantiated megafunction "KP_delay:effect|lpm_mult:Mult1" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
+Info (12130): Elaborated megafunction instantiation "KP_delay:effect|lpm_mult:Mult0" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
+Info (12133): Instantiated megafunction "KP_delay:effect|lpm_mult:Mult0" with the following parameter: File: C:/Users/ben/Documents/GitHub/KPCDASS2017/V/KP_delay.v Line: 21
     Info (12134): Parameter "LPM_WIDTHA" = "24"
     Info (12134): Parameter "LPM_WIDTHB" = "13"
     Info (12134): Parameter "LPM_WIDTHP" = "37"
@@ -5217,9 +5154,11 @@ Info (12133): Instantiated megafunction "KP_delay:effect|lpm_mult:Mult1" with th
     Info (12134): Parameter "LPM_WIDTHS" = "1"
     Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
     Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
     Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_eks.tdf
+    Info (12023): Found entity 1: mult_eks File: C:/Users/ben/Documents/GitHub/KPCDASS2017/db/mult_eks.tdf Line: 31
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 305 buffer(s)
     Info (13019): Ignored 305 SOFT buffer(s)
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
@@ -5252,28 +5191,25 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "GPIO[6]" is stuck at GND File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 69
     Warning (13410): Pin "GPIO[7]" is stuck at GND File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 69
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1386 registers lost all their fanouts during netlist optimizations.
+Info (17049): 1387 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/ben/Documents/GitHub/KPCDASS2017/output_files/adc_mic_lcd.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 2 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 4 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 20
-    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 20
-    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 20
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_mic_lcd.v Line: 20
-Info (21057): Implemented 2181 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2243 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 36 output pins
     Info (21060): Implemented 6 bidirectional pins
-    Info (21061): Implemented 1909 logic cells
+    Info (21061): Implemented 1970 logic cells
     Info (21064): Implemented 180 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 20 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 62 warnings
-    Info: Peak virtual memory: 701 megabytes
-    Info: Processing ended: Sun Sep 24 23:42:06 2017
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:34
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 59 warnings
+    Info: Peak virtual memory: 704 megabytes
+    Info: Processing ended: Mon Sep 25 11:54:03 2017
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:38
 
 
 +------------------------------------------+

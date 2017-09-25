@@ -17,7 +17,7 @@ output wire signed [23:0] qout //output to top level
 wire signed [23:0] start_level; //initial level
 assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
 
-wire signed [47:0] dfilter_gain;//limiting feedback allows for faster decay
+wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
 assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM

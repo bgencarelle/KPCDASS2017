@@ -1,6 +1,6 @@
 Assembler report for adc_mic_lcd
-Sun Sep 24 23:42:35 2017
-Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Mon Sep 25 11:54:35 2017
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
 ---------------------
@@ -18,7 +18,7 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2016  Intel Corporation. All rights reserved.
+Copyright (C) 2017  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Sep 24 23:42:35 2017 ;
+; Assembler Status      ; Successful - Mon Sep 25 11:54:35 2017 ;
 ; Revision Name         ; adc_mic_lcd                           ;
 ; Top-level Entity Name ; adc_mic_lcd                           ;
 ; Family                ; MAX 10                                ;
@@ -67,9 +67,8 @@ agreement for further details.
 +----------------+---------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
-; Device         ; 10M50DAF484C6GES                                                                ;
-; JTAG usercode  ; 0x003DF4CE                                                                      ;
-; Checksum       ; 0x003DF4CE                                                                      ;
+; JTAG usercode  ; 0x003DE678                                                                      ;
+; Checksum       ; 0x003DE678                                                                      ;
 +----------------+---------------------------------------------------------------------------------+
 
 
@@ -78,14 +77,14 @@ agreement for further details.
 +--------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
-    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Sep 24 23:42:31 2017
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Mon Sep 25 11:54:31 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 581 megabytes
-    Info: Processing ended: Sun Sep 24 23:42:35 2017
+    Info: Peak virtual memory: 580 megabytes
+    Info: Processing ended: Mon Sep 25 11:54:35 2017
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 

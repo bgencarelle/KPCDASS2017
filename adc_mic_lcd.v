@@ -300,16 +300,43 @@ KP_main string6(
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
-wire signed [23:0] submix;
-assign submix = $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
+
+					
+reg signed [25:0]presub;
+reg signed [23:0]sub0;
+reg signed [23:0]sub1;
+
+	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
+	begin
+ //	//a bit of borrowed code
+    presub <= $signed(MEM7>>>(SW[2:0]))+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
+					$signed(MEM1>>>2)+ $signed(MEM0>>>2);;
+	 if (presub[25] == presub[23])
+		begin
+      // Top two bits equal: no signed overflow.
+      sub0 <= $signed(presub[23:0]);  // truncate sum back to 8 bits.
+		end
+    else
+      if (presub[25] == 1'b0)
+        begin
+        sub0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
+		  end
+      else
+			begin
+        sub0 <= 24'd8388608;   
+			end
+		
+  end
+ wire signed [23:0] submix;
+assign submix = sub0;
 		  
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk2),
+		  .audio_clk(a_clk64),
 		   .dnoise(submix),
 		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
+		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
 		  .filtsw(3'b000),
 		  .trig(KEY[0]),

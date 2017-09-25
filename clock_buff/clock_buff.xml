@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2017.07.01.11:32:09"
+ date="2017.09.25.11:34:23"
  outputDirectory="C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/">
  <perimeter>
   <parameter
@@ -46,12 +46,12 @@
  </perimeter>
  <entity
    path=""
-   parameterizationKey="clock_buff:1.0:AUTO_DEVICE=10M50DAF484C6GES,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=6,AUTO_GENERATION_ID=1498901528,AUTO_UNIQUE_ID=(altclkctrl:16.1:CLOCK_TYPE=1,DEVICE_FAMILY=MAX 10,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false)"
+   parameterizationKey="clock_buff:1.0:AUTO_DEVICE=10M50DAF484C6GES,AUTO_DEVICE_FAMILY=MAX 10,AUTO_DEVICE_SPEEDGRADE=6,AUTO_GENERATION_ID=1506332063,AUTO_UNIQUE_ID=(altclkctrl:17.0:CLOCK_TYPE=1,DEVICE_FAMILY=MAX 10,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false)"
    instancePathKey="clock_buff"
    kind="clock_buff"
    version="1.0"
    name="clock_buff">
-  <parameter name="AUTO_GENERATION_ID" value="1498901528" />
+  <parameter name="AUTO_GENERATION_ID" value="1506332063" />
   <parameter name="AUTO_DEVICE" value="10M50DAF484C6GES" />
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
   <parameter name="AUTO_UNIQUE_ID" value="" />
@@ -72,7 +72,7 @@
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="C:/intelfpga_lite/16.1/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
+       path="C:/intelfpga_lite/17.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Debug" culprit="clock_buff">queue size: 0 starting:clock_buff "clock_buff"</message>
@@ -91,16 +91,16 @@
    <message level="Debug" culprit="clock_buff"><![CDATA["<b>clock_buff</b>" reuses <b>altclkctrl</b> "<b>submodules/clock_buff_altclkctrl_0</b>"]]></message>
    <message level="Debug" culprit="clock_buff">queue size: 0 starting:altclkctrl "submodules/clock_buff_altclkctrl_0"</message>
    <message level="Info" culprit="altclkctrl_0">Generating top-level entity clock_buff_altclkctrl_0.</message>
-   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/16.1/quartus/bin64/.</message>
+   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/17.0/quartus/bin64/.</message>
    <message level="Info" culprit="altclkctrl_0"><![CDATA["<b>clock_buff</b>" instantiated <b>altclkctrl</b> "<b>altclkctrl_0</b>"]]></message>
   </messages>
  </entity>
  <entity
    path="submodules/"
-   parameterizationKey="altclkctrl:16.1:CLOCK_TYPE=1,DEVICE_FAMILY=MAX 10,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false"
+   parameterizationKey="altclkctrl:17.0:CLOCK_TYPE=1,DEVICE_FAMILY=MAX 10,ENA_REGISTER_MODE=1,GUI_USE_ENA=false,NUMBER_OF_CLOCKS=1,USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION=false"
    instancePathKey="clock_buff:.:altclkctrl_0"
    kind="altclkctrl"
-   version="16.1"
+   version="17.0"
    name="clock_buff_altclkctrl_0">
   <parameter name="NUMBER_OF_CLOCKS" value="1" />
   <parameter name="USE_GLITCH_FREE_SWITCH_OVER_IMPLEMENTATION" value="false" />
@@ -117,14 +117,14 @@
   <childGeneratedFiles/>
   <sourceFiles>
    <file
-       path="C:/intelfpga_lite/16.1/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
+       path="C:/intelfpga_lite/17.0/ip/altera/megafunctions/altclkctrl/altclkctrl_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="clock_buff" as="altclkctrl_0" />
   <messages>
    <message level="Debug" culprit="clock_buff">queue size: 0 starting:altclkctrl "submodules/clock_buff_altclkctrl_0"</message>
    <message level="Info" culprit="altclkctrl_0">Generating top-level entity clock_buff_altclkctrl_0.</message>
-   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/16.1/quartus/bin64/.</message>
+   <message level="Debug" culprit="altclkctrl_0">Current quartus bindir: C:/intelfpga_lite/17.0/quartus/bin64/.</message>
    <message level="Info" culprit="altclkctrl_0"><![CDATA["<b>clock_buff</b>" instantiated <b>altclkctrl</b> "<b>altclkctrl_0</b>"]]></message>
   </messages>
  </entity>

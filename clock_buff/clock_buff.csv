@@ -1,0 +1,18 @@
+# system info clock_buff on 2017.09.25.11:34:21
+system_info:
+name,value
+DEVICE,10M50DAF484C6GES
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1506332060
+#
+#
+# Files generated for clock_buff on 2017.09.25.11:34:21
+files:
+filepath,kind,attributes,module,is_top
+simulation/clock_buff.v,VERILOG,,clock_buff,true
+simulation/submodules/clock_buff_altclkctrl_0.v,VERILOG,,clock_buff_altclkctrl_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+clock_buff.altclkctrl_0,clock_buff_altclkctrl_0
