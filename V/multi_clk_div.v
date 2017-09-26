@@ -25,11 +25,7 @@ module multi_clk_div(
 		
 		always@ (posedge clk)
 				time_base_counter0 <= ~time_base_counter0;		
-	
-# Create a clock and a divide-by-2 generated clock
-create_clock -period 10 [get_ports clk]
-create_generated_clock -divide_by 2 -source [get_ports clk] -name clkdiv [get_registers clkdiv]
-	
+
 	
 	clock_buff u0 (
 		.inclk  ( time_base_counter0),  //  altclkctrl_input.inclk

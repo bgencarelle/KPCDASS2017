@@ -136,7 +136,7 @@ reg signed [23:0]sum1;
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+    presum <= $signed(MEM7>>>1) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
     sum1 <= sum0;
 	 if (presum[24] == presum[23])
@@ -302,7 +302,7 @@ KP_main string6(
         );
 
 					
-reg signed [25:0]presub;
+reg signed [24:0]presub;
 reg signed [23:0]sub0;
 reg signed [23:0]sub1;
 
@@ -311,14 +311,14 @@ reg signed [23:0]sub1;
  //	//a bit of borrowed code
     presub <= $signed(MEM7)+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
-					$signed(MEM1>>>2)+ $signed(MEM0>>>2);
-	 if (presub[25] == presub[23])
+					$signed(MEM1>>>2);
+	 if (presub[24] == presub[23])
 		begin
       // Top two bits equal: no signed overflow.
       sub0 <= $signed(presub[23:0]);  // truncate sum back to 8 bits.
 		end
     else
-      if (presub[25] == 1'b0)
+      if (presub[24] == 1'b0)
         begin
         sub0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
 		  end
@@ -333,19 +333,20 @@ assign submix = sub0;
 		  
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk32),
-		   .dnoise(submix),
+		  .audio_clk(a_clk64),
+		   .dnoise(sub0<<1),
 		  .velocity(7'd127),
 		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
 		  .filtsw(SW[2:0]),
 		  .trig(KEY[0]),
-		  .delay_length(16'd32767),
+		  .delay_length(presub[22:9]+1023),//gates of hell
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );
 	
 
+	
 lfsr  noise(//easier to add more voices, shown to be marginally cheaper
 			.out24_7(NOISE7),
 			.out24_6(NOISE6),
