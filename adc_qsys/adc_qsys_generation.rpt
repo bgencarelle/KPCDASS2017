@@ -1,14 +1,79 @@
+Info: Starting: Create simulation model
+Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\simulation --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading KPCDASS2017/adc_qsys.qsys
+Progress: Reading input file
+Progress: Adding altpll_sys [altpll 17.0]
+Progress: Parameterizing module altpll_sys
+Progress: Adding clk_50 [clock_source 17.0]
+Progress: Parameterizing module clk_50
+Progress: Adding clock_bridge_sys [altera_clock_bridge 17.0]
+Progress: Parameterizing module clock_bridge_sys
+Progress: Adding modular_adc_0 [altera_modular_adc 17.0]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: adc_qsys.altpll_sys: altpll_sys.areset_conduit must be exported, or connected to a matching conduit.
+Warning: adc_qsys.altpll_sys: altpll_sys.pll_slave must be connected to an Avalon-MM master
+Info: adc_qsys: Generating adc_qsys "adc_qsys" for SIM_VERILOG
+Error: altpll_sys: Port phasecounterselect has width 4 in TCL, but 3 in the design file
+Info: altpll_sys: "adc_qsys" instantiated altpll "altpll_sys"
+Error: Generation stopped, 3 or more modules remaining
+Info: adc_qsys: Done "adc_qsys" with 4 modules, 1 files
+Error: qsys-generate failed with exit code 1: 2 Errors, 2 Warnings
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\adc_qsys.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\adc_qsys.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: Generating the following file(s) for RIVIERA simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --block-symbol-file --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading KPCDASS2017/adc_qsys.qsys
+Progress: Reading input file
+Progress: Adding altpll_sys [altpll 17.0]
+Progress: Parameterizing module altpll_sys
+Progress: Adding clk_50 [clock_source 17.0]
+Progress: Parameterizing module clk_50
+Progress: Adding clock_bridge_sys [altera_clock_bridge 17.0]
+Progress: Parameterizing module clock_bridge_sys
+Progress: Adding modular_adc_0 [altera_modular_adc 17.0]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: adc_qsys.altpll_sys: altpll_sys.areset_conduit must be exported, or connected to a matching conduit.
+Warning: adc_qsys.altpll_sys: altpll_sys.pll_slave must be connected to an Avalon-MM master
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
 Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --synthesis=VERILOG --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\synthesis --family="MAX 10" --part=10M50DAF484C6GES
 Progress: Loading KPCDASS2017/adc_qsys.qsys
 Progress: Reading input file
-Progress: Adding altpll_sys [altpll 16.1]
+Progress: Adding altpll_sys [altpll 17.0]
 Progress: Parameterizing module altpll_sys
-Progress: Adding clk_50 [clock_source 16.1]
+Progress: Adding clk_50 [clock_source 17.0]
 Progress: Parameterizing module clk_50
-Progress: Adding clock_bridge_sys [altera_clock_bridge 16.1]
+Progress: Adding clock_bridge_sys [altera_clock_bridge 17.0]
 Progress: Parameterizing module clock_bridge_sys
-Progress: Adding modular_adc_0 [altera_modular_adc 16.1]
+Progress: Adding modular_adc_0 [altera_modular_adc 17.0]
 Progress: Parameterizing module modular_adc_0
 Progress: Building connections
 Progress: Parameterizing connections

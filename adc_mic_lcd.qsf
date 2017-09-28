@@ -285,6 +285,10 @@ set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name SAFE_STATE_MACHINE ON
+set_global_assignment -name QIP_FILE adc_qsys/synthesis/adc_qsys.qip
+set_global_assignment -name VERILOG_FILE adc_qsys/simulation/adc_qsys.v
+set_global_assignment -name QDB_FILE simulation/modelsim/rtl_work/_lib1_0.qdb
+set_global_assignment -name QDB_FILE simulation/modelsim/rtl_work/_lib.qdb
 set_global_assignment -name VERILOG_FILE V/newfilter.v
 set_global_assignment -name VERILOG_FILE V/lfsr.v
 set_global_assignment -name HEX_FILE V/LOOP.hex

@@ -9,7 +9,7 @@ input wire signed [6:0] velocity,//velocity from MIDI or other source
 input wire [15:0] delay_length,//tuning
 input wire [2:0] filtsw,//filter choosing
 input wire [2:0] loops,//not currrently implemented
-input wire reverse,
+
 output wire signed [23:0] qout //output to top level
 );
 
@@ -19,7 +19,7 @@ output wire signed [23:0] qout //output to top level
 	);
 wire signed [23:0] start_level; //initial level
 assign start_level = $signed(dnoise);
-
+reg reverse =0;
 wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
 assign dfilter_gain = ($signed(dfilter) <<12); //* $signed({12'b0,decay}));
 
@@ -94,6 +94,7 @@ begin:KP_STATE_BEGIN
 	d <= $signed(dfilter_gain[35:12]);// in addition LPF, audio is gain staged by adjustable decay
 	rd_ptr <= count;
 	rd_ptr_rev <= delay_length - count;
+	if (rd_ptr_rev <= delay_length) reverse <= !reverse;
 	wr_ptr <= count;
 	count <= count + 1'b1;
 	if (trig_pulse != 1'b1)//if not triggered duriing playback, count up until RAM is full.

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="18channel"
+     kind="altera_modular_dual_adc"
+     version="All"
+     description="hope it works">
+   <parameter name="simfilename_ch6" value="" />
+   <parameter name="simfilename_ch7" value="" />
+   <parameter name="simfilename_ch8" value="" />
+   <parameter name="simfilename_ch9" value="" />
+   <parameter name="simfilename_ch2" value="" />
+   <parameter name="simfilename_ch3" value="" />
+   <parameter name="seq_order_slot_1_adc2" value="0" />
+   <parameter name="simfilename_ch4" value="" />
+   <parameter name="simfilename_ch5" value="" />
+   <parameter name="simfilename_ch0" value="" />
+   <parameter name="simfilename_ch1" value="" />
+   <parameter name="use_ch14" value="true" />
+   <parameter name="use_ch15" value="true" />
+   <parameter name="seq_order_slot_2_adc2" value="1" />
+   <parameter name="use_ch16" value="true" />
+   <parameter name="use_ch17" value="true" />
+   <parameter name="refsel_adc2" value="1" />
+   <parameter name="seq_order_length" value="9" />
+   <parameter name="clkdiv" value="2" />
+   <parameter name="use_tsd" value="false" />
+   <parameter name="en_thmax_ch13" value="false" />
+   <parameter name="en_thmax_ch14" value="false" />
+   <parameter name="en_thmax_ch15" value="false" />
+   <parameter name="en_thmax_ch16" value="false" />
+   <parameter name="en_thmax_ch10" value="false" />
+   <parameter name="en_thmax_ch11" value="false" />
+   <parameter name="en_thmax_ch12" value="false" />
+   <parameter name="en_thmax_ch17" value="false" />
+   <parameter name="en_thmax_ch7" value="false" />
+   <parameter name="seq_order_slot_4" value="3" />
+   <parameter name="seq_order_slot_9_adc2" value="8" />
+   <parameter name="en_thmax_ch6" value="false" />
+   <parameter name="seq_order_slot_5" value="4" />
+   <parameter name="en_thmax_ch9" value="false" />
+   <parameter name="seq_order_slot_6" value="5" />
+   <parameter name="seq_order_slot_6_adc2" value="5" />
+   <parameter name="en_thmax_ch8" value="false" />
+   <parameter name="seq_order_slot_7" value="6" />
+   <parameter name="en_thmax_ch3" value="false" />
+   <parameter name="en_thmax_ch2" value="false" />
+   <parameter name="seq_order_slot_1" value="0" />
+   <parameter name="seq_order_slot_3_adc2" value="2" />
+   <parameter name="en_thmax_ch5" value="false" />
+   <parameter name="seq_order_slot_2" value="1" />
+   <parameter name="en_thmax_ch4" value="false" />
+   <parameter name="seq_order_slot_3" value="2" />
+   <parameter name="en_thmax_ch1" value="false" />
+   <parameter name="en_thmax_ch0" value="false" />
+   <parameter name="seq_order_slot_8" value="7" />
+   <parameter name="en_tsd_min" value="false" />
+   <parameter name="seq_order_slot_9" value="8" />
+   <parameter name="en_thmin_ch3" value="false" />
+   <parameter name="en_thmin_ch2" value="false" />
+   <parameter name="prescaler_ch17" value="false" />
+   <parameter name="en_thmin_ch1" value="false" />
+   <parameter name="en_thmin_ch0" value="false" />
+   <parameter name="sample_rate" value="0" />
+   <parameter name="en_thmin_ch9" value="false" />
+   <parameter name="en_thmin_ch8" value="false" />
+   <parameter name="en_tsd_max" value="false" />
+   <parameter name="en_thmin_ch7" value="false" />
+   <parameter name="en_thmin_ch6" value="false" />
+   <parameter name="en_thmin_ch5" value="false" />
+   <parameter name="en_thmin_ch4" value="false" />
+   <parameter name="use_ch0" value="true" />
+   <parameter name="use_ch3" value="true" />
+   <parameter name="en_thmin_ch17" value="false" />
+   <parameter name="use_ch4" value="true" />
+   <parameter name="CORE_VAR" value="0" />
+   <parameter name="use_ch1" value="true" />
+   <parameter name="en_thmin_ch15" value="false" />
+   <parameter name="use_ch2" value="true" />
+   <parameter name="en_thmin_ch16" value="false" />
+   <parameter name="use_ch7" value="true" />
+   <parameter name="use_ch8" value="true" />
+   <parameter name="use_ch5" value="true" />
+   <parameter name="use_ch6" value="true" />
+   <parameter name="use_ch9" value="true" />
+   <parameter name="seq_order_slot_8_adc2" value="7" />
+   <parameter name="refsel" value="1" />
+   <parameter name="prescaler_ch8" value="true" />
+   <parameter name="seq_order_slot_7_adc2" value="6" />
+   <parameter name="en_thmin_ch13" value="false" />
+   <parameter name="en_thmin_ch14" value="false" />
+   <parameter name="en_thmin_ch11" value="false" />
+   <parameter name="en_thmin_ch12" value="false" />
+   <parameter name="en_thmin_ch10" value="false" />
+   <parameter name="ENABLE_DEBUG" value="0" />
+   <parameter name="seq_order_slot_4_adc2" value="3" />
+   <parameter name="seq_order_slot_5_adc2" value="4" />
+   <parameter name="use_ch10" value="true" />
+   <parameter name="use_ch11" value="true" />
+   <parameter name="use_ch12" value="true" />
+   <parameter name="use_ch13" value="true" />
+   <parameter name="enable_usr_sim" value="0" />
+   <parameter name="simfilename_ch17" value="" />
+   <parameter name="simfilename_ch15" value="" />
+   <parameter name="simfilename_ch16" value="" />
+   <parameter name="simfilename_ch13" value="" />
+   <parameter name="simfilename_ch14" value="" />
+   <parameter name="simfilename_ch11" value="" />
+   <parameter name="simfilename_ch12" value="" />
+   <parameter name="simfilename_ch10" value="" />
+  </preset>
+ </presets>
+</ip>

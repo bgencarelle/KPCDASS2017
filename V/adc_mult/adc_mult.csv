@@ -1,0 +1,39 @@
+# system info adc_mult on 2017.09.28.23:17:13
+system_info:
+name,value
+DEVICE,10M50DAF484C6GES
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1506633432
+#
+#
+# Files generated for adc_mult on 2017.09.28.23:17:13
+files:
+filepath,kind,attributes,module,is_top
+simulation/adc_mult.v,VERILOG,,adc_mult,true
+simulation/submodules/adc_mult_modular_dual_adc_0.v,VERILOG,,adc_mult_modular_dual_adc_0,false
+simulation/submodules/altera_modular_adc_control.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/altera_modular_adc_control_avrg_fifo.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/altera_modular_adc_control_fsm.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/chsel_code_converter_sw_to_hw.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/fiftyfivenm_adcblock_primitive_wrapper.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/fiftyfivenm_adcblock_top_wrapper.v,VERILOG,,altera_modular_adc_control,false
+simulation/submodules/altera_modular_adc_sequencer.v,VERILOG,,altera_modular_adc_sequencer,false
+simulation/submodules/altera_modular_adc_sequencer_csr.v,VERILOG,,altera_modular_adc_sequencer,false
+simulation/submodules/altera_modular_adc_sequencer_ctrl.v,VERILOG,,altera_modular_adc_sequencer,false
+simulation/submodules/altera_modular_adc_sample_store.v,VERILOG,,altera_modular_adc_sample_store,false
+simulation/submodules/altera_modular_adc_sample_store_ram.v,VERILOG,,altera_modular_adc_sample_store,false
+simulation/submodules/altera_modular_adc_conduit_splitter.v,VERILOG,,altera_modular_adc_conduit_splitter,false
+simulation/submodules/altera_modular_adc_dual_sync.v,VERILOG,,altera_modular_adc_dual_sync,false
+simulation/submodules/altera_modular_adc_response_merge.v,VERILOG,,altera_modular_adc_response_merge,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+adc_mult.modular_dual_adc_0,adc_mult_modular_dual_adc_0
+adc_mult.modular_dual_adc_0.control_internal,altera_modular_adc_control
+adc_mult.modular_dual_adc_0.control_internal_2,altera_modular_adc_control
+adc_mult.modular_dual_adc_0.sequencer_internal,altera_modular_adc_sequencer
+adc_mult.modular_dual_adc_0.sample_store_internal,altera_modular_adc_sample_store
+adc_mult.modular_dual_adc_0.conduit_splitter_internal,altera_modular_adc_conduit_splitter
+adc_mult.modular_dual_adc_0.dual_sync_internal,altera_modular_adc_dual_sync
+adc_mult.modular_dual_adc_0.response_merge_internal,altera_modular_adc_response_merge

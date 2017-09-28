@@ -1,12 +1,12 @@
-# system info adc_qsys on 2017.06.12.16:55:12
+# system info adc_qsys on 2017.09.28.23:22:40
 system_info:
 name,value
-DEVICE,10M50DAF484I7G
+DEVICE,10M50DAF484C6GES
 DEVICE_FAMILY,MAX 10
-GENERATION_ID,1497279309
+GENERATION_ID,1506633757
 #
 #
-# Files generated for adc_qsys on 2017.06.12.16:55:12
+# Files generated for adc_qsys on 2017.09.28.23:22:40
 files:
 filepath,kind,attributes,module,is_top
 simulation/adc_qsys.v,VERILOG,,adc_qsys,true

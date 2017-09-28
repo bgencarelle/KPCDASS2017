@@ -1,5 +1,5 @@
 IP Upgrade report for adc_mic_lcd
-Mon Sep 25 11:34:23 2017
+Thu Sep 28 23:22:45 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -8,7 +8,7 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 ---------------------
   1. Legal Notice
   2. IP Upgrade Summary
-  3. Successfully Upgraded IP Components
+  3. Failed Upgrade IP Components
   4. IP Upgrade Messages
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +----------------------------------------------------------------------------+
 ; IP Upgrade Summary                                                         ;
 +------------------------------+---------------------------------------------+
-; IP Components Upgrade Status ; Passed - Mon Sep 25 11:34:23 2017           ;
+; IP Components Upgrade Status ; Passed - Thu Sep 28 23:22:45 2017           ;
 ; Quartus Prime Version        ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                ; adc_mic_lcd                                 ;
 ; Top-level Entity Name        ; adc_mic_lcd                                 ;
@@ -44,188 +44,122 @@ agreement for further details.
 +------------------------------+---------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Successfully Upgraded IP Components                                                                                                                 ;
-+-------------+----------------+---------+-------------------------------------+----------------------+-------------------------------------+---------+
-; Entity Name ; Component Name ; Version ; Original Source File                ; Generation File Path ; New Source File                     ; Message ;
-+-------------+----------------+---------+-------------------------------------+----------------------+-------------------------------------+---------+
-; altclk      ; ALTPLL         ; 16.1    ; altclk.qip                          ; altclk.v             ; altclk.qip                          ;         ;
-; altclk      ; ALTPLL         ; 16.1    ; altclk.qip                          ; altclk.v             ; altclk.qip                          ;         ;
-; clock_buff  ; altclkctrl     ; 16.1    ; clock_buff/synthesis/clock_buff.qip ; clock_buff.qsys      ; clock_buff/synthesis/clock_buff.qip ;         ;
-; clock_buff  ; altclkctrl     ; 16.1    ; clock_buff/synthesis/clock_buff.qip ; clock_buff.qsys      ; clock_buff/synthesis/clock_buff.qip ;         ;
-+-------------+----------------+---------+-------------------------------------+----------------------+-------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Failed Upgrade IP Components                                                                                                                                  ;
++-------------+----------------+---------+---------------------------------+----------------------+-----------------+-------------------------------------------+
+; Entity Name ; Component Name ; Version ; Original Source File            ; Generation File Path ; New Source File ; Message                                   ;
++-------------+----------------+---------+---------------------------------+----------------------+-----------------+-------------------------------------------+
+; adc_qsys    ; Qsys           ; 16.1    ; adc_qsys/synthesis/adc_qsys.qip ; adc_qsys.qsys        ;                 ; Error upgrading Qsys file "adc_qsys.qsys" ;
++-------------+----------------+---------+---------------------------------+----------------------+-----------------+-------------------------------------------+
 
 
 +---------------------+
 ; IP Upgrade Messages ;
 +---------------------+
-Info (11902): Backing up file "altclk.v" to "altclk.BAK.v"
-Info (11837): Started upgrading IP component ALTPLL with file "altclk.v"
-Info (11902): Backing up file "altclk.v" to "altclk.BAK.v"
-Info (11837): Started upgrading IP component ALTPLL with file "altclk.v"
-Info (11902): Backing up file "clock_buff.qsys" to "clock_buff.BAK.qsys"
-Info (11902): Backing up file "clock_buff/synthesis/clock_buff.v" to "clock_buff.BAK.v"
-Info (11837): Started upgrading IP component altclkctrl with file "clock_buff.qsys"
-Info: 2017.09.25.11:33:53 Info: Starting to upgrade the IP cores in the Qsys system
-Info: 2017.09.25.11:33:53 Info: Finished upgrading the ip cores
-Info: 2017.09.25.11:34:00 Info: Saving generation log to C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff
-Info: 2017.09.25.11:34:00 Info: Starting: Create simulation model
-Info: 2017.09.25.11:34:00 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\simulation --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:00 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:01 Info: Reading input file
-Info: 2017.09.25.11:34:01 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:01 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:01 Info: Building connections
-Info: 2017.09.25.11:34:01 Info: Parameterizing connections
-Info: 2017.09.25.11:34:01 Info: Validating
-Info: 2017.09.25.11:34:01 Info: Done reading input file
-Info: 2017.09.25.11:34:01 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:01 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:01 Info: clock_buff: Generating clock_buff "clock_buff" for SIM_VERILOG
-Info: 2017.09.25.11:34:02 Info: altclkctrl_0: Generating top-level entity clock_buff_altclkctrl_0.
-Info: 2017.09.25.11:34:02 Info: altclkctrl_0: "clock_buff" instantiated altclkctrl "altclkctrl_0"
-Info: 2017.09.25.11:34:02 Info: clock_buff: Done "clock_buff" with 2 modules, 2 files
-Info: 2017.09.25.11:34:02 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:02 Info: Finished: Create simulation model
-Info: 2017.09.25.11:34:02 Info: Starting: Create Modelsim Project.
-Info: 2017.09.25.11:34:02 Info: sim-script-gen --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\clock_buff.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:02 Info: Doing: ip-make-simscript --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\clock_buff.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info: Generating the following file(s) for MODELSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info:     mentor
-Info: 2017.09.25.11:34:03 Info: Generating the following file(s) for VCS simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info:     synopsys/vcs
-Info: 2017.09.25.11:34:03 Info: Generating the following file(s) for VCSMX simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info:     synopsys/vcsmx
-Info: 2017.09.25.11:34:03 Info:     synopsys/vcsmx
-Info: 2017.09.25.11:34:03 Info: Generating the following file(s) for NCSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info:     cadence
-Info: 2017.09.25.11:34:03 Info:     cadence
-Info: 2017.09.25.11:34:03 Info:     cadence
-Info: 2017.09.25.11:34:03 Info:     1 .cds.lib files in cadence/cds_libs
-Info: 2017.09.25.11:34:03 Info: Generating the following file(s) for RIVIERA simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info:     aldec
-Info: 2017.09.25.11:34:03 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:03 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
-Info: 2017.09.25.11:34:03 Info: Finished: Create Modelsim Project.
-Info: 2017.09.25.11:34:03 Info: Starting: Create block symbol file (.bsf)
-Info: 2017.09.25.11:34:03 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --block-symbol-file --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:03 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:03 Info: Reading input file
-Info: 2017.09.25.11:34:03 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:03 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:03 Info: Building connections
-Info: 2017.09.25.11:34:03 Info: Parameterizing connections
-Info: 2017.09.25.11:34:03 Info: Validating
-Info: 2017.09.25.11:34:03 Info: Done reading input file
-Info: 2017.09.25.11:34:03 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:03 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:03 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:03 Info: Finished: Create block symbol file (.bsf)
-Info: 2017.09.25.11:34:03 Info:
-Info: 2017.09.25.11:34:03 Info: Starting: Create HDL design files for synthesis
-Info: 2017.09.25.11:34:03 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --synthesis=VERILOG --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\synthesis --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:03 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:04 Info: Reading input file
-Info: 2017.09.25.11:34:04 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:04 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:04 Info: Building connections
-Info: 2017.09.25.11:34:04 Info: Parameterizing connections
-Info: 2017.09.25.11:34:04 Info: Validating
-Info: 2017.09.25.11:34:04 Info: Done reading input file
-Info: 2017.09.25.11:34:04 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:04 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:04 Info: clock_buff: Generating clock_buff "clock_buff" for QUARTUS_SYNTH
-Info: 2017.09.25.11:34:04 Info: altclkctrl_0: Generating top-level entity clock_buff_altclkctrl_0.
-Info: 2017.09.25.11:34:04 Info: altclkctrl_0: "clock_buff" instantiated altclkctrl "altclkctrl_0"
-Info: 2017.09.25.11:34:04 Info: clock_buff: Done "clock_buff" with 2 modules, 2 files
-Info: 2017.09.25.11:34:04 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:04 Info: Finished: Create HDL design files for synthesis
-Info (11902): Backing up file "clock_buff.qsys" to "clock_buff.BAK.qsys"
-Info (11902): Backing up file "clock_buff/synthesis/clock_buff.v" to "clock_buff.BAK.v"
-Info (11837): Started upgrading IP component altclkctrl with file "clock_buff.qsys"
-Info: 2017.09.25.11:34:12 Info: Starting to upgrade the IP cores in the Qsys system
-Info: 2017.09.25.11:34:12 Info: Finished upgrading the ip cores
-Info: 2017.09.25.11:34:19 Info: Saving generation log to C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff
-Info: 2017.09.25.11:34:19 Info: Starting: Create simulation model
-Info: 2017.09.25.11:34:19 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\simulation --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:19 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:20 Info: Reading input file
-Info: 2017.09.25.11:34:20 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:20 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:20 Info: Building connections
-Info: 2017.09.25.11:34:20 Info: Parameterizing connections
-Info: 2017.09.25.11:34:20 Info: Validating
-Info: 2017.09.25.11:34:20 Info: Done reading input file
-Info: 2017.09.25.11:34:20 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:20 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:20 Info: clock_buff: Generating clock_buff "clock_buff" for SIM_VERILOG
-Info: 2017.09.25.11:34:21 Info: altclkctrl_0: Generating top-level entity clock_buff_altclkctrl_0.
-Info: 2017.09.25.11:34:21 Info: altclkctrl_0: "clock_buff" instantiated altclkctrl "altclkctrl_0"
-Info: 2017.09.25.11:34:21 Info: clock_buff: Done "clock_buff" with 2 modules, 2 files
-Info: 2017.09.25.11:34:21 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:21 Info: Finished: Create simulation model
-Info: 2017.09.25.11:34:21 Info: Starting: Create Modelsim Project.
-Info: 2017.09.25.11:34:21 Info: sim-script-gen --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\clock_buff.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:21 Info: Doing: ip-make-simscript --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\clock_buff.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:21 Info: Generating the following file(s) for MODELSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:21 Info:     mentor
-Info: 2017.09.25.11:34:21 Info: Generating the following file(s) for VCS simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:22 Info:     synopsys/vcs
-Info: 2017.09.25.11:34:22 Info: Generating the following file(s) for VCSMX simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:22 Info:     synopsys/vcsmx
-Info: 2017.09.25.11:34:22 Info:     synopsys/vcsmx
-Info: 2017.09.25.11:34:22 Info: Generating the following file(s) for NCSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:22 Info:     cadence
-Info: 2017.09.25.11:34:22 Info:     cadence
-Info: 2017.09.25.11:34:22 Info:     cadence
-Info: 2017.09.25.11:34:22 Info:     1 .cds.lib files in cadence/cds_libs
-Info: 2017.09.25.11:34:22 Info: Generating the following file(s) for RIVIERA simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:22 Info:     aldec
-Info: 2017.09.25.11:34:22 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/ben/Documents/GitHub/KPCDASS2017/clock_buff/simulation
-Info: 2017.09.25.11:34:22 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
-Info: 2017.09.25.11:34:22 Info: Finished: Create Modelsim Project.
-Info: 2017.09.25.11:34:22 Info: Starting: Create block symbol file (.bsf)
-Info: 2017.09.25.11:34:22 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --block-symbol-file --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:22 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:22 Info: Reading input file
-Info: 2017.09.25.11:34:22 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:22 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:22 Info: Building connections
-Info: 2017.09.25.11:34:22 Info: Parameterizing connections
-Info: 2017.09.25.11:34:22 Info: Validating
-Info: 2017.09.25.11:34:22 Info: Done reading input file
-Info: 2017.09.25.11:34:22 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:22 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:22 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:22 Info: Finished: Create block symbol file (.bsf)
-Info: 2017.09.25.11:34:22 Info:
-Info: 2017.09.25.11:34:22 Info: Starting: Create HDL design files for synthesis
-Info: 2017.09.25.11:34:22 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff.qsys --synthesis=VERILOG --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\clock_buff\synthesis --family="MAX 10" --part=10M50DAF484C6GES
-Info: 2017.09.25.11:34:22 Info: Loading KPCDASS2017
-Info: 2017.09.25.11:34:22 Info: Reading input file
-Info: 2017.09.25.11:34:22 Info: Adding altclkctrl_0 [altclkctrl 17.0]
-Info: 2017.09.25.11:34:22 Info: Parameterizing module altclkctrl_0
-Info: 2017.09.25.11:34:22 Info: Building connections
-Info: 2017.09.25.11:34:22 Info: Parameterizing connections
-Info: 2017.09.25.11:34:22 Info: Validating
-Info: 2017.09.25.11:34:22 Info: Done reading input file
-Info: 2017.09.25.11:34:23 Info: clock_buff.altclkctrl_0: Targeting device family: MAX 10.
-Info: 2017.09.25.11:34:23 Info: clock_buff.altclkctrl_0: Global clock network allows a clock signal to reach all parts of the chip with the same amount of skew. Input port 'clkselect' can be used to switch between four clock inputs.
-Info: 2017.09.25.11:34:23 Info: clock_buff: Generating clock_buff "clock_buff" for QUARTUS_SYNTH
-Info: 2017.09.25.11:34:23 Info: altclkctrl_0: Generating top-level entity clock_buff_altclkctrl_0.
-Info: 2017.09.25.11:34:23 Info: altclkctrl_0: "clock_buff" instantiated altclkctrl "altclkctrl_0"
-Info: 2017.09.25.11:34:23 Info: clock_buff: Done "clock_buff" with 2 modules, 2 files
-Info: 2017.09.25.11:34:23 Info: qsys-generate succeeded.
-Info: 2017.09.25.11:34:23 Info: Finished: Create HDL design files for synthesis
-Info (11131): Completed upgrading IP component ALTPLL with file "altclk.v"
-Info (11131): Completed upgrading IP component ALTPLL with file "altclk.v"
-Info (11131): Completed upgrading IP component altclkctrl with file "clock_buff.qsys"
-Info (11131): Completed upgrading IP component altclkctrl with file "clock_buff.qsys"
-Info (23030): Evaluation of Tcl script c:/intelfpga_lite/17.0/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
-Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 788 megabytes
-    Info: Processing ended: Mon Sep 25 11:34:23 2017
-    Info: Elapsed time: 00:00:59
-    Info: Total CPU time (on all processors): 00:02:04
+Info (11902): Backing up file "adc_qsys.qsys" to "adc_qsys.BAK.qsys"
+Info (11902): Backing up file "adc_qsys/synthesis/adc_qsys.v" to "adc_qsys.BAK.v"
+Info (11837): Started upgrading IP component Qsys with file "adc_qsys.qsys"
+Info: 2017.09.28.23:22:26 Info: Starting to upgrade the IP cores in the Qsys system
+Info: 2017.09.28.23:22:26 Info: Finished upgrading the ip cores
+Info: 2017.09.28.23:22:36 Info: Saving generation log to C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys
+Info: 2017.09.28.23:22:36 Info: Starting: Create simulation model
+Info: 2017.09.28.23:22:36 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\simulation --family="MAX 10" --part=10M50DAF484C6GES
+Info: 2017.09.28.23:22:36 Info: Loading KPCDASS2017
+Info: 2017.09.28.23:22:37 Info: Reading input file
+Info: 2017.09.28.23:22:37 Info: Adding altpll_sys [altpll 17.0]
+Info: 2017.09.28.23:22:37 Info: Parameterizing module altpll_sys
+Info: 2017.09.28.23:22:37 Info: Adding clk_50 [clock_source 17.0]
+Info: 2017.09.28.23:22:37 Info: Parameterizing module clk_50
+Info: 2017.09.28.23:22:37 Info: Adding clock_bridge_sys [altera_clock_bridge 17.0]
+Info: 2017.09.28.23:22:37 Info: Parameterizing module clock_bridge_sys
+Info: 2017.09.28.23:22:37 Info: Adding modular_adc_0 [altera_modular_adc 17.0]
+Info: 2017.09.28.23:22:37 Info: Parameterizing module modular_adc_0
+Info: 2017.09.28.23:22:37 Info: Building connections
+Info: 2017.09.28.23:22:37 Info: Parameterizing connections
+Info: 2017.09.28.23:22:37 Info: Validating
+Info: 2017.09.28.23:22:37 Info: Done reading input file
+Warning: 2017.09.28.23:22:37 Warning: adc_qsys.altpll_sys: altpll_sys.areset_conduit must be exported, or connected to a matching conduit.
+Warning: 2017.09.28.23:22:37 Warning: adc_qsys.altpll_sys: altpll_sys.pll_slave must be connected to an Avalon-MM master
+Info: 2017.09.28.23:22:38 Info: adc_qsys: Generating adc_qsys "adc_qsys" for SIM_VERILOG
+Error: 2017.09.28.23:22:40 Error: altpll_sys: Port phasecounterselect has width 4 in TCL, but 3 in the design file
+Info: 2017.09.28.23:22:40 Info: altpll_sys: "adc_qsys" instantiated altpll "altpll_sys"
+Error: 2017.09.28.23:22:40 Error: Generation stopped, 3 or more modules remaining
+Info: 2017.09.28.23:22:40 Info: adc_qsys: Done "adc_qsys" with 4 modules, 1 files
+Error: 2017.09.28.23:22:40 Error: qsys-generate failed with exit code 1: 2 Errors, 2 Warnings
+Info: 2017.09.28.23:22:40 Info: Finished: Create simulation model
+Info: 2017.09.28.23:22:40 Info: Starting: Create Modelsim Project.
+Info: 2017.09.28.23:22:40 Info: sim-script-gen --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\adc_qsys.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:40 Info: Doing: ip-make-simscript --spd=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\adc_qsys.spd --output-directory=C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info: Generating the following file(s) for MODELSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info:     mentor
+Info: 2017.09.28.23:22:41 Info: Generating the following file(s) for VCS simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info:     synopsys/vcs
+Info: 2017.09.28.23:22:41 Info: Generating the following file(s) for VCSMX simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info:     synopsys/vcsmx
+Info: 2017.09.28.23:22:41 Info:     synopsys/vcsmx
+Info: 2017.09.28.23:22:41 Info: Generating the following file(s) for NCSIM simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info:     cadence
+Info: 2017.09.28.23:22:41 Info:     cadence
+Info: 2017.09.28.23:22:41 Info:     cadence
+Info: 2017.09.28.23:22:41 Info: Generating the following file(s) for RIVIERA simulator in C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info:     aldec
+Info: 2017.09.28.23:22:41 Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/ben/Documents/GitHub/KPCDASS2017/adc_qsys/simulation
+Info: 2017.09.28.23:22:41 Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: 2017.09.28.23:22:41 Info: Finished: Create Modelsim Project.
+Info: 2017.09.28.23:22:41 Info: Starting: Create block symbol file (.bsf)
+Info: 2017.09.28.23:22:41 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --block-symbol-file --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys --family="MAX 10" --part=10M50DAF484C6GES
+Info: 2017.09.28.23:22:41 Info: Loading KPCDASS2017
+Info: 2017.09.28.23:22:41 Info: Reading input file
+Info: 2017.09.28.23:22:41 Info: Adding altpll_sys [altpll 17.0]
+Info: 2017.09.28.23:22:41 Info: Parameterizing module altpll_sys
+Info: 2017.09.28.23:22:41 Info: Adding clk_50 [clock_source 17.0]
+Info: 2017.09.28.23:22:41 Info: Parameterizing module clk_50
+Info: 2017.09.28.23:22:41 Info: Adding clock_bridge_sys [altera_clock_bridge 17.0]
+Info: 2017.09.28.23:22:41 Info: Parameterizing module clock_bridge_sys
+Info: 2017.09.28.23:22:41 Info: Adding modular_adc_0 [altera_modular_adc 17.0]
+Info: 2017.09.28.23:22:41 Info: Parameterizing module modular_adc_0
+Info: 2017.09.28.23:22:41 Info: Building connections
+Info: 2017.09.28.23:22:41 Info: Parameterizing connections
+Info: 2017.09.28.23:22:41 Info: Validating
+Info: 2017.09.28.23:22:41 Info: Done reading input file
+Warning: 2017.09.28.23:22:42 Warning: adc_qsys.altpll_sys: altpll_sys.areset_conduit must be exported, or connected to a matching conduit.
+Warning: 2017.09.28.23:22:42 Warning: adc_qsys.altpll_sys: altpll_sys.pll_slave must be connected to an Avalon-MM master
+Info: 2017.09.28.23:22:42 Info: qsys-generate succeeded.
+Info: 2017.09.28.23:22:42 Info: Finished: Create block symbol file (.bsf)
+Info: 2017.09.28.23:22:42 Info:
+Info: 2017.09.28.23:22:42 Info: Starting: Create HDL design files for synthesis
+Info: 2017.09.28.23:22:42 Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys.qsys --synthesis=VERILOG --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\adc_qsys\synthesis --family="MAX 10" --part=10M50DAF484C6GES
+Info: 2017.09.28.23:22:42 Info: Loading KPCDASS2017
+Info: 2017.09.28.23:22:42 Info: Reading input file
+Info: 2017.09.28.23:22:42 Info: Adding altpll_sys [altpll 17.0]
+Info: 2017.09.28.23:22:42 Info: Parameterizing module altpll_sys
+Info: 2017.09.28.23:22:42 Info: Adding clk_50 [clock_source 17.0]
+Info: 2017.09.28.23:22:42 Info: Parameterizing module clk_50
+Info: 2017.09.28.23:22:42 Info: Adding clock_bridge_sys [altera_clock_bridge 17.0]
+Info: 2017.09.28.23:22:42 Info: Parameterizing module clock_bridge_sys
+Info: 2017.09.28.23:22:42 Info: Adding modular_adc_0 [altera_modular_adc 17.0]
+Info: 2017.09.28.23:22:42 Info: Parameterizing module modular_adc_0
+Info: 2017.09.28.23:22:42 Info: Building connections
+Info: 2017.09.28.23:22:42 Info: Parameterizing connections
+Info: 2017.09.28.23:22:42 Info: Validating
+Info: 2017.09.28.23:22:42 Info: Done reading input file
+Warning: 2017.09.28.23:22:43 Warning: adc_qsys.altpll_sys: altpll_sys.areset_conduit must be exported, or connected to a matching conduit.
+Warning: 2017.09.28.23:22:43 Warning: adc_qsys.altpll_sys: altpll_sys.pll_slave must be connected to an Avalon-MM master
+Info: 2017.09.28.23:22:43 Info: adc_qsys: Generating adc_qsys "adc_qsys" for QUARTUS_SYNTH
+Error: 2017.09.28.23:22:44 Error: altpll_sys: Port phasecounterselect has width 4 in TCL, but 3 in the design file
+Info: 2017.09.28.23:22:44 Info: altpll_sys: "adc_qsys" instantiated altpll "altpll_sys"
+Error: 2017.09.28.23:22:44 Error: Generation stopped, 3 or more modules remaining
+Info: 2017.09.28.23:22:44 Info: adc_qsys: Done "adc_qsys" with 4 modules, 2 files
+Error: 2017.09.28.23:22:45 Error: qsys-generate failed with exit code 1: 2 Errors, 2 Warnings
+Info: 2017.09.28.23:22:45 Info: Finished: Create HDL design files for synthesis
+Info (11904): Restoring file "adc_qsys.BAK.qsys" to "adc_qsys.qsys"
+Error (14923): Error upgrading Qsys file "adc_qsys.qsys"
+Error (11890): Unable to automatically upgrade Qsys component. Please manually upgrade "adc_qsys.qsys" in Qsys
+Error (23031): Evaluation of Tcl script c:/intelfpga_lite/17.0/quartus/common/tcl/internal/ip_regen/ip_regen.tcl unsuccessful
+Error: Quartus Prime Shell was unsuccessful. 9 errors, 6 warnings
+    Error: Peak virtual memory: 785 megabytes
+    Error: Processing ended: Thu Sep 28 23:22:45 2017
+    Error: Elapsed time: 00:00:42
+    Error: Total CPU time (on all processors): 00:01:48
 
 

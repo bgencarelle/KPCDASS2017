@@ -7,7 +7,7 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 							(
 
 	//////////// CLOCK //////////
-//	input 		          		ADC_CLK_10,
+	input 		          		ADC_CLK_10,
 	input 		          		MAX10_CLK1_50,
 	input 		          		MAX10_CLK2_50,
 //	input 		          		MAX10_CLK3_50,
@@ -329,16 +329,24 @@ reg signed [23:0]sub1;
 		
   end
  wire signed [23:0] submix;
-assign submix = sub0;
+
+
+newfilter lpf_mix(//FILTER, depth of filter controlled by input to filt_sel
+			.filt_sel(3'b100),
+			.clk(a_clk64),
+			.d(sub0),
+			.reset_n(RESET_DELAY_n),
+			.q(submix) // output to DAC
+			);
 
 
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk128),
-		  .reverse(a_clk256),
-		   .dnoise(sub0),
+		  .audio_clk(a_clk256),
+	//	  .reverse(a_clk256),
+		   .dnoise(submix),
 		  .velocity(7'd127),
-		  .decay(12'b111111111111),
+		  .decay(12'b111111101111),
 		  .loops({SW[2:0]}),
 		  .filtsw(3'b0),
 		  .trig(KEY[0]),
