@@ -21,7 +21,7 @@ wire signed [23:0] start_level; //initial level
 assign start_level = $signed(dnoise);
 
 wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
-assign dfilter_gain = ($signed(dfilter) <<< 12); //* $signed({12'b0,decay}));
+assign dfilter_gain = ($signed(dfilter) <<12); //* $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM
 reg [15:0] count=0; //basic counter
@@ -156,7 +156,7 @@ ram_delay	delay_ram(		// RAM. currently using too much-can implement smaller amo
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
 							.data( d),
-							.rdaddress(rd_ptr),
+							.rdaddress(16'd32768-rd_ptr),//reverse!
 							.rden(rden),
 							.wraddress(wr_ptr),
 							.wren(1'b1),

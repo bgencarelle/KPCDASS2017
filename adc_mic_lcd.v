@@ -252,7 +252,7 @@ KP_main string3 (
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops(3'b000),
-		  .filtsw(3'b001),
+		  .filtsw({SW[2:0]}),
 		  .trig(KEY[4]),
 		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
@@ -266,7 +266,7 @@ KP_main string4(
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops(3'b001),
-		  .filtsw(3'b001),
+		  .filtsw({SW[2:0]}),
 		  .trig(KEY[3]),
 		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
@@ -280,7 +280,7 @@ KP_main string5(  //low string
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops(3'b010),
-		  .filtsw(3'b001),
+		  .filtsw({SW[2:0]}),
 		  .trig(KEY[2]),
 		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
@@ -294,7 +294,7 @@ KP_main string6(
 		  .velocity(7'd127),
 		  .decay({SW[9:4],6'b111111}),
 		  .loops(3'b011),
-		  .filtsw(3'b001),
+		  .filtsw({SW[2:0]}),
 		  .trig(KEY[1]),
 		  .delay_length(10'd960),
 		  .reset_n(RESET_DELAY_n),
@@ -334,13 +334,13 @@ assign submix = sub0;
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk64),
-		   .dnoise(sub0<<1),
+		   .dnoise(sub0),
 		  .velocity(7'd127),
 		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
-		  .filtsw(SW[2:0]),
+		  .filtsw(SW[0]),
 		  .trig(KEY[0]),
-		  .delay_length(presub[22:9]+1023),//gates of hell
+		  .delay_length(15'd32767),//gates of hell
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM7)
         );
