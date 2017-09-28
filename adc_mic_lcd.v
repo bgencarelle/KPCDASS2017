@@ -184,7 +184,7 @@ assign MIXMASTER = sum0;
 //		  .audio_clk(seven0068khz_clk),
 //		  .dnoise(NOISE0),
 //		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
+//		  .decay({SW[9:3],5'b11111}),
 //		  .loops(3'b111),
 //		  .filtsw(3'b000),//each filter can be tuned to the specific string
 //		  .trig(KEYMIX0),
@@ -198,7 +198,7 @@ assign MIXMASTER = sum0;
 //		  .audio_clk(seven0068khz_clk),
 //		  .dnoise(NOISE1),
 //		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
+//		  .decay({SW[9:3],5'b11111}),
 //		  .loops(3'b110),
 //		  .filtsw(3'b001),
 //		  .trig(KEYMIX1),
@@ -212,7 +212,7 @@ assign MIXMASTER = sum0;
 //		  .audio_clk(seven0068khz_clk),
 //		   .dnoise(NOISE2),
 //		  .velocity(7'd127),
-//		  .decay({SW[9:4],6'b111111}),
+//		  .decay({SW[9:3],5'b11111}),
 //		  .loops(3'b101),
 //		  .filtsw(3'b010),
 //		  .trig(KEYMIX2),
@@ -250,7 +250,7 @@ KP_main string3 (
 		  .audio_clk(a_clk8),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
+		  .decay({SW[9:3],5'b11111}),
 		  .loops(3'b000),
 		  .filtsw({SW[2:0]}),
 		  .trig(KEY[4]),
@@ -264,7 +264,7 @@ KP_main string4(
 		  .audio_clk(a_clk16),
 		   .dnoise(NOISE4),
 		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
+		  .decay({SW[9:3],5'b11111}),
 		  .loops(3'b001),
 		  .filtsw({SW[2:0]}),
 		  .trig(KEY[3]),
@@ -278,7 +278,7 @@ KP_main string5(  //low string
 		  .audio_clk(a_clk32),
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
+		  .decay({SW[9:3],5'b11111}),
 		  .loops(3'b010),
 		  .filtsw({SW[2:0]}),
 		  .trig(KEY[2]),
@@ -292,7 +292,7 @@ KP_main string6(
 		  .audio_clk(a_clk64),
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
-		  .decay({SW[9:4],6'b111111}),
+		  .decay({SW[9:3],5'b11111}),
 		  .loops(3'b011),
 		  .filtsw({SW[2:0]}),
 		  .trig(KEY[1]),
@@ -309,9 +309,9 @@ reg signed [23:0]sub1;
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presub <= $signed(MEM7)+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
-					$signed(MEM1>>>2);
+    presub <= $signed(MEM7)+ $signed(MEM6>>>1)+ $signed(MEM5>>>1) 
+					+$signed(MEM4>>>1) + $signed(MEM3>>>1)+ $signed(MEM2>>>1)+ 
+					$signed(MEM1>>>1);
 	 if (presub[24] == presub[23])
 		begin
       // Top two bits equal: no signed overflow.
@@ -330,15 +330,17 @@ reg signed [23:0]sub1;
   end
  wire signed [23:0] submix;
 assign submix = sub0;
-		  
+
+
 KP_delay effect(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk64),
+		  .audio_clk(a_clk128),
+		  .reverse(a_clk256),
 		   .dnoise(sub0),
 		  .velocity(7'd127),
 		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
-		  .filtsw(SW[0]),
+		  .filtsw(3'b0),
 		  .trig(KEY[0]),
 		  .delay_length(15'd32767),//gates of hell
 		  .reset_n(RESET_DELAY_n),

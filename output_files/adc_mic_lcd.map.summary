@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Thu Sep 28 18:44:15 2017
+Analysis & Synthesis Status : Successful - Thu Sep 28 22:55:18 2017
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : adc_mic_lcd
 Top-level Entity Name : adc_mic_lcd
 Family : MAX 10
-Total logic elements : 7,551
-    Total combinational functions : 7,405
-    Dedicated logic registers : 2,120
-Total registers : 2120
+Total logic elements : 7,579
+    Total combinational functions : 7,409
+    Dedicated logic registers : 2,099
+Total registers : 2099
 Total pins : 60
 Total virtual pins : 0
 Total memory bits : 491,520

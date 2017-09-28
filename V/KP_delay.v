@@ -9,7 +9,7 @@ input wire signed [6:0] velocity,//velocity from MIDI or other source
 input wire [15:0] delay_length,//tuning
 input wire [2:0] filtsw,//filter choosing
 input wire [2:0] loops,//not currrently implemented
-
+input wire reverse,
 output wire signed [23:0] qout //output to top level
 );
 
@@ -27,6 +27,7 @@ reg signed [23:0] d = 0;//feeds RAM
 reg [15:0] count=0; //basic counter
 reg [15:0] wr_ptr=0;// RAM write pointer
 reg [15:0] rd_ptr=0;//  RAM read pointer
+reg [15:0] rd_ptr_rev = 15'd32767;
 reg rden = 1'b0; // silences output when not in use
 reg [1:0] KP_state = 2'b00; // initial state of state machine
 
@@ -37,6 +38,7 @@ begin:KP_STATE_RESET//reset state
 if (reset_n == 1'b0)
 	begin
 	rd_ptr <= count;
+	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	d <= 0;//allows for clearing of RAM from prior cycle
 	count <= count + 1'b1;
@@ -51,6 +53,7 @@ begin:KP_STATE_BEGIN
 	2'b00:
 	begin //start idle loads up ram to allow quicker triggering on first boot
 	rd_ptr <= count;
+	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
 		d <= (start_level);
@@ -69,6 +72,7 @@ begin:KP_STATE_BEGIN
 	2'b01:
 	begin //trigger event, counter started, it is so quick we can ignore any triggering during this load
 	rd_ptr <= count;
+	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	rden <= 1'b1;//now reading always
 	d <= start_level;// scaled by velocity
@@ -89,21 +93,25 @@ begin:KP_STATE_BEGIN
 	rden <= 1'b1;
 	d <= $signed(dfilter_gain[35:12]);// in addition LPF, audio is gain staged by adjustable decay
 	rd_ptr <= count;
+	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
 	if (trig_pulse != 1'b1)//if not triggered duriing playback, count up until RAM is full.
 		begin
-			KP_state<= 2'b10;
 			if (count >= delay_length)
 			begin
 			count <= 0;
 			end
+			KP_state<= 2'b10;
 		end
 
 	else if (trig_pulse == 1'b1) //triggered? go back to 001, load up on some tasty noise
 		begin
-			KP_state<= 2'b01;
+			if (count >= delay_length)
+			begin
 			count <= 0;
+			end
+			KP_state<= 2'b01;
 		end
 	end
 
@@ -112,6 +120,7 @@ begin:KP_STATE_BEGIN
 	rden <= 1'b0;
 	d <= 0;
 	rd_ptr <= count;
+	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
 	KP_state<= 2'b01;
@@ -151,12 +160,18 @@ assign trig_pulse= ~trig_idle & trig_cnt_max & ~trig_now;
 //end debounce
 
 //
+wire signed [15:0] rd_ptr_out;
+
+assign rd_ptr_out = reverse? rd_ptr_rev:rd_ptr;
+
+
+
 wire signed [23:0] q;
 ram_delay	delay_ram(		// RAM. currently using too much-can implement smaller amounts when tuning
 							.clock(a_clk),//RAM
 							.aclr(~reset_n),
 							.data( d),
-							.rdaddress(16'd32768-rd_ptr),//reverse!
+							.rdaddress(rd_ptr_out[15:0]),//reverse!
 							.rden(rden),
 							.wraddress(wr_ptr),
 							.wren(1'b1),
