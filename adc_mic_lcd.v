@@ -129,36 +129,6 @@ reg   [31:0]  			DELAY_CNT;
 //================================================// ### KARPLUS AND AUDIO STUFF GOES HERE!!
 
 
-reg signed [24:0]presum;
-reg signed [23:0]sum0;
-reg signed [23:0]sum1;
-
-	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
-	begin
- //	//a bit of borrowed code
-    presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
-    sum1 <= sum0;
-	 if (presum[24] == presum[23])
-		begin
-      // Top two bits equal: no signed overflow.
-      sum0 <= $signed(presum[23:0]);  // truncate sum back to 8 bits.
-		end
-    else
-      if (presum[24] == 1'b0)
-        begin
-        sum0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
-		  end
-      else
-			begin
-        sum0 <= 24'd8388608;   
-			end
-		
-  end
-wire signed [RANGE:0] MIXMASTER;
-
-assign MIXMASTER = sum0;
-
 
 //	wire KEYMIX;
 //	assign KEYMIX0 = (~SW[0] & KEY[0]) ? 1'b1 : 1'b0;
@@ -185,7 +155,6 @@ assign MIXMASTER = sum0;
 //		  .dnoise(NOISE0),
 //		  .velocity(7'd127),
 //		  .decay({SW[9:3],5'b11111}),
-//		  .loops(3'b111),
 //		  .filtsw(3'b000),//each filter can be tuned to the specific string
 //		  .trig(KEYMIX0),
 //		  .delay_length(11'd1959),
@@ -199,7 +168,6 @@ assign MIXMASTER = sum0;
 //		  .dnoise(NOISE1),
 //		  .velocity(7'd127),
 //		  .decay({SW[9:3],5'b11111}),
-//		  .loops(3'b110),
 //		  .filtsw(3'b001),
 //		  .trig(KEYMIX1),
 //		  .delay_length(11'd1959),
@@ -213,105 +181,119 @@ assign MIXMASTER = sum0;
 //		   .dnoise(NOISE2),
 //		  .velocity(7'd127),
 //		  .decay({SW[9:3],5'b11111}),
-//		  .loops(3'b101),
 //		  .filtsw(3'b010),
 //		  .trig(KEYMIX2),
 //		  .delay_length(11'd1959),
 //		  .reset_n(RESET_DELAY_n),
 //        .qout(MEM2)
 //        );
-wire a_clk2;
-wire a_clk4;
-wire a_clk8;
-wire a_clk16;
-wire a_clk32;
-wire a_clk64;
-wire a_clk128;
-wire a_clk256;
-wire a_clkdiv;
+
+wire a_clk_2;
+wire a_clk_4;
+wire a_clk_8;
+wire a_clk_16;
+wire a_clk_32;
+wire a_clk_64;
+wire a_clk_128;
+wire a_clk_256;
+wire a_clk_div;
 
 multi_clk_div div(
-		.octave({SW[2:0]}),
+		.div_clock(12'd32),
 		.reset(RESET_DELAY_n),
 		.clk(seven0068khz_clk),
-		.divoutput(a_clkdiv),
-		.div2(a_clk2),
-		.div4(a_clk4),
-		.div8(a_clk8),
-		.div16(a_clk16),
- 		.div32(a_clk32),
-		.div64(a_clk64),
-		.div128(a_clk128),
-		.div256(a_clk256)
+		.div_var(a_clkdiv),
+		.div2(a_clk_2),
+		.div4(a_clk_4),
+		.div8(a_clk_8),
+		.div16(a_clk_16),
+ 		.div32(a_clk_32),
+		.div64(a_clk_64),
+		.div128(a_clk_128),
+		.div256(a_clk_256)
 		);
-		
+wire [2:0] sw_filt;
+wire [11:0] sw_decay;
+
+assign sw_filt = {2'b00,SW[2]};
+assign sw_decay = {12'b111111111111};
+
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk16),
+		  .audio_clk(a_clk_4),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
-		  .decay({SW[9:3],5'b11111}),
-		  .loops(3'b000),
-		  .filtsw({SW[2:0]}),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
 		  .trig(KEY[4]),
-		  .delay_length(10'd960),
+		  .delay_length(10'd575),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM3)
         );
 
 KP_main string4(
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk16),
+		  .audio_clk(a_clk_4),
 		   .dnoise(NOISE4),
-		  .velocity(7'd64),
-		  .decay({SW[9:3],5'b11111}),
-		  .loops(3'b001),
-		  .filtsw({SW[2:0]}),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
 		  .trig(KEY[3]),
-		  .delay_length(10'd960),
+		  .delay_length(10'd773),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM4)
         );
 
 KP_main string5(  //low string
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk32),
+		  .audio_clk(a_clk_4),
 		   .dnoise(NOISE5),
 		  .velocity(7'd127),
-		  .decay({SW[9:3],5'b11111}),
-		  .loops(3'b010),
-		  .filtsw({SW[2:0]}),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
 		  .trig(KEY[2]),
-		  .delay_length(10'd960),
+		  .delay_length(10'd974),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM5)
         );
 
 KP_main string6(  
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk64),
+		  .audio_clk(a_clk_8),
 		   .dnoise(NOISE6),
 		  .velocity(7'd127),
-		  .decay({SW[9:3],5'b11111}),
-		  .loops(3'b011),
-		  .filtsw({SW[2:0]}),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
 		  .trig(KEY[1]),
-		  .delay_length(10'd960),
+		  .delay_length(10'd650),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM6)
         );
 
-					
-reg signed [24:0]presub;
-reg signed [23:0]sub0;
-reg signed [23:0]sub1;
+KP_main string7(  
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(a_clk_8),
+		   .dnoise(NOISE6),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
+		  .trig(KEY[0]),
+		  .delay_length(10'd865),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM7)
+        );
 
+					
+wire signed [24:0]presub;
+reg signed [23:0]sub0;
+ assign   presub = $signed(MEM7)+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
+					$signed(MEM1>>>2);
+					
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presub <= $signed(MEM7)+ $signed(MEM6>>>1)+ $signed(MEM5>>>1) 
-					+$signed(MEM4>>>1) + $signed(MEM3>>>1)+ $signed(MEM2>>>1)+ 
-					$signed(MEM1>>>1);
+
 	 if (presub[24] == presub[23])
 		begin
       // Top two bits equal: no signed overflow.
@@ -320,40 +302,61 @@ reg signed [23:0]sub1;
     else
       if (presub[24] == 1'b0)
         begin
-        sub0 <= 24'd8388607;   // maximum positive value representable by 24 bits.
+        sub0 <= 2**23;   // maximum positive value representable by 24 bits.
 		  end
       else
 			begin
-        sub0 <= 24'd8388608;   
+        sub0 <= (2**23)-1;   
 			end
 		
   end
- wire signed [23:0] submix;
 
 
-newfilter lpf_mix(//FILTER, depth of filter controlled by input to filt_sel
-			.filt_sel(3'b100),
-			.clk(a_clk64),
-			.d(sub0),
+wire signed [24:0]presum;
+wire signed [23:0]sum0;
+
+assign presum = $signed(MEM7) + $signed(MEM6)+ $signed(MEM5) 
+					+$signed(MEM4) + $signed(MEM3)+ $signed(MEM2)+ $signed(MEM1)+ $signed(MEM0);
+					
+assign sum0 = (presum[24] == presum[23])?$signed(presum[23:0]):(presum[24] == 1'b0)?24'd8388607:24'd8388608;
+wire signed [23:0] submix;
+
+newfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
+			.filt_sel({SW[1],2'b0}),
+			.clk(a_clk_4),
+			.d(sum0),
 			.reset_n(RESET_DELAY_n),
 			.q(submix) // output to DAC
 			);
+			
+ wire signed [23:0] sub1;					
 
+newfilter lpf_mix1(//FILTER, depth of filter controlled by input to filt_sel
+			.filt_sel({SW[0],2'b0}),
+			.clk(a_clk_8),
+			.d(submix),
+			.reset_n(RESET_DELAY_n),
+			.q(sub1) // output to DAC
+			);
 
-KP_delay effect(  //low string
-			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk256),
-	//	  .reverse(a_clk256),
-		   .dnoise(submix),
-		  .velocity(7'd127),
-		  .decay(12'b111111111111),
-		  .loops({SW[2:0]}),
-		  .filtsw(3'b0),
-		  .trig(KEY[0]),
-		  .delay_length(15'd32767),//gates of hell
-		  .reset_n(RESET_DELAY_n),
-        .qout(MEM7)
-        );
+wire signed [RANGE:0] MIXMASTER;
+
+assign MIXMASTER = sub1;
+
+//KP_delay effect(  //low string
+//			.m_clk(MAX10_CLK1_50),
+//		  .audio_clk(a_clk64),
+//	//	  .reverse(a_clk256),
+//		   .dnoise(sub1),
+//		  .velocity(7'd127),
+//		  .decay(12'b111111111111),
+//
+//		  .filtsw(sw_filt[0:0]),
+//		  .trig(KEY[0]),
+//		  .delay_length(15'd16383),//gates of hell
+//		  .reset_n(RESET_DELAY_n),
+//        .qout(MEM7)
+//        );
 	
 
 	

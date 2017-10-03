@@ -8,14 +8,13 @@ input wire signed [11:0] decay,//sustain time
 input wire signed [6:0] velocity,//velocity from MIDI or other source
 input wire [9:0] delay_length,//tuning
 input wire [2:0] filtsw,//filter choosing
-input wire [2:0] loops,//not currrently implemented
 
 output wire signed [23:0] qout //output to top level
 );
 
 
 wire signed [23:0] start_level; //initial level
-assign start_level = $signed(dnoise) * $signed({8'b0,velocity});
+assign start_level = $signed(dnoise) * $signed({7'b0,velocity});
 
 wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
 assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
@@ -173,12 +172,13 @@ wire a_clk;
 wire a_clk_reg;
 reg dfilter_reg;
 
-//always @(posedge audio_clk)
-//a_clk <= a_clk_reg;
+////always @(posedge audio_clk)
+////a_clk <= a_clk_reg;
 	clock_buff kpbuff (
 		.inclk  (audio_clk),  //  altclkctrl_input.inclk
 		.outclk (a_clk)  // altclkctrl_output.outclk
 	);
+//assign a_clk = audio_clk;
 wire signed [23:0] dfilter; //
 assign qout = dfilter;
 endmodule

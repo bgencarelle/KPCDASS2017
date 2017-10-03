@@ -7,7 +7,7 @@ ST.010 0 1 0 1 0
 ST.011 1 0 0 1 0 
 ST.100 0 0 0 1 1 
 
-State Machine - |adc_mic_lcd|KP_delay:effect|KP_state
+State Machine - |adc_mic_lcd|KP_main:string7|KP_state
 Name KP_state.00 KP_state.10 KP_state.01 
 KP_state.00 0 0 0 
 KP_state.01 1 0 1 

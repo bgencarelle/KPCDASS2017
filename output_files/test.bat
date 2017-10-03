@@ -18,7 +18,7 @@
 @set QUARTUS_BIN=%QUARTUS_ROOTDIR%\\bin32
 
 :DownLoad
-%QUARTUS_BIN%\\quartus_pgm.exe -m jtag -c 1 -o "p;adc_mic_lcd.sof" 
+%QUARTUS_BIN%\\quartus_pgm.exe -m jtag -c 1 -o "p;Decay_Delay.sof" 
 
 
 pause

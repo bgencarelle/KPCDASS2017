@@ -1,0 +1,46 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="339ed9ea87439a50b2ae"/>
+  </project>
+  <file_info>
+    <file device="10M50DAF484C6GES" path="Decay_Delay.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="clock_buff:buff" name="buff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_main:string3|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_main:string4|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_main:string5|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_main:string6|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_main:string7|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

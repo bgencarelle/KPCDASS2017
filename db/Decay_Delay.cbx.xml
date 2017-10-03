@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
+	<PROJECT NAME="Decay_Delay">
+	</PROJECT>
 	<PROJECT NAME="adc_mic_lcd">
 	</PROJECT>
 </LOG_ROOT>
