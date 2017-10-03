@@ -17,11 +17,11 @@ output wire signed [23:0] qout //output to top level
 		.inclk  (audio_clk),  //  altclkctrl_input.inclk
 		.outclk (a_clk)  // altclkctrl_output.outclk
 	);
-wire signed [23:0] start_level; //initial level
-assign start_level = $signed(dnoise);
+wire signed [30:0] start_level; //initial level
+assign start_level = $signed(dnoise)* $signed({17'b0,velocity});
 reg reverse =0;
 wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
-assign dfilter_gain = ($signed(dfilter) <<12); //* $signed({12'b0,decay}));
+assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM
 reg [15:0] count=0; //basic counter
@@ -56,7 +56,7 @@ begin:KP_STATE_BEGIN
 	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	count <= count + 1'b1;
-		d <= (start_level);
+		d <= $signed(start_level[30:7]);
 	rden <= 1'b0;
 		if (trig_pulse == 1'b1) //loads value for next clock
 			begin
@@ -75,7 +75,7 @@ begin:KP_STATE_BEGIN
 	rd_ptr_rev <= delay_length - count;
 	wr_ptr <= count;
 	rden <= 1'b1;//now reading always
-	d <= start_level;// scaled by velocity
+	d <= $signed(start_level[30:7]);// scaled by velocity
 	count <= count + 1'b1;
 	if (count < delay_length)//as long as RAM isnt full, keep loading.
 			begin

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for adc_mic_lcd
-Fri Sep 29 00:19:05 2017
+Tue Oct 03 13:46:58 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri Sep 29 00:19:05 2017 ;
+; EDA Netlist Writer Status ; Successful - Tue Oct 03 13:46:58 2017 ;
 ; Revision Name             ; adc_mic_lcd                           ;
 ; Top-level Entity Name     ; adc_mic_lcd                           ;
 ; Family                    ; MAX 10                                ;
@@ -82,13 +82,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Sep 29 00:19:02 2017
+    Info: Processing started: Tue Oct 03 13:46:55 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off adc_mic_lcd -c adc_mic_lcd
 Warning (10905): Generated the EDA functional simulation netlist because it is the only supported netlist type for this device.
 Info (204019): Generated file adc_mic_lcd.vo in folder "C:/Users/ben/Documents/GitHub/KPCDASS2017/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 617 megabytes
-    Info: Processing ended: Fri Sep 29 00:19:05 2017
+    Info: Processing ended: Tue Oct 03 13:46:58 2017
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

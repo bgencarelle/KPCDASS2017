@@ -136,7 +136,7 @@ reg signed [23:0]sum1;
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
  //	//a bit of borrowed code
-    presum <= $signed(MEM7>>>1) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
+    presum <= $signed(MEM7>>>2) + $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
 					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ $signed(MEM1>>>2)+ $signed(MEM0>>>2);
     sum1 <= sum0;
 	 if (presum[24] == presum[23])
@@ -247,7 +247,7 @@ multi_clk_div div(
 		
 KP_main string3 (
 			.m_clk(MAX10_CLK1_50),
-		  .audio_clk(a_clk8),
+		  .audio_clk(a_clk16),
 		  .dnoise(NOISE3),
 		  .velocity(7'd127),
 		  .decay({SW[9:3],5'b11111}),
@@ -263,7 +263,7 @@ KP_main string4(
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk16),
 		   .dnoise(NOISE4),
-		  .velocity(7'd127),
+		  .velocity(7'd64),
 		  .decay({SW[9:3],5'b11111}),
 		  .loops(3'b001),
 		  .filtsw({SW[2:0]}),
@@ -346,7 +346,7 @@ KP_delay effect(  //low string
 	//	  .reverse(a_clk256),
 		   .dnoise(submix),
 		  .velocity(7'd127),
-		  .decay(12'b111111101111),
+		  .decay(12'b111111111111),
 		  .loops({SW[2:0]}),
 		  .filtsw(3'b0),
 		  .trig(KEY[0]),

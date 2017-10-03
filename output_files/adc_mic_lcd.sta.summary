@@ -3,15 +3,15 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'MAX10_CLK1_50'
-Slack : -5.401
-TNS   : -148.047
+Slack : -5.251
+TNS   : -146.202
 
 Type  : Slow 1200mV 85C Model Setup 'MAX10_CLK2_50'
-Slack : 15.841
+Slack : 15.746
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 321.566
+Slack : 322.035
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK1_50'
@@ -19,19 +19,19 @@ Slack : 0.324
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'MAX10_CLK2_50'
-Slack : 0.327
+Slack : 0.325
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.336
+Slack : 0.335
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MAX10_CLK2_50'
-Slack : 9.584
+Slack : 9.583
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.606
+Slack : 9.607
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ADC_CLK_10'
@@ -39,19 +39,19 @@ Slack : 96.000
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 162.485
+Slack : 162.484
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -5.245
-TNS   : -144.521
+Slack : -5.116
+TNS   : -143.558
 
 Type  : Slow 1200mV 0C Model Setup 'MAX10_CLK2_50'
-Slack : 16.184
+Slack : 16.109
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 321.905
+Slack : 322.357
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK1_50'
@@ -59,11 +59,11 @@ Slack : 0.294
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'MAX10_CLK2_50'
-Slack : 0.297
+Slack : 0.294
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.307
+Slack : 0.306
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK2_50'
@@ -71,7 +71,7 @@ Slack : 9.593
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.615
+Slack : 9.612
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ADC_CLK_10'
@@ -79,19 +79,19 @@ Slack : 96.000
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 162.471
+Slack : 162.470
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'MAX10_CLK1_50'
-Slack : -2.762
-TNS   : -75.969
+Slack : -2.718
+TNS   : -74.723
 
 Type  : Fast 1200mV 0C Model Setup 'MAX10_CLK2_50'
-Slack : 18.002
+Slack : 17.952
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 323.602
+Slack : 323.772
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK1_50'
@@ -99,18 +99,18 @@ Slack : 0.148
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'MAX10_CLK2_50'
-Slack : 0.150
+Slack : 0.149
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
 Slack : 0.151
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
-Slack : 9.331
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK2_50'
+Slack : 9.330
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK2_50'
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MAX10_CLK1_50'
 Slack : 9.335
 TNS   : 0.000
 
@@ -119,7 +119,7 @@ Slack : 96.000
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clockyclock|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 162.535
+Slack : 162.534
 TNS   : 0.000
 
 ------------------------------------------------------------
