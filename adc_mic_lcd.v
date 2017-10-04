@@ -28,10 +28,10 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 
 	//////////// Audio //////////
 	inout 		          		AUDIO_BCLK,
-	output		          		AUDIO_DIN_MFP1,
+//	output		          		AUDIO_DIN_MFP1,
 //	input 		          		AUDIO_DOUT_MFP2,
 	inout 		          		AUDIO_GPIO_MFP5,
-	output		          		AUDIO_MCLK,
+//	output		          		AUDIO_MCLK,
 //	input 		          		AUDIO_MISO_MFP4,
 	inout 		          		AUDIO_RESET_n,
 //	output		          		AUDIO_SCL_SS_n,
@@ -75,24 +75,28 @@ module adc_mic_lcd #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 //================================================//  REG/WIRE declarations
 //================================================// ### USER DEFINED
 wire signed [15:0]		PWM_OUT;
-wire signed [RANGE:0]		MEM0;
-wire signed [RANGE:0]		MEM1;
-wire signed [RANGE:0]		MEM2;
-wire signed [RANGE:0]		MEM3;
-wire signed [RANGE:0]		MEM4;
-wire signed [RANGE:0]		MEM5;
-wire signed [RANGE:0]		MEM6;
-wire signed [RANGE:0]		MEM7;
-wire signed [RANGE+4:0]		VERB0;
+wire signed [RANGE:0]		MEM_0;
+wire signed [RANGE:0]		MEM_1;
+wire signed [RANGE:0]		MEM_2;
+wire signed [RANGE:0]		MEM_3;
+wire signed [RANGE:0]		MEM_4;
+wire signed [RANGE:0]		MEM_5;
+wire signed [RANGE:0]		MEM_6;
+wire signed [RANGE:0]		MEM_7;
+wire signed [RANGE:0]		MEM_8;
+wire signed [RANGE:0]		MEM_DELAY;
+wire signed [RANGE:0]		MEM_PHASE;
 
-wire signed [15:0]		NOISE7;
-wire signed [15:0]		NOISE6;
-wire signed [15:0]		NOISE5;
-wire signed [15:0]		NOISE4;
-wire signed [15:0]		NOISE3;
-wire signed [15:0]		NOISE2;
-wire signed [15:0]		NOISE1;
-wire signed [15:0]		NOISE0;
+
+wire signed [15:0]		NOISE_8;
+wire signed [15:0]		NOISE_7;
+wire signed [15:0]		NOISE_6;
+wire signed [15:0]		NOISE_5;
+wire signed [15:0]		NOISE_4;
+wire signed [15:0]		NOISE_3;
+wire signed [15:0]		NOISE_2;
+wire signed [15:0]		NOISE_1;
+wire signed [15:0]		NOISE_0;
 
 reg signed [RANGE+1:0]		MIX_01;
 reg signed [RANGE+1:0]		MIX_23;
@@ -149,44 +153,7 @@ reg   [31:0]  			DELAY_CNT;
 	);
 
 
-//KP_main string0(  /// HIGH STRING
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		  .dnoise(NOISE0),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:3],5'b11111}),
-//		  .filtsw(3'b000),//each filter can be tuned to the specific string
-//		  .trig(KEYMIX0),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM0)
-//        );
-//
-//KP_main string1(
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		  .dnoise(NOISE1),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:3],5'b11111}),
-//		  .filtsw(3'b001),
-//		  .trig(KEYMIX1),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM1)
-//        );
-//
-//KP_main string2(
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(seven0068khz_clk),
-//		   .dnoise(NOISE2),
-//		  .velocity(7'd127),
-//		  .decay({SW[9:3],5'b11111}),
-//		  .filtsw(3'b010),
-//		  .trig(KEYMIX2),
-//		  .delay_length(11'd1959),
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM2)
-//        );
+
 
 wire a_clk_2;
 wire a_clk_4;
@@ -202,7 +169,7 @@ multi_clk_div div(
 		.div_clock(12'd32),
 		.reset(RESET_DELAY_n),
 		.clk(seven0068khz_clk),
-		.div_var(a_clkdiv),
+		.div_var(a_clk_div),
 		.div2(a_clk_2),
 		.div4(a_clk_4),
 		.div8(a_clk_8),
@@ -215,80 +182,132 @@ multi_clk_div div(
 wire [2:0] sw_filt;
 wire [11:0] sw_decay;
 
-assign sw_filt = {2'b00,SW[2]};
-assign sw_decay = {12'b111111111111};
+assign sw_filt = {1'b0,SW[2:1]};
+assign sw_decay = {SW[9:3],5'b11111};
 
-KP_main string3 (
+KP_main string0(  /// HIGH STRING
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(a_clk_16),
+		  .dnoise(NOISE_0),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt ),//each filter can be tuned to the specific string
+		  .trig(KEY[4]),
+		  .delay_length(11'd950),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM_0)
+        );
+
+KP_main string1(
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk_4),
-		  .dnoise(NOISE3),
+		  .dnoise(NOISE_1),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt ),
+		  .trig(KEY[4]),
+		  .delay_length(11'd959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM_1)
+        );
+
+KP_main string2(
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(a_clk_4),
+		   .dnoise(NOISE_2),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
+		  .trig(KEY[4]),
+		  .delay_length(11'd959),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM_2)
+        );
+		  
+KP_main string3 (
+			.m_clk(seven0068khz_clk),
+		  .audio_clk(a_clk_4),
+		  .dnoise(NOISE_3),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
 		  .trig(KEY[4]),
 		  .delay_length(10'd575),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM3)
+        .qout(MEM_3)
         );
 
 KP_main string4(
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_4),
-		   .dnoise(NOISE4),
+		   .dnoise(NOISE_4),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
 		  .trig(KEY[3]),
 		  .delay_length(10'd773),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM4)
+        .qout(MEM_4)
         );
 
-KP_main string5(  //low string
-			.m_clk(MAX10_CLK1_50),
+KP_main string5(
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_4),
-		   .dnoise(NOISE5),
+		   .dnoise(NOISE_5),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
 		  .trig(KEY[2]),
 		  .delay_length(10'd974),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM5)
+        .qout(MEM_5)
         );
 
 KP_main string6(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_8),
-		   .dnoise(NOISE6),
+		   .dnoise(NOISE_6),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
 		  .trig(KEY[1]),
 		  .delay_length(10'd650),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM6)
+        .qout(MEM_6)
         );
 
 KP_main string7(  
-			.m_clk(MAX10_CLK1_50),
+			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_8),
-		   .dnoise(NOISE6),
+		   .dnoise(NOISE_7),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
 		  .trig(KEY[0]),
 		  .delay_length(10'd865),
 		  .reset_n(RESET_DELAY_n),
-        .qout(MEM7)
+        .qout(MEM_7)
+        );
+
+KP_main string8(  
+			.m_clk(seven0068khz_clk),
+		  .audio_clk(a_clk_16),
+		   .dnoise(NOISE_8),
+		  .velocity(7'd127),
+		  .decay(sw_decay),
+		  .filtsw(sw_filt),
+		  .trig(KEY[0]),
+		  .delay_length(10'd862),
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM_8)
         );
 
 					
 wire signed [24:0]presub;
 reg signed [23:0]sub0;
- assign   presub = $signed(MEM7)+ $signed(MEM6>>>2)+ $signed(MEM5>>>2) 
-					+$signed(MEM4>>>2) + $signed(MEM3>>>2)+ $signed(MEM2>>>2)+ 
-					$signed(MEM1>>>2);
+ assign   presub = $signed(MEM_8>>>2)+ $signed(MEM_6>>>2)+ $signed(MEM_5>>>2) 
+					+$signed(MEM_4>>>2) + $signed(MEM_3>>>2)+ $signed(MEM_2>>>2)+ 
+					$signed(MEM_1>>>2);
 					
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
@@ -315,15 +334,15 @@ reg signed [23:0]sub0;
 wire signed [24:0]presum;
 wire signed [23:0]sum0;
 
-assign presum = $signed(MEM7) + $signed(MEM6)+ $signed(MEM5) 
-					+$signed(MEM4) + $signed(MEM3)+ $signed(MEM2)+ $signed(MEM1)+ $signed(MEM0);
+assign presum = $signed(MEM_DELAY)+$signed(MEM_8) +$signed(MEM_7) + $signed(MEM_6)+ $signed(MEM_5) 
+					+$signed(MEM_4) + $signed(MEM_3)+ $signed(MEM_2)+ $signed(MEM_1)+ $signed(MEM_0);
 					
 assign sum0 = (presum[24] == presum[23])?$signed(presum[23:0]):(presum[24] == 1'b0)?24'd8388607:24'd8388608;
 wire signed [23:0] submix;
 
 newfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
-			.filt_sel({SW[1],2'b0}),
-			.clk(a_clk_4),
+			.filt_sel({3'b100}),
+			.clk(seven0068khz_clk),
 			.d(sum0),
 			.reset_n(RESET_DELAY_n),
 			.q(submix) // output to DAC
@@ -332,8 +351,8 @@ newfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
  wire signed [23:0] sub1;					
 
 newfilter lpf_mix1(//FILTER, depth of filter controlled by input to filt_sel
-			.filt_sel({SW[0],2'b0}),
-			.clk(a_clk_8),
+			.filt_sel({SW[1:0],1'b0}),
+			.clk(a_clk_4),
 			.d(submix),
 			.reset_n(RESET_DELAY_n),
 			.q(sub1) // output to DAC
@@ -355,20 +374,21 @@ assign MIXMASTER = sub1;
 //		  .trig(KEY[0]),
 //		  .delay_length(15'd16383),//gates of hell
 //		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM7)
+//        .qout(MEM_7)
 //        );
 	
 
 	
-lfsr  noise(//easier to add more voices, shown to be marginally cheaper
-			.out24_7(NOISE7),
-			.out24_6(NOISE6),
-			.out24_5(NOISE5),
-			.out24_4(NOISE4),
-			.out24_3(NOISE3),
-			.out24_2(NOISE2),
-			.out24_1(NOISE1),
-			.out24_0(NOISE0),
+lfsr noise_gen(//easier to add more voices, shown to be marginally cheaper
+			.out24_8(NOISE_8),
+			.out24_7(NOISE_7),
+			.out24_6(NOISE_6),
+			.out24_5(NOISE_5),
+			.out24_4(NOISE_4),
+			.out24_3(NOISE_3),
+			.out24_2(NOISE_2),
+			.out24_1(NOISE_1),
+			.out24_0(NOISE_0),
 			.clk(MAX10_CLK1_50),
 			.a_clk(seven0068khz_clk),
 			.reset(RESET_DELAY_n)

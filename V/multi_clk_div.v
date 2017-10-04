@@ -60,65 +60,52 @@ module multi_clk_div(
 		
 
 		always@(posedge clk)
+begin
 		begin:DIV2
 		if (enable_2)
-			div2 = ~div2;
+			div2 <= ~div2;
 		end
 
-		always@(posedge clk)
-		begin:DIV4
 		if (enable_4)
-			div4 = ~div4;
+		begin:DIV4
+			div4 <= ~div4;
 		end
-		
 
-		always@(posedge clk)
-		begin:DIV8
 		if (enable_8)
-			div8 = ~div8;
+		begin:DIV8		
+			div8 <= ~div8;
 		end
-		
 
-		always@(posedge clk)
-		begin:DIV16
 		if (enable_16)
-			div16 = ~div16;
+		begin:DIV16
+			div16 <= ~div16;
 		end
 		
-
-		always@(posedge clk)
-		begin:DIV32
 		if (enable_32)
-			div32 = ~div32;
+		begin:DIV32
+		div32 <= ~div32;
 		end
 		
-
-		always@(posedge clk)
-		begin:DIV64
 		if (enable_64)
-			div64 = ~div64;
+		begin:DIV64		
+			div64 <= ~div64;
 		end
 		
-
-		always@(posedge clk)
-		begin:DIV128
 		if (enable_128)
-			div128 = ~div128;
+		begin:DIV128
+			div128 <= ~div128;
 		end
-		
-		always@(posedge clk)
-		begin:DIV256
+
 		if (enable_256)
-			div256 = ~div256;
+		begin:DIV256
+			div256 <= ~div256;
 		end
-		
-		
-		always@(posedge clk)
-		begin:DIVAR
+
 		if (enable_var)
-			div_var = ~div_var;
+		begin:DIVAR
+		div_var <= ~div_var;
 		end
-		
+end		
 
 
 

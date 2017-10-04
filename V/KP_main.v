@@ -12,12 +12,15 @@ input wire [2:0] filtsw,//filter choosing
 output wire signed [23:0] qout //output to top level
 );
 
+reg signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
+reg signed [23:0] start_level; //initial level
 
-wire signed [23:0] start_level; //initial level
-assign start_level = $signed(dnoise) * $signed({7'b0,velocity});
+always @ (posedge a_clk)
+begin
+	start_level <= $signed(dnoise) * ({1'b0,velocity,velocity[0]});
+	dfilter_gain = ($signed(dfilter) * ({1'b0,decay}));
+end
 
-wire signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
-assign dfilter_gain = ($signed(dfilter) * $signed({12'b0,decay}));
 
 reg signed [23:0] d = 0;//feeds RAM
 reg [10:0] count=0; //basic counter

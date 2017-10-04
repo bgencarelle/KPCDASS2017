@@ -1,16 +1,16 @@
-Analysis & Synthesis Status : Successful - Tue Oct 03 21:12:25 2017
+Analysis & Synthesis Status : Successful - Wed Oct 04 21:13:45 2017
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : Decay_Delay
 Top-level Entity Name : adc_mic_lcd
 Family : MAX 10
-Total logic elements : 2,709
-    Total combinational functions : 1,714
-    Dedicated logic registers : 1,494
-Total registers : 1494
-Total pins : 61
+Total logic elements : 9,409
+    Total combinational functions : 6,848
+    Dedicated logic registers : 3,544
+Total registers : 3544
+Total pins : 59
 Total virtual pins : 0
-Total memory bits : 122,880
-Embedded Multiplier 9-bit elements : 20
+Total memory bits : 221,184
+Embedded Multiplier 9-bit elements : 63
 Total PLLs : 1
 UFM blocks : 0
 ADC blocks : 0
