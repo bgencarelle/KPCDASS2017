@@ -1,5 +1,5 @@
 
-module lfsr    (//originally based on borrowed code, reworked following CDA lecture.
+module lfsr (//originally based on borrowed code, reworked following CDA lecture.
 
 //MARGINALLY cheaper to do registered outputs than separate LFSRS, also makes for velocity control.
 

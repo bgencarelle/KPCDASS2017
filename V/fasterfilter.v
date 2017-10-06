@@ -1,21 +1,12 @@
 
-module newfbadilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//easy bit depth control
+module newfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//easy bit depth control
 	input wire [2:0] filt_sel,//choose from 8 LPF choices
 	input wire clk,//
-	input wire signed [RANGE:0] d,
+	input  wire signed [RANGE:0] d,
 	input wire reset_n,
-	output reg signed [RANGE:0] q
+	output signed [RANGE:0] q
 	 );
-	reg signed [23:0] regq_0;
-	reg signed [23:0] regq_1;
-	reg signed [23:0] regq_2;
-	reg signed [23:0] regq_3;
-	reg signed [23:0] regq_4;
-	reg signed [23:0] regq_5;
-	reg signed [23:0] regq_6;
-	reg signed [23:0] regq_7;
-	wire signed [23:0] qout; 
-	
+	reg signed [23:0] regq;
    reg signed [23:0] del[15:0];
       integer i;
       always @ ( posedge clk ) //look familiar?
@@ -26,42 +17,52 @@ module newfbadilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					del[i] <= 0;
             end
       else
-
          for (i = 1; i <= 15; i = i+ 1)
 				begin: shift_fir
                del[0] <= d;
                del[i] <= del[i-1] ;
-;
             end
 		end
 		reg signed [31:0] sum;
 
 	always @ (posedge clk)
-	begin
-			q<= qout;
-	end
 
-	assign 	qout = 					(filt_sel==3'b000)?
-					d:
-											(filt_sel==3'b001)?
-					$signed(del[0]>>>1)+
-					$signed(del[1]>>>1)://1/2:
-											(filt_sel==3'b010)?
-					$signed(del[0]>>>2)+//1/4
-					$signed(del[1]>>>2)+//1/4
+	begin case(filt_sel)
+	
+		3'b000:begin // start of classic running average LPF
+			regq <=
+					$signed(del[0]);
+				end
+				
+		3'b001:begin // start of classic running average LPF
+			regq <=
+					$signed(del[0]>>>1) +//1/2
+					~$signed(del[1]>>>1);//1/2
+				 	end
+
+		3'b010:begin
+			regq <=
+					$signed(del[0]>>>2) +//1/4
+					~$signed(del[1]>>>2) +//1/4
 					$signed(del[2]>>>2)+//1/4
-					$signed(del[3]>>>2)://1/4:
-											(filt_sel==3'b011)?
+					~$signed(del[3]>>>2);//1/4
+				 	end
+
+		3'b011:begin
+			regq <=
 					$signed(del[0] >>>3) +//1/8
-					$signed(del[1]>>>3) +//1/8
+					~$signed(del[1]>>>3) +//1/8
 					$signed(del[2]>>>3) +//1/8
-					$signed(del[3]>>>3) +//1/8
+					~$signed(del[3]>>>3) +//1/8
 					$signed(del[4]>>>3) +//1/8
-					$signed(del[5]>>>3) +//1/8
+					~$signed(del[5]>>>3) +//1/8
 					$signed(del[6]>>>3) +//1/8
-					$signed(del[7]>>>3):
-											//ELSE IF FILTER IS ALL BIG AND SHIT
-					$signed(del[0]>>>4) +//1/16
+					~$signed(del[7]>>>3);
+				 	end
+
+		3'b100:begin // end of classic running average LPF
+			regq <=
+					$signed(del[0] >>>4) +//1/16
 					$signed(del[1]>>>4) +//1/16
 					$signed(del[2]>>>4) +//1/16
 					$signed(del[3]>>>4) +//1/16
@@ -77,5 +78,55 @@ module newfbadilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(
 					$signed(del[13]>>>4) +//1/16
 					$signed(del[14]>>>4) +//1/16
 					$signed(del[15]>>>4);
+					end
 
+		3'b101:begin // start of experimental section
+			regq <=
+					$signed(del[0]>>>6) +//1/64
+					$signed(del[1]>>>6) +//1/64
+					$signed(del[2]>>>5) +//1/32
+					$signed(del[3]>>>4) +//1/16
+					$signed(del[4]>>>3) +//1/8
+					$signed(del[5]>>>2) +//1/4
+					$signed(del[6]>>>2) + //1/4
+					$signed(del[7]>>>2); //1/4
+				 	end
+
+		3'b110:begin
+			regq <=
+					$signed(del[0]>>>8) +//1/256
+					$signed(del[1]>>>8) +//1/256
+					$signed(del[2]>>>7) +//1/128
+					$signed(del[3]>>>6) +//1/64
+					$signed(del[4]>>>5) +//1/32
+					$signed(del[5]>>>4) +//1/16
+					$signed(del[6]>>>3) +//1/8
+					$signed(del[7]>>>2) +//1/4
+					$signed(del[8]>>>2);//1/4
+				 end
+
+		3'b111:begin
+			regq <=
+					$signed(del[0]>>>11) +//1/2048
+					$signed(del[1]>>>11) +//1/2048
+					$signed(del[2]>>>10) +//1/1024
+					$signed(del[3]>>>9)  +//1/512
+					$signed(del[4]>>>8)  +//1/256
+					$signed(del[5]>>>7)  +//1/128
+					$signed(del[6]>>>6) +//1/64
+					$signed(del[7]>>>5) +//1/32
+					$signed(del[8]>>>4) +//1/16
+					$signed(del[9]>>>3) +//1/8
+					$signed(del[10]>>>2) +//1/4
+					$signed(del[11]>>>3) +//1/8
+					$signed(del[12]>>>3) +//1/8
+					$signed(del[13]>>>3) +//1/8
+					$signed(del[14]>>>3);
+				 end
+
+
+		endcase
+	end
+
+	assign 	q =$signed(regq);
 	endmodule

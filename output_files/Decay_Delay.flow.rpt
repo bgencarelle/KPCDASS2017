@@ -1,5 +1,5 @@
 Flow report for Decay_Delay
-Wed Oct 04 21:15:00 2017
+Fri Oct 06 21:41:55 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -41,21 +41,21 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Oct 04 21:15:00 2017       ;
+; Flow Status                        ; Successful - Fri Oct 06 21:41:55 2017       ;
 ; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Decay_Delay                                 ;
 ; Top-level Entity Name              ; adc_mic_lcd                                 ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 7,775 / 49,760 ( 16 % )                     ;
-;     Total combinational functions  ; 6,849 / 49,760 ( 14 % )                     ;
-;     Dedicated logic registers      ; 3,529 / 49,760 ( 7 % )                      ;
-; Total registers                    ; 3529                                        ;
+; Total logic elements               ; 5,497 / 49,760 ( 11 % )                     ;
+;     Total combinational functions  ; 4,491 / 49,760 ( 9 % )                      ;
+;     Dedicated logic registers      ; 3,292 / 49,760 ( 7 % )                      ;
+; Total registers                    ; 3292                                        ;
 ; Total pins                         ; 59 / 360 ( 16 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 221,184 / 1,677,312 ( 13 % )                ;
-; Embedded Multiplier 9-bit elements ; 63 / 288 ( 22 % )                           ;
+; Total memory bits                  ; 614,400 / 1,677,312 ( 37 % )                ;
+; Embedded Multiplier 9-bit elements ; 70 / 288 ( 24 % )                           ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                               ;
 ; ADC blocks                         ; 0 / 2 ( 0 % )                               ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/04/2017 21:13:22 ;
+; Start date & time ; 10/06/2017 21:40:26 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Decay_Delay         ;
 +-------------------+---------------------+
@@ -81,14 +81,12 @@ agreement for further details.
 ; ALM_REGISTER_PACKING_EFFORT             ; High                                                         ; Medium                               ; --          ; --             ;
 ; AUTO_RAM_TO_LCELL_CONVERSION            ; On                                                           ; Off                                  ; --          ; --             ;
 ; AUTO_RESOURCE_SHARING                   ; On                                                           ; Off                                  ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                   ; 184857106377073.150714440101624                              ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                   ; 184857106377073.150731882611476                              ; --                                   ; --          ; --             ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE        ; Area                                                         ; Balanced                             ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                  ; Verilog Hdl                                                  ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                     ; ModelSim-Altera (Verilog)                                    ; <None>                               ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP                  ; 85                                                           ; --                                   ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP                  ; 0                                                            ; --                                   ; --          ; --             ;
-; MISC_FILE                               ; adc_qsys/synthesis/../adc_qsys.cmp                           ; --                                   ; --          ; --             ;
-; MISC_FILE                               ; adc_qsys/synthesis/../../adc_qsys.qsys                       ; --                                   ; --          ; --             ;
 ; MISC_FILE                               ; ram_4096_32bit_inst.v                                        ; --                                   ; --          ; --             ;
 ; MISC_FILE                               ; ram_4096_32bit_bb.v                                          ; --                                   ; --          ; --             ;
 ; MISC_FILE                               ; altclk_inst.v                                                ; --                                   ; --          ; --             ;
@@ -116,13 +114,9 @@ agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY                ; output_files                                                 ; --                                   ; --          ; --             ;
 ; REMOVE_REDUNDANT_LOGIC_CELLS            ; On                                                           ; Off                                  ; --          ; --             ;
 ; SAFE_STATE_MACHINE                      ; On                                                           ; Off                                  ; --          ; --             ;
-; SLD_FILE                                ; adc_qsys/synthesis/adc_qsys.debuginfo                        ; --                                   ; --          ; --             ;
 ; SLD_FILE                                ; clock_buff/synthesis/clock_buff.debuginfo                    ; --                                   ; --          ; --             ;
-; SLD_INFO                                ; QSYS_NAME adc_qsys HAS_SOPCINFO 1 GENERATION_ID 1506633763   ; --                                   ; adc_qsys    ; --             ;
 ; SLD_INFO                                ; QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063 ; --                                   ; clock_buff  ; --             ;
-; SOPCINFO_FILE                           ; adc_qsys/synthesis/../../adc_qsys.sopcinfo                   ; --                                   ; --          ; --             ;
 ; SOPCINFO_FILE                           ; clock_buff/synthesis/../../clock_buff.sopcinfo               ; --                                   ; --          ; --             ;
-; SYNTHESIS_ONLY_QIP                      ; On                                                           ; --                                   ; --          ; --             ;
 ; SYNTHESIS_ONLY_QIP                      ; On                                                           ; --                                   ; --          ; --             ;
 ; TOP_LEVEL_ENTITY                        ; adc_mic_lcd                                                  ; Decay_Delay                          ; --          ; --             ;
 +-----------------------------------------+--------------------------------------------------------------+--------------------------------------+-------------+----------------+
@@ -133,12 +127,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:23     ; 1.0                     ; 738 MB              ; 00:00:40                           ;
-; Fitter                    ; 00:00:52     ; 1.4                     ; 1708 MB             ; 00:01:42                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 601 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:09     ; 2.5                     ; 767 MB              ; 00:00:20                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 622 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:32     ; --                      ; --                  ; 00:02:50                           ;
+; Analysis & Synthesis      ; 00:00:22     ; 1.0                     ; 730 MB              ; 00:00:40                           ;
+; Fitter                    ; 00:00:45     ; 1.4                     ; 1671 MB             ; 00:01:27                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 595 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 2.3                     ; 758 MB              ; 00:00:17                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 614 MB              ; 00:00:03                           ;
+; Total                     ; 00:01:22     ; --                      ; --                  ; 00:02:31                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

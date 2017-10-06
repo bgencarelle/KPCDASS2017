@@ -1,0 +1,20 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\unnamed.qsys --synthesis=VERILOG --greybox --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\V\adc\synthesis --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading KPCDASS2017/unnamed.qsys
+Progress: Reading input file
+Progress: Adding modular_dual_adc_0 [altera_modular_dual_adc 17.0]
+Progress: Parameterizing module modular_dual_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: unnamed: Generating unnamed "unnamed" for QUARTUS_SYNTH
+Info: modular_dual_adc_0: "unnamed" instantiated altera_modular_dual_adc "modular_dual_adc_0"
+Info: control_internal: "modular_dual_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: conduit_splitter_internal: "modular_dual_adc_0" instantiated altera_modular_adc_conduit_splitter "conduit_splitter_internal"
+Info: dual_sync_internal: "modular_dual_adc_0" instantiated altera_modular_adc_dual_sync "dual_sync_internal"
+Info: unnamed: Done "unnamed" with 5 modules, 11 files
+Info: Generating third-party timing and resource estimation model ...
+Info: Done generating third-party timing and resource estimation model.
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

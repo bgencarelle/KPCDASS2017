@@ -179,7 +179,7 @@ ram_delay	delay_ram(		// RAM. currently using too much-can implement smaller amo
 							.q(q)
 							);
 
-newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
+mainfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.filt_sel(filtsw),
 			.clk(a_clk),
 			.d(q),

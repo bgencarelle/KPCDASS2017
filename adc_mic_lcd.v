@@ -182,7 +182,7 @@ multi_clk_div div(
 wire [2:0] sw_filt;
 wire [11:0] sw_decay;
 
-assign sw_filt = {1'b0,SW[2:1]};
+assign sw_filt = {1'b0,SW[1:0]};
 assign sw_decay = {SW[9:3],5'b11111};
 
 KP_main string0(  /// HIGH STRING
@@ -283,7 +283,7 @@ KP_main string7(
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[0]),
+		  .trig(KEY[1]),
 		  .delay_length(10'd865),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_7)
@@ -305,9 +305,8 @@ KP_main string8(
 					
 wire signed [24:0]presub;
 reg signed [23:0]sub0;
- assign   presub = $signed(MEM_8>>>2)+ $signed(MEM_6>>>2)+ $signed(MEM_5>>>2) 
-					+$signed(MEM_4>>>2) + $signed(MEM_3>>>2)+ $signed(MEM_2>>>2)+ 
-					$signed(MEM_1>>>2);
+ assign   presub = $signed(MEM_DELAY)+ $signed(MEM_8)+ $signed(MEM_6)+ $signed(MEM_5) 
+					+$signed(MEM_4) + $signed(MEM_3)+ $signed(MEM_2)+ $signed(MEM_1) + $signed(MEM_0);
 					
 	always @(posedge seven0068khz_clk) //will move mixer to another .V file at some point
 	begin
@@ -340,7 +339,7 @@ assign presum = $signed(MEM_DELAY)+$signed(MEM_8) +$signed(MEM_7) + $signed(MEM_
 assign sum0 = (presum[24] == presum[23])?$signed(presum[23:0]):(presum[24] == 1'b0)?24'd8388607:24'd8388608;
 wire signed [23:0] submix;
 
-newfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
+mainfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
 			.filt_sel({3'b100}),
 			.clk(seven0068khz_clk),
 			.d(sum0),
@@ -350,8 +349,8 @@ newfilter lpf_mix0(//FILTER, depth of filter controlled by input to filt_sel
 			
  wire signed [23:0] sub1;					
 
-newfilter lpf_mix1(//FILTER, depth of filter controlled by input to filt_sel
-			.filt_sel({SW[1:0],1'b0}),
+mainfilter lpf_mix1(//FILTER, depth of filter controlled by input to filt_sel
+			.filt_sel(3'b011),
 			.clk(a_clk_4),
 			.d(submix),
 			.reset_n(RESET_DELAY_n),
@@ -362,21 +361,21 @@ wire signed [RANGE:0] MIXMASTER;
 
 assign MIXMASTER = sub1;
 
-//KP_delay effect(  //low string
-//			.m_clk(MAX10_CLK1_50),
-//		  .audio_clk(a_clk64),
-//	//	  .reverse(a_clk256),
-//		   .dnoise(sub1),
-//		  .velocity(7'd127),
-//		  .decay(12'b111111111111),
-//
-//		  .filtsw(sw_filt[0:0]),
-//		  .trig(KEY[0]),
-//		  .delay_length(15'd16383),//gates of hell
-//		  .reset_n(RESET_DELAY_n),
-//        .qout(MEM_7)
-//        );
-	
+KP_delay effect(  //low string
+			.m_clk(MAX10_CLK1_50),
+		  .audio_clk(a_clk_8),
+	//	  .reverse(a_clk256),
+		   .dnoise(sub1),
+		  .velocity(7'd127),
+		  .decay(12'b111111111111),
+
+		  .filtsw(sw_filt[0]),
+		  .trig(KEY[0]),
+		  .delay_length(15'd1063),//gates of hell
+		  .reset_n(RESET_DELAY_n),
+        .qout(MEM_DELAY)
+        );
+
 
 	
 lfsr noise_gen(//easier to add more voices, shown to be marginally cheaper
@@ -487,13 +486,6 @@ DAC16 dac1 (
 
 	);
 
-//-----MCLK GENERATER ----------
-//assign AUDIO_MCLK  = MCLK_48M ;
-//
-//AUDIO_PLL pll (
-//	.inclk0 (MAX10_CLK1_50),
-//	.c0     (MCLK_48M)
-//	);
 
 
 //---AUDIO CODEC SPI CONFIG ------------------------------------
@@ -543,6 +535,6 @@ DAC16 dac1 (
 //	.START_STOP( 1)
 //);
 
-
+ 
 
 endmodule

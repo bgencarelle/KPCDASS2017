@@ -5,6 +5,11 @@
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
       </assignment_values>
     </sld_info>
+    <sld_info hpath="KP_delay:effect|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+    </sld_info>
     <sld_info hpath="KP_main:string0|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>

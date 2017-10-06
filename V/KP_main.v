@@ -162,8 +162,9 @@ ram_4096_32bit	shift_reg_ram(		// RAM. currently using too much-can implement sm
 							.q(q)
 							);
 
-newfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
+kpfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.filt_sel(filtsw),
+//			.rand_switch(d[1]),
 			.clk(a_clk),
 			.d(q[23:0]),
 			.reset_n(reset_n),

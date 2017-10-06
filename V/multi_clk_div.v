@@ -22,7 +22,7 @@ module multi_clk_div(
 		reg [5:0] time_base_counter_64 = 0;
 		reg [6:0]time_base_counter_128 = 0;
 		reg [7:0]time_base_counter_256 = 0;
-		reg [11:0] time_base_counter_var = 0;
+		reg [12:0] time_base_counter_var = 0;
 		
 		always@ (posedge clk)
 		begin
