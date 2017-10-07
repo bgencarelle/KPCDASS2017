@@ -315,11 +315,12 @@ set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE AREA
 set_global_assignment -name AUTO_RAM_TO_LCELL_CONVERSION ON
 set_global_assignment -name AUTO_RESOURCE_SHARING ON
 set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE AREA"
-set_global_assignment -name VERILOG_FILE adc_qsys/simulation/adc_qsys.v
+set_global_assignment -name VERILOG_FILE V/ADC_converter/synthesis/ADC_converter.v
+set_global_assignment -name QSYS_FILE ADC_converter.qsys
+set_global_assignment -name QIP_FILE V/ADC_converter/synthesis/ADC_converter.qip
 set_global_assignment -name QDB_FILE simulation/modelsim/rtl_work/_lib1_0.qdb
 set_global_assignment -name QDB_FILE simulation/modelsim/rtl_work/_lib.qdb
 set_global_assignment -name VERILOG_FILE V/lfsr.v
-set_global_assignment -name HEX_FILE V/LOOP.hex
 set_global_assignment -name SOURCE_FILE V/VGA_Param.h
 set_global_assignment -name VERILOG_FILE V/VGA_Controller.v
 set_global_assignment -name VERILOG_FILE V/SPI_ROM.v
@@ -347,4 +348,6 @@ set_global_assignment -name QIP_FILE ram_delay.qip
 set_global_assignment -name VERILOG_FILE V/fasterfilter.v
 set_global_assignment -name VERILOG_FILE V/mainfilter.v
 set_global_assignment -name VERILOG_FILE V/kpfilter.v
+set_global_assignment -name QIP_FILE adcpll.qip
+set_global_assignment -name VERILOG_FILE V/adc_translate.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

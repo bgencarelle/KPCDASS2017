@@ -64,7 +64,7 @@ begin
 	if (~response_valid_r  &  response_valid)
 	begin
 	      { ADC_RD0,ADC_RD1,ADC_RD2,ADC_RD3,ADC_RD4,ADC_RD5 } <= { ADC_RD1,ADC_RD2,ADC_RD3,ADC_RD4, ADC_RD5,response_data };
-		    DATA  <= FITER_EN ? (ADC_RD0+ADC_RD1+ADC_RD2+ADC_RD3+ADC_RD4+ADC_RD5)/6  : response_data ;//response_data;		
+		    DATA  <= FITER_EN ? ((ADC_RD0+ADC_RD1+ADC_RD2+ADC_RD3+ADC_RD4+ADC_RD5)>>2)  : response_data ;//response_data;		
 	end
 end			
 

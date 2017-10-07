@@ -147,6 +147,7 @@ reg   [31:0]  			DELAY_CNT;
 		.inclk  (clkbuff),  //  altclkctrl_input.inclk
 		.outclk (seven0068khz_clk)  // altclkctrl_output.outclk
 	);	
+	
 	altclk clockyclock(//added clock, infinitely better sound.
 	.inclk0 (MAX10_CLK1_50),
 	.c0 (clkbuff)
@@ -183,7 +184,7 @@ wire [2:0] sw_filt;
 wire [11:0] sw_decay;
 
 assign sw_filt = {1'b0,SW[1:0]};
-assign sw_decay = {SW[9:3],5'b11111};
+assign sw_decay = out_adc_0 ;
 
 KP_main string0(  /// HIGH STRING
 			.m_clk(MAX10_CLK1_50),
@@ -396,14 +397,14 @@ lfsr noise_gen(//easier to add more voices, shown to be marginally cheaper
 ADC_SEG_LED segR(//this will be modified to display Note name and number
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (MIXMASTER [23:20]),
+			.adc_rd (out_adc_0[11:8]),
 			.LED(LED),
 			.HEXR(HEXL)
 			);
 ADC_SEG_LED segL(
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (MIXMASTER [19:16]),
+			.adc_rd (out_adc_0[7:4]),
 			.HEXR(HEXR)
 			);
 
@@ -411,10 +412,28 @@ ADC_SEG_LED segL(
 assign LEDR =  (HEXL);
 assign HEX0 = HEXL;
 assign HEX1 = HEXR;
-//--RESET DELAY ---
 
+
+
+wire [11:0] out_adc_0;
+
+ adc_translate(
+
+     .out_adc_8(),
+     .out_adc_7(),
+     .out_adc_6(),
+     .out_adc_5(),
+     .out_adc_4(),
+     .out_adc_3(),
+     .out_adc_2(),
+     .out_adc_1(),
+     .out_adc_0(out_adc_0),
+		.key(KEY[0]), 
+     .clk(MAX10_CLK2_50), 
+     .reset(RESET_DELAY_n)
+);
 //// END USER DEFINED
-
+assign GPIO[0] = seven0068khz_clk;
 
 
 

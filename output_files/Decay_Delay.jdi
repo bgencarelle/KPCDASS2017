@@ -1,18 +1,12 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="040b471f458ad608ad5b"/>
+    <hash md5_digest_80b="53fa6ec7414af3ee3730"/>
   </project>
   <file_info>
     <file device="10M50DAF484C6GES" path="Decay_Delay.sof" usercode="0xFFFFFFFF"/>
   </file_info>
   <sld_infos>
     <sld_info hpath="clock_buff:buff" name="buff">
-      <assignment_values>
-        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
-      </assignment_values>
-      <parameters/>
-    </sld_info>
-    <sld_info hpath="KP_delay:effect|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
       </assignment_values>
@@ -67,6 +61,12 @@
       <parameters/>
     </sld_info>
     <sld_info hpath="KP_main:string8|clock_buff:kpbuff" name="kpbuff">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+    <sld_info hpath="KP_delay:effect|clock_buff:kpbuff" name="kpbuff">
       <assignment_values>
         <assignment_value text="QSYS_NAME clock_buff HAS_SOPCINFO 1 GENERATION_ID 1506332063"/>
       </assignment_values>
