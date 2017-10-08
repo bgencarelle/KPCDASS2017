@@ -23,7 +23,7 @@ module adc (
 	wire    rst_controller_reset_out_reset; // rst_controller:reset_out -> modular_adc_0:reset_sink_reset_n
 
 	adc_modular_adc_0 #(
-		.is_this_first_or_second_adc (2)
+		.is_this_first_or_second_adc (1)
 	) modular_adc_0 (
 		.clock_clk               (clk_clk),                               //          clock.clk
 		.reset_sink_reset_n      (~rst_controller_reset_out_reset),       //     reset_sink.reset_n

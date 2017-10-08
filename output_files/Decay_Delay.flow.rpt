@@ -1,5 +1,5 @@
 Flow report for Decay_Delay
-Sun Oct 08 17:51:54 2017
+Sun Oct 08 18:06:18 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -41,14 +41,14 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sun Oct 08 17:51:54 2017       ;
+; Flow Status                        ; Successful - Sun Oct 08 18:06:18 2017       ;
 ; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Decay_Delay                                 ;
 ; Top-level Entity Name              ; KP_top                                      ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 5,680 / 49,760 ( 11 % )                     ;
+; Total logic elements               ; 5,677 / 49,760 ( 11 % )                     ;
 ;     Total combinational functions  ; 4,638 / 49,760 ( 9 % )                      ;
 ;     Dedicated logic registers      ; 3,410 / 49,760 ( 7 % )                      ;
 ; Total registers                    ; 3410                                        ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/08/2017 17:50:08 ;
+; Start date & time ; 10/08/2017 18:04:34 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Decay_Delay         ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 ; ALM_REGISTER_PACKING_EFFORT             ; High                                                         ; Medium                               ; --          ; --             ;
 ; AUTO_RAM_TO_LCELL_CONVERSION            ; On                                                           ; Off                                  ; --          ; --             ;
 ; AUTO_RESOURCE_SHARING                   ; On                                                           ; Off                                  ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                   ; 184857106377073.150747780706840                              ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                   ; 184857106377073.150747867408032                              ; --                                   ; --          ; --             ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE        ; Area                                                         ; Balanced                             ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                  ; Verilog Hdl                                                  ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                     ; ModelSim-Altera (Verilog)                                    ; <None>                               ; --          ; --             ;
@@ -130,12 +130,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:36     ; 1.0                     ; 760 MB              ; 00:01:13                           ;
-; Fitter                    ; 00:00:46     ; 1.4                     ; 1684 MB             ; 00:01:28                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 597 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:09     ; 2.2                     ; 761 MB              ; 00:00:16                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 618 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:38     ; --                      ; --                  ; 00:03:04                           ;
+; Analysis & Synthesis      ; 00:00:38     ; 1.0                     ; 753 MB              ; 00:01:24                           ;
+; Fitter                    ; 00:00:44     ; 1.4                     ; 1678 MB             ; 00:01:22                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 598 MB              ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 2.2                     ; 763 MB              ; 00:00:15                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 620 MB              ; 00:00:03                           ;
+; Total                     ; 00:01:37     ; --                      ; --                  ; 00:03:08                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
