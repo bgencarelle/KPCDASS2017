@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simPackage>
- <file path="simulation/adc_qsys.v" type="VERILOG" />
- <topLevel name="adc_qsys" />
- <deviceFamily name="max10" />
-</simPackage>

@@ -35,38 +35,37 @@ adcpll pll1(
 	);
 
 	
-ADC_converter u0(
-
-	.clock_clk(adc_c0),
-	.reset_sink_reset_n(reset),
-	.adc_pll_clock_clk(adc_c0),
-	.adc_pll_locked_export(pll1_locked),
-
-	.command_valid(cmd_valid),
-	.command_channel(cmd_channel),
-	.command_startofpacket(cmd_sop),
-	.command_endofpacket(cmd_eop),
-	.command_ready(cmd_rdy),
-	.response_valid(rspn_valid),
-	.response_startofpacket(),
-	.response_endofpacket(),
-	.response_empty(),
-	.response_channel(rspn_ch),
-	.response_data(rspn_data)
-	
-	);	
+//ADC_converter u0(
+//
+//	.clock_clk(adc_c0),
+//	.reset_sink_reset_n(reset),
+//	.adc_pll_clock_clk(adc_c0),
+//	.adc_pll_locked_export(pll1_locked),
+//
+//	.command_valid(cmd_valid),
+//	.command_channel(cmd_channel),
+//	.command_startofpacket(cmd_sop),
+//	.command_endofpacket(cmd_eop),
+//	.command_ready(cmd_rdy),
+//	.response_valid(rspn_valid),
+//	.response_channel(rspn_ch),
+//	.response_data(rspn_data)
+//	
+//	);	
 
 
 	reg [15:0]lock_dly_cnt;
 	
 	always@(posedge adc_c0)	
-		if ( pll1_locked && lock_dly_cnt != 10'd1000 )
+		if ( pll1_locked && lock_dly_cnt != 10'd10 )
+			begin
 			lock_dly_cnt <= lock_dly_cnt + 1;
+			end
 	
-	wire lock_rdy = (lock_dly_cnt == 10'd1000)? 1 : 0;	
+	wire lock_rdy = (lock_dly_cnt == 10'd10)? 1 : 0;	
 	
 	
-	assign cmd_channel = 1;
+	assign cmd_channel = {1'b0,chan};
 	
 	always@(posedge adc_c0)
 	 begin
@@ -80,14 +79,25 @@ ADC_converter u0(
 	reg [11:0]adc_data;
 	wire rspn_valid;
 	wire [11:0]rspn_data;
-
-	always@(posedge adc_c0)
-		if (rspn_valid && rspn_ch == cmd_channel)
-			out_adc_0 <= rspn_data;
-
-
-
-
+	reg [3:0] chan;
 	
+
+   reg response_valid_r;
+
+	always@(posedge clk)
+	if (reset == 1'b0)
+	begin
+		chan <= 1'b1;
+	end
+	else 	if ((rspn_valid) && (rspn_ch == 1'b1))
+		begin
+			out_adc_0 <= rspn_data;
+			chan <= chan + 1'b1;
+		end
+		else 
+		begin if ((rspn_valid) && (rspn_ch != 1'b1))
+				out_adc_0 <=out_adc_0;
+			chan <= chan + 1'b1;				
+		end
 			
 endmodule

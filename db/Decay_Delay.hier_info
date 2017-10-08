@@ -1,4 +1,4 @@
-|adc_mic_lcd
+|KP_top
 ADC_CLK_10 => ~NO_FANOUT~
 MAX10_CLK1_50 => MAX10_CLK1_50.IN9
 MAX10_CLK2_50 => MAX10_CLK2_50.IN1
@@ -35,7 +35,7 @@ FPGA_RESET_n => DELAY_CNT[29].ACLR
 FPGA_RESET_n => DELAY_CNT[30].ACLR
 FPGA_RESET_n => DELAY_CNT[31].ACLR
 FPGA_RESET_n => RESET_DELAY_n.ACLR
-KEY[0] => KEY[0].IN3
+KEY[0] => KEY[0].IN2
 KEY[1] => KEY[1].IN2
 KEY[2] => KEY[2].IN1
 KEY[3] => KEY[3].IN1
@@ -46,63 +46,63 @@ SW[2] => ~NO_FANOUT~
 SW[3] => ~NO_FANOUT~
 SW[4] => ~NO_FANOUT~
 SW[5] => ~NO_FANOUT~
-SW[6] => ~NO_FANOUT~
-SW[7] => ~NO_FANOUT~
-SW[8] => ~NO_FANOUT~
-SW[9] => ~NO_FANOUT~
-LEDR[0] <= ADC_SEG_LED:segR.HEXR
-LEDR[1] <= ADC_SEG_LED:segR.HEXR
-LEDR[2] <= ADC_SEG_LED:segR.HEXR
-LEDR[3] <= ADC_SEG_LED:segR.HEXR
-LEDR[4] <= ADC_SEG_LED:segR.HEXR
-LEDR[5] <= ADC_SEG_LED:segR.HEXR
-LEDR[6] <= ADC_SEG_LED:segR.HEXR
-LEDR[7] <= <GND>
-LEDR[8] <= <GND>
-LEDR[9] <= <GND>
-HEX0[0] <= ADC_SEG_LED:segR.HEXR
-HEX0[1] <= ADC_SEG_LED:segR.HEXR
-HEX0[2] <= ADC_SEG_LED:segR.HEXR
-HEX0[3] <= ADC_SEG_LED:segR.HEXR
-HEX0[4] <= ADC_SEG_LED:segR.HEXR
-HEX0[5] <= ADC_SEG_LED:segR.HEXR
-HEX0[6] <= ADC_SEG_LED:segR.HEXR
-HEX1[0] <= ADC_SEG_LED:segL.HEXR
-HEX1[1] <= ADC_SEG_LED:segL.HEXR
-HEX1[2] <= ADC_SEG_LED:segL.HEXR
-HEX1[3] <= ADC_SEG_LED:segL.HEXR
-HEX1[4] <= ADC_SEG_LED:segL.HEXR
-HEX1[5] <= ADC_SEG_LED:segL.HEXR
-HEX1[6] <= ADC_SEG_LED:segL.HEXR
+SW[6] => GPIO[3].DATAIN
+SW[7] => GPIO[2].DATAIN
+SW[8] => GPIO[1].DATAIN
+SW[9] => GPIO[0].DATAIN
+LEDR[0] << adc_1:adc1.AdcValue08out
+LEDR[1] << adc_1:adc1.AdcValue08out
+LEDR[2] << adc_1:adc1.AdcValue08out
+LEDR[3] << adc_1:adc1.AdcValue08out
+LEDR[4] << adc_1:adc1.AdcValue08out
+LEDR[5] << adc_1:adc1.AdcValue07out
+LEDR[6] << adc_1:adc1.AdcValue07out
+LEDR[7] << adc_1:adc1.AdcValue07out
+LEDR[8] << adc_1:adc1.AdcValue07out
+LEDR[9] << adc_1:adc1.AdcValue07out
+HEX0[0] << ADC_SEG_LED:segL.HEXR
+HEX0[1] << ADC_SEG_LED:segL.HEXR
+HEX0[2] << ADC_SEG_LED:segL.HEXR
+HEX0[3] << ADC_SEG_LED:segL.HEXR
+HEX0[4] << ADC_SEG_LED:segL.HEXR
+HEX0[5] << ADC_SEG_LED:segL.HEXR
+HEX0[6] << ADC_SEG_LED:segL.HEXR
+HEX1[0] << ADC_SEG_LED:segR.HEXR
+HEX1[1] << ADC_SEG_LED:segR.HEXR
+HEX1[2] << ADC_SEG_LED:segR.HEXR
+HEX1[3] << ADC_SEG_LED:segR.HEXR
+HEX1[4] << ADC_SEG_LED:segR.HEXR
+HEX1[5] << ADC_SEG_LED:segR.HEXR
+HEX1[6] << ADC_SEG_LED:segR.HEXR
 AUDIO_BCLK <> <UNC>
 AUDIO_GPIO_MFP5 <> <UNC>
 AUDIO_RESET_n <> <UNC>
 AUDIO_SDA_MOSI <> <UNC>
 AUDIO_WCLK <> <UNC>
 DAC_DATA <> DAC16:dac1.DIN
-DAC_SCLK <= DAC16:dac1.SCLK
-DAC_SYNC_n <= DAC16:dac1.SYNC
-GPIO[0] <= seven0068khz_clk.DB_MAX_OUTPUT_PORT_TYPE
-GPIO[1] <= <GND>
-GPIO[2] <= <GND>
-GPIO[3] <= <GND>
-GPIO[4] <= <GND>
-GPIO[5] <= <GND>
-GPIO[6] <= <GND>
-GPIO[7] <= <GND>
+DAC_SCLK << DAC16:dac1.SCLK
+DAC_SYNC_n << DAC16:dac1.SYNC
+GPIO[0] << SW[9].DB_MAX_OUTPUT_PORT_TYPE
+GPIO[1] << SW[8].DB_MAX_OUTPUT_PORT_TYPE
+GPIO[2] << SW[7].DB_MAX_OUTPUT_PORT_TYPE
+GPIO[3] << SW[6].DB_MAX_OUTPUT_PORT_TYPE
+GPIO[4] << <GND>
+GPIO[5] << <GND>
+GPIO[6] << <GND>
+GPIO[7] << <GND>
 
 
-|adc_mic_lcd|clock_buff:buff
+|KP_top|clock_buff:buff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|clock_buff:buff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -111,12 +111,12 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|altclk:clockyclock
+|KP_top|altclk:clockyclock
 inclk0 => sub_wire1[0].IN1
 c0 <= altpll:altpll_component.clk
 
 
-|adc_mic_lcd|altclk:clockyclock|altpll:altpll_component
+|KP_top|altclk:clockyclock|altpll:altpll_component
 inclk[0] => altclk_altpll1:auto_generated.inclk[0]
 inclk[1] => altclk_altpll1:auto_generated.inclk[1]
 fbin => ~NO_FANOUT~
@@ -176,7 +176,7 @@ fref <= <GND>
 icdrclk <= <GND>
 
 
-|adc_mic_lcd|altclk:clockyclock|altpll:altpll_component|altclk_altpll1:auto_generated
+|KP_top|altclk:clockyclock|altpll:altpll_component|altclk_altpll1:auto_generated
 clk[0] <= pll1.CLK
 clk[1] <= pll1.CLK1
 clk[2] <= pll1.CLK2
@@ -186,7 +186,7 @@ inclk[0] => pll1.CLK
 inclk[1] => pll1.CLK1
 
 
-|adc_mic_lcd|multi_clk_div:div
+|KP_top|multi_clk_div:div
 reset => ~NO_FANOUT~
 clk => div_var~reg0.CLK
 clk => div256~reg0.CLK
@@ -281,7 +281,7 @@ div128 <= div128~reg0.DB_MAX_OUTPUT_PORT_TYPE
 div256 <= div256~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string0
+|KP_top|KP_main:string0
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -379,7 +379,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string0|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string0|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -454,7 +454,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string0|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string0|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -592,7 +592,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string0|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string0|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -1219,7 +1219,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string0|kpfilter:filt0
+|KP_top|KP_main:string0|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -2110,17 +2110,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string0|clock_buff:kpbuff
+|KP_top|KP_main:string0|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string0|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string0|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string0|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string0|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -2129,7 +2129,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string1
+|KP_top|KP_main:string1
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -2227,7 +2227,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string1|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string1|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -2302,7 +2302,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string1|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string1|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -2440,7 +2440,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string1|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string1|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -3067,7 +3067,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string1|kpfilter:filt0
+|KP_top|KP_main:string1|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -3958,17 +3958,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string1|clock_buff:kpbuff
+|KP_top|KP_main:string1|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string1|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string1|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string1|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string1|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -3977,7 +3977,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string2
+|KP_top|KP_main:string2
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -4075,7 +4075,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string2|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string2|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -4150,7 +4150,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string2|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string2|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -4288,7 +4288,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string2|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string2|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -4915,7 +4915,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string2|kpfilter:filt0
+|KP_top|KP_main:string2|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -5806,17 +5806,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string2|clock_buff:kpbuff
+|KP_top|KP_main:string2|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string2|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string2|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string2|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string2|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -5825,7 +5825,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string3
+|KP_top|KP_main:string3
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -5923,7 +5923,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string3|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string3|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -5998,7 +5998,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -6136,7 +6136,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string3|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -6763,7 +6763,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string3|kpfilter:filt0
+|KP_top|KP_main:string3|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -7654,17 +7654,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string3|clock_buff:kpbuff
+|KP_top|KP_main:string3|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string3|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string3|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string3|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string3|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -7673,7 +7673,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string4
+|KP_top|KP_main:string4
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -7771,7 +7771,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string4|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string4|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -7846,7 +7846,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string4|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string4|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -7984,7 +7984,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string4|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string4|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -8611,7 +8611,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string4|kpfilter:filt0
+|KP_top|KP_main:string4|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -9502,17 +9502,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string4|clock_buff:kpbuff
+|KP_top|KP_main:string4|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string4|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string4|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string4|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string4|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -9521,7 +9521,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string5
+|KP_top|KP_main:string5
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -9619,7 +9619,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string5|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string5|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -9694,7 +9694,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string5|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string5|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -9832,7 +9832,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string5|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string5|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -10459,7 +10459,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string5|kpfilter:filt0
+|KP_top|KP_main:string5|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -11350,17 +11350,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string5|clock_buff:kpbuff
+|KP_top|KP_main:string5|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string5|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string5|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string5|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string5|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -11369,7 +11369,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string6
+|KP_top|KP_main:string6
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -11467,7 +11467,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string6|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string6|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -11542,7 +11542,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string6|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string6|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -11680,7 +11680,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string6|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string6|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -12307,7 +12307,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string6|kpfilter:filt0
+|KP_top|KP_main:string6|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -13198,17 +13198,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string6|clock_buff:kpbuff
+|KP_top|KP_main:string6|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string6|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string6|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string6|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string6|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -13217,7 +13217,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string7
+|KP_top|KP_main:string7
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -13315,7 +13315,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string7|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string7|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -13390,7 +13390,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string7|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string7|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -13528,7 +13528,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string7|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string7|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -14155,7 +14155,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string7|kpfilter:filt0
+|KP_top|KP_main:string7|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -15046,17 +15046,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string7|clock_buff:kpbuff
+|KP_top|KP_main:string7|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string7|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string7|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string7|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string7|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -15065,7 +15065,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_main:string8
+|KP_top|KP_main:string8
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -15163,7 +15163,7 @@ qout[22] <= kpfilter:filt0.q
 qout[23] <= kpfilter:filt0.q
 
 
-|adc_mic_lcd|KP_main:string8|ram_4096_32bit:shift_reg_ram
+|KP_top|KP_main:string8|ram_4096_32bit:shift_reg_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -15238,7 +15238,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_main:string8|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
+|KP_top|KP_main:string8|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_96r1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -15376,7 +15376,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_main:string8|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
+|KP_top|KP_main:string8|ram_4096_32bit:shift_reg_ram|altsyncram:altsyncram_component|altsyncram_96r1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -16003,7 +16003,7 @@ wren_a => ram_block1a22.PORTAWE
 wren_a => ram_block1a23.PORTAWE
 
 
-|adc_mic_lcd|KP_main:string8|kpfilter:filt0
+|KP_top|KP_main:string8|kpfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -16894,17 +16894,17 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_main:string8|clock_buff:kpbuff
+|KP_top|KP_main:string8|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_main:string8|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_main:string8|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_main:string8|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_main:string8|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -16913,7 +16913,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|mainfilter:lpf_mix0
+|KP_top|mainfilter:lpf_mix0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -17733,7 +17733,7 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|mainfilter:lpf_mix1
+|KP_top|mainfilter:lpf_mix1
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -18553,7 +18553,7 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_delay:effect
+|KP_top|KP_delay:effect
 audio_clk => audio_clk.IN1
 reset_n => reset_n.IN1
 m_clk => ~NO_FANOUT~
@@ -18713,17 +18713,17 @@ qout[22] <= mainfilter:filt0.q
 qout[23] <= mainfilter:filt0.q
 
 
-|adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff
+|KP_top|KP_delay:effect|clock_buff:kpbuff
 inclk => inclk.IN1
 outclk <= clock_buff_altclkctrl_0:altclkctrl_0.outclk
 
 
-|adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
+|KP_top|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0
 inclk => sub_wire3[0].IN1
 outclk <= clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component.outclk
 
 
-|adc_mic_lcd|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
+|KP_top|KP_delay:effect|clock_buff:kpbuff|clock_buff_altclkctrl_0:altclkctrl_0|clock_buff_altclkctrl_0_sub:clock_buff_altclkctrl_0_sub_component
 ena => clkctrl1.ENA
 inclk[0] => clkctrl1.INCLK
 inclk[1] => clkctrl1.INCLK1
@@ -18732,7 +18732,7 @@ inclk[3] => clkctrl1.INCLK3
 outclk <= clkctrl1.CLK
 
 
-|adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram
+|KP_top|KP_delay:effect|ram_delay:delay_ram
 aclr => aclr.IN1
 clock => clock.IN1
 data[0] => data[0].IN1
@@ -18815,7 +18815,7 @@ q[22] <= altsyncram:altsyncram_component.q_b
 q[23] <= altsyncram:altsyncram_component.q_b
 
 
-|adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component
+|KP_top|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component
 wren_a => altsyncram_qjq1:auto_generated.wren_a
 rden_a => ~NO_FANOUT~
 wren_b => ~NO_FANOUT~
@@ -18961,7 +18961,7 @@ eccstatus[1] <= <GND>
 eccstatus[2] <= <GND>
 
 
-|adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated
+|KP_top|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated
 aclr0 => ram_block1a0.CLR0
 aclr0 => ram_block1a1.CLR0
 aclr0 => ram_block1a2.CLR0
@@ -20434,7 +20434,7 @@ rden_b => address_reg_b[0].ENA
 wren_a => decode_97a:decode2.enable
 
 
-|adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated|decode_97a:decode2
+|KP_top|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated|decode_97a:decode2
 data[0] => eq_node[1].IN0
 data[0] => eq_node[0].IN0
 enable => eq_node[1].IN1
@@ -20443,7 +20443,7 @@ eq[0] <= eq_node[0].DB_MAX_OUTPUT_PORT_TYPE
 eq[1] <= eq_node[1].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated|mux_73b:mux3
+|KP_top|KP_delay:effect|ram_delay:delay_ram|altsyncram:altsyncram_component|altsyncram_qjq1:auto_generated|mux_73b:mux3
 data[0] => result_node[0].IN1
 data[1] => result_node[1].IN1
 data[2] => result_node[2].IN1
@@ -20566,7 +20566,7 @@ sel[0] => result_node[0].IN0
 sel[0] => _.IN0
 
 
-|adc_mic_lcd|KP_delay:effect|mainfilter:filt0
+|KP_top|KP_delay:effect|mainfilter:filt0
 filt_sel[0] => Decoder0.IN2
 filt_sel[0] => Mux0.IN9
 filt_sel[0] => Mux1.IN9
@@ -21386,7 +21386,7 @@ q[22] <= regq[22].DB_MAX_OUTPUT_PORT_TYPE
 q[23] <= regq[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|lfsr:noise_gen
+|KP_top|lfsr:noise_gen
 out24_8[0] <= out24ref_7[8].DB_MAX_OUTPUT_PORT_TYPE
 out24_8[1] <= out24ref_7[9].DB_MAX_OUTPUT_PORT_TYPE
 out24_8[2] <= out24ref_7[10].DB_MAX_OUTPUT_PORT_TYPE
@@ -21630,7 +21630,7 @@ reset => out.OUTPUTSELECT
 reset => out.OUTPUTSELECT
 
 
-|adc_mic_lcd|ADC_SEG_LED:segR
+|KP_top|ADC_SEG_LED:segR
 reset_n => ~NO_FANOUT~
 clk => hex0[0].CLK
 clk => hex0[1].CLK
@@ -21678,7 +21678,7 @@ HEXR[5] <= hex0[5].DB_MAX_OUTPUT_PORT_TYPE
 HEXR[6] <= hex0[6].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|ADC_SEG_LED:segL
+|KP_top|ADC_SEG_LED:segL
 reset_n => ~NO_FANOUT~
 clk => hex0[0].CLK
 clk => hex0[1].CLK
@@ -21726,128 +21726,127 @@ HEXR[5] <= hex0[5].DB_MAX_OUTPUT_PORT_TYPE
 HEXR[6] <= hex0[6].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234
-out_adc_8[0] <= <GND>
-out_adc_8[1] <= <GND>
-out_adc_8[2] <= <GND>
-out_adc_8[3] <= <GND>
-out_adc_8[4] <= <GND>
-out_adc_8[5] <= <GND>
-out_adc_8[6] <= <GND>
-out_adc_8[7] <= <GND>
-out_adc_8[8] <= <GND>
-out_adc_8[9] <= <GND>
-out_adc_8[10] <= <GND>
-out_adc_8[11] <= <GND>
-out_adc_7[0] <= <GND>
-out_adc_7[1] <= <GND>
-out_adc_7[2] <= <GND>
-out_adc_7[3] <= <GND>
-out_adc_7[4] <= <GND>
-out_adc_7[5] <= <GND>
-out_adc_7[6] <= <GND>
-out_adc_7[7] <= <GND>
-out_adc_7[8] <= <GND>
-out_adc_7[9] <= <GND>
-out_adc_7[10] <= <GND>
-out_adc_7[11] <= <GND>
-out_adc_6[0] <= <GND>
-out_adc_6[1] <= <GND>
-out_adc_6[2] <= <GND>
-out_adc_6[3] <= <GND>
-out_adc_6[4] <= <GND>
-out_adc_6[5] <= <GND>
-out_adc_6[6] <= <GND>
-out_adc_6[7] <= <GND>
-out_adc_6[8] <= <GND>
-out_adc_6[9] <= <GND>
-out_adc_6[10] <= <GND>
-out_adc_6[11] <= <GND>
-out_adc_5[0] <= <GND>
-out_adc_5[1] <= <GND>
-out_adc_5[2] <= <GND>
-out_adc_5[3] <= <GND>
-out_adc_5[4] <= <GND>
-out_adc_5[5] <= <GND>
-out_adc_5[6] <= <GND>
-out_adc_5[7] <= <GND>
-out_adc_5[8] <= <GND>
-out_adc_5[9] <= <GND>
-out_adc_5[10] <= <GND>
-out_adc_5[11] <= <GND>
-out_adc_4[0] <= <GND>
-out_adc_4[1] <= <GND>
-out_adc_4[2] <= <GND>
-out_adc_4[3] <= <GND>
-out_adc_4[4] <= <GND>
-out_adc_4[5] <= <GND>
-out_adc_4[6] <= <GND>
-out_adc_4[7] <= <GND>
-out_adc_4[8] <= <GND>
-out_adc_4[9] <= <GND>
-out_adc_4[10] <= <GND>
-out_adc_4[11] <= <GND>
-out_adc_3[0] <= <GND>
-out_adc_3[1] <= <GND>
-out_adc_3[2] <= <GND>
-out_adc_3[3] <= <GND>
-out_adc_3[4] <= <GND>
-out_adc_3[5] <= <GND>
-out_adc_3[6] <= <GND>
-out_adc_3[7] <= <GND>
-out_adc_3[8] <= <GND>
-out_adc_3[9] <= <GND>
-out_adc_3[10] <= <GND>
-out_adc_3[11] <= <GND>
-out_adc_2[0] <= <GND>
-out_adc_2[1] <= <GND>
-out_adc_2[2] <= <GND>
-out_adc_2[3] <= <GND>
-out_adc_2[4] <= <GND>
-out_adc_2[5] <= <GND>
-out_adc_2[6] <= <GND>
-out_adc_2[7] <= <GND>
-out_adc_2[8] <= <GND>
-out_adc_2[9] <= <GND>
-out_adc_2[10] <= <GND>
-out_adc_2[11] <= <GND>
-out_adc_1[0] <= <GND>
-out_adc_1[1] <= <GND>
-out_adc_1[2] <= <GND>
-out_adc_1[3] <= <GND>
-out_adc_1[4] <= <GND>
-out_adc_1[5] <= <GND>
-out_adc_1[6] <= <GND>
-out_adc_1[7] <= <GND>
-out_adc_1[8] <= <GND>
-out_adc_1[9] <= <GND>
-out_adc_1[10] <= <GND>
-out_adc_1[11] <= <GND>
-out_adc_0[0] <= out_adc_0[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[1] <= out_adc_0[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[2] <= out_adc_0[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[3] <= out_adc_0[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[4] <= out_adc_0[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[5] <= out_adc_0[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[6] <= out_adc_0[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[7] <= out_adc_0[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[8] <= out_adc_0[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[9] <= out_adc_0[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[10] <= out_adc_0[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-out_adc_0[11] <= out_adc_0[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-key => ~NO_FANOUT~
-clk => clk.IN1
-reset => reset.IN1
+|KP_top|adc_1:adc1
+clk50m => clk50m.IN4
+reset_n => reset_n.IN1
+AdcValue00out[0] <= storage:storage_inst.AdcValue00
+AdcValue00out[1] <= storage:storage_inst.AdcValue00
+AdcValue00out[2] <= storage:storage_inst.AdcValue00
+AdcValue00out[3] <= storage:storage_inst.AdcValue00
+AdcValue00out[4] <= storage:storage_inst.AdcValue00
+AdcValue00out[5] <= storage:storage_inst.AdcValue00
+AdcValue00out[6] <= storage:storage_inst.AdcValue00
+AdcValue00out[7] <= storage:storage_inst.AdcValue00
+AdcValue00out[8] <= storage:storage_inst.AdcValue00
+AdcValue00out[9] <= storage:storage_inst.AdcValue00
+AdcValue00out[10] <= storage:storage_inst.AdcValue00
+AdcValue00out[11] <= storage:storage_inst.AdcValue00
+AdcValue01out[0] <= storage:storage_inst.AdcValue01
+AdcValue01out[1] <= storage:storage_inst.AdcValue01
+AdcValue01out[2] <= storage:storage_inst.AdcValue01
+AdcValue01out[3] <= storage:storage_inst.AdcValue01
+AdcValue01out[4] <= storage:storage_inst.AdcValue01
+AdcValue01out[5] <= storage:storage_inst.AdcValue01
+AdcValue01out[6] <= storage:storage_inst.AdcValue01
+AdcValue01out[7] <= storage:storage_inst.AdcValue01
+AdcValue01out[8] <= storage:storage_inst.AdcValue01
+AdcValue01out[9] <= storage:storage_inst.AdcValue01
+AdcValue01out[10] <= storage:storage_inst.AdcValue01
+AdcValue01out[11] <= storage:storage_inst.AdcValue01
+AdcValue02out[0] <= storage:storage_inst.AdcValue02
+AdcValue02out[1] <= storage:storage_inst.AdcValue02
+AdcValue02out[2] <= storage:storage_inst.AdcValue02
+AdcValue02out[3] <= storage:storage_inst.AdcValue02
+AdcValue02out[4] <= storage:storage_inst.AdcValue02
+AdcValue02out[5] <= storage:storage_inst.AdcValue02
+AdcValue02out[6] <= storage:storage_inst.AdcValue02
+AdcValue02out[7] <= storage:storage_inst.AdcValue02
+AdcValue02out[8] <= storage:storage_inst.AdcValue02
+AdcValue02out[9] <= storage:storage_inst.AdcValue02
+AdcValue02out[10] <= storage:storage_inst.AdcValue02
+AdcValue02out[11] <= storage:storage_inst.AdcValue02
+AdcValue03out[0] <= storage:storage_inst.AdcValue03
+AdcValue03out[1] <= storage:storage_inst.AdcValue03
+AdcValue03out[2] <= storage:storage_inst.AdcValue03
+AdcValue03out[3] <= storage:storage_inst.AdcValue03
+AdcValue03out[4] <= storage:storage_inst.AdcValue03
+AdcValue03out[5] <= storage:storage_inst.AdcValue03
+AdcValue03out[6] <= storage:storage_inst.AdcValue03
+AdcValue03out[7] <= storage:storage_inst.AdcValue03
+AdcValue03out[8] <= storage:storage_inst.AdcValue03
+AdcValue03out[9] <= storage:storage_inst.AdcValue03
+AdcValue03out[10] <= storage:storage_inst.AdcValue03
+AdcValue03out[11] <= storage:storage_inst.AdcValue03
+AdcValue04out[0] <= storage:storage_inst.AdcValue04
+AdcValue04out[1] <= storage:storage_inst.AdcValue04
+AdcValue04out[2] <= storage:storage_inst.AdcValue04
+AdcValue04out[3] <= storage:storage_inst.AdcValue04
+AdcValue04out[4] <= storage:storage_inst.AdcValue04
+AdcValue04out[5] <= storage:storage_inst.AdcValue04
+AdcValue04out[6] <= storage:storage_inst.AdcValue04
+AdcValue04out[7] <= storage:storage_inst.AdcValue04
+AdcValue04out[8] <= storage:storage_inst.AdcValue04
+AdcValue04out[9] <= storage:storage_inst.AdcValue04
+AdcValue04out[10] <= storage:storage_inst.AdcValue04
+AdcValue04out[11] <= storage:storage_inst.AdcValue04
+AdcValue05out[0] <= storage:storage_inst.AdcValue05
+AdcValue05out[1] <= storage:storage_inst.AdcValue05
+AdcValue05out[2] <= storage:storage_inst.AdcValue05
+AdcValue05out[3] <= storage:storage_inst.AdcValue05
+AdcValue05out[4] <= storage:storage_inst.AdcValue05
+AdcValue05out[5] <= storage:storage_inst.AdcValue05
+AdcValue05out[6] <= storage:storage_inst.AdcValue05
+AdcValue05out[7] <= storage:storage_inst.AdcValue05
+AdcValue05out[8] <= storage:storage_inst.AdcValue05
+AdcValue05out[9] <= storage:storage_inst.AdcValue05
+AdcValue05out[10] <= storage:storage_inst.AdcValue05
+AdcValue05out[11] <= storage:storage_inst.AdcValue05
+AdcValue06out[0] <= storage:storage_inst.AdcValue06
+AdcValue06out[1] <= storage:storage_inst.AdcValue06
+AdcValue06out[2] <= storage:storage_inst.AdcValue06
+AdcValue06out[3] <= storage:storage_inst.AdcValue06
+AdcValue06out[4] <= storage:storage_inst.AdcValue06
+AdcValue06out[5] <= storage:storage_inst.AdcValue06
+AdcValue06out[6] <= storage:storage_inst.AdcValue06
+AdcValue06out[7] <= storage:storage_inst.AdcValue06
+AdcValue06out[8] <= storage:storage_inst.AdcValue06
+AdcValue06out[9] <= storage:storage_inst.AdcValue06
+AdcValue06out[10] <= storage:storage_inst.AdcValue06
+AdcValue06out[11] <= storage:storage_inst.AdcValue06
+AdcValue07out[0] <= storage:storage_inst.AdcValue07
+AdcValue07out[1] <= storage:storage_inst.AdcValue07
+AdcValue07out[2] <= storage:storage_inst.AdcValue07
+AdcValue07out[3] <= storage:storage_inst.AdcValue07
+AdcValue07out[4] <= storage:storage_inst.AdcValue07
+AdcValue07out[5] <= storage:storage_inst.AdcValue07
+AdcValue07out[6] <= storage:storage_inst.AdcValue07
+AdcValue07out[7] <= storage:storage_inst.AdcValue07
+AdcValue07out[8] <= storage:storage_inst.AdcValue07
+AdcValue07out[9] <= storage:storage_inst.AdcValue07
+AdcValue07out[10] <= storage:storage_inst.AdcValue07
+AdcValue07out[11] <= storage:storage_inst.AdcValue07
+AdcValue08out[0] <= storage:storage_inst.AdcValue08
+AdcValue08out[1] <= storage:storage_inst.AdcValue08
+AdcValue08out[2] <= storage:storage_inst.AdcValue08
+AdcValue08out[3] <= storage:storage_inst.AdcValue08
+AdcValue08out[4] <= storage:storage_inst.AdcValue08
+AdcValue08out[5] <= storage:storage_inst.AdcValue08
+AdcValue08out[6] <= storage:storage_inst.AdcValue08
+AdcValue08out[7] <= storage:storage_inst.AdcValue08
+AdcValue08out[8] <= storage:storage_inst.AdcValue08
+AdcValue08out[9] <= storage:storage_inst.AdcValue08
+AdcValue08out[10] <= storage:storage_inst.AdcValue08
+AdcValue08out[11] <= storage:storage_inst.AdcValue08
 
 
-|adc_mic_lcd|adc_translate:comb_234|adcpll:pll1
+|KP_top|adc_1:adc1|adcpll:adc_pll_inst
 areset => areset.IN1
 inclk0 => sub_wire1[0].IN1
 c0 <= altpll:altpll_component.clk
 locked <= altpll:altpll_component.locked
 
 
-|adc_mic_lcd|adc_translate:comb_234|adcpll:pll1|altpll:altpll_component
+|KP_top|adc_1:adc1|adcpll:adc_pll_inst|altpll:altpll_component
 inclk[0] => adcpll_altpll:auto_generated.inclk[0]
 inclk[1] => adcpll_altpll:auto_generated.inclk[1]
 fbin => ~NO_FANOUT~
@@ -21907,7 +21906,7 @@ fref <= <GND>
 icdrclk <= <GND>
 
 
-|adc_mic_lcd|adc_translate:comb_234|adcpll:pll1|altpll:altpll_component|adcpll_altpll:auto_generated
+|KP_top|adc_1:adc1|adcpll:adc_pll_inst|altpll:altpll_component|adcpll_altpll:auto_generated
 areset => pll_lock_sync.ACLR
 areset => pll1.ARESET
 clk[0] <= pll1.CLK
@@ -21920,56 +21919,749 @@ inclk[1] => pll1.CLK1
 locked <= locked.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0
-adc_pll_clock_clk => adc_pll_clock_clk.IN1
-adc_pll_locked_export => adc_pll_locked_export.IN1
-clock_clk => clock_clk.IN1
-command_valid => command_valid.IN1
-command_channel[0] => command_channel[0].IN1
-command_channel[1] => command_channel[1].IN1
-command_channel[2] => command_channel[2].IN1
-command_channel[3] => command_channel[3].IN1
-command_channel[4] => command_channel[4].IN1
-command_startofpacket => command_startofpacket.IN1
-command_endofpacket => command_endofpacket.IN1
-command_ready <= ADC_converter_modular_adc_0:modular_adc_0.command_ready
-reset_sink_reset_n => reset_sink_reset_n.IN1
-response_valid <= ADC_converter_modular_adc_0:modular_adc_0.response_valid
-response_channel[0] <= ADC_converter_modular_adc_0:modular_adc_0.response_channel
-response_channel[1] <= ADC_converter_modular_adc_0:modular_adc_0.response_channel
-response_channel[2] <= ADC_converter_modular_adc_0:modular_adc_0.response_channel
-response_channel[3] <= ADC_converter_modular_adc_0:modular_adc_0.response_channel
-response_channel[4] <= ADC_converter_modular_adc_0:modular_adc_0.response_channel
-response_data[0] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[1] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[2] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[3] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[4] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[5] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[6] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[7] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[8] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[9] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[10] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_data[11] <= ADC_converter_modular_adc_0:modular_adc_0.response_data
-response_startofpacket <= ADC_converter_modular_adc_0:modular_adc_0.response_startofpacket
-response_endofpacket <= ADC_converter_modular_adc_0:modular_adc_0.response_endofpacket
+|KP_top|adc_1:adc1|sequencer:sequencer_inst
+Clock_qsys => CurrentState~7.DATAIN
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+Reset => CurrentState.OUTPUTSELECT
+AdcCsrAddress <= <GND>
+AdcCsrReadEn <= <GND>
+AdcCsrReadData[0] <= <GND>
+AdcCsrReadData[1] <= <GND>
+AdcCsrReadData[2] <= <GND>
+AdcCsrReadData[3] <= <GND>
+AdcCsrReadData[4] <= <GND>
+AdcCsrReadData[5] <= <GND>
+AdcCsrReadData[6] <= <GND>
+AdcCsrReadData[7] <= <GND>
+AdcCsrReadData[8] <= <GND>
+AdcCsrReadData[9] <= <GND>
+AdcCsrReadData[10] <= <GND>
+AdcCsrReadData[11] <= <GND>
+AdcCsrReadData[12] <= <GND>
+AdcCsrReadData[13] <= <GND>
+AdcCsrReadData[14] <= <GND>
+AdcCsrReadData[15] <= <GND>
+AdcCsrReadData[16] <= <GND>
+AdcCsrReadData[17] <= <GND>
+AdcCsrReadData[18] <= <GND>
+AdcCsrReadData[19] <= <GND>
+AdcCsrReadData[20] <= <GND>
+AdcCsrReadData[21] <= <GND>
+AdcCsrReadData[22] <= <GND>
+AdcCsrReadData[23] <= <GND>
+AdcCsrReadData[24] <= <GND>
+AdcCsrReadData[25] <= <GND>
+AdcCsrReadData[26] <= <GND>
+AdcCsrReadData[27] <= <GND>
+AdcCsrReadData[28] <= <GND>
+AdcCsrReadData[29] <= <GND>
+AdcCsrReadData[30] <= <GND>
+AdcCsrReadData[31] <= <GND>
+AdcCsrWriteEn <= AdcCsrWriteData[0].DB_MAX_OUTPUT_PORT_TYPE
+AdcCsrWriteData[0] <= AdcCsrWriteData[0].DB_MAX_OUTPUT_PORT_TYPE
+AdcCsrWriteData[1] <= <GND>
+AdcCsrWriteData[2] <= <GND>
+AdcCsrWriteData[3] <= <GND>
+AdcCsrWriteData[4] <= <GND>
+AdcCsrWriteData[5] <= <GND>
+AdcCsrWriteData[6] <= <GND>
+AdcCsrWriteData[7] <= <GND>
+AdcCsrWriteData[8] <= <GND>
+AdcCsrWriteData[9] <= <GND>
+AdcCsrWriteData[10] <= <GND>
+AdcCsrWriteData[11] <= <GND>
+AdcCsrWriteData[12] <= <GND>
+AdcCsrWriteData[13] <= <GND>
+AdcCsrWriteData[14] <= <GND>
+AdcCsrWriteData[15] <= <GND>
+AdcCsrWriteData[16] <= <GND>
+AdcCsrWriteData[17] <= <GND>
+AdcCsrWriteData[18] <= <GND>
+AdcCsrWriteData[19] <= <GND>
+AdcCsrWriteData[20] <= <GND>
+AdcCsrWriteData[21] <= <GND>
+AdcCsrWriteData[22] <= <GND>
+AdcCsrWriteData[23] <= <GND>
+AdcCsrWriteData[24] <= <GND>
+AdcCsrWriteData[25] <= <GND>
+AdcCsrWriteData[26] <= <GND>
+AdcCsrWriteData[27] <= <GND>
+AdcCsrWriteData[28] <= <GND>
+AdcCsrWriteData[29] <= <GND>
+AdcCsrWriteData[30] <= <GND>
+AdcCsrWriteData[31] <= <GND>
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0
-clock_clk => clock_clk.IN1
-reset_sink_reset_n => reset_sink_reset_n.IN1
+|KP_top|adc_1:adc1|storage:storage_inst
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue00.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue01.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue02.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue03.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue04.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue05.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue06.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue07.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcValue08.OUTPUTSELECT
+Reset => AdcRefresh.OUTPUTSELECT
+Clock_qsys => AdcRefresh~reg0.CLK
+Clock_qsys => AdcValue08[0]~reg0.CLK
+Clock_qsys => AdcValue08[1]~reg0.CLK
+Clock_qsys => AdcValue08[2]~reg0.CLK
+Clock_qsys => AdcValue08[3]~reg0.CLK
+Clock_qsys => AdcValue08[4]~reg0.CLK
+Clock_qsys => AdcValue08[5]~reg0.CLK
+Clock_qsys => AdcValue08[6]~reg0.CLK
+Clock_qsys => AdcValue08[7]~reg0.CLK
+Clock_qsys => AdcValue08[8]~reg0.CLK
+Clock_qsys => AdcValue08[9]~reg0.CLK
+Clock_qsys => AdcValue08[10]~reg0.CLK
+Clock_qsys => AdcValue08[11]~reg0.CLK
+Clock_qsys => AdcValue07[0]~reg0.CLK
+Clock_qsys => AdcValue07[1]~reg0.CLK
+Clock_qsys => AdcValue07[2]~reg0.CLK
+Clock_qsys => AdcValue07[3]~reg0.CLK
+Clock_qsys => AdcValue07[4]~reg0.CLK
+Clock_qsys => AdcValue07[5]~reg0.CLK
+Clock_qsys => AdcValue07[6]~reg0.CLK
+Clock_qsys => AdcValue07[7]~reg0.CLK
+Clock_qsys => AdcValue07[8]~reg0.CLK
+Clock_qsys => AdcValue07[9]~reg0.CLK
+Clock_qsys => AdcValue07[10]~reg0.CLK
+Clock_qsys => AdcValue07[11]~reg0.CLK
+Clock_qsys => AdcValue06[0]~reg0.CLK
+Clock_qsys => AdcValue06[1]~reg0.CLK
+Clock_qsys => AdcValue06[2]~reg0.CLK
+Clock_qsys => AdcValue06[3]~reg0.CLK
+Clock_qsys => AdcValue06[4]~reg0.CLK
+Clock_qsys => AdcValue06[5]~reg0.CLK
+Clock_qsys => AdcValue06[6]~reg0.CLK
+Clock_qsys => AdcValue06[7]~reg0.CLK
+Clock_qsys => AdcValue06[8]~reg0.CLK
+Clock_qsys => AdcValue06[9]~reg0.CLK
+Clock_qsys => AdcValue06[10]~reg0.CLK
+Clock_qsys => AdcValue06[11]~reg0.CLK
+Clock_qsys => AdcValue05[0]~reg0.CLK
+Clock_qsys => AdcValue05[1]~reg0.CLK
+Clock_qsys => AdcValue05[2]~reg0.CLK
+Clock_qsys => AdcValue05[3]~reg0.CLK
+Clock_qsys => AdcValue05[4]~reg0.CLK
+Clock_qsys => AdcValue05[5]~reg0.CLK
+Clock_qsys => AdcValue05[6]~reg0.CLK
+Clock_qsys => AdcValue05[7]~reg0.CLK
+Clock_qsys => AdcValue05[8]~reg0.CLK
+Clock_qsys => AdcValue05[9]~reg0.CLK
+Clock_qsys => AdcValue05[10]~reg0.CLK
+Clock_qsys => AdcValue05[11]~reg0.CLK
+Clock_qsys => AdcValue04[0]~reg0.CLK
+Clock_qsys => AdcValue04[1]~reg0.CLK
+Clock_qsys => AdcValue04[2]~reg0.CLK
+Clock_qsys => AdcValue04[3]~reg0.CLK
+Clock_qsys => AdcValue04[4]~reg0.CLK
+Clock_qsys => AdcValue04[5]~reg0.CLK
+Clock_qsys => AdcValue04[6]~reg0.CLK
+Clock_qsys => AdcValue04[7]~reg0.CLK
+Clock_qsys => AdcValue04[8]~reg0.CLK
+Clock_qsys => AdcValue04[9]~reg0.CLK
+Clock_qsys => AdcValue04[10]~reg0.CLK
+Clock_qsys => AdcValue04[11]~reg0.CLK
+Clock_qsys => AdcValue03[0]~reg0.CLK
+Clock_qsys => AdcValue03[1]~reg0.CLK
+Clock_qsys => AdcValue03[2]~reg0.CLK
+Clock_qsys => AdcValue03[3]~reg0.CLK
+Clock_qsys => AdcValue03[4]~reg0.CLK
+Clock_qsys => AdcValue03[5]~reg0.CLK
+Clock_qsys => AdcValue03[6]~reg0.CLK
+Clock_qsys => AdcValue03[7]~reg0.CLK
+Clock_qsys => AdcValue03[8]~reg0.CLK
+Clock_qsys => AdcValue03[9]~reg0.CLK
+Clock_qsys => AdcValue03[10]~reg0.CLK
+Clock_qsys => AdcValue03[11]~reg0.CLK
+Clock_qsys => AdcValue02[0]~reg0.CLK
+Clock_qsys => AdcValue02[1]~reg0.CLK
+Clock_qsys => AdcValue02[2]~reg0.CLK
+Clock_qsys => AdcValue02[3]~reg0.CLK
+Clock_qsys => AdcValue02[4]~reg0.CLK
+Clock_qsys => AdcValue02[5]~reg0.CLK
+Clock_qsys => AdcValue02[6]~reg0.CLK
+Clock_qsys => AdcValue02[7]~reg0.CLK
+Clock_qsys => AdcValue02[8]~reg0.CLK
+Clock_qsys => AdcValue02[9]~reg0.CLK
+Clock_qsys => AdcValue02[10]~reg0.CLK
+Clock_qsys => AdcValue02[11]~reg0.CLK
+Clock_qsys => AdcValue01[0]~reg0.CLK
+Clock_qsys => AdcValue01[1]~reg0.CLK
+Clock_qsys => AdcValue01[2]~reg0.CLK
+Clock_qsys => AdcValue01[3]~reg0.CLK
+Clock_qsys => AdcValue01[4]~reg0.CLK
+Clock_qsys => AdcValue01[5]~reg0.CLK
+Clock_qsys => AdcValue01[6]~reg0.CLK
+Clock_qsys => AdcValue01[7]~reg0.CLK
+Clock_qsys => AdcValue01[8]~reg0.CLK
+Clock_qsys => AdcValue01[9]~reg0.CLK
+Clock_qsys => AdcValue01[10]~reg0.CLK
+Clock_qsys => AdcValue01[11]~reg0.CLK
+Clock_qsys => AdcValue00[0]~reg0.CLK
+Clock_qsys => AdcValue00[1]~reg0.CLK
+Clock_qsys => AdcValue00[2]~reg0.CLK
+Clock_qsys => AdcValue00[3]~reg0.CLK
+Clock_qsys => AdcValue00[4]~reg0.CLK
+Clock_qsys => AdcValue00[5]~reg0.CLK
+Clock_qsys => AdcValue00[6]~reg0.CLK
+Clock_qsys => AdcValue00[7]~reg0.CLK
+Clock_qsys => AdcValue00[8]~reg0.CLK
+Clock_qsys => AdcValue00[9]~reg0.CLK
+Clock_qsys => AdcValue00[10]~reg0.CLK
+Clock_qsys => AdcValue00[11]~reg0.CLK
+AdcValue00[0] <= AdcValue00[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[1] <= AdcValue00[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[2] <= AdcValue00[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[3] <= AdcValue00[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[4] <= AdcValue00[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[5] <= AdcValue00[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[6] <= AdcValue00[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[7] <= AdcValue00[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[8] <= AdcValue00[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[9] <= AdcValue00[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[10] <= AdcValue00[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue00[11] <= AdcValue00[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[0] <= AdcValue01[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[1] <= AdcValue01[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[2] <= AdcValue01[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[3] <= AdcValue01[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[4] <= AdcValue01[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[5] <= AdcValue01[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[6] <= AdcValue01[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[7] <= AdcValue01[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[8] <= AdcValue01[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[9] <= AdcValue01[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[10] <= AdcValue01[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue01[11] <= AdcValue01[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[0] <= AdcValue02[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[1] <= AdcValue02[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[2] <= AdcValue02[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[3] <= AdcValue02[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[4] <= AdcValue02[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[5] <= AdcValue02[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[6] <= AdcValue02[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[7] <= AdcValue02[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[8] <= AdcValue02[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[9] <= AdcValue02[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[10] <= AdcValue02[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue02[11] <= AdcValue02[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[0] <= AdcValue03[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[1] <= AdcValue03[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[2] <= AdcValue03[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[3] <= AdcValue03[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[4] <= AdcValue03[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[5] <= AdcValue03[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[6] <= AdcValue03[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[7] <= AdcValue03[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[8] <= AdcValue03[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[9] <= AdcValue03[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[10] <= AdcValue03[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue03[11] <= AdcValue03[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[0] <= AdcValue04[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[1] <= AdcValue04[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[2] <= AdcValue04[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[3] <= AdcValue04[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[4] <= AdcValue04[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[5] <= AdcValue04[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[6] <= AdcValue04[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[7] <= AdcValue04[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[8] <= AdcValue04[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[9] <= AdcValue04[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[10] <= AdcValue04[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue04[11] <= AdcValue04[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[0] <= AdcValue05[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[1] <= AdcValue05[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[2] <= AdcValue05[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[3] <= AdcValue05[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[4] <= AdcValue05[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[5] <= AdcValue05[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[6] <= AdcValue05[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[7] <= AdcValue05[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[8] <= AdcValue05[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[9] <= AdcValue05[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[10] <= AdcValue05[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue05[11] <= AdcValue05[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[0] <= AdcValue06[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[1] <= AdcValue06[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[2] <= AdcValue06[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[3] <= AdcValue06[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[4] <= AdcValue06[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[5] <= AdcValue06[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[6] <= AdcValue06[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[7] <= AdcValue06[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[8] <= AdcValue06[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[9] <= AdcValue06[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[10] <= AdcValue06[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue06[11] <= AdcValue06[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[0] <= AdcValue07[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[1] <= AdcValue07[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[2] <= AdcValue07[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[3] <= AdcValue07[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[4] <= AdcValue07[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[5] <= AdcValue07[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[6] <= AdcValue07[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[7] <= AdcValue07[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[8] <= AdcValue07[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[9] <= AdcValue07[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[10] <= AdcValue07[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue07[11] <= AdcValue07[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[0] <= AdcValue08[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[1] <= AdcValue08[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[2] <= AdcValue08[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[3] <= AdcValue08[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[4] <= AdcValue08[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[5] <= AdcValue08[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[6] <= AdcValue08[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[7] <= AdcValue08[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[8] <= AdcValue08[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[9] <= AdcValue08[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[10] <= AdcValue08[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcValue08[11] <= AdcValue08[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcRefresh <= AdcRefresh~reg0.DB_MAX_OUTPUT_PORT_TYPE
+AdcResponseValid => always0.IN1
+AdcResponseValid => always1.IN1
+AdcResponseValid => always2.IN1
+AdcResponseValid => always3.IN1
+AdcResponseValid => always4.IN1
+AdcResponseValid => always5.IN1
+AdcResponseValid => always6.IN1
+AdcResponseValid => always7.IN1
+AdcResponseValid => always8.IN1
+AdcResponseValid => always9.IN1
+AdcResponseChannel[0] => Equal0.IN4
+AdcResponseChannel[0] => Equal1.IN0
+AdcResponseChannel[0] => Equal2.IN4
+AdcResponseChannel[0] => Equal3.IN1
+AdcResponseChannel[0] => Equal4.IN4
+AdcResponseChannel[0] => Equal5.IN1
+AdcResponseChannel[0] => Equal6.IN4
+AdcResponseChannel[0] => Equal7.IN2
+AdcResponseChannel[0] => Equal8.IN4
+AdcResponseChannel[0] => Equal9.IN1
+AdcResponseChannel[1] => Equal0.IN3
+AdcResponseChannel[1] => Equal1.IN4
+AdcResponseChannel[1] => Equal2.IN0
+AdcResponseChannel[1] => Equal3.IN0
+AdcResponseChannel[1] => Equal4.IN3
+AdcResponseChannel[1] => Equal5.IN4
+AdcResponseChannel[1] => Equal6.IN1
+AdcResponseChannel[1] => Equal7.IN1
+AdcResponseChannel[1] => Equal8.IN3
+AdcResponseChannel[1] => Equal9.IN4
+AdcResponseChannel[2] => Equal0.IN2
+AdcResponseChannel[2] => Equal1.IN3
+AdcResponseChannel[2] => Equal2.IN3
+AdcResponseChannel[2] => Equal3.IN4
+AdcResponseChannel[2] => Equal4.IN0
+AdcResponseChannel[2] => Equal5.IN0
+AdcResponseChannel[2] => Equal6.IN0
+AdcResponseChannel[2] => Equal7.IN0
+AdcResponseChannel[2] => Equal8.IN2
+AdcResponseChannel[2] => Equal9.IN3
+AdcResponseChannel[3] => Equal0.IN1
+AdcResponseChannel[3] => Equal1.IN2
+AdcResponseChannel[3] => Equal2.IN2
+AdcResponseChannel[3] => Equal3.IN3
+AdcResponseChannel[3] => Equal4.IN2
+AdcResponseChannel[3] => Equal5.IN3
+AdcResponseChannel[3] => Equal6.IN3
+AdcResponseChannel[3] => Equal7.IN4
+AdcResponseChannel[3] => Equal8.IN0
+AdcResponseChannel[3] => Equal9.IN2
+AdcResponseChannel[4] => Equal0.IN0
+AdcResponseChannel[4] => Equal1.IN1
+AdcResponseChannel[4] => Equal2.IN1
+AdcResponseChannel[4] => Equal3.IN2
+AdcResponseChannel[4] => Equal4.IN1
+AdcResponseChannel[4] => Equal5.IN2
+AdcResponseChannel[4] => Equal6.IN2
+AdcResponseChannel[4] => Equal7.IN3
+AdcResponseChannel[4] => Equal8.IN1
+AdcResponseChannel[4] => Equal9.IN0
+AdcResponseData[0] => AdcValue00.DATAB
+AdcResponseData[0] => AdcValue01.DATAB
+AdcResponseData[0] => AdcValue02.DATAB
+AdcResponseData[0] => AdcValue03.DATAB
+AdcResponseData[0] => AdcValue04.DATAB
+AdcResponseData[0] => AdcValue05.DATAB
+AdcResponseData[0] => AdcValue06.DATAB
+AdcResponseData[0] => AdcValue07.DATAB
+AdcResponseData[0] => AdcValue08.DATAB
+AdcResponseData[1] => AdcValue00.DATAB
+AdcResponseData[1] => AdcValue01.DATAB
+AdcResponseData[1] => AdcValue02.DATAB
+AdcResponseData[1] => AdcValue03.DATAB
+AdcResponseData[1] => AdcValue04.DATAB
+AdcResponseData[1] => AdcValue05.DATAB
+AdcResponseData[1] => AdcValue06.DATAB
+AdcResponseData[1] => AdcValue07.DATAB
+AdcResponseData[1] => AdcValue08.DATAB
+AdcResponseData[2] => AdcValue00.DATAB
+AdcResponseData[2] => AdcValue01.DATAB
+AdcResponseData[2] => AdcValue02.DATAB
+AdcResponseData[2] => AdcValue03.DATAB
+AdcResponseData[2] => AdcValue04.DATAB
+AdcResponseData[2] => AdcValue05.DATAB
+AdcResponseData[2] => AdcValue06.DATAB
+AdcResponseData[2] => AdcValue07.DATAB
+AdcResponseData[2] => AdcValue08.DATAB
+AdcResponseData[3] => AdcValue00.DATAB
+AdcResponseData[3] => AdcValue01.DATAB
+AdcResponseData[3] => AdcValue02.DATAB
+AdcResponseData[3] => AdcValue03.DATAB
+AdcResponseData[3] => AdcValue04.DATAB
+AdcResponseData[3] => AdcValue05.DATAB
+AdcResponseData[3] => AdcValue06.DATAB
+AdcResponseData[3] => AdcValue07.DATAB
+AdcResponseData[3] => AdcValue08.DATAB
+AdcResponseData[4] => AdcValue00.DATAB
+AdcResponseData[4] => AdcValue01.DATAB
+AdcResponseData[4] => AdcValue02.DATAB
+AdcResponseData[4] => AdcValue03.DATAB
+AdcResponseData[4] => AdcValue04.DATAB
+AdcResponseData[4] => AdcValue05.DATAB
+AdcResponseData[4] => AdcValue06.DATAB
+AdcResponseData[4] => AdcValue07.DATAB
+AdcResponseData[4] => AdcValue08.DATAB
+AdcResponseData[5] => AdcValue00.DATAB
+AdcResponseData[5] => AdcValue01.DATAB
+AdcResponseData[5] => AdcValue02.DATAB
+AdcResponseData[5] => AdcValue03.DATAB
+AdcResponseData[5] => AdcValue04.DATAB
+AdcResponseData[5] => AdcValue05.DATAB
+AdcResponseData[5] => AdcValue06.DATAB
+AdcResponseData[5] => AdcValue07.DATAB
+AdcResponseData[5] => AdcValue08.DATAB
+AdcResponseData[6] => AdcValue00.DATAB
+AdcResponseData[6] => AdcValue01.DATAB
+AdcResponseData[6] => AdcValue02.DATAB
+AdcResponseData[6] => AdcValue03.DATAB
+AdcResponseData[6] => AdcValue04.DATAB
+AdcResponseData[6] => AdcValue05.DATAB
+AdcResponseData[6] => AdcValue06.DATAB
+AdcResponseData[6] => AdcValue07.DATAB
+AdcResponseData[6] => AdcValue08.DATAB
+AdcResponseData[7] => AdcValue00.DATAB
+AdcResponseData[7] => AdcValue01.DATAB
+AdcResponseData[7] => AdcValue02.DATAB
+AdcResponseData[7] => AdcValue03.DATAB
+AdcResponseData[7] => AdcValue04.DATAB
+AdcResponseData[7] => AdcValue05.DATAB
+AdcResponseData[7] => AdcValue06.DATAB
+AdcResponseData[7] => AdcValue07.DATAB
+AdcResponseData[7] => AdcValue08.DATAB
+AdcResponseData[8] => AdcValue00.DATAB
+AdcResponseData[8] => AdcValue01.DATAB
+AdcResponseData[8] => AdcValue02.DATAB
+AdcResponseData[8] => AdcValue03.DATAB
+AdcResponseData[8] => AdcValue04.DATAB
+AdcResponseData[8] => AdcValue05.DATAB
+AdcResponseData[8] => AdcValue06.DATAB
+AdcResponseData[8] => AdcValue07.DATAB
+AdcResponseData[8] => AdcValue08.DATAB
+AdcResponseData[9] => AdcValue00.DATAB
+AdcResponseData[9] => AdcValue01.DATAB
+AdcResponseData[9] => AdcValue02.DATAB
+AdcResponseData[9] => AdcValue03.DATAB
+AdcResponseData[9] => AdcValue04.DATAB
+AdcResponseData[9] => AdcValue05.DATAB
+AdcResponseData[9] => AdcValue06.DATAB
+AdcResponseData[9] => AdcValue07.DATAB
+AdcResponseData[9] => AdcValue08.DATAB
+AdcResponseData[10] => AdcValue00.DATAB
+AdcResponseData[10] => AdcValue01.DATAB
+AdcResponseData[10] => AdcValue02.DATAB
+AdcResponseData[10] => AdcValue03.DATAB
+AdcResponseData[10] => AdcValue04.DATAB
+AdcResponseData[10] => AdcValue05.DATAB
+AdcResponseData[10] => AdcValue06.DATAB
+AdcResponseData[10] => AdcValue07.DATAB
+AdcResponseData[10] => AdcValue08.DATAB
+AdcResponseData[11] => AdcValue00.DATAB
+AdcResponseData[11] => AdcValue01.DATAB
+AdcResponseData[11] => AdcValue02.DATAB
+AdcResponseData[11] => AdcValue03.DATAB
+AdcResponseData[11] => AdcValue04.DATAB
+AdcResponseData[11] => AdcValue05.DATAB
+AdcResponseData[11] => AdcValue06.DATAB
+AdcResponseData[11] => AdcValue07.DATAB
+AdcResponseData[11] => AdcValue08.DATAB
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst
+clk_clk => clk_clk.IN2
+modular_adc_0_adc_pll_clock_clk => modular_adc_0_adc_pll_clock_clk.IN1
+modular_adc_0_adc_pll_locked_export => modular_adc_0_adc_pll_locked_export.IN1
+modular_adc_0_response_valid <= adc_modular_adc_0:modular_adc_0.response_valid
+modular_adc_0_response_channel[0] <= adc_modular_adc_0:modular_adc_0.response_channel
+modular_adc_0_response_channel[1] <= adc_modular_adc_0:modular_adc_0.response_channel
+modular_adc_0_response_channel[2] <= adc_modular_adc_0:modular_adc_0.response_channel
+modular_adc_0_response_channel[3] <= adc_modular_adc_0:modular_adc_0.response_channel
+modular_adc_0_response_channel[4] <= adc_modular_adc_0:modular_adc_0.response_channel
+modular_adc_0_response_data[0] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[1] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[2] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[3] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[4] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[5] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[6] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[7] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[8] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[9] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[10] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_data[11] <= adc_modular_adc_0:modular_adc_0.response_data
+modular_adc_0_response_startofpacket <= adc_modular_adc_0:modular_adc_0.response_startofpacket
+modular_adc_0_response_endofpacket <= adc_modular_adc_0:modular_adc_0.response_endofpacket
+modular_adc_0_sequencer_csr_address => modular_adc_0_sequencer_csr_address.IN1
+modular_adc_0_sequencer_csr_read => modular_adc_0_sequencer_csr_read.IN1
+modular_adc_0_sequencer_csr_write => modular_adc_0_sequencer_csr_write.IN1
+modular_adc_0_sequencer_csr_writedata[0] => modular_adc_0_sequencer_csr_writedata[0].IN1
+modular_adc_0_sequencer_csr_writedata[1] => modular_adc_0_sequencer_csr_writedata[1].IN1
+modular_adc_0_sequencer_csr_writedata[2] => modular_adc_0_sequencer_csr_writedata[2].IN1
+modular_adc_0_sequencer_csr_writedata[3] => modular_adc_0_sequencer_csr_writedata[3].IN1
+modular_adc_0_sequencer_csr_writedata[4] => modular_adc_0_sequencer_csr_writedata[4].IN1
+modular_adc_0_sequencer_csr_writedata[5] => modular_adc_0_sequencer_csr_writedata[5].IN1
+modular_adc_0_sequencer_csr_writedata[6] => modular_adc_0_sequencer_csr_writedata[6].IN1
+modular_adc_0_sequencer_csr_writedata[7] => modular_adc_0_sequencer_csr_writedata[7].IN1
+modular_adc_0_sequencer_csr_writedata[8] => modular_adc_0_sequencer_csr_writedata[8].IN1
+modular_adc_0_sequencer_csr_writedata[9] => modular_adc_0_sequencer_csr_writedata[9].IN1
+modular_adc_0_sequencer_csr_writedata[10] => modular_adc_0_sequencer_csr_writedata[10].IN1
+modular_adc_0_sequencer_csr_writedata[11] => modular_adc_0_sequencer_csr_writedata[11].IN1
+modular_adc_0_sequencer_csr_writedata[12] => modular_adc_0_sequencer_csr_writedata[12].IN1
+modular_adc_0_sequencer_csr_writedata[13] => modular_adc_0_sequencer_csr_writedata[13].IN1
+modular_adc_0_sequencer_csr_writedata[14] => modular_adc_0_sequencer_csr_writedata[14].IN1
+modular_adc_0_sequencer_csr_writedata[15] => modular_adc_0_sequencer_csr_writedata[15].IN1
+modular_adc_0_sequencer_csr_writedata[16] => modular_adc_0_sequencer_csr_writedata[16].IN1
+modular_adc_0_sequencer_csr_writedata[17] => modular_adc_0_sequencer_csr_writedata[17].IN1
+modular_adc_0_sequencer_csr_writedata[18] => modular_adc_0_sequencer_csr_writedata[18].IN1
+modular_adc_0_sequencer_csr_writedata[19] => modular_adc_0_sequencer_csr_writedata[19].IN1
+modular_adc_0_sequencer_csr_writedata[20] => modular_adc_0_sequencer_csr_writedata[20].IN1
+modular_adc_0_sequencer_csr_writedata[21] => modular_adc_0_sequencer_csr_writedata[21].IN1
+modular_adc_0_sequencer_csr_writedata[22] => modular_adc_0_sequencer_csr_writedata[22].IN1
+modular_adc_0_sequencer_csr_writedata[23] => modular_adc_0_sequencer_csr_writedata[23].IN1
+modular_adc_0_sequencer_csr_writedata[24] => modular_adc_0_sequencer_csr_writedata[24].IN1
+modular_adc_0_sequencer_csr_writedata[25] => modular_adc_0_sequencer_csr_writedata[25].IN1
+modular_adc_0_sequencer_csr_writedata[26] => modular_adc_0_sequencer_csr_writedata[26].IN1
+modular_adc_0_sequencer_csr_writedata[27] => modular_adc_0_sequencer_csr_writedata[27].IN1
+modular_adc_0_sequencer_csr_writedata[28] => modular_adc_0_sequencer_csr_writedata[28].IN1
+modular_adc_0_sequencer_csr_writedata[29] => modular_adc_0_sequencer_csr_writedata[29].IN1
+modular_adc_0_sequencer_csr_writedata[30] => modular_adc_0_sequencer_csr_writedata[30].IN1
+modular_adc_0_sequencer_csr_writedata[31] => modular_adc_0_sequencer_csr_writedata[31].IN1
+modular_adc_0_sequencer_csr_readdata[0] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[1] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[2] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[3] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[4] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[5] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[6] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[7] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[8] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[9] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[10] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[11] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[12] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[13] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[14] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[15] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[16] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[17] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[18] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[19] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[20] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[21] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[22] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[23] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[24] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[25] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[26] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[27] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[28] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[29] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[30] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+modular_adc_0_sequencer_csr_readdata[31] <= adc_modular_adc_0:modular_adc_0.sequencer_csr_readdata
+reset_reset_n => _.IN1
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0
+clock_clk => clock_clk.IN2
+reset_sink_reset_n => reset_sink_reset_n.IN2
 adc_pll_clock_clk => adc_pll_clock_clk.IN1
 adc_pll_locked_export => adc_pll_locked_export.IN1
-command_valid => command_valid.IN1
-command_channel[0] => command_channel[0].IN1
-command_channel[1] => command_channel[1].IN1
-command_channel[2] => command_channel[2].IN1
-command_channel[3] => command_channel[3].IN1
-command_channel[4] => command_channel[4].IN1
-command_startofpacket => command_startofpacket.IN1
-command_endofpacket => command_endofpacket.IN1
-command_ready <= altera_modular_adc_control:control_internal.cmd_ready
+sequencer_csr_address => sequencer_csr_address.IN1
+sequencer_csr_read => sequencer_csr_read.IN1
+sequencer_csr_write => sequencer_csr_write.IN1
+sequencer_csr_writedata[0] => sequencer_csr_writedata[0].IN1
+sequencer_csr_writedata[1] => sequencer_csr_writedata[1].IN1
+sequencer_csr_writedata[2] => sequencer_csr_writedata[2].IN1
+sequencer_csr_writedata[3] => sequencer_csr_writedata[3].IN1
+sequencer_csr_writedata[4] => sequencer_csr_writedata[4].IN1
+sequencer_csr_writedata[5] => sequencer_csr_writedata[5].IN1
+sequencer_csr_writedata[6] => sequencer_csr_writedata[6].IN1
+sequencer_csr_writedata[7] => sequencer_csr_writedata[7].IN1
+sequencer_csr_writedata[8] => sequencer_csr_writedata[8].IN1
+sequencer_csr_writedata[9] => sequencer_csr_writedata[9].IN1
+sequencer_csr_writedata[10] => sequencer_csr_writedata[10].IN1
+sequencer_csr_writedata[11] => sequencer_csr_writedata[11].IN1
+sequencer_csr_writedata[12] => sequencer_csr_writedata[12].IN1
+sequencer_csr_writedata[13] => sequencer_csr_writedata[13].IN1
+sequencer_csr_writedata[14] => sequencer_csr_writedata[14].IN1
+sequencer_csr_writedata[15] => sequencer_csr_writedata[15].IN1
+sequencer_csr_writedata[16] => sequencer_csr_writedata[16].IN1
+sequencer_csr_writedata[17] => sequencer_csr_writedata[17].IN1
+sequencer_csr_writedata[18] => sequencer_csr_writedata[18].IN1
+sequencer_csr_writedata[19] => sequencer_csr_writedata[19].IN1
+sequencer_csr_writedata[20] => sequencer_csr_writedata[20].IN1
+sequencer_csr_writedata[21] => sequencer_csr_writedata[21].IN1
+sequencer_csr_writedata[22] => sequencer_csr_writedata[22].IN1
+sequencer_csr_writedata[23] => sequencer_csr_writedata[23].IN1
+sequencer_csr_writedata[24] => sequencer_csr_writedata[24].IN1
+sequencer_csr_writedata[25] => sequencer_csr_writedata[25].IN1
+sequencer_csr_writedata[26] => sequencer_csr_writedata[26].IN1
+sequencer_csr_writedata[27] => sequencer_csr_writedata[27].IN1
+sequencer_csr_writedata[28] => sequencer_csr_writedata[28].IN1
+sequencer_csr_writedata[29] => sequencer_csr_writedata[29].IN1
+sequencer_csr_writedata[30] => sequencer_csr_writedata[30].IN1
+sequencer_csr_writedata[31] => sequencer_csr_writedata[31].IN1
+sequencer_csr_readdata[0] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[1] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[2] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[3] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[4] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[5] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[6] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[7] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[8] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[9] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[10] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[11] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[12] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[13] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[14] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[15] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[16] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[17] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[18] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[19] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[20] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[21] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[22] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[23] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[24] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[25] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[26] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[27] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[28] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[29] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[30] <= altera_modular_adc_sequencer:sequencer_internal.readdata
+sequencer_csr_readdata[31] <= altera_modular_adc_sequencer:sequencer_internal.readdata
 response_valid <= altera_modular_adc_control:control_internal.rsp_valid
 response_channel[0] <= altera_modular_adc_control:control_internal.rsp_channel
 response_channel[1] <= altera_modular_adc_control:control_internal.rsp_channel
@@ -21992,7 +22684,7 @@ response_startofpacket <= altera_modular_adc_control:control_internal.rsp_sop
 response_endofpacket <= altera_modular_adc_control:control_internal.rsp_eop
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal
 clk => clk.IN1
 rst_n => rst_n.IN1
 clk_in_pll_c0 => clk_in_pll_c0.IN1
@@ -22030,7 +22722,7 @@ rsp_eop <= altera_modular_adc_control_fsm:u_control_fsm.rsp_eop
 sync_valid <= altera_modular_adc_control_fsm:u_control_fsm.sync_valid
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm
 clk => clk.IN3
 rst_n => rst_n.IN2
 clk_in_pll_locked => Selector1.IN5
@@ -22115,7 +22807,7 @@ tsen <= tsen~reg0.DB_MAX_OUTPUT_PORT_TYPE
 sync_valid <= sync_valid.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_std_synchronizer:u_clk_dft_synchronizer
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_std_synchronizer:u_clk_dft_synchronizer
 clk => dreg[0].CLK
 clk => din_s1.CLK
 reset_n => dreg[0].ACLR
@@ -22124,7 +22816,7 @@ din => din_s1.DATAIN
 dout <= dout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_std_synchronizer:u_eoc_synchronizer
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_std_synchronizer:u_eoc_synchronizer
 clk => dreg[0].CLK
 clk => din_s1.CLK
 reset_n => dreg[0].ACLR
@@ -22133,7 +22825,7 @@ din => din_s1.DATAIN
 dout <= dout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo
 clock => clock.IN1
 data[0] => data[0].IN1
 data[1] => data[1].IN1
@@ -22166,7 +22858,7 @@ q[10] <= scfifo:scfifo_component.q
 q[11] <= scfifo:scfifo_component.q
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component
 data[0] => scfifo_ds61:auto_generated.data[0]
 data[1] => scfifo_ds61:auto_generated.data[1]
 data[2] => scfifo_ds61:auto_generated.data[2]
@@ -22210,7 +22902,7 @@ usedw[4] <= <GND>
 usedw[5] <= <GND>
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated
 clock => a_dpfifo_3o41:dpfifo.clock
 data[0] => a_dpfifo_3o41:dpfifo.data[0]
 data[1] => a_dpfifo_3o41:dpfifo.data[1]
@@ -22243,7 +22935,7 @@ sclr => a_dpfifo_3o41:dpfifo.sclr
 wrreq => a_dpfifo_3o41:dpfifo.wreq
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo
 clock => a_fefifo_c6e:fifo_state.clock
 clock => altsyncram_rqn1:FIFOram.clock0
 clock => altsyncram_rqn1:FIFOram.clock1
@@ -22286,7 +22978,7 @@ wreq => a_fefifo_c6e:fifo_state.wreq
 wreq => valid_wreq.IN0
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state
 aclr => b_full.IN0
 aclr => b_non_empty.IN0
 aclr => cntr_337:count_usedw.aclr
@@ -22311,7 +23003,7 @@ wreq => _.IN0
 wreq => valid_wreq.IN0
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state|cntr_337:count_usedw
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|a_fefifo_c6e:fifo_state|cntr_337:count_usedw
 aclr => counter_reg_bit[5].IN0
 clock => counter_reg_bit[5].CLK
 clock => counter_reg_bit[4].CLK
@@ -22337,7 +23029,7 @@ updown => counter_comb_bita4.DATAB
 updown => counter_comb_bita5.DATAB
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|altsyncram_rqn1:FIFOram
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|altsyncram_rqn1:FIFOram
 address_a[0] => ram_block1a0.PORTAADDR
 address_a[0] => ram_block1a1.PORTAADDR
 address_a[0] => ram_block1a2.PORTAADDR
@@ -22568,7 +23260,7 @@ wren_a => ram_block1a11.PORTAWE
 wren_a => ram_block1a11.ENA0
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|cntr_n2b:rd_ptr_count
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|cntr_n2b:rd_ptr_count
 aclr => counter_reg_bit[5].IN0
 clock => counter_reg_bit[5].CLK
 clock => counter_reg_bit[4].CLK
@@ -22588,7 +23280,7 @@ sclr => _.IN0
 sclr => _.IN0
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|cntr_n2b:wr_ptr
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|altera_modular_adc_control_fsm:u_control_fsm|altera_modular_adc_control_avrg_fifo:ts_avrg_fifo|scfifo:scfifo_component|scfifo_ds61:auto_generated|a_dpfifo_3o41:dpfifo|cntr_n2b:wr_ptr
 aclr => counter_reg_bit[5].IN0
 clock => counter_reg_bit[5].CLK
 clock => counter_reg_bit[4].CLK
@@ -22608,7 +23300,7 @@ sclr => _.IN0
 sclr => _.IN0
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst
 chsel[0] => chsel[0].IN1
 chsel[1] => chsel[1].IN1
 chsel[2] => chsel[2].IN1
@@ -22634,20 +23326,20 @@ clkout_adccore <= fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance.clkou
 clkin_from_pll_c0 => clkin_from_pll_c0.IN1
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|chsel_code_converter_sw_to_hw:decoder
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|chsel_code_converter_sw_to_hw:decoder
 chsel_from_sw[0] => Decoder0.IN4
 chsel_from_sw[1] => Decoder0.IN3
 chsel_from_sw[2] => Decoder0.IN2
 chsel_from_sw[3] => Decoder0.IN1
 chsel_from_sw[4] => Decoder0.IN0
-chsel_to_hw[0] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+chsel_to_hw[0] <= chsel_to_hw.DB_MAX_OUTPUT_PORT_TYPE
 chsel_to_hw[1] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
 chsel_to_hw[2] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
 chsel_to_hw[3] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
 chsel_to_hw[4] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|adc_mic_lcd|adc_translate:comb_234|ADC_converter:u0|ADC_converter_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_control:control_internal|fiftyfivenm_adcblock_top_wrapper:adc_inst|fiftyfivenm_adcblock_primitive_wrapper:adcblock_instance
 chsel[0] => primitive_instance.I_CHSEL
 chsel[1] => primitive_instance.I_CHSEL1
 chsel[2] => primitive_instance.I_CHSEL2
@@ -22673,7 +23365,372 @@ clkout_adccore <= primitive_instance.O_CLK_DFT
 clkin_from_pll_c0 => primitive_instance.I_CLKIN_FROM_PLL_C0
 
 
-|adc_mic_lcd|DAC16:dac1
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_sequencer:sequencer_internal
+clk => clk.IN2
+rst_n => rst_n.IN2
+addr => addr.IN1
+read => read.IN1
+write => write.IN1
+writedata[0] => writedata[0].IN1
+writedata[1] => writedata[1].IN1
+writedata[2] => writedata[2].IN1
+writedata[3] => writedata[3].IN1
+writedata[4] => writedata[4].IN1
+writedata[5] => writedata[5].IN1
+writedata[6] => writedata[6].IN1
+writedata[7] => writedata[7].IN1
+writedata[8] => writedata[8].IN1
+writedata[9] => writedata[9].IN1
+writedata[10] => writedata[10].IN1
+writedata[11] => writedata[11].IN1
+writedata[12] => writedata[12].IN1
+writedata[13] => writedata[13].IN1
+writedata[14] => writedata[14].IN1
+writedata[15] => writedata[15].IN1
+writedata[16] => writedata[16].IN1
+writedata[17] => writedata[17].IN1
+writedata[18] => writedata[18].IN1
+writedata[19] => writedata[19].IN1
+writedata[20] => writedata[20].IN1
+writedata[21] => writedata[21].IN1
+writedata[22] => writedata[22].IN1
+writedata[23] => writedata[23].IN1
+writedata[24] => writedata[24].IN1
+writedata[25] => writedata[25].IN1
+writedata[26] => writedata[26].IN1
+writedata[27] => writedata[27].IN1
+writedata[28] => writedata[28].IN1
+writedata[29] => writedata[29].IN1
+writedata[30] => writedata[30].IN1
+writedata[31] => writedata[31].IN1
+cmd_ready => cmd_ready.IN1
+cmd_ready_2 => ~NO_FANOUT~
+readdata[0] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[1] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[2] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[3] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[4] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[5] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[6] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[7] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[8] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[9] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[10] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[11] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[12] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[13] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[14] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[15] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[16] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[17] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[18] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[19] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[20] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[21] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[22] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[23] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[24] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[25] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[26] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[27] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[28] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[29] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[30] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+readdata[31] <= altera_modular_adc_sequencer_csr:u_seq_csr.readdata
+cmd_valid <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_valid
+cmd_channel[0] <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_channel
+cmd_channel[1] <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_channel
+cmd_channel[2] <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_channel
+cmd_channel[3] <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_channel
+cmd_channel[4] <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_channel
+cmd_sop <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_sop
+cmd_eop <= altera_modular_adc_sequencer_ctrl:u_seq_ctrl.cmd_eop
+cmd_valid_2 <= <GND>
+cmd_channel_2[0] <= <GND>
+cmd_channel_2[1] <= <GND>
+cmd_channel_2[2] <= <GND>
+cmd_channel_2[3] <= <GND>
+cmd_channel_2[4] <= <GND>
+cmd_sop_2 <= <GND>
+cmd_eop_2 <= <GND>
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_sequencer:sequencer_internal|altera_modular_adc_sequencer_csr:u_seq_csr
+clk => readdata[0]~reg0.CLK
+clk => readdata[1]~reg0.CLK
+clk => readdata[2]~reg0.CLK
+clk => readdata[3]~reg0.CLK
+clk => readdata[4]~reg0.CLK
+clk => readdata[5]~reg0.CLK
+clk => readdata[6]~reg0.CLK
+clk => readdata[7]~reg0.CLK
+clk => readdata[8]~reg0.CLK
+clk => readdata[9]~reg0.CLK
+clk => readdata[10]~reg0.CLK
+clk => readdata[11]~reg0.CLK
+clk => readdata[12]~reg0.CLK
+clk => readdata[13]~reg0.CLK
+clk => readdata[14]~reg0.CLK
+clk => readdata[15]~reg0.CLK
+clk => readdata[16]~reg0.CLK
+clk => readdata[17]~reg0.CLK
+clk => readdata[18]~reg0.CLK
+clk => readdata[19]~reg0.CLK
+clk => readdata[20]~reg0.CLK
+clk => readdata[21]~reg0.CLK
+clk => readdata[22]~reg0.CLK
+clk => readdata[23]~reg0.CLK
+clk => readdata[24]~reg0.CLK
+clk => readdata[25]~reg0.CLK
+clk => readdata[26]~reg0.CLK
+clk => readdata[27]~reg0.CLK
+clk => readdata[28]~reg0.CLK
+clk => readdata[29]~reg0.CLK
+clk => readdata[30]~reg0.CLK
+clk => readdata[31]~reg0.CLK
+clk => sw_clr_run~reg0.CLK
+clk => run~reg0.CLK
+clk => mode[0].CLK
+clk => mode[1].CLK
+clk => mode[2].CLK
+rst_n => readdata[0]~reg0.ACLR
+rst_n => readdata[1]~reg0.ACLR
+rst_n => readdata[2]~reg0.ACLR
+rst_n => readdata[3]~reg0.ACLR
+rst_n => readdata[4]~reg0.ACLR
+rst_n => readdata[5]~reg0.ACLR
+rst_n => readdata[6]~reg0.ACLR
+rst_n => readdata[7]~reg0.ACLR
+rst_n => readdata[8]~reg0.ACLR
+rst_n => readdata[9]~reg0.ACLR
+rst_n => readdata[10]~reg0.ACLR
+rst_n => readdata[11]~reg0.ACLR
+rst_n => readdata[12]~reg0.ACLR
+rst_n => readdata[13]~reg0.ACLR
+rst_n => readdata[14]~reg0.ACLR
+rst_n => readdata[15]~reg0.ACLR
+rst_n => readdata[16]~reg0.ACLR
+rst_n => readdata[17]~reg0.ACLR
+rst_n => readdata[18]~reg0.ACLR
+rst_n => readdata[19]~reg0.ACLR
+rst_n => readdata[20]~reg0.ACLR
+rst_n => readdata[21]~reg0.ACLR
+rst_n => readdata[22]~reg0.ACLR
+rst_n => readdata[23]~reg0.ACLR
+rst_n => readdata[24]~reg0.ACLR
+rst_n => readdata[25]~reg0.ACLR
+rst_n => readdata[26]~reg0.ACLR
+rst_n => readdata[27]~reg0.ACLR
+rst_n => readdata[28]~reg0.ACLR
+rst_n => readdata[29]~reg0.ACLR
+rst_n => readdata[30]~reg0.ACLR
+rst_n => readdata[31]~reg0.ACLR
+rst_n => run~reg0.ACLR
+rst_n => sw_clr_run~reg0.ACLR
+rst_n => mode[0].ACLR
+rst_n => mode[1].ACLR
+rst_n => mode[2].ACLR
+addr => cmd_wr_en.IN0
+addr => cmd_rd_en.IN0
+read => cmd_rd_en.IN1
+write => cmd_wr_en.IN1
+writedata[0] => always1.IN1
+writedata[0] => always2.IN1
+writedata[1] => mode[0].DATAIN
+writedata[2] => mode[1].DATAIN
+writedata[3] => mode[2].DATAIN
+writedata[4] => ~NO_FANOUT~
+writedata[5] => ~NO_FANOUT~
+writedata[6] => ~NO_FANOUT~
+writedata[7] => ~NO_FANOUT~
+writedata[8] => ~NO_FANOUT~
+writedata[9] => ~NO_FANOUT~
+writedata[10] => ~NO_FANOUT~
+writedata[11] => ~NO_FANOUT~
+writedata[12] => ~NO_FANOUT~
+writedata[13] => ~NO_FANOUT~
+writedata[14] => ~NO_FANOUT~
+writedata[15] => ~NO_FANOUT~
+writedata[16] => ~NO_FANOUT~
+writedata[17] => ~NO_FANOUT~
+writedata[18] => ~NO_FANOUT~
+writedata[19] => ~NO_FANOUT~
+writedata[20] => ~NO_FANOUT~
+writedata[21] => ~NO_FANOUT~
+writedata[22] => ~NO_FANOUT~
+writedata[23] => ~NO_FANOUT~
+writedata[24] => ~NO_FANOUT~
+writedata[25] => ~NO_FANOUT~
+writedata[26] => ~NO_FANOUT~
+writedata[27] => ~NO_FANOUT~
+writedata[28] => ~NO_FANOUT~
+writedata[29] => ~NO_FANOUT~
+writedata[30] => ~NO_FANOUT~
+writedata[31] => ~NO_FANOUT~
+clr_run => run.OUTPUTSELECT
+clr_run => sw_clr_run.OUTPUTSELECT
+readdata[0] <= readdata[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[1] <= readdata[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[2] <= readdata[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[3] <= readdata[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[4] <= readdata[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[5] <= readdata[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[6] <= readdata[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[7] <= readdata[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[8] <= readdata[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[9] <= readdata[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[10] <= readdata[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[11] <= readdata[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[12] <= readdata[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[13] <= readdata[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[14] <= readdata[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[15] <= readdata[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[16] <= readdata[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[17] <= readdata[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[18] <= readdata[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[19] <= readdata[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[20] <= readdata[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[21] <= readdata[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[22] <= readdata[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[23] <= readdata[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[24] <= readdata[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[25] <= readdata[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[26] <= readdata[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[27] <= readdata[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[28] <= readdata[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[29] <= readdata[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[30] <= readdata[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+readdata[31] <= readdata[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+run <= run~reg0.DB_MAX_OUTPUT_PORT_TYPE
+sw_clr_run <= sw_clr_run~reg0.DB_MAX_OUTPUT_PORT_TYPE
+con_mode <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+single_mode <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+recab_mode <= Equal2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|adc_modular_adc_0:modular_adc_0|altera_modular_adc_sequencer:sequencer_internal|altera_modular_adc_sequencer_ctrl:u_seq_ctrl
+clk => cmd_eop~reg0.CLK
+clk => cmd_sop~reg0.CLK
+clk => cmd_channel[0]~reg0.CLK
+clk => cmd_channel[1]~reg0.CLK
+clk => cmd_channel[2]~reg0.CLK
+clk => cmd_channel[3]~reg0.CLK
+clk => cmd_channel[4]~reg0.CLK
+clk => cmd_valid~reg0.CLK
+clk => slot_sel[0].CLK
+clk => slot_sel[1].CLK
+clk => slot_sel[2].CLK
+clk => slot_sel[3].CLK
+clk => seq_state.CLK
+rst_n => cmd_eop~reg0.ACLR
+rst_n => cmd_sop~reg0.ACLR
+rst_n => cmd_channel[0]~reg0.ACLR
+rst_n => cmd_channel[1]~reg0.ACLR
+rst_n => cmd_channel[2]~reg0.ACLR
+rst_n => cmd_channel[3]~reg0.ACLR
+rst_n => cmd_channel[4]~reg0.ACLR
+rst_n => cmd_valid~reg0.ACLR
+rst_n => seq_state.ACLR
+rst_n => slot_sel[0].ACLR
+rst_n => slot_sel[1].ACLR
+rst_n => slot_sel[2].ACLR
+rst_n => slot_sel[3].ACLR
+run => always1.IN1
+sw_clr_run => done_con.IN1
+con_mode => valid_mode.IN0
+single_mode => done_single.IN1
+single_mode => valid_mode.IN1
+recab_mode => always1.IN1
+recab_mode => valid_mode.IN1
+recab_mode => cmd_channel_nxt[4].OUTPUTSELECT
+recab_mode => cmd_channel_nxt[3].OUTPUTSELECT
+recab_mode => cmd_channel_nxt[2].OUTPUTSELECT
+recab_mode => cmd_channel_nxt[1].OUTPUTSELECT
+recab_mode => cmd_channel_nxt[0].OUTPUTSELECT
+recab_mode => cmd_sop_nxt.OUTPUTSELECT
+recab_mode => cmd_eop_nxt.OUTPUTSELECT
+cmd_ready => always1.IN1
+cmd_ready => slot_sel_nxt.OUTPUTSELECT
+cmd_ready => slot_sel_nxt.OUTPUTSELECT
+cmd_ready => slot_sel_nxt.OUTPUTSELECT
+cmd_ready => slot_sel_nxt.OUTPUTSELECT
+cmd_ready => cmd_valid.OUTPUTSELECT
+cmd_ready => cmd_channel.OUTPUTSELECT
+cmd_ready => cmd_channel.OUTPUTSELECT
+cmd_ready => cmd_channel.OUTPUTSELECT
+cmd_ready => cmd_channel.OUTPUTSELECT
+cmd_ready => cmd_channel.OUTPUTSELECT
+cmd_ready => cmd_sop.OUTPUTSELECT
+cmd_ready => cmd_eop.OUTPUTSELECT
+cmd_ready => valid_req.DATAA
+cmd_valid <= cmd_valid~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_channel[0] <= cmd_channel[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_channel[1] <= cmd_channel[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_channel[2] <= cmd_channel[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_channel[3] <= cmd_channel[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_channel[4] <= cmd_channel[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_sop <= cmd_sop~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cmd_eop <= cmd_eop~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clr_run <= clr_run.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|altera_reset_controller:rst_controller
+reset_in0 => merged_reset.IN0
+reset_in1 => merged_reset.IN1
+reset_in2 => merged_reset.IN1
+reset_in3 => merged_reset.IN1
+reset_in4 => merged_reset.IN1
+reset_in5 => merged_reset.IN1
+reset_in6 => merged_reset.IN1
+reset_in7 => merged_reset.IN1
+reset_in8 => merged_reset.IN1
+reset_in9 => merged_reset.IN1
+reset_in10 => merged_reset.IN1
+reset_in11 => merged_reset.IN1
+reset_in12 => merged_reset.IN1
+reset_in13 => merged_reset.IN1
+reset_in14 => merged_reset.IN1
+reset_in15 => merged_reset.IN1
+reset_req_in0 => ~NO_FANOUT~
+reset_req_in1 => ~NO_FANOUT~
+reset_req_in2 => ~NO_FANOUT~
+reset_req_in3 => ~NO_FANOUT~
+reset_req_in4 => ~NO_FANOUT~
+reset_req_in5 => ~NO_FANOUT~
+reset_req_in6 => ~NO_FANOUT~
+reset_req_in7 => ~NO_FANOUT~
+reset_req_in8 => ~NO_FANOUT~
+reset_req_in9 => ~NO_FANOUT~
+reset_req_in10 => ~NO_FANOUT~
+reset_req_in11 => ~NO_FANOUT~
+reset_req_in12 => ~NO_FANOUT~
+reset_req_in13 => ~NO_FANOUT~
+reset_req_in14 => ~NO_FANOUT~
+reset_req_in15 => ~NO_FANOUT~
+clk => clk.IN2
+reset_out <= altera_reset_synchronizer:alt_rst_sync_uq1.reset_out
+reset_req <= altera_reset_synchronizer:alt_rst_req_sync_uq1.reset_out
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+reset_in => altera_reset_synchronizer_int_chain_out.PRESET
+reset_in => altera_reset_synchronizer_int_chain[0].PRESET
+reset_in => altera_reset_synchronizer_int_chain[1].PRESET
+clk => altera_reset_synchronizer_int_chain_out.CLK
+clk => altera_reset_synchronizer_int_chain[0].CLK
+clk => altera_reset_synchronizer_int_chain[1].CLK
+reset_out <= altera_reset_synchronizer_int_chain_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KP_top|adc_1:adc1|adc:adc_ext_storage_inst|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+reset_in => altera_reset_synchronizer_int_chain[1].DATAIN
+clk => altera_reset_synchronizer_int_chain_out.CLK
+clk => altera_reset_synchronizer_int_chain[0].CLK
+clk => altera_reset_synchronizer_int_chain[1].CLK
+reset_out <= altera_reset_synchronizer_int_chain_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|KP_top|DAC16:dac1
 RESET_N => ST.OUTPUTSELECT
 RESET_N => ST.OUTPUTSELECT
 RESET_N => ST.OUTPUTSELECT

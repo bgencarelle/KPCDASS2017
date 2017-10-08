@@ -1,0 +1,17 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\issp.qsys --synthesis=VERILOG --greybox --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\V\issp\synthesis --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading KPCDASS2017/issp.qsys
+Progress: Reading input file
+Progress: Adding in_system_sources_probes_0 [altera_in_system_sources_probes 17.0]
+Progress: Parameterizing module in_system_sources_probes_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: issp: Generating issp "issp" for QUARTUS_SYNTH
+Info: in_system_sources_probes_0: "issp" instantiated altera_in_system_sources_probes "in_system_sources_probes_0"
+Info: issp: Done "issp" with 2 modules, 2 files
+Info: Generating third-party timing and resource estimation model ...
+Info: Done generating third-party timing and resource estimation model.
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
