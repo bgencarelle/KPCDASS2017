@@ -13,12 +13,10 @@ module adc_1(
     output wire [11:0] AdcValue08out
 	 );
 
-
+ //Internal Wires
 	wire    [11:0] AdcValue00;               //Analog value for respective channel
 	assign AdcValue00out = AdcValue00;  
- //Internal Wires
-  wire            clk10m;                   //FPGA Primary Synchronous Clock
-  wire            PllLocked;                //Indicates PLL lock is complete
+                   //FPGA Primary Synchronous Clock
   wire    [11: 0] AdcValue01;               //Analog value for respective channel
 	assign AdcValue01out = AdcValue01;               //Analog value for respective channel
   wire    [11: 0] AdcValue02;                //Analog value for respective channel
@@ -35,14 +33,14 @@ module adc_1(
 	assign AdcValue07out = AdcValue07;
   wire    [11: 0] AdcValue08;                //Analog value for respective channel
 	assign AdcValue08out = AdcValue08;              //Analog value for respective channel
-  wire    [11: 0] AdcFpgaTemp;              //FPGA Temperature, direct internal sensor value  
-  
+//  wire    [11: 0] AdcFpgaTemp;              //FPGA Temperature, direct internal sensor value  
+//  
   wire            AdcResponseValid;         //Indicates ADC data output is valid
   wire   [ 4: 0] AdcResponseChannel;       //Channel indicator for pairing data to
   wire   [11: 0] AdcResponseData;  
   
-  reg Reset;
-  reg ResetN;
+  reg reset;
+  reg resetN;
   
 
 	wire AdcCsrAddress;
@@ -51,8 +49,8 @@ module adc_1(
 	wire AdcCsrWriteEn;
 	wire AdcCsrWriteData;
 
-  
-  //Instantiate PLL to get our internal 10MHz clock
+   wire PllLocked;//Indicates PLL lock is complete
+   wire clk10m;//Instantiate PLL to get our internal 10MHz clock
   adcpll adc_pll_inst (
       .inclk0                       (clk50m),
       .c0                           (clk10m),
@@ -60,29 +58,10 @@ module adc_1(
     );
   
     
-  //Instantiate module to interface with ADC
-//  adc_control adc_control_inst
-//    (
-//      .Clock_qsys                   (clk50m), //Qsys clock must be 50Mhz or higher
-//		.Clock_Pll							(clk10m),
-//      .Reset                        (reset),
-//      .PllLocked                    (PllLocked),
-//      .AdcValue00                   (AdcValue00),
-//      .AdcValue01                   (AdcValue01),
-//      .AdcValue02                   (AdcValue02),
-//      .AdcValue03                   (AdcValue03),
-//      .AdcValue04                   (AdcValue04),
-//      .AdcValue05                   (AdcValue05),
-//      .AdcValue06                   (AdcValue06),
-//      .AdcValue07                   (AdcValue07),
-//      .AdcValue08                   (AdcValue08),
-//      .AdcFpgaTemp                  (AdcFpgaTemp),
-//      .AdcRefresh                   (AdcRefresh)
-//    );
 
 	//Instantiate Sequencer control block
 	sequencer sequencer_inst (
-		.Reset(Reset),
+		.Reset(reset),
 	   .Clock_qsys(clk50m),
 		.AdcCsrAddress(AdcCsrAddress),            
 		.AdcCsrReadEn(AdcCsrReadEn),             
@@ -91,8 +70,8 @@ module adc_1(
 		.AdcCsrWriteData(AdcCsrWriteData)          
 	);
 	
-	storage storage_inst (
-		.Reset(Reset),
+	storage storage_inst_1 (
+		.Reset(reset),
 	   .Clock_qsys(clk50m),
 		.AdcValue00(AdcValue00),
 		.AdcValue01(AdcValue01),
@@ -103,7 +82,6 @@ module adc_1(
 		.AdcValue06(AdcValue06),
 		.AdcValue07(AdcValue07),
 		.AdcValue08(AdcValue08),
-		.AdcRefresh(),
 		.AdcResponseValid(AdcResponseValid),         
 		.AdcResponseChannel(AdcResponseChannel),       
 		.AdcResponseData(AdcResponseData) 
@@ -111,12 +89,9 @@ module adc_1(
 	
   always @(posedge clk50m)
   begin
-    Reset <= !reset_n;
+    reset <= !reset_n;
   end
-	
 
-
-	
 	 adc adc_ext_storage_inst (
       .clk_clk                                (clk50m),
       .reset_reset_n                          (reset_n),
@@ -135,7 +110,6 @@ module adc_1(
     );
 	
 
-	
 
 
 	 

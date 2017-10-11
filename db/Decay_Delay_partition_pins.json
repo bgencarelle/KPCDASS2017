@@ -40,10 +40,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[9]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX0[0]",
 					"strict" : false
 				},
@@ -108,39 +104,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "GPIO[0]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO[1]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO[2]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO[3]",
-					"strict" : false
-				},
-				{
 					"name" : "DAC_DATA",
-					"strict" : false
-				},
-				{
-					"name" : "SW[9]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[8]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[7]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[6]",
 					"strict" : false
 				},
 				{
@@ -173,6 +137,10 @@
 				},
 				{
 					"name" : "KEY[3]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO[0]",
 					"strict" : false
 				},
 				{

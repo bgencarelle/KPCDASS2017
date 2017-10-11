@@ -1,0 +1,20 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\ben\Documents\GitHub\KPCDASS2017\adc2.qsys --synthesis=VERILOG --output-directory=C:\Users\ben\Documents\GitHub\KPCDASS2017\V\adc2\synthesis --family="MAX 10" --part=10M50DAF484C6GES
+Progress: Loading KPCDASS2017/adc2.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 17.0]
+Progress: Parameterizing module clk_0
+Progress: Adding modular_adc_0 [altera_modular_adc 17.0]
+Progress: Parameterizing module modular_adc_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: adc2: Generating adc2 "adc2" for QUARTUS_SYNTH
+Info: modular_adc_0: "adc2" instantiated altera_modular_adc "modular_adc_0"
+Info: rst_controller: "adc2" instantiated altera_reset_controller "rst_controller"
+Info: control_internal: "modular_adc_0" instantiated altera_modular_adc_control "control_internal"
+Info: sequencer_internal: "modular_adc_0" instantiated altera_modular_adc_sequencer "sequencer_internal"
+Info: adc2: Done "adc2" with 5 modules, 15 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -64,7 +64,7 @@ module KP_top #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 //	inout 		          		PS2_DAT2,
 
 	//////////// TMD 2x6 GPIO Header, TMD connect to TMD Default //////////
-	output 		     [7:0]		GPIO
+	input 		     [7:0]		GPIO
 
 );
 
@@ -167,7 +167,7 @@ wire a_clk_256;
 wire a_clk_div;
 
 multi_clk_div div(
-		.div_clock(12'd32),
+		.div_clock(7-(out_adc_1[11:9])),
 		.reset(RESET_DELAY_n),
 		.clk(seven0068khz_clk),
 		.div_var(a_clk_div),
@@ -184,7 +184,7 @@ wire [2:0] sw_filt;
 wire [11:0] sw_decay;
 
 assign sw_filt = {1'b0,SW[1:0]};
-assign sw_decay = out_adc_1 ;
+assign sw_decay = 4090;
 
 KP_main string0(  /// HIGH STRING
 			.m_clk(MAX10_CLK1_50),
@@ -279,12 +279,12 @@ KP_main string6(
 
 KP_main string7(  
 			.m_clk(seven0068khz_clk),
-		  .audio_clk(a_clk_8),
+		  .audio_clk(a_clk_div),
 		   .dnoise(NOISE_7),
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[1]),
+		  .trig(GPIO[0]),
 		  .delay_length(10'd865),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_7)
@@ -297,8 +297,8 @@ KP_main string8(
 		  .velocity(7'd127),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[0]),
-		  .delay_length(10'd862),
+		  .trig(GPIO[0]),
+		  .delay_length(10'd862 + out_adc_1[11:4] ),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_8)
         );
@@ -397,20 +397,15 @@ lfsr noise_gen(//easier to add more voices, shown to be marginally cheaper
 ADC_SEG_LED segR(//this will be modified to display Note name and number
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (out_adc_5[11:8]),
+			.adc_rd (out_adc_1[11:8]),
 			.HEXR(HEXL)
 			);
 ADC_SEG_LED segL(
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (out_adc_6[11:8]),
+			.adc_rd (out_adc_2[11:8]),
 			.HEXR(HEXR)
 			);
-
-//--METER TO LED --
-assign LEDR =  {out_adc_7[11:7],out_adc_8[11:7]};
-assign HEX0 = HEXR;
-assign HEX1 = HEXL;
 
 
 
@@ -435,7 +430,7 @@ adc_1 adc1(
 	 .AdcValue03out(out_adc_3),
 	 .AdcValue02out(out_adc_2),
 	 .AdcValue01out(out_adc_1),
-	 .AdcValue00out(out_adc_0),
+	 .AdcValue00out(out_adc_0)
   );
 
 
@@ -455,10 +450,21 @@ adc_1 adc1(
 //     .reset(RESET_DELAY_n)
 //);
 //// END USER DEFINED
-assign GPIO[0] = SW[9];
-assign GPIO[1] = SW[8];
-assign GPIO[2] = SW[7];
-assign GPIO[3] = SW[6];
+//assign GPIO[0] = SW[0];
+////assign GPIO[1] = SW[1];
+//assign GPIO[2] = SW[2];
+//assign GPIO[3] = SW[3];
+//assign GPIO[4] = SW[4];
+//assign GPIO[5] = SW[5];
+//assign GPIO[6] = SW[6];
+//assign GPIO[7] = SW[7];
+
+
+//--METER TO LED --
+assign LEDR =  {out_adc_8[10],out_adc_7[10],out_adc_6[10],out_adc_5[10],out_adc_4[10],out_adc_3[10],out_adc_2[10],
+						out_adc_1[10], out_adc_0[10],};
+assign HEX0 = HEXR;
+assign HEX1 = HEXL;
 
 
 //--I2S PROCESSS  CODEC LINE OUT --

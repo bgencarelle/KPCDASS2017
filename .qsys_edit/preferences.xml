@@ -7,13 +7,13 @@
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1920" height="1047" x="0" y="0" />
+ <library expandedCategories="Project,Library" />
+ <window width="1920" height="1047" x="-1" y="9" />
  <generation
    block_symbol_file="0"
    path="V/_PROJECT_NAME_"
    simulation="NONE"
-   greybox="1"
+   greybox="0"
    testbench_system="STANDARD" />
  <hdlexample language="VERILOG" />
 </preferences>
