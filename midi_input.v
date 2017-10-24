@@ -14,9 +14,10 @@ input wire [11:0] adc_read,
 input wire [1:0] octave_switch,
 input wire midi_mode_switch,
 input wire reset_n,
+
 output wire clock_out,
-output wire [9:0]led,
-output reg [10:0]delay_out,
+output wire [9:0] led,
+output reg [10:0] delay_out,
 output reg [6:0] hex0,
 output reg [6:0] hex1
 
@@ -27,7 +28,13 @@ wire [6:0] note_number;
 reg [6:0] input_adc_read;
 
 always @ (posedge div2 )
+if (reset_n == 1'b0)
 begin
+
+input_adc_read <= 7`d48;
+
+end 
+else begin
 
 input_adc_read <= adc_read>>5;
 
@@ -202,7 +209,7 @@ assign 				clock_out =(reset_n == 1'b0)?  a_clk://C
 						 (note_number >= 7'd36 && note_number <= 7'd47) ?div64:
 						 (note_number >= 7'd24 && note_number <= 7'd35) ?div128:
 						 (note_number >= 7'd12 && note_number <= 7'd23) ?div256:
-						 (note_number >= 7'd0 && note_number <= 7'd11);
+						 (note_number >= 7'd0 && note_number <= 7'd11) ?div512;
 //	7'd0,7'd12,7'd24,7'd36,7'd48,7'd60,7'd72,7'd84,7'd96,7'd108,7'd120: //C
 						
 
