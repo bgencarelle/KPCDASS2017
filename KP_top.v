@@ -7,7 +7,7 @@ module KP_top #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 							(
 
 	//////////// CLOCK //////////
-	input 		          		ADC_CLK_10,
+//	input 		          		ADC_CLK_10,
 	input 		          		MAX10_CLK1_50,
 	input 		          		MAX10_CLK2_50,
 //	input 		          		MAX10_CLK3_50,
@@ -27,18 +27,18 @@ module KP_top #(parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1,
 	output		     [6:0]		HEX1,
 
 	//////////// Audio //////////
-	inout 		          		AUDIO_BCLK,
+//	inout 		          		AUDIO_BCLK,
 //	output		          		AUDIO_DIN_MFP1,
 //	input 		          		AUDIO_DOUT_MFP2,
-	inout 		          		AUDIO_GPIO_MFP5,
+//	inout 		          		AUDIO_GPIO_MFP5,
 //	output		          		AUDIO_MCLK,
 //	input 		          		AUDIO_MISO_MFP4,
-	inout 		          		AUDIO_RESET_n,
+//	inout 		          		AUDIO_RESET_n,
 //	output		          		AUDIO_SCL_SS_n,
 //	output		          		AUDIO_SCLK_MFP3,
-	inout 		          		AUDIO_SDA_MOSI,
+//	inout 		          		AUDIO_SDA_MOSI,
 //	output		          		AUDIO_SPI_SELECT,
-	inout 		          		AUDIO_WCLK,//48khz
+//	inout 		          		AUDIO_WCLK,//48khz
 
 	//////////// DAC //////////
 	inout 		          		DAC_DATA,
@@ -164,6 +164,7 @@ wire a_clk_32;
 wire a_clk_64;
 wire a_clk_128;
 wire a_clk_256;
+wire a_clk_512;
 wire a_clk_div;
 
 multi_clk_div div(
@@ -178,22 +179,25 @@ multi_clk_div div(
  		.div32(a_clk_32),
 		.div64(a_clk_64),
 		.div128(a_clk_128),
-		.div256(a_clk_256)
+		.div256(a_clk_256),
+		.div512(a_clk_512)
 		);
 wire [2:0] sw_filt;
 wire [11:0] sw_decay;
+wire [6:0] sw_vel;
 
 assign sw_filt = {1'b0,SW[1:0]};
-assign sw_decay = 4090;
+assign sw_decay = SW[8]?4095 -out_adc_4:4095;
+assign sw_vel = SW[9]?out_adc_3[11:5]:127;
 
 KP_main string0(  /// HIGH STRING
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk_16),
 		  .dnoise(NOISE_0),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt ),//each filter can be tuned to the specific string
-		  .trig(KEY[4]),
+		  .trig(GPIO[7]),
 		  .delay_length(11'd950),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_0)
@@ -203,10 +207,10 @@ KP_main string1(
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk_4),
 		  .dnoise(NOISE_1),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt ),
-		  .trig(KEY[4]),
+		  .trig(GPIO[7]),
 		  .delay_length(11'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_1)
@@ -216,10 +220,10 @@ KP_main string2(
 			.m_clk(MAX10_CLK1_50),
 		  .audio_clk(a_clk_4),
 		   .dnoise(NOISE_2),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[4]),
+		  .trig(GPIO[6]),
 		  .delay_length(11'd959),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_2)
@@ -229,10 +233,10 @@ KP_main string3 (
 			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_4),
 		  .dnoise(NOISE_3),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[4]),
+		  .trig(GPIO[5]),
 		  .delay_length(10'd575),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_3)
@@ -242,10 +246,10 @@ KP_main string4(
 			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_4),
 		   .dnoise(NOISE_4),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[3]),
+		  .trig(GPIO[4]),
 		  .delay_length(10'd773),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_4)
@@ -255,10 +259,10 @@ KP_main string5(
 			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_4),
 		   .dnoise(NOISE_5),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[2]),
+		  .trig(GPIO[3]),
 		  .delay_length(10'd974),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_5)
@@ -268,10 +272,10 @@ KP_main string6(
 			.m_clk(seven0068khz_clk),
 		  .audio_clk(a_clk_8),
 		   .dnoise(NOISE_6),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(KEY[1]),
+		  .trig(GPIO[2]),
 		  .delay_length(10'd650),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_6)
@@ -279,26 +283,54 @@ KP_main string6(
 
 KP_main string7(  
 			.m_clk(seven0068khz_clk),
-		  .audio_clk(a_clk_div),
+		  .audio_clk(a_clk_16),
 		   .dnoise(NOISE_7),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
-		  .filtsw(sw_filt),
-		  .trig(GPIO[0]),
-		  .delay_length(10'd865),
+		  .filtsw(sw_filt ),
+		  .trig(!GPIO[1]),
+		  .delay_length(511-out_adc_1[11:3]),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_7)
         );
+		  
+midi_adc_input solo_1( 
+	.a_clk(seven0068khz_clk),
+	.div2(a_clk_2),
+	.div4(a_clk_4),
+	.div8(a_clk_8),
+	.div16(a_clk_16),
+ 	.div32(a_clk_32),
+	.div64(a_clk_64),
+	.div128(a_clk_128),
+	.div256(a_clk_256),
+	.div512(a_clk_512),
+ .input_midi_note(45),
+ .adc_read(out_adc_1),
+ .octave_switch(SW[7:6]),
+ .midi_mode_switch(1),
+ .reset_n(RESET_DELAY_n),
+ .delay_out(solo_length),
+ .clock_out(solo1_clock_out),
+ .hex0(solo_left),
+ .hex1(solo_right),
+ .led(LEDR)
+);
 
+wire [10:0]delay_out;
+wire [6:0] solo_left;
+wire [6:0] solo_right;
+wire [10:0] solo_length;
+wire solo1_clock_out;
 KP_main string8(  
 			.m_clk(seven0068khz_clk),
-		  .audio_clk(a_clk_16),
+		  .audio_clk(solo1_clock_out),
 		   .dnoise(NOISE_8),
-		  .velocity(7'd127),
+		  .velocity(sw_vel),
 		  .decay(sw_decay),
 		  .filtsw(sw_filt),
-		  .trig(GPIO[0]),
-		  .delay_length(10'd862 + out_adc_1[11:4] ),
+		  .trig(!GPIO[0]),
+		  .delay_length(solo_length),
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_8)
         );
@@ -321,11 +353,11 @@ reg signed [23:0]sub0;
     else
       if (presub[24] == 1'b0)
         begin
-        sub0 <= 2**23;   // maximum positive value representable by 24 bits.
+        sub0 <= 24'd8388608;   // maximum positive value representable by 24 bits.
 		  end
       else
 			begin
-        sub0 <= (2**23)-1;   
+        sub0 <= 24'd8388607;   
 			end
 		
   end
@@ -371,8 +403,8 @@ KP_delay effect(  //low string
 		  .decay(12'b111111111111),
 
 		  .filtsw(sw_filt[0]),
-		  .trig(KEY[0]),
-		  .delay_length(15'd1063),//gates of hell
+		  .trig(GPIO[6]),
+		  .delay_length(15'd16383),//gates of hell
 		  .reset_n(RESET_DELAY_n),
         .qout(MEM_DELAY)
         );
@@ -397,13 +429,13 @@ lfsr noise_gen(//easier to add more voices, shown to be marginally cheaper
 ADC_SEG_LED segR(//this will be modified to display Note name and number
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (out_adc_1[11:8]),
+			.adc_rd (out_adc_1[11:10]),
 			.HEXR(HEXL)
 			);
 ADC_SEG_LED segL(
 			.reset_n(RESET_DELAY_n),
 			.clk (MAX10_CLK1_50),
-			.adc_rd (out_adc_2[11:8]),
+			.adc_rd (out_adc_1[9:6]),
 			.HEXR(HEXR)
 			);
 
@@ -434,58 +466,13 @@ adc_1 adc1(
   );
 
 
-// adc_translate translate(
-//
-//     .out_adc_8(),
-//     .out_adc_7(),
-//     .out_adc_6(),
-//     .out_adc_5(),
-//     .out_adc_4(),
-//     .out_adc_3(),
-//     .out_adc_2(),
-//     .out_adc_1(),
-//     .out_adc_0(out_adc_0),
-//		.key(KEY[0]), 
-//     .clk(MAX10_CLK2_50), 
-//     .reset(RESET_DELAY_n)
-//);
-//// END USER DEFINED
-//assign GPIO[0] = SW[0];
-////assign GPIO[1] = SW[1];
-//assign GPIO[2] = SW[2];
-//assign GPIO[3] = SW[3];
-//assign GPIO[4] = SW[4];
-//assign GPIO[5] = SW[5];
-//assign GPIO[6] = SW[6];
-//assign GPIO[7] = SW[7];
-
 
 //--METER TO LED --
-assign LEDR =  {out_adc_8[10],out_adc_7[10],out_adc_6[10],out_adc_5[10],out_adc_4[10],out_adc_3[10],out_adc_2[10],
-						out_adc_1[10], out_adc_0[10],};
-assign HEX0 = HEXR;
-assign HEX1 = HEXL;
+//assign LEDR =  {out_adc_8[10],out_adc_7[10],out_adc_6[10],out_adc_5[10],out_adc_4[10],out_adc_3[10],out_adc_2[10],
+//						out_adc_1[10], out_adc_0[10],};
+assign HEX0 = SW[2]?~solo_right:HEXR;
+assign HEX1 = SW[2]?~solo_left:HEXL;
 
-
-//--I2S PROCESSS  CODEC LINE OUT --
-//
-//I2S_ASSESS  i2s(
-//	.SAMPLE_TR ( SAMPLE_TR),
-//	.AUDIO_MCLK( MAX10_CLK1_50) ,
-//	.AUDIO_BCLK( AUDIO_BCLK),
-//	.AUDIO_WCLK( AUDIO_WCLK),
-//
-//	.SDATA_OUT ( AUDIO_DIN_MFP1),
-//	.SDATA_IN  ( AUDIO_DOUT_MFP2),
-//	.RESET_n   ( RESET_DELAY_n),
-//	.ADC_MIC      ( MASTER_OUT),
-//	.SW_BYPASS    ( 0),          // 0:on-board mic  , 1 :line-in
-//	.SW_OBMIC_SIN ( 0),          // 1:sin  , 0 : mic
-////	.ROM_ADDR     ( ROM_ADDR),
-//	.ROM_CK       ( ROM_CK ),
-//	.SUM_AUDIO    ( SUM_AUDIO )
-//
-//	) ;
 
 
 always @(negedge FPGA_RESET_n or posedge MAX10_CLK2_50 )
@@ -508,18 +495,7 @@ if (!FPGA_RESET_n )
 
 
 end
-//
-////--- MIC  TO  MAX10-ADC  ----
-//
-//MAX10_ADC   madc(
-//	.SYS_CLK ( MAX10_CLK1_50   ),
-//	.SYNC_TR ( SAMPLE_TR    ),
-//	.RESET_n ( RESET_DELAY_n),
-//	.ADC_CH  ( 8),
-//	.DATA    (ADC_RD ) ,
-//	.DATA_VALID(ADC_RESPONSE),
-//	.FITER_EN (1)
-// );
+
 
 //--------------DAC out --------------------
 assign      TODAC = $signed({~MIXMASTER[RANGE] ,  MIXMASTER[RANGE-1:0] })  ;
@@ -536,53 +512,6 @@ DAC16 dac1 (
 	);
 
 
-
-//---AUDIO CODEC SPI CONFIG ------------------------------------
-//--I2S mode ,  48ksample rate  ,MCLK = 24.567MhZ x 2
-//assign AUDIO_GPIO_MFP5  =  1;   //GPIO
-//assign AUDIO_SPI_SELECT =  1;   //SPI mode
-//assign AUDIO_RESET_n    =  RESET_DELAY_n ;
-//
-//AUDIO_SPI_CTL_RD	u1(
-//	.iRESET_n ( RESET_DELAY_n) ,
-//	.iCLK_50( MAX10_CLK1_50),   //50Mhz clock
-//	.oCS_n ( AUDIO_SCL_SS_n ),   //SPI interface mode chip-select signal
-//	.oSCLK ( AUDIO_SCLK_MFP3),  //SPI serial clock
-//	.oDIN  ( AUDIO_SDA_MOSI ),   //SPI Serial data output
-//	.iDOUT ( AUDIO_MISO_MFP4)   //SPI serial data input
-//
-//	);
-
-
-
-//---MTL2 ---
-//PLL_VGA PP(
-//	.areset ( 0),
-//	.inclk0 ( MAX10_CLK3_50) ,
-//	.c0     ( MTL_CLK),
-//	.locked ()
-//);
-
-//--SOUND-WAVE display to MTL2 ----
-//assign  MTL2_BL_ON_n = ~RESET_DELAY_n  ;
-//
-//SOUND_TO_MTL2  sm(
-//	.WAVE      ( SUM_AUDIO),
-//	.AUDIO_MCLK( AUDIO_MCLK),
-//	.SAMPLE_TR ( SAMPLE_TR),
-//	.RESET_n   ( RESET_DELAY_n),
-//
-//	.MTL_CLK  ( MTL_CLK  ),
-//	.MTL2_R   ( MTL2_R   ),
-//	.MTL2_G   ( MTL2_G   ),
-//	.MTL2_B   ( MTL2_B   ),
-//   .MTL2_HSD ( MTL2_HSD ),
-//   .MTL2_VSD ( MTL2_VSD ),
-//   .MTL2_DCLK( MTL2_DCLK) ,
-//   .SCAL      ( 7), //0:NONE SCA  1: SCALE+1  ...
-//	.DRAW_DOT  ( 0),
-//	.START_STOP( 1)
-//);
 
  
 

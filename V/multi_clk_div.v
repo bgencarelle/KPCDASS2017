@@ -11,7 +11,8 @@ module multi_clk_div(
  		output reg div32,
 		output reg div64,
 		output reg div128,
-		output reg div256	
+		output reg div256,
+		output reg div512
 		);
 		
 		reg  time_base_counter_2 = 0;
@@ -22,6 +23,7 @@ module multi_clk_div(
 		reg [5:0] time_base_counter_64 = 0;
 		reg [6:0]time_base_counter_128 = 0;
 		reg [7:0]time_base_counter_256 = 0;
+		reg [8:0]time_base_counter_512 = 0;
 		reg [12:0] time_base_counter_var = 0;
 		
 		always@ (posedge clk)
@@ -34,6 +36,7 @@ module multi_clk_div(
 				time_base_counter_64 <= (time_base_counter_64 + 1'b1);
 				time_base_counter_128 <= (time_base_counter_128 + 1'b1);
 				time_base_counter_256 <= (time_base_counter_256 + 1'b1);
+				time_base_counter_512 <= (time_base_counter_256 + 1'b1);
 				time_base_counter_var <= (time_base_counter_var + 1'b1) % div_clock;
 				
 		end
@@ -46,6 +49,7 @@ module multi_clk_div(
 		wire enable_64;
 		wire enable_128;
 		wire enable_256;
+		wire enable_512;
 		wire enable_var;
 		
 		assign enable_2 = time_base_counter_2;
@@ -56,6 +60,7 @@ module multi_clk_div(
 		assign enable_64 = &time_base_counter_64;
 		assign enable_128 = &time_base_counter_128;
 		assign enable_256 = &time_base_counter_256;
+		assign enable_512 = &time_base_counter_512;
 		assign enable_var = (time_base_counter_var == div_clock-1'b1)? 1'b1: 1'b0;
 		
 
@@ -99,6 +104,11 @@ begin
 		if (enable_256)
 		begin:DIV256
 			div256 <= ~div256;
+		end
+
+		if (enable_512)
+		begin:DIV512
+			div512 <= ~div512;
 		end
 
 		if (enable_var)

@@ -66,7 +66,7 @@
  ---------------------------------------------------------------------------------
 
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-CHIP  "Decay_Delay"  ASSIGNED TO AN: 10M50DAF484C6GES
+CHIP  "Decay_Delay"  ASSIGNED TO AN: 10M50DAF484I7G
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
@@ -107,8 +107,8 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AA12      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA13      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA14      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA15      :        :                   :         : 4         :                
-GPIO[5]                      : AA16      : input  : 3.3-V LVTTL       :         : 4         : Y              
-GPIO[1]                      : AA17      : input  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[5]                      : AA16      : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
+GPIO[1]                      : AA17      : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
 GND                          : AA18      : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA19      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AA20      :        :                   :         : 4         :                
@@ -129,7 +129,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : AB12      :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB13      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB14      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB15      :        :                   :         : 4         :                
-GPIO[4]                      : AB16      : input  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[4]                      : AB16      : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB17      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB18      :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : AB19      :        :                   :         : 4         :                
@@ -192,8 +192,8 @@ FPGA_RESET_n                 : D9        : input  : 3.3-V LVTTL       :         
 HEX1[3]                      : D10       : output : 3.3-V LVTTL       :         : 8         : Y              
 GND                          : D11       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D12       :        :                   :         : 7         :                
-AUDIO_RESET_n                : D13       : bidir  : 2.5 V             :         : 7         : Y              
-AUDIO_GPIO_MFP5              : D14       : bidir  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : D13       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D14       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D15       :        :                   :         : 7         :                
 GND                          : D16       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : D17       :        :                   :         : 7         :                
@@ -239,7 +239,7 @@ VCCIO7                       : F12       : power  :                   : 2.5V    
 GND                          : F13       : gnd    :                   :         :           :                
 VCCIO7                       : F14       : power  :                   : 2.5V    : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F15       :        :                   :         : 7         :                
-AUDIO_SDA_MOSI               : F16       : bidir  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F16       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F17       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F18       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : F19       :        :                   :         : 6         :                
@@ -279,7 +279,7 @@ VCCA3                        : H8        : power  :                   : 2.5V    
 ~ALTERA_nCONFIG~ / RESERVED_INPUT : H9        : input  : 3.3 V Schmitt Trigger :         : 8         : N              
 ~ALTERA_CONFIG_SEL~ / RESERVED_INPUT : H10       : input  : 3.3-V LVTTL       :         : 8         : N              
 HEX1[5]                      : H11       : output : 3.3-V LVTTL       :         : 8         : Y              
-AUDIO_WCLK                   : H12       : bidir  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H12       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H13       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H14       :        :                   :         : 7         :                
 VCCA2                        : H15       : power  :                   : 2.5V    :           :                
@@ -301,7 +301,7 @@ VCCINT                       : J7        : power  :                   : 1.2V    
 ~ALTERA_ADC1IN4~             : J9        : input  : 2.5 V             :         : 1A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : J10       :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J11       :        :                   :         : 7         :                
-AUDIO_BCLK                   : J12       : bidir  : 2.5 V             :         : 7         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J12       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J13       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J14       :        :                   :         : 6         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : J15       :        :                   :         : 6         :                
@@ -364,7 +364,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : M4        :        :                   :      
 VCCIO1B                      : M6        : power  :                   : 2.5V    : 1B        :                
 GND                          : M7        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M8        :        :                   :         : 2         :                
-ADC_CLK_10                   : M9        : input  : 3.3-V LVTTL       :         : 2         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M9        :        :                   :         : 2         :                
 GND                          : M10       : gnd    :                   :         :           :                
 VCC                          : M11       : power  :                   : 1.2V    :           :                
 VCC                          : M12       : power  :                   : 1.2V    :           :                
@@ -503,7 +503,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : V12       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : V13       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V14       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V15       :        :                   :         : 4         :                
-GPIO[2]                      : V16       : input  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[2]                      : V16       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : V17       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V18       :        :                   :         : 5         :                
 GND                          : V19       : gnd    :                   :         :           :                
@@ -524,8 +524,8 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : W11       :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : W12       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W13       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W14       :        :                   :         : 4         :                
-GPIO[3]                      : W15       : input  : 3.3-V LVTTL       :         : 4         : Y              
-GPIO[7]                      : W16       : input  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[3]                      : W15       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
+GPIO[7]                      : W16       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : W17       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W18       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W19       :        :                   :         : 5         :                
@@ -547,8 +547,8 @@ GND                          : Y12       : gnd    :                   :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y13       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y14       :        :                   :         : 4         :                
 GND                          : Y15       : gnd    :                   :         :           :                
-GPIO[6]                      : Y16       : input  : 3.3-V LVTTL       :         : 4         : Y              
-GPIO[0]                      : Y17       : input  : 3.3-V LVTTL       :         : 4         : Y              
+GPIO[6]                      : Y16       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
+GPIO[0]                      : Y17       : input  : 3.3 V Schmitt Trigger :         : 4         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y18       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y19       :        :                   :         : 4         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y20       :        :                   :         : 5         :                

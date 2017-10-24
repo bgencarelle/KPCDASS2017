@@ -28,7 +28,7 @@
 #============================================================
 
 set_global_assignment -name FAMILY "MAX 10"
-set_global_assignment -name DEVICE 10M50DAF484C6GES
+set_global_assignment -name DEVICE 10M50DAF484I7G
 set_global_assignment -name TOP_LEVEL_ENTITY KP_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.0.0
 set_global_assignment -name LAST_QUARTUS_VERSION "17.0.0 Lite Edition"
@@ -307,14 +307,16 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_CLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_CLK2
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DAT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DAT2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO[7]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[0]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[1]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[2]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[3]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[4]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[5]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[6]
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO[7]
+set_global_assignment -name BOARD "MAX 10 NEEK"
+set_instance_assignment -name IO_STANDARD "3.3 V SCHMITT TRIGGER" -to GPIO
 set_global_assignment -name QSYS_FILE adc2.qsys
 set_global_assignment -name QSYS_FILE adc.qsys
 set_global_assignment -name QDB_FILE simulation/modelsim/rtl_work/_lib1_0.qdb
@@ -352,4 +354,5 @@ set_global_assignment -name VERILOG_FILE V/sequencer.v
 set_global_assignment -name VERILOG_FILE storage.v
 set_global_assignment -name VERILOG_FILE KP_top.v
 set_global_assignment -name VERILOG_FILE adc1.v
+set_global_assignment -name VERILOG_FILE midi_input.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
