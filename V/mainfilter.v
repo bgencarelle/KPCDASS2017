@@ -7,17 +7,17 @@ module mainfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//
 	output signed [RANGE:0] q
 	 );
 	reg signed [23:0] regq;
-   reg signed [23:0] del[15:0];
+   reg signed [23:0] del[31:0];
       integer i;
       always @ ( posedge clk ) //look familiar?
 		begin
       if(reset_n == 1'b0)
-         for (i = 0; i <= 15; i = i+ 1)
+         for (i = 0; i <= 31; i = i+ 1)
 				begin: clear_fir
 					del[i] <= 0;
             end
       else
-         for (i = 1; i <= 15; i = i+ 1)
+         for (i = 1; i <= 31; i = i+ 1)
 				begin: shift_fir
                del[0] <= d;
                del[i] <= del[i-1] ;
@@ -60,7 +60,7 @@ module mainfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//
 					$signed(del[7]>>>3);
 				 	end
 
-		default:begin // end of classic running average LPF
+		3'b100:begin // end of classic running average LPF
 			regq <=
 					$signed(del[0] >>>4) +//1/16
 					$signed(del[1]>>>4) +//1/16
@@ -79,7 +79,41 @@ module mainfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//
 					$signed(del[14]>>>4) +//1/16
 					$signed(del[15]>>>4);
 					end
-
+		default:begin // end of classic running average LPF
+			regq <=
+					$signed(del[0] >>>5) +//1/16
+					$signed(del[1]>>>5) +//1/16
+					$signed(del[2]>>>5) +//1/16
+					$signed(del[3]>>>5) +//1/16
+					$signed(del[4]>>>5) +//1/16
+					$signed(del[5]>>>5) +//1/16
+					$signed(del[6]>>>5) +//1/16
+					$signed(del[7]>>>5) +
+					$signed(del[8]>>>5) +//1/16
+					$signed(del[9]>>>5) +//1/16
+					$signed(del[10]>>>5) +//1/16
+					$signed(del[11]>>>5) +//1/16
+					$signed(del[12]>>>5) +//1/16
+					$signed(del[13]>>>5) +//1/16
+					$signed(del[14]>>>5) +//1/16					$signed(del[0] >>>5) +//1/16
+					$signed(del[15]>>>5) +//1/16
+					$signed(del[16]>>>5) +//1/16
+					$signed(del[17]>>>5) +//1/16
+					$signed(del[18]>>>5) +//1/16
+					$signed(del[19]>>>5) +//1/16
+					$signed(del[20]>>>5) +//1/16
+					$signed(del[21]>>>5) +
+					$signed(del[22]>>>5) +//1/16
+					$signed(del[23]>>>5) +//1/16
+					$signed(del[24]>>>5) +//1/16
+					$signed(del[25]>>>5) +//1/16
+					$signed(del[26]>>>5) +//1/16
+					$signed(del[27]>>>5) +//1/16
+					$signed(del[28]>>>5) +//1/16					$signed(del[25]>>>5) +//1/16
+					$signed(del[29]>>>5) +//1/16
+					$signed(del[30]>>>5) +//1/16
+					$signed(del[31]>>>5);
+					end
 		endcase
 	end
 

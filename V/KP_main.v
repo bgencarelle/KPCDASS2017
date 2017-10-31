@@ -4,8 +4,8 @@ input wire reset_n,//reset
 input wire m_clk,//not used currently,50mhz clock
 input wire trig,//input trigger
 input wire signed [15:0] dnoise,//input from LFSR
-input wire signed [11:0] decay,//sustain time
-input wire signed [6:0] velocity,//velocity from MIDI or other source
+input wire [11:0] decay,//sustain time
+input wire [6:0] velocity,//velocity from MIDI or other source
 input wire [11:0] delay_length,//tuning
 input wire [2:0] filtsw,//filter choosing
 
@@ -16,14 +16,6 @@ reg signed [35:0] dfilter_gain;//limiting feedback allows for faster decay
 reg signed [23:0] start_level; //initial level
 reg signed [11:0] delay_level_trig; //initial level
 
-
-always @ (posedge a_clk)
-begin
-	start_level <= $signed(dnoise) * ({1'b0,velocity});
-	dfilter_gain <= ($signed(dfilter) * ({1'b0,decay}));
-	//delay_level_old <= (trig == 0)?delay_length:delay_level_old;
-	delay_level_trig <= (trig == 0)?delay_length:delay_level_trig;
-end
 
 
 reg signed [23:0] d = 0;//feeds RAM
@@ -47,10 +39,16 @@ if (reset_n == 1'b0)
 	rden <= 1'b0;
 	KP_state <= 2'b00;
 	end
-else if (reset_n != 1'b0)
+	
+	
+else if (reset_n)
 
 begin:KP_STATE_BEGIN
 
+	start_level <= $signed(dnoise) * $signed({1'b0,velocity});
+	dfilter_gain <= $signed(qout) * $signed({1'b0,decay});
+	delay_level_trig <= (trig == 0)?delay_length:delay_level_trig;
+	
 	case(KP_state)
 	2'b00:
 	begin //start idle loads up ram to allow quicker triggering on first boot
@@ -169,11 +167,10 @@ ram_4096_32bit	shift_reg_ram(		// RAM. currently using too much-can implement sm
 
 kpfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.filt_sel(filtsw),
-//			.rand_switch(d[1]),
 			.clk(a_clk),
-			.d(q[23:0]),
+			.d(q),
 			.reset_n(reset_n),
-			.q(dfilter) // output to DAC
+			.q(qout) // output to DAC
 			);
 
 
@@ -188,6 +185,6 @@ reg dfilter_reg;
 		.outclk (a_clk)  // altclkctrl_output.outclk
 	);
 //assign a_clk = audio_clk;
-wire signed [23:0] dfilter; //
-assign qout = dfilter;
+//wire signed [23:0] dfilter; //
+//assign qout = dfilter;
 endmodule

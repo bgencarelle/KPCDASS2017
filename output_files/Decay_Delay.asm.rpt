@@ -1,5 +1,5 @@
 Assembler report for Decay_Delay
-Tue Oct 24 22:51:13 2017
+Wed Nov 01 00:33:54 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Oct 24 22:51:13 2017 ;
+; Assembler Status      ; Successful - Wed Nov 01 00:33:54 2017 ;
 ; Revision Name         ; Decay_Delay                           ;
 ; Top-level Entity Name ; KP_top                                ;
 ; Family                ; MAX 10                                ;
@@ -67,8 +67,8 @@ agreement for further details.
 +----------------+---------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x006D2FBA                                                                      ;
-; Checksum       ; 0x006D2FBA                                                                      ;
+; JTAG usercode  ; 0x005434F5                                                                      ;
+; Checksum       ; 0x005434F5                                                                      ;
 +----------------+---------------------------------------------------------------------------------+
 
 
@@ -78,14 +78,14 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Oct 24 22:51:08 2017
+    Info: Processing started: Wed Nov 01 00:33:50 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off adc_mic_lcd -c Decay_Delay
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 602 megabytes
-    Info: Processing ended: Tue Oct 24 22:51:13 2017
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 592 megabytes
+    Info: Processing ended: Wed Nov 01 00:33:54 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 

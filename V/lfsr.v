@@ -13,7 +13,7 @@ output wire signed [15:0] out24_2,
 output wire signed [15:0] out24_1,
 output wire signed [15:0] out24_0,
 
-input wire a_clk, clk, reset
+input wire a_clk, clk, reset_n
 );
 
 reg  [23:0] out24ref_8;
@@ -33,30 +33,36 @@ reg signed [23:0] out;
 wire        linear_feedback;
 //-------------Code Starts Here-------
 assign linear_feedback = (out[20] ^ out[19]  ) ^ (out[23] ^ out[22]  );
-always @(posedge clk)
+always @(posedge a_clk)
 begin
-if (reset == 1'b0)
+if (reset_n == 1'b0)
 	begin // active high reset
   out <= data;
 	end
-if (out == 24'h0)
-	begin // active high reset
+
+	else if (reset_n == 1'b1)
+	begin
+	
+	if (out == 24'h0) begin // active high reset
   out <= ~data;
 	end
-	else if (reset)
-	begin
+	
+	else begin
 	out <= {out[22:0],linear_feedback,};
-	out24ref_7 <= out;
+	out24ref_5 <= out;
+		out24ref_6 <= out24ref_5;
+		out24ref_7 <= out24ref_6[23:1] + out24ref_5[23:1];
+	end
 	end
 	end
 
-	assign out24_8 = (out24ref_7[23:8]);
-	assign out24_7 = (out24ref_7[22:7]);
-	assign out24_6 = (out24ref_7[21:6]);
-	assign out24_5 = (out24ref_7[20:5]);
-	assign out24_4 = (out24ref_7[19:4]);
-	assign out24_3 = (out24ref_7[18:3]);
-	assign out24_2 = (out24ref_7[17:2]);
-	assign out24_1 = (out24ref_7[16:1]);
-	assign out24_0 = (out24ref_7[15:0]);
+	assign out24_8 = $signed(out24ref_7[23:8]);
+	assign out24_7 = $signed(out24ref_7[22:7]);
+	assign out24_6 = $signed(out24ref_7[21:6]);
+	assign out24_5 = $signed(out24ref_7[20:5]);
+	assign out24_4 = $signed(out24ref_7[19:4]);
+	assign out24_3 = $signed(out24ref_7[18:3]);
+	assign out24_2 = $signed(out24ref_7[17:2]);
+	assign out24_1 = $signed(out24ref_7[16:1]);
+	assign out24_0 = $signed(out24ref_7[15:0]);
 endmodule // End Of Module counter

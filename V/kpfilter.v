@@ -19,7 +19,7 @@ module kpfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//ea
 				begin: clear_fir
 					del[i] <= 0;
             end
-      else
+      else if(reset_n == 1'b1)
          for (i = 1; i <= 15; i = i+ 1)
 				begin: shift_fir
                del[0] <= d;
@@ -32,8 +32,14 @@ module kpfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//ea
 		end
 
 	always @ (posedge clk)
-
-	begin case(filt_sel)
+      if(reset_n == 1'b0)
+		begin
+		regq <= 0;
+		end
+		
+		else if(reset_n == 1'b1)
+		begin
+		begin case(filt_sel)
 	
 		3'b000:begin // start of classic running average LPF
 				regq <= d;
@@ -87,6 +93,7 @@ module kpfilter # (parameter BIT_WIDTH = 24, parameter RANGE = BIT_WIDTH-1)(//ea
 
 
 		endcase
+		end
 	end
 
 	assign 	q =$signed(regq);

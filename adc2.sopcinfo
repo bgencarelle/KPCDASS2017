@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="adc2" kind="adc2" version="1.0" fabric="QSYS">
  <!-- Format version 17.0 595 (Future versions may contain additional information.) -->
- <!-- 2017.10.24.22:49:34 -->
+ <!-- 2017.11.01.00:32:26 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1508878174</value>
+  <value>1509492745</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
