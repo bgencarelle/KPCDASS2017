@@ -28,9 +28,9 @@
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
- <parameter name="device" value="10M50DAF484C6GES" />
+ <parameter name="device" value="10M50DAF484I7G" />
  <parameter name="deviceFamily" value="MAX 10" />
- <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="deviceSpeedGrade" value="7" />
  <parameter name="fabricMode" value="QSYS" />
  <parameter name="generateLegacySim" value="false" />
  <parameter name="generationId" value="0" />
@@ -72,21 +72,21 @@
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
+  <parameter name="resetSynchronousEdges" value="BOTH" />
  </module>
  <module
    name="modular_adc_0"
    kind="altera_modular_adc"
    version="17.0"
    enabled="1">
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="CLOCK_FREQ" value="50000000" />
   <parameter name="CORE_VAR" value="2" />
-  <parameter name="DEVICE_PART" value="10M50DAF484C6GES" />
+  <parameter name="DEVICE_PART" value="10M50DAF484I7G" />
   <parameter name="ENABLE_DEBUG" value="0" />
   <parameter name="FAMILY" value="MAX 10" />
   <parameter name="MONITOR_COUNT_WIDTH" value="12" />
-  <parameter name="clkdiv" value="2" />
+  <parameter name="clkdiv" value="1" />
   <parameter name="en_thmax_ch0" value="false" />
   <parameter name="en_thmax_ch1" value="false" />
   <parameter name="en_thmax_ch10" value="false" />
@@ -124,13 +124,13 @@
   <parameter name="en_tsd_max" value="false" />
   <parameter name="en_tsd_min" value="false" />
   <parameter name="enable_usr_sim" value="0" />
-  <parameter name="external_vref" value="2.5" />
+  <parameter name="external_vref" value="2.0" />
   <parameter name="int_vref_vr" value="3.0" />
   <parameter name="ip_is_for_which_adc" value="1" />
   <parameter name="prescaler_ch16" value="false" />
   <parameter name="prescaler_ch8" value="false" />
   <parameter name="refsel" value="1" />
-  <parameter name="sample_rate" value="0" />
+  <parameter name="sample_rate" value="5" />
   <parameter name="seq_order_length" value="9" />
   <parameter name="seq_order_slot_1" value="0" />
   <parameter name="seq_order_slot_10" value="17" />

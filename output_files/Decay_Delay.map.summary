@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed Nov 01 00:33:15 2017
+Analysis & Synthesis Status : Successful - Sun Nov 05 20:59:33 2017
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : Decay_Delay
 Top-level Entity Name : KP_top
 Family : MAX 10
-Total logic elements : 6,114
-    Total combinational functions : 3,735
-    Dedicated logic registers : 3,024
-Total registers : 3024
+Total logic elements : 8,372
+    Total combinational functions : 4,906
+    Dedicated logic registers : 4,153
+Total registers : 4153
 Total pins : 53
 Total virtual pins : 0
 Total memory bits : 274,432

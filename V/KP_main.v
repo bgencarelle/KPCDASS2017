@@ -170,7 +170,7 @@ kpfilter filt0(//FILTER, depth of filter controlled by input to filt_sel
 			.clk(a_clk),
 			.d(q),
 			.reset_n(reset_n),
-			.q(qout) // output to DAC
+			.q(dfilter) // output to DAC
 			);
 
 
@@ -178,13 +178,10 @@ wire a_clk;
 wire a_clk_reg;
 reg dfilter_reg;
 
-////always @(posedge audio_clk)
-////a_clk <= a_clk_reg;
 	clock_buff kpbuff (
 		.inclk  (audio_clk),  //  altclkctrl_input.inclk
 		.outclk (a_clk)  // altclkctrl_output.outclk
 	);
-//assign a_clk = audio_clk;
-//wire signed [23:0] dfilter; //
-//assign qout = dfilter;
+wire signed [23:0] dfilter; //
+assign qout = dfilter;
 endmodule

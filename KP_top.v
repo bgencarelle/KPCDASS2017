@@ -207,7 +207,7 @@ assign sw_vel = SW[9]?out_adc_4[11:5]:127;
 
 
 midi_adc_input solo_1( 
-	.trig(GPIO[0]),
+	.trig(!GPIO[0]),
 	.a_clk(seven0068khz_clk),
 	.div2(a_clk_2),
 	.div4(a_clk_4),
@@ -253,7 +253,7 @@ wire [10:0] solo_length2;
 
 midi_adc_input solo_2_in( 
 	 
-	.trig(GPIO[1]),
+	.trig(!GPIO[1]),
 	.a_clk(seven0068khz_clk),
 	.div2(a_clk_2),
 	.div4(a_clk_4),
@@ -290,7 +290,7 @@ KP_main solo2(
 wire [10:0] bass_length;
 midi_adc_input bass_in( 
  
-	.trig(GPIO[2]),
+	.trig(!GPIO[2]),
 	.a_clk(seven0068khz_clk),
 	.div2(a_clk_2),
 	.div4(a_clk_4),

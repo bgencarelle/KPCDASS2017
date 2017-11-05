@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="adc" kind="system" version="17.0" fabric="QSYS">
  <!-- Format version 17.0 595 (Future versions may contain additional information.) -->
- <!-- 2017.11.01.00:32:40 -->
+ <!-- 2017.11.05.20:58:16 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1509492758</value>
+  <value>1509911894</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -178,7 +178,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="resetSynchronousEdges">
    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-   <value>NONE</value>
+   <value>BOTH</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -275,7 +275,7 @@ parameters are a RESULT of the module parameters. -->
    </assignment>
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value></value>
+    <value>clk_in</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -283,7 +283,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="synchronousEdges">
     <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>NONE</value>
+    <value>BOTH</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -401,7 +401,7 @@ particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value></value>
+    <value>clk</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -425,7 +425,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="synchronousEdges">
     <type>com.altera.sopcmodel.reset.Reset$Edges</type>
-    <value>NONE</value>
+    <value>BOTH</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -978,7 +978,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sample_rate">
    <type>int</type>
-   <value>0</value>
+   <value>5</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -986,7 +986,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clkdiv">
    <type>int</type>
-   <value>2</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -994,7 +994,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_clkdiv">
    <type>int</type>
-   <value>2</value>
+   <value>3</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1002,7 +1002,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="tsclkdiv">
    <type>int</type>
-   <value>1</value>
+   <value>0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1026,7 +1026,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="external_vref">
    <type>double</type>
-   <value>2.5</value>
+   <value>2.0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3820,5 +3820,5 @@ parameters are a RESULT of the module parameters. -->
   <version>17.0</version>
  </plugin>
  <reportVersion>17.0 595</reportVersion>
- <uniqueIdentifier>88539529BD600000015F74C79D29</uniqueIdentifier>
+ <uniqueIdentifier>88539529BD600000015F8DC31FF1</uniqueIdentifier>
 </EnsembleReport>

@@ -1,5 +1,5 @@
 Flow report for Decay_Delay
-Wed Nov 01 00:34:06 2017
+Sun Nov 05 21:01:00 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Nov 01 00:34:06 2017       ;
+; Flow Status                        ; Successful - Sun Nov 05 21:01:00 2017       ;
 ; Quartus Prime Version              ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Decay_Delay                                 ;
 ; Top-level Entity Name              ; KP_top                                      ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484I7G                              ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 4,667 / 49,760 ( 9 % )                      ;
-;     Total combinational functions  ; 3,784 / 49,760 ( 8 % )                      ;
-;     Dedicated logic registers      ; 3,024 / 49,760 ( 6 % )                      ;
-; Total registers                    ; 3024                                        ;
+; Total logic elements               ; 6,275 / 49,760 ( 13 % )                     ;
+;     Total combinational functions  ; 4,955 / 49,760 ( 10 % )                     ;
+;     Dedicated logic registers      ; 4,086 / 49,760 ( 8 % )                      ;
+; Total registers                    ; 4086                                        ;
 ; Total pins                         ; 53 / 360 ( 15 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 274,432 / 1,677,312 ( 16 % )                ;
@@ -67,7 +67,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/01/2017 00:32:02 ;
+; Start date & time ; 11/05/2017 20:57:34 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Decay_Delay         ;
 +-------------------+---------------------+
@@ -81,7 +81,7 @@ agreement for further details.
 ; ALM_REGISTER_PACKING_EFFORT             ; High                                                         ; Medium                               ; --          ; --             ;
 ; AUTO_RAM_TO_LCELL_CONVERSION            ; On                                                           ; Off                                  ; --          ; --             ;
 ; AUTO_RESOURCE_SHARING                   ; On                                                           ; Off                                  ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                   ; 184857106377073.150949272201340                              ; --                                   ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                   ; 184857106377073.150991185408784                              ; --                                   ; --          ; --             ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE        ; Area                                                         ; Balanced                             ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                  ; Verilog Hdl                                                  ; --                                   ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                     ; ModelSim-Altera (Verilog)                                    ; <None>                               ; --          ; --             ;
@@ -130,12 +130,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:12     ; 1.0                     ; 742 MB              ; 00:02:20                           ;
-; Fitter                    ; 00:00:31     ; 1.5                     ; 1597 MB             ; 00:00:54                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 592 MB              ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 2.1                     ; 761 MB              ; 00:00:14                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 587 MB              ; 00:00:02                           ;
-; Total                     ; 00:01:57     ; --                      ; --                  ; 00:03:34                           ;
+; Analysis & Synthesis      ; 00:01:58     ; 1.0                     ; 762 MB              ; 00:02:58                           ;
+; Fitter                    ; 00:01:00     ; 1.4                     ; 1688 MB             ; 00:01:54                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 592 MB              ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:11     ; 2.2                     ; 770 MB              ; 00:00:19                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 593 MB              ; 00:00:03                           ;
+; Total                     ; 00:03:17     ; --                      ; --                  ; 00:05:19                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

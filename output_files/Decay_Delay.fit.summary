@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Nov 01 00:33:47 2017
+Fitter Status : Successful - Sun Nov 05 21:00:34 2017
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : Decay_Delay
 Top-level Entity Name : KP_top
 Family : MAX 10
 Device : 10M50DAF484I7G
 Timing Models : Final
-Total logic elements : 4,667 / 49,760 ( 9 % )
-    Total combinational functions : 3,784 / 49,760 ( 8 % )
-    Dedicated logic registers : 3,024 / 49,760 ( 6 % )
-Total registers : 3024
+Total logic elements : 6,275 / 49,760 ( 13 % )
+    Total combinational functions : 4,955 / 49,760 ( 10 % )
+    Dedicated logic registers : 4,086 / 49,760 ( 8 % )
+Total registers : 4086
 Total pins : 53 / 360 ( 15 % )
 Total virtual pins : 0
 Total memory bits : 274,432 / 1,677,312 ( 16 % )
